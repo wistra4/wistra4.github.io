@@ -12,7 +12,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(32, 172, 207, 0.7);
+    background-color: #20accfb3;
     -webkit-transition: all 0.3s ease;
     -moz-transition: all 0.3s ease;
     -o-transition: all 0.3s ease;
@@ -24,7 +24,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(32, 172, 207, 0);
+    background-color: #20accf00;
 }
 
 

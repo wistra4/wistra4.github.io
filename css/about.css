@@ -1,0 +1,57 @@
+* {
+    padding: 0;
+    margin:0;
+}
+
+.base {
+    padding-bottom: 40px;
+}
+
+.skill ul {
+    list-style-type: none;
+    overflow: hidden;
+    padding-top: 20px;
+    padding-bottom: 30px;
+}
+.skill li {
+    height: 20px;
+    padding: 10px;
+    color: #000000;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.edu ul {
+    list-style-type: none;
+    overflow: hidden;
+    padding-top: 20px;
+    padding-bottom: 30px;
+}
+.edu li {
+    height: 20px;
+    padding: 10px;
+}
+.edu li a {
+    text-decoration: none;
+    color: #000000;
+    position: relative;
+    text-decoration: none;
+}
+.edu li a::after {
+    position: absolute;
+    bottom: -1px;
+    left: -3px;
+    content: '';
+    width: 100px;
+    height: 1px;
+    background: #cc4c4c67;
+    transform: scale(0.1, 10);
+    transform-origin: left bottom;
+    transition: transform .5s;
+}
+.edu li a:hover::after {
+    width: 105%;
+    height: 1px;
+    background: #cc4c4c;
+    transform: scale(1, 1);
+}

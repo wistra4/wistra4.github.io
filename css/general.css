@@ -1,18 +1,23 @@
+*{
+    padding: 0;
+    margin: 0;
+}
 .background {
     background-color: rgb(230, 230, 211);
 }
 .layout {
     margin-left: 60px;
 }
-ul {
+.menu ul {
     list-style-type: none;
     overflow: hidden;
     padding-left: 0;
 }
-li {
+.menu li {
     width: 150px;
     height: 5px;
     padding: 10px;
+    padding-top: 30px;
     margin: 20px;
 }
 .inline-block {
@@ -23,18 +28,17 @@ li {
     display: inline-block;
 }
 .red {
-    text-decoration: none;
     color: #cc4c4c;
     font-weight: bold;
 }
 .color {
     text-decoration: none;
-    color: #cc4c4c;
+    color:  #cc4c4c;
     font-weight: bold;
     -webkit-transition: all 0.3s ease;
     -moz-transition: all 0.3s ease;
     -o-transition: all 0.3s ease;
-    transition: all  1.0s ease;
+    transition: all  0.5s ease;
 }
 .color:hover {
     text-decoration: none;
@@ -49,4 +53,8 @@ li {
 .copyright-t {
     font-size: 11px;
     color: #000000;
+}
+h1 {
+    padding-top: 30px;
+    padding-bottom: 20px;
 }
