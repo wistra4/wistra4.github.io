@@ -1,0 +1,85 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.background {
+  background-color: #e6e6d3;
+  width: 100%;
+}
+
+.layout {
+  margin-left: 60px;
+}
+
+.menu {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+  padding-top: 30px;
+}
+
+.menu_item {
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 15px;
+}
+
+.menu_item a {
+  margin: 0;
+  display: inline-block;
+}
+
+.menu_item p {
+  color: #cc4c4c;
+  font-weight: bold;
+  display: inline-block;
+}
+
+.red {
+  color: #cc4c4c;
+  font-weight: bold;
+}
+
+.color {
+  text-decoration: none;
+  color: #cc4c4c;
+  font-weight: bold;
+  -webkit-transition: all 0.3s ease;
+  -webkit-transition: all  0.5s ease;
+  transition: all  0.5s ease;
+}
+
+.color:hover {
+  text-decoration: none;
+  color: #ff0000;
+  font-weight: bold;
+}
+
+.copyright-a {
+  height: 100px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.copyright-t {
+  font-size: 11px;
+  color: #000000;
+}
+
+h1 {
+  padding-top: 30px;
+  padding-bottom: 20px;
+}
+/*# sourceMappingURL=general.css.map */

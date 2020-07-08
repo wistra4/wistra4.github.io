@@ -1,49 +1,62 @@
+$headColor: #cc4c4c;
+$hoverColor: #ff0000;
+
 *{
     padding: 0;
     margin: 0;
 }
 .background {
     background-color: rgb(230, 230, 211);
+    width: 100%;
 }
 .layout {
     margin-left: 60px;
 }
-.menu ul {
-    list-style-type: none;
-    overflow: hidden;
-    padding-left: 0;
-}
-.menu li {
-    width: 150px;
-    height: 5px;
-    padding: 10px;
-    padding-top: 30px;
-    margin: 20px;
-}
-.inline-block {
+
+.menu {
+    width: 100%;
+    display:flex;
+    flex-wrap:nowrap;
+    justify-content: center;
     text-align: center;
+    padding-top: 30px;
+}
+
+.menu_item {
+    margin-left: auto;
+    margin-right: auto;
     font-size: 15px;
+    
+    a {
+        margin: 0;
+        display: inline-block;
+    }
+
+    p {
+        color: $headColor;
+        font-weight: bold;
+        display: inline-block;
+    }
 }
-.inline-block li {
-    display: inline-block;
-}
+
 .red {
-    color: #cc4c4c;
+    color: $headColor;
     font-weight: bold;
 }
 .color {
     text-decoration: none;
-    color:  #cc4c4c;
+    color:  $headColor;
     font-weight: bold;
     -webkit-transition: all 0.3s ease;
     -moz-transition: all 0.3s ease;
     -o-transition: all 0.3s ease;
     transition: all  0.5s ease;
-}
-.color:hover {
-    text-decoration: none;
-    color: #ff0000;
-    font-weight: bold;
+
+    &:hover {
+        text-decoration: none;
+        color: $hoverColor;
+        font-weight: bold;
+    }
 }
 .copyright-a {
     height: 100px;
