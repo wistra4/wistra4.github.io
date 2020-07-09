@@ -4,7 +4,7 @@
 }
 
 .base {
-    padding-bottom: 40px;
+    padding-bottom: 64px;
 }
 
 .skill ul {
@@ -35,23 +35,24 @@
     text-decoration: none;
     color: #000000;
     position: relative;
-    text-decoration: none;
+}
+.edu li a:hover {
+    color: #ffffff;
 }
 .edu li a::after {
     position: absolute;
-    bottom: -1px;
-    left: -3px;
+    bottom: -8px;
+    left: 0px;
     content: '';
-    width: 100px;
-    height: 1px;
-    background: #cc4c4c67;
-    transform: scale(0.1, 10);
-    transform-origin: left bottom;
-    transition: transform .5s;
+    width: 100%;
+    height: 2px;
+    background: #ffffff;
+    opacity: 0;
+    visibility: hidden;
+    transition: .5s;
 }
 .edu li a:hover::after {
-    width: 105%;
-    height: 1px;
-    background: #cc4c4c;
-    transform: scale(1, 1);
+    bottom: -4px;
+    opacity: 1;
+    visibility: visible;
 }

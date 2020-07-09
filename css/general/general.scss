@@ -1,16 +1,33 @@
-$headColor: #cc4c4c;
-$hoverColor: #ff0000;
+$headColor: #ffffff;
+$hoverColor: #000000;
 
 *{
     padding: 0;
     margin: 0;
 }
 .background {
-    background-color: rgb(230, 230, 211);
+    background-color: #afafaf;
     width: 100%;
 }
+.theme {
+    padding-left: 64px;
+    padding-top: 64px;
+    padding-bottom: 32px;
+
+    p {
+    color: $headColor;
+    font-weight: bold;
+    }
+    
+    a {
+    text-decoration: none;
+    color:  $headColor;
+    font-weight: bold;
+    }
+}
+
 .layout {
-    margin-left: 60px;
+    margin-left: 64px;
 }
 
 .menu {
@@ -19,13 +36,14 @@ $hoverColor: #ff0000;
     flex-wrap:nowrap;
     justify-content: center;
     text-align: center;
-    padding-top: 30px;
+    padding-top: 32px;
+    padding-bottom: 80px;
 }
 
 .menu_item {
     margin-left: auto;
     margin-right: auto;
-    font-size: 15px;
+    font-size: 16px;
     
     a {
         margin: 0;
@@ -33,14 +51,14 @@ $hoverColor: #ff0000;
     }
 
     p {
-        color: $headColor;
+        color: $hoverColor;
         font-weight: bold;
         display: inline-block;
     }
 }
 
-.red {
-    color: $headColor;
+.black {
+    color: $hoverColor;
     font-weight: bold;
 }
 .color {
@@ -64,10 +82,6 @@ $hoverColor: #ff0000;
     align-items: center;
 }
 .copyright-t {
-    font-size: 11px;
+    font-size: 8px;
     color: #000000;
-}
-h1 {
-    padding-top: 30px;
-    padding-bottom: 20px;
 }
