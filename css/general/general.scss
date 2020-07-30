@@ -1,12 +1,12 @@
-$headColor: #ffffff;
-$hoverColor: #000000;
+$headColor: #000000;
+$hoverColor: #808080;
 
 *{
     padding: 0;
     margin: 0;
 }
 .background {
-    background-color: #afafaf;
+    background-color: #ffffff;
     width: 100%;
 }
 .theme {
@@ -23,6 +23,32 @@ $hoverColor: #000000;
     text-decoration: none;
     color:  $headColor;
     font-weight: bold;
+    position: relative;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all  0.3s ease;
+    &:hover {
+        text-decoration: none;
+        font-weight: bold;
+    }
+    &::after {
+        position: absolute;
+        bottom: -8px;
+        left: 0px;
+        content: '';
+        width: 100%;
+        height: 2px;
+        background: #000000;
+        opacity: 0;
+        visibility: hidden;
+        transition: 0.3s;
+    }
+    &:hover::after {
+        bottom: -4px;
+        opacity: 1;
+        visibility: visible;
+    }
     }
 }
 
@@ -45,37 +71,69 @@ $hoverColor: #000000;
     margin-right: auto;
     font-size: 16px;
     
+    p {
+        font-weight: bold;
+        display: inline-block;
+    }
+
     a {
         margin: 0;
         display: inline-block;
     }
+}
 
-    p {
-        color: $hoverColor;
-        font-weight: bold;
-        display: inline-block;
+.bar {
+    text-decoration: none;
+    color: $headColor;
+    font-weight: bold;
+    position: relative;
+    
+    &::after {
+        position: absolute;
+        bottom: 0px;
+        left: 0px;
+        content: '';
+        width: 100%;
+        height: 2px;
+        background: #000000;
+        opacity: 1;
+        visibility: visible;
     }
 }
 
-.black {
-    color: $hoverColor;
-    font-weight: bold;
-}
 .color {
     text-decoration: none;
     color:  $headColor;
     font-weight: bold;
+    position: relative;
     -webkit-transition: all 0.3s ease;
     -moz-transition: all 0.3s ease;
     -o-transition: all 0.3s ease;
-    transition: all  0.5s ease;
+    transition: all  0.3s ease;
 
     &:hover {
         text-decoration: none;
-        color: $hoverColor;
         font-weight: bold;
     }
+    &::after {
+        position: absolute;
+        bottom: -4px;
+        left: 0px;
+        content: '';
+        width: 100%;
+        height: 2px;
+        background: #000000;
+        opacity: 0;
+        visibility: hidden;
+        transition: 0.3s;
+    }
+    &:hover::after {
+        bottom: 0px;
+        opacity: 1;
+        visibility: visible;
+    }
 }
+
 .copyright-a {
     height: 100px;
     display: flex;

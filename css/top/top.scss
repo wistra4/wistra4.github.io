@@ -83,40 +83,27 @@ li {
     color: #ffffff;
     position: relative;
     font-weight: bold;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all  0.5s ease;
+
+    &::after {
+        position: absolute;
+        bottom: -8px;
+        left: 0px;
+        content: '';
+        width: 100%;
+        height: 2px;
+        background: #ffffff;
+        opacity: 0;
+        visibility: hidden;
+        transition: 0.3s;
+    }
+
+    &:hover::after {
+        bottom: -4px;
+        opacity: 1;
+        visibility: visible;
+    }
 }
-  .inline-block li a:hover:before{
-    bottom: 17px;
-    opacity: 1;
-    visibility: visible;
-  }
-  .inline-block li a:hover:after {
-    bottom: -12px;
-    opacity: 1;
-    visibility: visible;
-  }
-  
-  .inline-block li a:before {
-    position: absolute;
-    bottom: -8px;
-    left: 0px;
-    content: '';
-    width: 100%;
-    height: 10px;
-    background: #ffffff;
-    opacity: 0;
-    visibility: hidden;
-    transition: .5s;
-  }
-  
-  .inline-block li a:after {
-    position: absolute;
-    bottom: 21px;
-    left: 0px;
-    content: '';
-    width: 100%;
-    height: 10px;
-    background: #ffffff;
-    opacity: 0;
-    visibility: hidden;
-    transition: .5s;
-  }

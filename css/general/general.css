@@ -4,7 +4,7 @@
 }
 
 .background {
-  background-color: #afafaf;
+  background-color: #ffffff;
   width: 100%;
 }
 
@@ -15,14 +15,43 @@
 }
 
 .theme p {
-  color: #ffffff;
+  color: #000000;
   font-weight: bold;
 }
 
 .theme a {
   text-decoration: none;
-  color: #ffffff;
+  color: #000000;
   font-weight: bold;
+  position: relative;
+  -webkit-transition: all 0.3s ease;
+  -webkit-transition: all  0.3s ease;
+  transition: all  0.3s ease;
+}
+
+.theme a:hover {
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.theme a::after {
+  position: absolute;
+  bottom: -8px;
+  left: 0px;
+  content: '';
+  width: 100%;
+  height: 2px;
+  background: #000000;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.theme a:hover::after {
+  bottom: -4px;
+  opacity: 1;
+  visibility: visible;
 }
 
 .layout {
@@ -50,35 +79,68 @@
   font-size: 16px;
 }
 
+.menu_item p {
+  font-weight: bold;
+  display: inline-block;
+}
+
 .menu_item a {
   margin: 0;
   display: inline-block;
 }
 
-.menu_item p {
+.bar {
+  text-decoration: none;
   color: #000000;
   font-weight: bold;
-  display: inline-block;
+  position: relative;
 }
 
-.black {
-  color: #000000;
-  font-weight: bold;
+.bar::after {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  content: '';
+  width: 100%;
+  height: 2px;
+  background: #000000;
+  opacity: 1;
+  visibility: visible;
 }
 
 .color {
   text-decoration: none;
-  color: #ffffff;
+  color: #000000;
   font-weight: bold;
+  position: relative;
   -webkit-transition: all 0.3s ease;
-  -webkit-transition: all  0.5s ease;
-  transition: all  0.5s ease;
+  -webkit-transition: all  0.3s ease;
+  transition: all  0.3s ease;
 }
 
 .color:hover {
   text-decoration: none;
-  color: #000000;
   font-weight: bold;
+}
+
+.color::after {
+  position: absolute;
+  bottom: -4px;
+  left: 0px;
+  content: '';
+  width: 100%;
+  height: 2px;
+  background: #000000;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.color:hover::after {
+  bottom: 0px;
+  opacity: 1;
+  visibility: visible;
 }
 
 .copyright-a {
