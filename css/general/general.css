@@ -36,7 +36,7 @@
 
 .theme a::after {
   position: absolute;
-  bottom: -8px;
+  bottom: -4px;
   left: 0px;
   content: '';
   width: 100%;
@@ -49,13 +49,14 @@
 }
 
 .theme a:hover::after {
-  bottom: -4px;
+  bottom: 0px;
   opacity: 1;
   visibility: visible;
 }
 
 .layout {
   margin-left: 64px;
+  margin-right: 64px;
 }
 
 .menu {
