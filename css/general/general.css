@@ -36,7 +36,7 @@
 
 .theme a::after {
   position: absolute;
-  bottom: -4px;
+  bottom: -8px;
   left: 0px;
   content: '';
   width: 100%;
@@ -49,7 +49,7 @@
 }
 
 .theme a:hover::after {
-  bottom: 0px;
+  bottom: -4px;
   opacity: 1;
   visibility: visible;
 }

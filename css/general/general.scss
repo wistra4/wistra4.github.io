@@ -34,7 +34,7 @@ $hoverColor: #808080;
     }
     &::after {
         position: absolute;
-        bottom: -4px;
+        bottom: -8px;
         left: 0px;
         content: '';
         width: 100%;
@@ -45,7 +45,7 @@ $hoverColor: #808080;
         transition: 0.3s;
     }
     &:hover::after {
-        bottom: 0px;
+        bottom: -4px;
         opacity: 1;
         visibility: visible;
     }

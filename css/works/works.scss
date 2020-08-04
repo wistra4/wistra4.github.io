@@ -11,7 +11,7 @@
     align-content: flex-start;
 }
 .work {
-    margin: 10px;
+    margin-bottom: 10px;
 }
 .workimg {
     position: relative;
@@ -31,12 +31,14 @@
     transition-duration: 0.5s;
     }
     p {
+    width: 100%;
     position: absolute;
     top: 50%;
     left: 50%;
-     -ms-transform: translate(-50%,-50%);
-     -webkit-transform: translate(-50%,-50%);
-     transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    text-align: center;
     margin: 0;
     padding: 0;
     color: #ffffff;
@@ -47,4 +49,14 @@
     opacity: 1;
     transition-duration: 0.5s;
     }
+}
+.music {
+    font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;
+}
+.music a{
+    color: #cccccc;
+    text-decoration: none;
+}
+.account {
+    width: 80%;
 }
