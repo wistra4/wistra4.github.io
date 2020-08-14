@@ -50,13 +50,61 @@
     transition-duration: 0.5s;
     }
 }
+
 .music {
     font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;
-}
-.music a{
+    a {
     color: #cccccc;
     text-decoration: none;
+    }
 }
+
 .account {
     width: 80%;
+    a {
+    text-decoration: none;
+    color: #000000;
+    position: relative;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all  0.3s ease;
+        & img {
+            padding-left: 2px;
+        }
+        &:hover {
+        color: #000000;
+        }
+        &::after {
+        position: absolute;
+        bottom: -6px;
+        left: 0px;
+        content: '';
+        width: 100%;
+        height: 1px;
+        background: #000000;
+        opacity: 0;
+        visibility: hidden;
+        transition: 0.3s;
+        }
+        &:hover::after {
+        bottom: -2px;
+        opacity: 1;
+        visibility: visible;
+        }
+    }
+}
+.youtube {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%;
+    padding-bottom: 0;
+}
+.youtube iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 80% !important;
+    height: 80% !important;
+    max-width: 720px
 }

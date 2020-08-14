@@ -92,4 +92,57 @@
 .account {
   width: 80%;
 }
+
+.account a {
+  text-decoration: none;
+  color: #000000;
+  position: relative;
+  -webkit-transition: all 0.3s ease;
+  -webkit-transition: all  0.3s ease;
+  transition: all  0.3s ease;
+}
+
+.account a img {
+  padding-left: 2px;
+}
+
+.account a:hover {
+  color: #000000;
+}
+
+.account a::after {
+  position: absolute;
+  bottom: -6px;
+  left: 0px;
+  content: '';
+  width: 100%;
+  height: 1px;
+  background: #000000;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.account a:hover::after {
+  bottom: -2px;
+  opacity: 1;
+  visibility: visible;
+}
+
+.youtube {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;
+  padding-bottom: 0;
+}
+
+.youtube iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 80% !important;
+  height: 80% !important;
+  max-width: 720px;
+}
 /*# sourceMappingURL=works.css.map */
