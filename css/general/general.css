@@ -55,8 +55,8 @@
 }
 
 .layout {
-  margin-left: 64px;
-  margin-right: 64px;
+  padding-left: 64px;
+  padding-right: 64px;
 }
 
 .menu {
