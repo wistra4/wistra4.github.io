@@ -1,0 +1,72 @@
+* {
+    padding: 0;
+    margin:0;
+}
+
+.base {
+    padding-bottom: 64px;
+}
+
+.skill ul {
+    list-style-type: none;
+    overflow: hidden;
+    padding-top: 20px;
+    padding-bottom: 30px;
+}
+.skill li {
+    height: 20px;
+    padding: 10px;
+    color: #000000;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.edu ul {
+    list-style-type: none;
+    overflow: hidden;
+    padding-top: 20px;
+    padding-bottom: 30px;
+}
+.edu li {
+    height: 20px;
+    padding: 10px;
+}
+.edu li a {
+    text-decoration: none;
+    color: #000000;
+    position: relative;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all  0.3s ease;
+}
+.edu li a:hover {
+    color: #000000;
+}
+.edu li a::after {
+    position: absolute;
+    bottom: -10px;
+    left: 0px;
+    content: '';
+    width: 100%;
+    height: 1px;
+    background: #000000;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s;
+}
+.edu li a:hover::after {
+    bottom: -4px;
+    opacity: 1;
+    visibility: visible;
+}
+
+.icon a {
+    text-decoration: none;
+    color: #000000;
+}
+.icon a i {
+    padding-top: 30px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+}

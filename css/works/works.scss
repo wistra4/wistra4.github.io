@@ -1,0 +1,127 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+.works {
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    align-content: flex-start;
+}
+.work {
+    margin-bottom: 10px;
+}
+.workimg {
+    position: relative;
+    width: 288px;
+    height: 162px;
+    margin: 0 auto;
+    overflow: hidden;
+    cursor: pointer;
+    background: #000000;
+    img {
+    width: 100%;
+    transition-duration: 0.5s;
+    }
+    &:hover img {
+    opacity: 0.4;
+    transform: scale(1.2);
+    transition-duration: 0.5s;
+    }
+    p {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    color: #ffffff;
+    opacity: 0;
+    transition-duration: 0.5s;
+    }
+    &:hover p {
+    opacity: 1;
+    transition-duration: 0.5s;
+    }
+}
+
+.music {
+    font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;
+    a {
+    color: #cccccc;
+    text-decoration: none;
+    }
+}
+
+.account {
+    width: 80%;
+    a {
+    text-decoration: none;
+    color: #000000;
+    position: relative;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all  0.3s ease;
+        & img {
+            padding-left: 2px;
+        }
+        &:hover {
+        color: #000000;
+        }
+        &::after {
+        position: absolute;
+        bottom: -6px;
+        left: 0px;
+        content: '';
+        width: 100%;
+        height: 1px;
+        background: #000000;
+        opacity: 0;
+        visibility: hidden;
+        transition: 0.3s;
+        }
+        &:hover::after {
+        bottom: -2px;
+        opacity: 1;
+        visibility: visible;
+        }
+    }
+}
+.youtube {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%;
+    padding-bottom: 0;
+}
+.youtube iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 80% !important;
+    height: 80% !important;
+    max-width: 720px
+}
+
+.bluesq {
+    width: 80%;
+    a {
+    text-decoration: none;
+    color: #000000;
+}
+
+}
+.icon a {
+    text-decoration: none;
+    color: #000000;
+}
+.icon a i {
+    padding-top: 30px;
+    padding-bottom: 20px;
+}

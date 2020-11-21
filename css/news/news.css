@@ -1,0 +1,33 @@
+.story h4 a {
+  text-decoration: none;
+  color: #000000;
+  position: relative;
+  -webkit-transition: all 0.3s ease;
+  -webkit-transition: all  0.3s ease;
+  transition: all  0.3s ease;
+}
+
+.story h4 a:hover {
+  color: #000000;
+}
+
+.story h4 a::after {
+  position: absolute;
+  bottom: -10px;
+  left: 0px;
+  content: '';
+  width: 100%;
+  height: 1px;
+  background: #000000;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.story h4 a:hover::after {
+  bottom: -4px;
+  opacity: 1;
+  visibility: visible;
+}
+/*# sourceMappingURL=news.css.map */

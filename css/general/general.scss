@@ -1,0 +1,114 @@
+$headColor: #000000;
+$hoverColor: #808080;
+
+*{
+    padding: 0;
+    margin: 0;
+}
+.background {
+    background-color: #ffffff;
+    width: 100%;
+}
+.theme {
+    padding-left: 64px;
+    padding-top: 64px;
+    padding-bottom: 32px;
+
+    p {
+    color: $headColor;
+    font-weight: bold;
+    }
+}
+
+.layout {
+    padding-left: 64px;
+    padding-right: 64px;
+}
+
+.menu {
+    width: 100%;
+    display:flex;
+    flex-wrap:nowrap;
+    justify-content: center;
+    text-align: center;
+    padding-top: 32px;
+    padding-bottom: 80px;
+}
+
+.menu_item {
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 16px;
+    
+    p {
+        font-weight: bold;
+        display: inline-block;
+    }
+
+    a {
+        margin: 0;
+        display: inline-block;
+    }
+}
+
+.bar {
+    text-decoration: none;
+    color: $headColor;
+    font-weight: bold;
+    position: relative;
+    
+    &::after {
+        position: absolute;
+        bottom: 0px;
+        left: 0px;
+        content: '';
+        width: 100%;
+        height: 2px;
+        background: #000000;
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+.color {
+    text-decoration: none;
+    color:  $headColor;
+    font-weight: bold;
+    position: relative;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all  0.3s ease;
+
+    &:hover {
+        text-decoration: none;
+        font-weight: bold;
+    }
+    &::after {
+        position: absolute;
+        bottom: -4px;
+        left: 0px;
+        content: '';
+        width: 100%;
+        height: 2px;
+        background: #000000;
+        opacity: 0;
+        visibility: hidden;
+        transition: 0.3s;
+    }
+    &:hover::after {
+        bottom: 0px;
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+.copyright-a {
+    height: 100px;
+    display: flex;
+    align-items: center;
+}
+.copyright-t {
+    font-size: 8px;
+    color: #000000;
+}
