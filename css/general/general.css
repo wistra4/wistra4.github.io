@@ -19,44 +19,6 @@
   font-weight: bold;
 }
 
-<<<<<<< HEAD
-=======
-.theme a {
-  text-decoration: none;
-  color: #000000;
-  font-weight: bold;
-  position: relative;
-  -webkit-transition: all 0.3s ease;
-  -webkit-transition: all  0.3s ease;
-  transition: all  0.3s ease;
-}
-
-.theme a:hover {
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.theme a::after {
-  position: absolute;
-  bottom: -8px;
-  left: 0px;
-  content: '';
-  width: 100%;
-  height: 2px;
-  background: #000000;
-  opacity: 0;
-  visibility: hidden;
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
-}
-
-.theme a:hover::after {
-  bottom: -4px;
-  opacity: 1;
-  visibility: visible;
-}
-
->>>>>>> origin/master
 .layout {
   padding-left: 64px;
   padding-right: 64px;
