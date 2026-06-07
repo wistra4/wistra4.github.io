@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DJ — wistra</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #f5f5f3;
+      --border: #d8d8d6;
+      --text: #000;
+      --muted: #999;
+      --card-bg: #f5f5f3;
+      --card-hover: #ebebea;
+      --placeholder: #e0e0de;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    /* ── Header ── */
+    header {
+      padding: 36px 56px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      text-decoration: none;
+      color: var(--text);
+    }
+
+    nav { display: flex; gap: 32px; }
+
+    nav a {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-decoration: none;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+
+    nav a:hover, nav a.active { color: var(--text); }
+
+    /* ── Page title ── */
+    .page-title {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 56px;
+    }
+
+    .page-title h1 {
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      color: var(--muted);
+    }
+
+    /* ── Section ── */
+    .section { padding: 48px 56px; }
+
+    .section-label {
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 0 56px;
+    }
+
+    /* ── Regular grid ── */
+    .regular-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .regular-card {
+      background: var(--card-bg);
+      padding: 20px;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: background 0.2s;
+    }
+
+    .regular-card:hover { background: var(--card-hover); }
+
+    .regular-card .card-img {
+      aspect-ratio: 1 / 1;
+      background: var(--placeholder);
+      margin-bottom: 14px;
+      overflow: hidden;
+    }
+
+    .regular-card .card-img img { width: 100%; height: 100%; object-fit: contain; display: block; }
+
+    .regular-card .card-placeholder {
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 9px; color: #bbb; letter-spacing: 0.2em;
+    }
+
+    .party-name {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin-bottom: 4px;
+    }
+
+    .party-desc {
+      font-size: 10px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ── Events scroll ── */
+    .upcoming-scroll {
+      display: flex;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      padding: 24px 56px 32px;
+      gap: 16px;
+      cursor: grab;
+      margin: 0 -56px;
+    }
+
+    .upcoming-scroll:active { cursor: grabbing; }
+    .upcoming-scroll::-webkit-scrollbar { display: none; }
+
+    /* 重なるスタック */
+    .upcoming-card {
+      flex: 0 0 300px;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      position: relative;
+      transform-origin: bottom center;
+      will-change: transform;
+      z-index: 1;
+    }
+
+    .upcoming-card.coming-soon { opacity: 0.45; }
+
+    .upcoming-card:hover { z-index: 20 !important; }
+
+    .upcoming-card .card-img {
+      width: 100%;
+      background: var(--placeholder);
+      overflow: hidden;
+      box-shadow: 3px 6px 20px rgba(0,0,0,0.18);
+    }
+
+    .upcoming-card .card-img img { width: 100%; height: auto; display: block; }
+
+    /* COMING SOON プレースホルダー */
+    .coming-soon-img {
+      aspect-ratio: 1 / 1;
+      background: var(--placeholder);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 3px 6px 20px rgba(0,0,0,0.18);
+    }
+
+    .coming-soon-img .cs-label {
+      font-size: 8px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      color: #aaa;
+      border: 1px solid #ccc;
+      padding: 3px 8px;
+    }
+
+    .coming-soon-img .cs-event {
+      font-size: 12px;
+      font-weight: 700;
+      color: #bbb;
+      letter-spacing: 0.05em;
+    }
+
+    .upcoming-card .card-info {
+      padding: 12px 4px 0;
+    }
+
+    /* ── Tags ── */
+    .tag {
+      display: inline-block;
+      font-size: 8px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      padding: 2px 6px;
+      margin-bottom: 8px;
+    }
+
+    .tag.regular { background: #000; color: #fff; }
+    .tag.guest { border: 1px solid var(--border); color: var(--muted); }
+
+    /* ── Card common ── */
+    .card-date { font-size: 9px; color: var(--muted); letter-spacing: 0.12em; }
+    .card-title { font-size: 15px; font-weight: 700; margin-top: 4px; letter-spacing: -0.01em; }
+    .card-venue { font-size: 10px; color: var(--muted); margin-top: 3px; }
+    .card-detail { font-size: 10px; color: var(--muted); margin-top: 6px; line-height: 1.7; }
+
+    /* ── Guest grid ── */
+    .guest-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .guest-card {
+      background: var(--card-bg);
+      padding: 20px;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: background 0.2s;
+    }
+
+    .guest-card:hover { background: var(--card-hover); }
+
+    .guest-card .card-img {
+      aspect-ratio: 1 / 1;
+      background: var(--placeholder);
+      margin-bottom: 14px;
+      overflow: hidden;
+    }
+
+    .guest-card .card-placeholder {
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 9px; color: #bbb; letter-spacing: 0.2em;
+    }
+
+    /* ── Mix ── */
+    .mix-placeholder {
+      border: 1px solid var(--border);
+      background: var(--card-bg);
+      padding: 40px 24px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+    }
+
+    /* ── Scroll hint ── */
+    .scroll-hint {
+      font-size: 9px;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      margin-bottom: 12px;
+      text-align: right;
+    }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 24px 56px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 48px;
+    }
+
+    .footer-copy { font-size: 9px; color: var(--muted); letter-spacing: 0.1em; }
+    .footer-links { display: flex; gap: 20px; }
+    .footer-links a {
+      font-size: 9px; letter-spacing: 0.12em;
+      text-decoration: none; color: var(--muted); transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--text); }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="index_new.html" class="logo">wistra</a>
+    <nav>
+      <a href="works.html">WORKS</a>
+      <a href="dj.html" class="active">DJ</a>
+      <a href="about.html">ABOUT</a>
+    </nav>
+  </header>
+
+  <div class="page-title"><h1>DJ</h1></div>
+
+  <!-- REGULAR -->
+  <div class="section">
+    <div class="section-label">REGULAR</div>
+    <div class="regular-grid">
+      <a class="regular-card" href="#">
+        <div class="card-img"><img src="img/flyers/sukiya/sukiya.jpg" alt="數寄屋"></div>
+        <div class="party-name">數寄屋</div>
+        <div class="party-desc">Coffee &amp; DJ Bar Cafein, 阿佐ヶ谷<br>偶数月第三土曜日</div>
+      </a>
+      <a class="regular-card" href="#">
+        <div class="card-img"><img src="img/flyers/hibachi/hibachi_20260502.jpg" alt="HIBACHI"></div>
+        <div class="party-name">HIBACHI</div>
+        <div class="party-desc">渋谷 Tangle<br>奇数月第一土曜日</div>
+      </a>
+      <a class="regular-card" href="#">
+        <div class="card-img"><img src="img/flyers/waves/waves_20260503.JPG" alt="WAVES"></div>
+        <div class="party-name">WAVES</div>
+        <div class="party-desc">Tokyo<br>不定期開催</div>
+      </a>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- EVENTS -->
+  <div class="section">
+    <div class="section-label">EVENTS</div>
+    <div class="upcoming-scroll">
+      <a class="upcoming-card coming-soon" href="#">
+        <div class="coming-soon-img">
+          <span class="cs-label">COMING SOON</span>
+          <span class="cs-event">HIBACHI</span>
+        </div>
+        <div class="card-info">
+          <div class="card-date">2026.09.05 SAT</div>
+          <div class="card-title">HIBACHI</div>
+          <div class="card-venue">渋谷 Tangle</div>
+        </div>
+      </a>
+      <a class="upcoming-card coming-soon" href="#">
+        <div class="coming-soon-img">
+          <span class="cs-label">COMING SOON</span>
+          <span class="cs-event">數寄屋</span>
+        </div>
+        <div class="card-info">
+          <div class="card-date">2026.08.16 SAT</div>
+          <div class="card-title">數寄屋</div>
+          <div class="card-venue">Coffee &amp; DJ Bar Cafein</div>
+        </div>
+      </a>
+      <a class="upcoming-card coming-soon" href="#">
+        <div class="coming-soon-img">
+          <span class="cs-label">COMING SOON</span>
+          <span class="cs-event">HIBACHI</span>
+        </div>
+        <div class="card-info">
+          <div class="card-date">2026.07.04 SAT</div>
+          <div class="card-title">HIBACHI</div>
+          <div class="card-venue">渋谷 Tangle</div>
+        </div>
+      </a>
+      <a class="upcoming-card featured" href="#">
+        <div class="card-img"><img src="img/flyers/sukiya/sukiya_20260620.jpg" alt="數寄屋 2026.06.20" onerror="this.parentNode.innerHTML='<div class=\'card-placeholder\'>FLYER</div>'"></div>
+        <div class="card-info">
+          <div class="card-date">2026.06.20 SAT</div>
+          <div class="card-title">數寄屋</div>
+          <div class="card-venue">Coffee &amp; DJ Bar Cafein</div>
+        </div>
+      </a>
+      <a class="upcoming-card" href="#">
+        <div class="card-img"><img src="img/flyers/waves/waves_20260503.JPG" alt="WAVES 2026.05.03" onerror="this.parentNode.innerHTML='<div class=\'card-placeholder\'>FLYER</div>'"></div>
+        <div class="card-info">
+          <div class="card-date">2026.05.03 SUN</div>
+          <div class="card-title">WAVES</div>
+          <div class="card-venue">Tokyo</div>
+        </div>
+      </a>
+      <a class="upcoming-card" href="#">
+        <div class="card-img"><img src="img/flyers/hibachi/hibachi_20260502.jpg" alt="HIBACHI 2026.05.02" onerror="this.parentNode.innerHTML='<div class=\'card-placeholder\'>FLYER</div>'"></div>
+        <div class="card-info">
+          <div class="card-date">2026.05.02 SAT</div>
+          <div class="card-title">HIBACHI</div>
+          <div class="card-venue">渋谷 Tangle</div>
+        </div>
+      </a>
+      <a class="upcoming-card" href="#">
+        <div class="card-img"><img src="img/flyers/sukiya/sukiya_20260418.jpg" alt="數寄屋 2026.04.18" onerror="this.parentNode.innerHTML='<div class=\'card-placeholder\'>FLYER</div>'"></div>
+        <div class="card-info">
+          <div class="card-date">2026.04.18 SAT</div>
+          <div class="card-title">數寄屋</div>
+          <div class="card-venue">Coffee &amp; DJ Bar Cafein</div>
+        </div>
+      </a>
+      <a class="upcoming-card" href="#">
+        <div class="card-img"><img src="img/flyers/hibachi/hibachi_20260320.jpg" alt="HIBACHI 2026.03.20" onerror="this.parentNode.innerHTML='<div class=\'card-placeholder\'>FLYER</div>'"></div>
+        <div class="card-info">
+          <div class="card-date">2026.03.20 FRI</div>
+          <div class="card-title">HIBACHI</div>
+          <div class="card-venue">渋谷 Tangle</div>
+        </div>
+      </a>
+      <a class="upcoming-card" href="#">
+        <div class="card-img"><img src="img/flyers/sukiya/sukiya_20260207.JPG" alt="數寄屋 2026.02.07" onerror="this.parentNode.innerHTML='<div class=\'card-placeholder\'>FLYER</div>'"></div>
+        <div class="card-info">
+          <div class="card-date">2026.02.07 SAT</div>
+          <div class="card-title">數寄屋</div>
+          <div class="card-venue">Coffee &amp; DJ Bar Cafein</div>
+        </div>
+      </a>
+      <a class="upcoming-card" href="#">
+        <div class="card-img"><img src="img/flyers/hibachi/hibachi_20260103.jpg" alt="HIBACHI 2026.01.03" onerror="this.parentNode.innerHTML='<div class=\'card-placeholder\'>FLYER</div>'"></div>
+        <div class="card-info">
+          <div class="card-date">2026.01.03 SAT</div>
+          <div class="card-title">HIBACHI</div>
+          <div class="card-venue">渋谷 Tangle</div>
+        </div>
+      </a>
+      <a class="upcoming-card" href="#">
+        <div class="card-img"><img src="img/flyers/sukiya/sukiya_20251220.jpg" alt="數寄屋 2025.12.20" onerror="this.parentNode.innerHTML='<div class=\'card-placeholder\'>FLYER</div>'"></div>
+        <div class="card-info">
+          <div class="card-date">2025.12.20 SAT</div>
+          <div class="card-title">數寄屋</div>
+          <div class="card-venue">Coffee &amp; DJ Bar Cafein</div>
+        </div>
+      </a>
+      <a class="upcoming-card" href="#">
+        <div class="card-img"><img src="img/flyers/waves/waves_20251207.jpg" alt="WAVES 2025.12.07" onerror="this.parentNode.innerHTML='<div class=\'card-placeholder\'>FLYER</div>'"></div>
+        <div class="card-info">
+          <div class="card-date">2025.12.07 SUN</div>
+          <div class="card-title">WAVES</div>
+          <div class="card-venue">Tokyo</div>
+        </div>
+      </a>
+      <a class="upcoming-card" href="#">
+        <div class="card-img"><img src="img/flyers/hibachi/hibachi_20251101.JPG" alt="HIBACHI 2025.11.01" onerror="this.parentNode.innerHTML='<div class=\'card-placeholder\'>FLYER</div>'"></div>
+        <div class="card-info">
+          <div class="card-date">2025.11.01 SAT</div>
+          <div class="card-title">HIBACHI</div>
+          <div class="card-venue">渋谷 Tangle</div>
+        </div>
+      </a>
+      <a class="upcoming-card" href="#">
+        <div class="card-img"><img src="img/flyers/sukiya/sukiya_20251018.jpg" alt="數寄屋 2025.10.18" onerror="this.parentNode.innerHTML='<div class=\'card-placeholder\'>FLYER</div>'"></div>
+        <div class="card-info">
+          <div class="card-date">2025.10.18 SAT</div>
+          <div class="card-title">數寄屋</div>
+          <div class="card-venue">Coffee &amp; DJ Bar Cafein</div>
+        </div>
+      </a>
+      <a class="upcoming-card" href="#">
+        <div class="card-img"><img src="img/flyers/sukiya/sukiya_20250816.jpg" alt="數寄屋 2025.08.16" onerror="this.parentNode.innerHTML='<div class=\'card-placeholder\'>FLYER</div>'"></div>
+        <div class="card-info">
+          <div class="card-date">2025.08.16 SAT</div>
+          <div class="card-title">數寄屋</div>
+          <div class="card-venue">Coffee &amp; DJ Bar Cafein</div>
+        </div>
+      </a>
+      <a class="upcoming-card" href="#">
+        <div class="card-img"><img src="img/flyers/sukiya/sukiya_20250621.png" alt="數寄屋 2025.06.21" onerror="this.parentNode.innerHTML='<div class=\'card-placeholder\'>FLYER</div>'"></div>
+        <div class="card-info">
+          <div class="card-date">2025.06.21 SAT</div>
+          <div class="card-title">數寄屋</div>
+          <div class="card-venue">Coffee &amp; DJ Bar Cafein</div>
+        </div>
+      </a>
+      <a class="upcoming-card" href="#">
+        <div class="card-img"><img src="img/flyers/sukiya/sukiya_20250419.png" alt="數寄屋 2025.04.19" onerror="this.parentNode.innerHTML='<div class=\'card-placeholder\'>FLYER</div>'"></div>
+        <div class="card-info">
+          <div class="card-date">2025.04.19 SAT</div>
+          <div class="card-title">數寄屋</div>
+          <div class="card-venue">Coffee &amp; DJ Bar Cafein</div>
+        </div>
+      </a>
+      <a class="upcoming-card" href="#">
+        <div class="card-img"><img src="img/flyers/sukiya/sukiya_20250215.jpg" alt="數寄屋 2025.02.15" onerror="this.parentNode.innerHTML='<div class=\'card-placeholder\'>FLYER</div>'"></div>
+        <div class="card-info">
+          <div class="card-date">2025.02.15 SAT</div>
+          <div class="card-title">數寄屋</div>
+          <div class="card-venue">Coffee &amp; DJ Bar Cafein</div>
+        </div>
+      </a>
+      <a class="upcoming-card" href="#">
+        <div class="card-img"><img src="img/flyers/sukiya/sukiya_20241221.png" alt="數寄屋 2024.12.21" onerror="this.parentNode.innerHTML='<div class=\'card-placeholder\'>FLYER</div>'"></div>
+        <div class="card-info">
+          <div class="card-date">2024.12.21 SAT</div>
+          <div class="card-title">數寄屋</div>
+          <div class="card-venue">Coffee &amp; DJ Bar Cafein</div>
+        </div>
+      </a>
+      <a class="upcoming-card" href="#">
+        <div class="card-img"><img src="img/flyers/sukiya/sukiya_20241019.png" alt="數寄屋 2024.10.19" onerror="this.parentNode.innerHTML='<div class=\'card-placeholder\'>FLYER</div>'"></div>
+        <div class="card-info">
+          <div class="card-date">2024.10.19 SAT</div>
+          <div class="card-title">數寄屋</div>
+          <div class="card-venue">Coffee &amp; DJ Bar Cafein</div>
+        </div>
+      </a>
+      <a class="upcoming-card" href="#">
+        <div class="card-img"><img src="img/flyers/sukiya/sukiya_20240817.png" alt="數寄屋 2024.08.17" onerror="this.parentNode.innerHTML='<div class=\'card-placeholder\'>FLYER</div>'"></div>
+        <div class="card-info">
+          <div class="card-date">2024.08.17 SAT</div>
+          <div class="card-title">數寄屋</div>
+          <div class="card-venue">Coffee &amp; DJ Bar Cafein</div>
+        </div>
+      </a>
+      <a class="upcoming-card" href="#">
+        <div class="card-img"><img src="img/flyers/sukiya/sukiya_20240615.png" alt="數寄屋 2024.06.15" onerror="this.parentNode.innerHTML='<div class=\'card-placeholder\'>FLYER</div>'"></div>
+        <div class="card-info">
+          <div class="card-date">2024.06.15 SAT</div>
+          <div class="card-title">數寄屋</div>
+          <div class="card-venue">Coffee &amp; DJ Bar Cafein</div>
+        </div>
+      </a>
+    </div><!-- .upcoming-scroll -->
+  </div>
+
+  <hr class="divider">
+
+  <!-- MIX -->
+  <div class="section">
+    <div class="section-label">MIX</div>
+    <div class="mix-placeholder">SoundCloud / Mixcloud をここに追加</div>
+  </div>
+
+  <footer>
+    <div class="footer-copy">© 2026 wistra</div>
+    <div class="footer-links">
+      <a href="https://www.instagram.com/wistra4/" target="_blank">INSTAGRAM</a>
+    </div>
+  </footer>
+
+<script>
+  window.addEventListener('load', () => {
+    const scroll = document.querySelector('.upcoming-scroll');
+    if (!scroll) return;
+    const cards = scroll.querySelectorAll('.upcoming-card');
+
+    // カード位置をキャッシュ
+    let cardData = [];
+    let scrollWidth = scroll.clientWidth;
+    let ticking = false;
+
+    function cachePositions() {
+      scrollWidth = scroll.clientWidth;
+      cardData = Array.from(cards).map(card => ({
+        el: card,
+        center: card.offsetLeft + card.offsetWidth / 2,
+      }));
+    }
+
+    function updateScales() {
+      const center = scroll.scrollLeft + scrollWidth / 2;
+      const maxDist = scrollWidth * 0.6;
+      cardData.forEach(({ el, center: cardCenter }) => {
+        const rawDist = cardCenter - center;
+        const t = Math.min(Math.abs(rawDist) / maxDist, 1);
+        const scale = 1 - t * 0.48;
+        el.style.transform = `scale(${scale.toFixed(3)})`;
+      });
+      ticking = false;
+    }
+
+    function onScroll() {
+      if (!ticking) {
+        requestAnimationFrame(updateScales);
+        ticking = true;
+      }
+    }
+
+    // 初期スクロール: featuredを中央に
+    cachePositions();
+    const featured = scroll.querySelector('.featured');
+    if (featured) {
+      scroll.scrollLeft = featured.offsetLeft - scrollWidth / 2 + featured.offsetWidth / 2;
+    }
+
+    scroll.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', () => { cachePositions(); updateScales(); });
+    updateScales();
+  });
+</script>
+</body>
+</html>

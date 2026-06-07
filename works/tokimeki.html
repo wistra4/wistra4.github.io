@@ -1,82 +1,128 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>トキメキ情報量 — wistra</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root { --bg: #f5f5f3; --border: #d8d8d6; --text: #000; --muted: #999; }
+    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; font-size: 13px; line-height: 1.5; }
+    header { padding: 36px 56px; display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-size: 28px; font-weight: 700; letter-spacing: -0.02em; text-decoration: none; color: var(--text); }
+    nav { display: flex; gap: 32px; }
+    nav a { font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-decoration: none; color: var(--muted); transition: color 0.2s; }
+    nav a:hover, nav a.active { color: var(--text); }
+    .page-title { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 14px 56px; display: flex; gap: 16px; align-items: baseline; }
+    .breadcrumb { font-size: 9px; font-weight: 500; letter-spacing: 0.2em; color: var(--muted); text-decoration: none; }
+    .breadcrumb:hover { color: var(--text); }
+    .breadcrumb-sep { font-size: 9px; color: var(--muted); }
+    .breadcrumb-current { font-size: 9px; font-weight: 500; letter-spacing: 0.2em; color: var(--text); }
+    .work-header { padding: 56px 56px 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; border-bottom: 1px solid var(--border); }
+    .work-title { font-size: 48px; font-weight: 700; letter-spacing: -0.03em; line-height: 1; margin-bottom: 16px; }
+    .work-meta { display: flex; flex-direction: column; gap: 8px; }
+    .meta-row { display: flex; gap: 12px; align-items: baseline; }
+    .meta-label { font-size: 9px; font-weight: 500; letter-spacing: 0.2em; color: var(--muted); min-width: 64px; }
+    .meta-value { font-size: 11px; color: var(--text); }
+    .work-desc { font-size: 13px; line-height: 2; color: #333; }
+    .work-section { padding: 48px 56px; border-bottom: 1px solid var(--border); }
+    .section-title { font-size: 9px; font-weight: 500; letter-spacing: 0.25em; color: var(--muted); margin-bottom: 24px; }
+    .section-body { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+    .section-body.full { grid-template-columns: 1fr; }
+    .section-img { background: var(--border); overflow: hidden; }
+    .section-img img { width: 100%; height: auto; display: block; }
+    .section-text { font-size: 12px; line-height: 2; color: #444; }
+    .section-text p + p { margin-top: 12px; }
+    footer { border-top: 1px solid var(--border); padding: 24px 56px; display: flex; justify-content: space-between; align-items: center; }
+    .footer-copy { font-size: 9px; color: var(--muted); letter-spacing: 0.1em; }
+    .footer-links { display: flex; gap: 20px; }
+    .footer-links a { font-size: 9px; letter-spacing: 0.12em; text-decoration: none; color: var(--muted); transition: color 0.2s; }
+    .footer-links a:hover { color: var(--text); }
+  </style>
+</head>
+<body>
 
-  <head>
-    <meta charset="utf-8">
-    <title>KeisukeOkazaki</title>
-    <link rel="stylesheet" href="../css/general/general.css">
-    <link rel="stylesheet" href="../css/works/works.css">
-    <link href="https://fonts.googleapis.com/css2?family=Sawarabi+Mincho&display=swap" rel="stylesheet">
-  </head>
-
-  <header class="background">
-    <div class="theme">
-      <p>KEISUKE OKAZAKI</p>
-    </div>
-    <div class="menu">
-      <div class="menu_item">
-      </div>
-      <div class="menu_item">
-        <a href="../index.html" class="color">WORKS</a>
-      </div>
-      <div class="menu_item">
-        <a href="../about.html" class="color">ABOUT</a>
-      </div>
-      <div class="menu_item">
-        <a href="../news.html" class="color">NEWS</a>
-      </div>
-      <div class="menu_item">
-      </div>
-    </div>
+  <header>
+    <a href="../index_new.html" class="logo">wistra</a>
+    <nav>
+      <a href="../works.html" class="active">WORKS</a>
+      <a href="../dj.html">DJ</a>
+      <a href="../about.html">ABOUT</a>
+    </nav>
   </header>
 
-  <body class="background">
-    <div class="layout">
-    <div class="account">
-    <h2>
-      トキメキ情報量
-    </h2>
-      <p>
-      <img src="../img/tokimeki.jpg" width="45%">
-      <img src="../img/tokimeki2.jpg" width="45%"><br>
-      慶應SFCに入学して初めて制作したアート作品。<br>
-      ものづくりサークル <a href="https://at.sfc.keio.ac.jp">Art&Technology<img src="../img/link.png" width="12"></a> で開催された2日間の新人合宿で5人で構成されたteam「Am5」で制作を行った。
-      </p>
-    <br>
-    <h3>発想</h3>
-      <p>
-      山口県から神奈川県に上京する新幹線の中で、目の前の席に座っていた子供が看板にイラストとして描かれた富士に興味を示していた。<br>
-      子供ならばトキメキを伴って受容できる情報も、大人は当たり前の情報として受け流す事が多くなる。<br>
-      だからこそ、歳を取るにつれて、年が経つのが早くなるのだと感じた。
-      </p>
-    <br>
-    <h3>作品概要</h3>
-      <p>
-      トキメキ情報量とは時間の密度をはかった量。<br>
-      同じ時間が流れていても短い命のセミとゆっくり長生きカメとでは感動した回数やトキメく対象は違うはず。<br>
-      危険にさらされたウサギと怖いもの無しのチーターが体感する時間の速さだって全く違うだろう。<br>
-      人間である（ハズ）の鑑賞者には、あらゆる生物たちの授業風景を通し自分と違った時の流れを体感し、自分の時間の流れをトキメキ情報量によって再認識して欲しい。
-      </p>
-    <br>
-    <h3>実装</h3>
-      <p>
-        SFC内の展示という条件があった為、発想の実装方法を、授業に落とし込んでいる。<br>
-        授業スライド、授業音声をまず作成した。かげろう、セミ、うさぎ、チーター、かめ、くじら、の7匹の動物の寿命、生物的特徴から、その動物たちが授業の時間に、どんな画面操作をするのかを考え、授業音声に合わせて操作を実行し、画面キャプチャで動画として画面操作を撮影した。<br>
-        そこに動物たちが座っているかのように、椅子と机の距離感、配置も決めた。
-      </p>
-    <br>
-    <h4>必要なもの</h4>
-      <p>
-      パソコン / スマートフォン / プロジェクタ / スタイロフォーム
-      </p>
-      <p>
-        <div class="copyright-a">
-          &copy;
-          <span class="copyright-t">2020&nbsp;Keisuke Okazaki</span>
-        </div>
-      </p>
-    </div>
-    </div>
-  </body>
+  <div class="page-title">
+    <a href="../works.html" class="breadcrumb">WORKS</a>
+    <span class="breadcrumb-sep">→</span>
+    <span class="breadcrumb-current">トキメキ情報量</span>
+  </div>
 
+  <div class="work-header">
+    <div>
+      <div class="work-title">トキメキ情報量</div>
+      <div class="work-desc">時間の密度をはかった量。あらゆる生物たちの時間の流れを体感するインタラクティブ作品</div>
+    </div>
+    <div class="work-meta">
+      <div class="meta-row">
+        <span class="meta-label">YEAR</span>
+        <span class="meta-value">2019</span>
+      </div>
+      <div class="meta-row">
+        <span class="meta-label">TEAM</span>
+        <span class="meta-value">team「Am5」（5名）</span>
+      </div>
+      <div class="meta-row">
+        <span class="meta-label">TOOLS</span>
+        <span class="meta-value">PC / スマートフォン / プロジェクタ / スタイロフォーム</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="work-section">
+    <div class="section-title">OVERVIEW</div>
+    <div class="section-body">
+      <div class="section-img">
+        <img src="../img/works/tokimeki/tokimeki.jpg" alt="トキメキ情報量">
+      </div>
+      <div class="section-img">
+        <img src="../img/works/tokimeki/tokimeki2.jpg" alt="トキメキ情報量">
+      </div>
+    </div>
+  </div>
+
+  <div class="work-section">
+    <div class="section-title">INSPIRATION</div>
+    <div class="section-text">
+      <p>山口県から神奈川県に上京する新幹線の中で、目の前の席に座っていた子供が看板にイラストとして描かれた富士に興味を示していた。</p>
+      <p>子供ならばトキメキを伴って受容できる情報も、大人は当たり前の情報として受け流す事が多くなる。だからこそ、歳を取るにつれて、年が経つのが早くなるのだと感じた。</p>
+    </div>
+  </div>
+
+  <div class="work-section">
+    <div class="section-title">CONCEPT</div>
+    <div class="section-text">
+      <p>トキメキ情報量とは時間の密度をはかった量。同じ時間が流れていても短い命のセミとゆっくり長生きカメとでは感動した回数やトキメく対象は違うはず。</p>
+      <p>危険にさらされたウサギと怖いもの無しのチーターが体感する時間の速さだって全く違うだろう。</p>
+      <p>人間である（ハズ）の鑑賞者には、あらゆる生物たちの授業風景を通し自分と違った時の流れを体感し、自分の時間の流れをトキメキ情報量によって再認識して欲しい。</p>
+    </div>
+  </div>
+
+  <div class="work-section">
+    <div class="section-title">IMPLEMENTATION</div>
+    <div class="section-text">
+      <p>SFC内の展示という条件があった為、発想の実装方法を授業に落とし込んでいる。</p>
+      <p>授業スライド、授業音声をまず作成した。かげろう、セミ、うさぎ、チーター、かめ、くじら、の7匹の動物の寿命・生物的特徴から、その動物たちが授業の時間にどんな画面操作をするのかを考え、授業音声に合わせて操作を実行し、画面キャプチャで動画として撮影した。</p>
+      <p>そこに動物たちが座っているかのように、椅子と机の距離感、配置も決めた。</p>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-copy">© 2026 wistra</div>
+    <div class="footer-links">
+      <a href="https://www.instagram.com/wistra4/" target="_blank">INSTAGRAM</a>
+    </div>
+  </footer>
+
+</body>
 </html>

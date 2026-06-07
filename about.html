@@ -1,90 +1,200 @@
 <!DOCTYPE html>
-<html>
-  
-  <head>
-    <meta charset="utf-8">
-    <title>ABOUT</title>
-    <link rel="stylesheet" href="css/general/general.css">
-    <link rel="stylesheet" href="css/about/about.css">
-    <link href="https://fonts.googleapis.com/css2?family=Sawarabi+Mincho&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/219b1fc607.js" crossorigin="anonymous"></script>
-  </head>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About — wistra</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
-  <header class="background">
-    <div class="theme">
-      <p>KEISUKE OKAZAKI</p>
-    </div>
-    <div class="menu">
-      <div class="menu_item">
-      </div>
-      <div class="menu_item">
-        <a href="index.html" class="color">WORKS</a>
-      </div>
-      <div class="menu_item">
-        <p class="bar">ABOUT</p>
-      </div>
-      <div class="menu_item">
-        <a href="news.html" class="color">NEWS</a>
-      </div>
-      <div class="menu_item">
-      </div>
-  </div>
+    :root {
+      --bg: #f5f5f3;
+      --border: #d8d8d6;
+      --text: #000;
+      --muted: #999;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    header {
+      padding: 36px 56px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      text-decoration: none;
+      color: var(--text);
+    }
+
+    nav { display: flex; gap: 32px; }
+
+    nav a {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-decoration: none;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+
+    nav a:hover, nav a.active { color: var(--text); }
+
+    .page-title {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 56px;
+    }
+
+    .page-title h1 {
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      color: var(--muted);
+    }
+
+    .content {
+      padding: 64px 56px;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .photo {
+      aspect-ratio: 1 / 1;
+      background: var(--border);
+      overflow: hidden;
+    }
+
+    .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(100%);
+    }
+
+    .photo-placeholder {
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 9px; color: #bbb; letter-spacing: 0.2em;
+    }
+
+    .profile-name {
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 32px;
+    }
+
+    .profile-text {
+      font-size: 13px;
+      line-height: 2;
+      color: #333;
+      margin-bottom: 48px;
+    }
+
+    .sns-label {
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .sns-links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .sns-links a {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-decoration: none;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: color 0.2s;
+    }
+
+    .sns-links a:hover { color: var(--muted); }
+
+    .sns-links a::before {
+      content: '↗';
+      font-size: 10px;
+      color: var(--muted);
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 24px 56px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-copy { font-size: 9px; color: var(--muted); letter-spacing: 0.1em; }
+    .footer-links { display: flex; gap: 20px; }
+    .footer-links a {
+      font-size: 9px; letter-spacing: 0.12em;
+      text-decoration: none; color: var(--muted); transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--text); }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="index_new.html" class="logo">wistra</a>
+    <nav>
+      <a href="works.html">WORKS</a>
+      <a href="dj.html">DJ</a>
+      <a href="about.html" class="active">ABOUT</a>
+    </nav>
   </header>
 
-  <body class="background">
-    <div class="layout">
-        <p class="base">
-          <img src="img/me.JPG" alt="KEISUKEOKAZAKI" width="350"><br>
-          岡﨑圭佑<br>
-          1999年山口県生まれ. 神奈川県在住.<br>
-        </p>
-      <h3>
-        Skills(本当???)
-      </h3>
-        <div class="skill">
-          <ul>
-            <li>Ableton Live</li>
-            <li>Cycling '74 Max</li>
-            <li>Processing / p5.js</li>
-            <li>Adobe Illustrator</li>
-            <li>HTML&CSS</li>
-          </ul>
-        </div>
-      <h3>
-        Background
-      </h3>
-        <div class="edu">
-          <ul>
-            <li>2006 - 2012 &nbsp;&nbsp;<a href="http://kam.edu.city.shimonoseki.yamaguchi.jp/~kawatana_s/">下関市立川棚小学校 <img src="img/link.png" width="12"></a></li>
-            <li>2012 - 2015 &nbsp;&nbsp;<a href="http://kam.edu.city.shimonoseki.yamaguchi.jp/~yumegaoka_c/%E5%A4%A2%E3%81%8C%E4%B8%98%E4%B8%AD%E3%81%A0%E3%82%88%E3%82%8A/">下関市立夢が丘中学校 <img src="img/link.png" width="12"></a></li>
-            <li>2015 - 2018 &nbsp;&nbsp;<a href="http://www.shimonishi-h.ysn21.jp/index.html">山口県立下関西高等学校 <img src="img/link.png" width="12"></a></li>
-            <li>2019 - 2020 &nbsp;&nbsp;<a href="https://www.jn.sfc.keio.ac.jp/">Nakazawa Lab. Keio SFC <img src="img/link.png" width="12"></a></li>
-            <li>2020 - _____ &nbsp;&nbsp;<a href="https://cclab.sfc.keio.ac.jp/">Computational Creativity Lab. Keio SFC <img  src="img/link.png" width="12"></a></li>
-          </ul>
-        </div>
-      <h3>
-        Job
-      </h3>
-        <div class="edu">
-          <ul>
-            <li>2020 - _____ &nbsp;&nbsp;<a href="https://www.ycam.jp/">Yamaguchi Center for Arts and Media <img  src="img/link.png" width="12"></a></li>
-          </ul>
-        </div>
-      <h3>
-        Contact
-      </h3>
-      <div class="icon">
-        <a href="https://soundcloud.com/user-827758400"><i class="fab fa-soundcloud fa-lg"></i></a>
-        <a href="https://github.com/wistra4"><i class="fab fa-github-square fa-lg"></i></a>
-        <a href="https://twitter.com/whistletune4"><i class="fab fa-twitter-square fa-lg"></i></a>
-        <a href="https://www.instagram.com/keisuke439/?hl=ja"><i class="fab fa-instagram-square fa-lg"></i></a>
-      </div>
-      <p>
-        <div class="copyright-a">
-          &copy;
-          <span class="copyright-t">2020&nbsp;Keisuke Okazaki</span>
-        </div>
-      </p>
+  <div class="page-title"><h1>ABOUT</h1></div>
+
+  <div class="content">
+    <div class="photo">
+      <img src="img/me.JPG" alt="wistra" onerror="this.parentNode.innerHTML='<div class=\'photo-placeholder\'>PHOTO</div>'">
     </div>
-  </body>
+
+    <div>
+      <div class="profile-name">wistra</div>
+      <div class="profile-text">
+        山口県出身。青年期の心象風景を元に自身の興味を広げながら選曲、オーガナイズを模索している。<br><br>
+        阿佐ヶ谷のDJ Bar Cafeinで"數寄屋 -SUKIYA-"、渋谷Tangleで"HIBACHI"、不定期開催の"WAVES"を主宰。<br><br>
+        2026年にレコードショップ「三輪社」を共同創設。
+      </div>
+
+      <div class="sns-label">LINKS</div>
+      <div class="sns-links">
+        <a href="https://www.instagram.com/wistra4/" target="_blank">Instagram @wistra4</a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-copy">© 2026 wistra</div>
+    <div class="footer-links">
+      <a href="https://www.instagram.com/wistra4/" target="_blank">INSTAGRAM</a>
+    </div>
+  </footer>
+
+</body>
 </html>

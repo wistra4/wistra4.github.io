@@ -1,102 +1,256 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>wistra</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
-  <head>
-    <meta charset="utf-8">
-    <title>KeisukeOkazaki</title>
-    <link rel="stylesheet" href="css/general/general.css">
-    <link rel="stylesheet" href="css/works/works.css">
-    <link href="https://fonts.googleapis.com/css2?family=Sawarabi+Mincho&display=swap" rel="stylesheet">
-  </head>
+    :root {
+      --bg: #f5f5f3;
+      --border: #d8d8d6;
+      --text: #000;
+      --muted: #999;
+      --card-bg: #f5f5f3;
+      --card-hover: #ebebea;
+      --placeholder: #e0e0de;
+    }
 
-  <header class="background">
-    <div class="theme">
-      <p>KEISUKE OKAZAKI</p>
-    </div>
-    <div class="menu">
-      <div class="menu_item">
-      </div>
-      <div class="menu_item">
-        <p class="bar">WORKS</p>
-      </div>
-      <div class="menu_item">
-        <a href="about.html" class="color">ABOUT</a>
-      </div>
-      <div class="menu_item">
-        <a href="news.html" class="color">NEWS</a>
-      </div>
-      <div class="menu_item">
-      </div>
-    </div>
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    /* ── Header ── */
+    header {
+      padding: 36px 56px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    nav {
+      display: flex;
+      gap: 32px;
+    }
+
+    nav a {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-decoration: none;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+
+    nav a:hover { color: var(--text); }
+
+    /* ── Tagline ── */
+    .tagline {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 56px;
+      display: flex;
+      gap: 16px;
+      align-items: baseline;
+    }
+
+    .tagline-label {
+      font-size: 9px;
+      letter-spacing: 0.22em;
+      color: var(--muted);
+    }
+
+    .tagline-value {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+    }
+
+    /* ── Section ── */
+    .section {
+      padding: 48px 56px;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 24px;
+    }
+
+    .section-label {
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      color: var(--muted);
+    }
+
+    .section-more {
+      font-size: 9px;
+      letter-spacing: 0.12em;
+      text-decoration: none;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+
+    .section-more:hover { color: var(--text); }
+
+    /* ── Cards ── */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .card {
+      background: var(--card-bg);
+      padding: 20px;
+      cursor: pointer;
+      transition: background 0.2s;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .card:hover { background: var(--card-hover); }
+
+    .card-img {
+      aspect-ratio: 1 / 1;
+      background: var(--placeholder);
+      margin-bottom: 14px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .card-placeholder {
+      font-size: 9px;
+      color: #bbb;
+      letter-spacing: 0.2em;
+    }
+
+    .card-date {
+      font-size: 9px;
+      color: var(--muted);
+      letter-spacing: 0.12em;
+    }
+
+    .card-title {
+      font-size: 15px;
+      font-weight: 700;
+      margin-top: 4px;
+      letter-spacing: -0.01em;
+    }
+
+    .card-venue {
+      font-size: 10px;
+      color: var(--muted);
+      margin-top: 3px;
+    }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 24px 56px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-copy {
+      font-size: 9px;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .footer-links a {
+      font-size: 9px;
+      letter-spacing: 0.12em;
+      text-decoration: none;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--text); }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">wistra</div>
+    <nav>
+      <a href="works.html">WORKS</a>
+      <a href="dj.html">DJ</a>
+      <a href="about.html">ABOUT</a>
+    </nav>
   </header>
 
-  <body class="background">
-    <div class="layout">
-      <div class="works">
-        <div class="work">
-          <a href="works/bluesq.html">
-            <div class="workimg">
-             <img src="img/bluesq.png" alt="bluesq" width="288">
-             <p>bluesq</p>
-            </div>
-          </a>
-        </div>
-        <div class="work">
-          <a href="works/gp20.html">
-            <div class="workimg">
-             <img src="img/gp20.png" alt="gp20" width="288">
-             <p>amb_vj</p>
-            </div>
-          </a>
-        </div>
-        <div class="work">
-          <a href="works/account.html">
-            <div class="workimg">
-              <img src="img/receipt.jpg" alt="sfcs" width="288">
-              <p>account music</p>
-            </div>
-          </a>
-        </div>
-        <div class="work">
-          <a href="works/negai.html">
-            <div class="workimg">
-              <img src="img/negai2.jpg" alt="break" width="288">
-              <p>競争願理主義</p>
-            </div>
-          </a>     
-        </div>
-        <div class="work">
-          <a href="works/sfcs.html">
-            <div class="workimg">
-              <img src="img/sfcs.png" alt="sfcs" width="288">
-              <p>SFCスピリッツ<br>最終課題</p>
-            </div>
-          </a>
-        </div>
-        <div class="work">
-          <a href="works/tokimeki.html">
-            <div class="workimg">
-             <img src="img/tokimeki.jpg" alt="sfcs" width="288">
-             <p>トキメキ情報量</p>
-            </div>
-          </a>
-        </div>
-        <div class="work">
-          <a href="works/context-design/context.html">
-            <div class="workimg">
-              <img src="img/himitsu.png" alt="break" width="288">
-              <p>HIMITSU DOUGUS</p>
-            </div>
-          </a>     
-        </div>
-      </div>
-      <p>
-        <div class="copyright-a">
-          &copy;
-          <span class="copyright-t">2020&nbsp;Keisuke Okazaki</span>
-        </div>
-      </p>
+  <div class="tagline">
+    <span class="tagline-label">BASED IN</span>
+    <span class="tagline-value">TOKYO</span>
+    <span class="tagline-label">/ DJ ·</span>
+    <span class="tagline-value">DESIGNER</span>
+  </div>
+
+  <div class="section">
+    <div class="section-header">
+      <div class="section-label">UPCOMING EVENTS</div>
+      <a href="dj.html" class="section-more">ALL EVENTS →</a>
     </div>
-  </body>
-  
+    <div class="cards">
+      <a class="card" href="#">
+        <div class="card-img"><div class="card-placeholder">FLYER</div></div>
+        <div class="card-date">2026.06.20</div>
+        <div class="card-title">數寄屋</div>
+        <div class="card-venue">Tokyo</div>
+      </a>
+      <a class="card" href="#">
+        <div class="card-img"><div class="card-placeholder">FLYER</div></div>
+        <div class="card-date">2026.07.04</div>
+        <div class="card-title">HIBACHI</div>
+        <div class="card-venue">Tokyo</div>
+      </a>
+      <a class="card" href="#">
+        <div class="card-img"><div class="card-placeholder">FLYER</div></div>
+        <div class="card-date">—</div>
+        <div class="card-title">—</div>
+        <div class="card-venue">—</div>
+      </a>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-copy">© 2026 wistra</div>
+    <div class="footer-links">
+      <a href="https://www.instagram.com/wistra4/" target="_blank">INSTAGRAM</a>
+    </div>
+  </footer>
+
+</body>
 </html>

@@ -1,64 +1,123 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>account music — wistra</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root { --bg: #f5f5f3; --border: #d8d8d6; --text: #000; --muted: #999; }
+    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; font-size: 13px; line-height: 1.5; }
+    header { padding: 36px 56px; display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-size: 28px; font-weight: 700; letter-spacing: -0.02em; text-decoration: none; color: var(--text); }
+    nav { display: flex; gap: 32px; }
+    nav a { font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-decoration: none; color: var(--muted); transition: color 0.2s; }
+    nav a:hover, nav a.active { color: var(--text); }
+    .page-title { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 14px 56px; display: flex; gap: 16px; align-items: baseline; }
+    .breadcrumb { font-size: 9px; font-weight: 500; letter-spacing: 0.2em; color: var(--muted); text-decoration: none; }
+    .breadcrumb:hover { color: var(--text); }
+    .breadcrumb-sep { font-size: 9px; color: var(--muted); }
+    .breadcrumb-current { font-size: 9px; font-weight: 500; letter-spacing: 0.2em; color: var(--text); }
+    .work-header { padding: 56px 56px 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; border-bottom: 1px solid var(--border); }
+    .work-title { font-size: 48px; font-weight: 700; letter-spacing: -0.03em; line-height: 1; margin-bottom: 16px; }
+    .work-meta { display: flex; flex-direction: column; gap: 8px; }
+    .meta-row { display: flex; gap: 12px; align-items: baseline; }
+    .meta-label { font-size: 9px; font-weight: 500; letter-spacing: 0.2em; color: var(--muted); min-width: 64px; }
+    .meta-value { font-size: 11px; color: var(--text); }
+    .meta-value a { color: var(--text); text-decoration: none; border-bottom: 1px solid var(--border); transition: border-color 0.2s; }
+    .meta-value a:hover { border-color: var(--text); }
+    .work-desc { font-size: 13px; line-height: 2; color: #333; }
+    .work-section { padding: 48px 56px; border-bottom: 1px solid var(--border); }
+    .section-title { font-size: 9px; font-weight: 500; letter-spacing: 0.25em; color: var(--muted); margin-bottom: 24px; }
+    .section-body { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+    .section-body.full { grid-template-columns: 1fr; }
+    .section-img { background: var(--border); overflow: hidden; }
+    .section-img img { width: 100%; height: auto; display: block; }
+    .section-text { font-size: 12px; line-height: 2; color: #444; }
+    .section-text p + p { margin-top: 12px; }
+    .soundcloud-embed { width: 100%; height: 166px; border: none; }
+    footer { border-top: 1px solid var(--border); padding: 24px 56px; display: flex; justify-content: space-between; align-items: center; }
+    .footer-copy { font-size: 9px; color: var(--muted); letter-spacing: 0.1em; }
+    .footer-links { display: flex; gap: 20px; }
+    .footer-links a { font-size: 9px; letter-spacing: 0.12em; text-decoration: none; color: var(--muted); transition: color 0.2s; }
+    .footer-links a:hover { color: var(--text); }
+  </style>
+</head>
+<body>
 
-  <head>
-    <meta charset="utf-8">
-    <title>KeisukeOkazaki</title>
-    <link rel="stylesheet" href="../css/general/general.css">
-    <link rel="stylesheet" href="../css/works/works.css">
-    <link href="https://fonts.googleapis.com/css2?family=Sawarabi+Mincho&display=swap" rel="stylesheet">
-    <script async custom-element="amp-soundcloud" src="http://cdn.ampproject.org/v0/amp-soundcloud-0.1.js"></script>
-  </head>
-
-  <header class="background">
-    <div class="theme">
-      <p>KEISUKE OKAZAKI</p>
-    </div>
-    <div class="menu">
-      <div class="menu_item">
-      </div>
-      <div class="menu_item">
-        <a href="../index.html" class="color">WORKS</a>
-      </div>
-      <div class="menu_item">
-        <a href="../about.html" class="color">ABOUT</a>
-      </div>
-      <div class="menu_item">
-        <a href="../news.html" class="color">NEWS</a>
-      </div>
-      <div class="menu_item">
-      </div>
-    </div>
+  <header>
+    <a href="../index_new.html" class="logo">wistra</a>
+    <nav>
+      <a href="../works.html" class="active">WORKS</a>
+      <a href="../dj.html">DJ</a>
+      <a href="../about.html">ABOUT</a>
+    </nav>
   </header>
 
-  <body class="background">
-    <div class="layout">
-    <div class="account">
-      <h2>
-        account music
-      </h2>
-      <p>レシートのアルゴリズム</p>
-      <iframe width="80%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/755377207&color=%231400ff&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe><br>
-      <br>
-      <p class="account">
-        レシートの情報を音に置き換える事で自らの生活の可聴化を行う音の家計簿として作品を制作した。<br>
-      <img src="../img/account.png" alt="account" width="100%"><br>
-        生活の基盤となる家庭的な買い物(Home)、大学生活(Univ)、友人との外食などの生活の些細な幸福を作る買い物(out)、生活に大きく影響を与える買い物(special)、自身の生活を4種に分類し、それぞれに対応するトラックを制作した。<br>
-      <img src="../img/account2.png" alt="account2" width="100%"><br>
-        オーディオエフェクト[Frequency Shifter]の[Fine]にオートメーション書いて、ある買い物の中で購入した商品の値段を音の周波数に対応させていった。<br>
-        各音の配置は、日付に対応させている。ここでは、買い物の時間は関係なく、異なる購入シーンで同じ日にちの買い物についての音を同タイミングでスタートさせている。音作りには <a href="https://u-he.com/products/tyrelln6/">TyrellN6<img src="../img/link.png" width="12"></a> を使用している。
-      </p>
-      <br>
-      <h3>技術</h3>
-      <p>AbletonLive</p>
-      <p>
-        <div class="copyright-a">
-          &copy;
-          <span class="copyright-t">2020&nbsp;Keisuke Okazaki</span>
-        </div>
-      </p>
-    </div>
-    </div>
-  </body>
+  <div class="page-title">
+    <a href="../works.html" class="breadcrumb">WORKS</a>
+    <span class="breadcrumb-sep">→</span>
+    <span class="breadcrumb-current">account music</span>
+  </div>
 
+  <div class="work-header">
+    <div>
+      <div class="work-title">account music</div>
+      <div class="work-desc">レシートのアルゴリズム</div>
+    </div>
+    <div class="work-meta">
+      <div class="meta-row">
+        <span class="meta-label">YEAR</span>
+        <span class="meta-value">2020</span>
+      </div>
+      <div class="meta-row">
+        <span class="meta-label">TOOLS</span>
+        <span class="meta-value">Ableton Live / TyrellN6</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="work-section">
+    <div class="section-title">LISTEN</div>
+    <iframe class="soundcloud-embed" scrolling="no" frameborder="no" allow="autoplay"
+      src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/755377207&color=%231400ff&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true">
+    </iframe>
+  </div>
+
+  <div class="work-section">
+    <div class="section-title">OVERVIEW</div>
+    <div class="section-body">
+      <div class="section-img">
+        <img src="../img/works/account/account.png" alt="account music">
+      </div>
+      <div class="section-text">
+        <p>レシートの情報を音に置き換える事で自らの生活の可聴化を行う音の家計簿として作品を制作した。</p>
+        <p>生活の基盤となる家庭的な買い物（Home）、大学生活（Univ）、友人との外食などの生活の些細な幸福を作る買い物（out）、生活に大きく影響を与える買い物（special）、自身の生活を4種に分類し、それぞれに対応するトラックを制作した。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="work-section">
+    <div class="section-title">DETAIL</div>
+    <div class="section-body">
+      <div class="section-img">
+        <img src="../img/works/account/account2.png" alt="account music detail">
+      </div>
+      <div class="section-text">
+        <p>オーディオエフェクト [Frequency Shifter] の [Fine] にオートメーションを書いて、ある買い物の中で購入した商品の値段を音の周波数に対応させていった。</p>
+        <p>各音の配置は日付に対応させている。異なる購入シーンで同じ日にちの買い物についての音を同タイミングでスタートさせている。</p>
+        <p>音作りには <a href="https://u-he.com/products/tyrelln6/" target="_blank">TyrellN6</a> を使用している。</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-copy">© 2026 wistra</div>
+    <div class="footer-links">
+      <a href="https://www.instagram.com/wistra4/" target="_blank">INSTAGRAM</a>
+    </div>
+  </footer>
+
+</body>
 </html>

@@ -1,82 +1,144 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>競争願理主義 — wistra</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root { --bg: #f5f5f3; --border: #d8d8d6; --text: #000; --muted: #999; }
+    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; font-size: 13px; line-height: 1.5; }
+    header { padding: 36px 56px; display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-size: 28px; font-weight: 700; letter-spacing: -0.02em; text-decoration: none; color: var(--text); }
+    nav { display: flex; gap: 32px; }
+    nav a { font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-decoration: none; color: var(--muted); transition: color 0.2s; }
+    nav a:hover, nav a.active { color: var(--text); }
+    .page-title { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 14px 56px; display: flex; gap: 16px; align-items: baseline; }
+    .breadcrumb { font-size: 9px; font-weight: 500; letter-spacing: 0.2em; color: var(--muted); text-decoration: none; }
+    .breadcrumb:hover { color: var(--text); }
+    .breadcrumb-sep { font-size: 9px; color: var(--muted); }
+    .breadcrumb-current { font-size: 9px; font-weight: 500; letter-spacing: 0.2em; color: var(--text); }
+    .work-header { padding: 56px 56px 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; border-bottom: 1px solid var(--border); }
+    .work-title { font-size: 48px; font-weight: 700; letter-spacing: -0.03em; line-height: 1; margin-bottom: 16px; }
+    .work-meta { display: flex; flex-direction: column; gap: 8px; }
+    .meta-row { display: flex; gap: 12px; align-items: baseline; }
+    .meta-label { font-size: 9px; font-weight: 500; letter-spacing: 0.2em; color: var(--muted); min-width: 64px; }
+    .meta-value { font-size: 11px; color: var(--text); }
+    .meta-value a { color: var(--text); text-decoration: none; border-bottom: 1px solid var(--border); transition: border-color 0.2s; }
+    .meta-value a:hover { border-color: var(--text); }
+    .work-desc { font-size: 13px; line-height: 2; color: #333; }
+    .work-section { padding: 48px 56px; border-bottom: 1px solid var(--border); }
+    .section-title { font-size: 9px; font-weight: 500; letter-spacing: 0.25em; color: var(--muted); margin-bottom: 24px; }
+    .section-body { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+    .section-body.full { grid-template-columns: 1fr; }
+    .section-body.three { grid-template-columns: 1fr 1fr 1fr; }
+    .section-body.four { grid-template-columns: 1fr 1fr 1fr 1fr; }
+    .section-img { background: var(--border); overflow: hidden; }
+    .section-img img { width: 100%; height: auto; display: block; }
+    .section-text { font-size: 12px; line-height: 2; color: #444; }
+    .section-text p + p { margin-top: 12px; }
+    .steps { display: flex; flex-direction: column; gap: 8px; }
+    .step { display: flex; gap: 16px; align-items: baseline; }
+    .step-num { font-size: 9px; font-weight: 700; letter-spacing: 0.1em; color: var(--muted); min-width: 20px; }
+    .step-text { font-size: 12px; color: #444; }
+    footer { border-top: 1px solid var(--border); padding: 24px 56px; display: flex; justify-content: space-between; align-items: center; }
+    .footer-copy { font-size: 9px; color: var(--muted); letter-spacing: 0.1em; }
+    .footer-links { display: flex; gap: 20px; }
+    .footer-links a { font-size: 9px; letter-spacing: 0.12em; text-decoration: none; color: var(--muted); transition: color 0.2s; }
+    .footer-links a:hover { color: var(--text); }
+  </style>
+</head>
+<body>
 
-  <head>
-    <meta charset="utf-8">
-    <title>KeisukeOkazaki</title>
-    <link rel="stylesheet" href="../css/general/general.css">
-    <link rel="stylesheet" href="../css/works/works.css">
-    <link href="https://fonts.googleapis.com/css2?family=Sawarabi+Mincho&display=swap" rel="stylesheet">
-  </head>
-
-  <header class="background">
-    <div class="theme">
-      <p>KEISUKE OKAZAKI</p>
-    </div>
-    <div class="menu">
-      <div class="menu_item">
-      </div>
-      <div class="menu_item">
-        <a href="../index.html" class="color">WORKS</a>
-      </div>
-      <div class="menu_item">
-        <a href="../about.html" class="color">ABOUT</a>
-      </div>
-      <div class="menu_item">
-        <a href="../news.html" class="color">NEWS</a>
-      </div>
-      <div class="menu_item">
-      </div>
-    </div>
+  <header>
+    <a href="../index_new.html" class="logo">wistra</a>
+    <nav>
+      <a href="../works.html" class="active">WORKS</a>
+      <a href="../dj.html">DJ</a>
+      <a href="../about.html">ABOUT</a>
+    </nav>
   </header>
 
-  <body class="background">
-    <div class="layout">
-    <div class="account">
-      <h2>競争願理主義</h2>
-      <p>
-        <img src="../img/negai4.jpg" width="45%">
-        <img src="../img/negaicap.png" width="30%"><br>
-        慶應SFCものづくりサークル <a href="https://at.sfc.keio.ac.jp">Art&Technology<img src="../img/link.png" width="12"></a> に所属する5人によって構成されたteam「stst」で制作した作品。<br>
-        2019年7月14日に岩手県で開催された「<a href="http://www-cg.cis.iwate-u.ac.jp/AT2019/">アート＆テクノロジー東北2019<img src="../img/link.png" width="12"></a>」に出展した。<br>
-      </p>
-      <br>
-      <h3>作品概要</h3>
-      <p>
-        <img src="../img/negai.jpg" width="30%">
-        <img src="../img/negai2.jpg" width="30%">
-        <img src="../img/negai3.jpg" width="30%"><br>
-        人の願いを破り自分の願いを掲げる、という行為が繰り返されることで、七夕の笹には、選ばれた願いのみが掲げられ、壊された願いは、選ばれた願いの栄養となる。
-        いくらでも願いを掲げられる七夕の裏にも、人よりも自分の願いを叶えて欲しいという思いがある。
-        その思いを強く体感させる事で、体験者に破壊について振り返らせると共に、人々の思いから創り出される七夕の神による願いの淘汰を作品の中に見る。
-      </p>
-      <br>
-      <h3>体験の流れ</h3>
-      <p>
-      ①　絵馬に自分の願いを書く<br>
-      ②　破る絵馬を選ぶ<br>
-      ③　絵馬を破る<br>
-      ④　空いたクリップに自分の絵馬を掲げる
-      </p>
-      <br>
-      <h3>実装</h3>
-      <p>
-      <img src="../img/negai8.jpg" width="17%">
-      <img src="../img/negai6.jpg" width="30%">
-      <img src="../img/negai7.png" width="10.5%">
-      <img src="../img/negai5.jpg" width="17%"><br>
-      絵馬が2つに割れるように堀の深さを調節して、レーザーカッターで絵馬を出力した。<br>
-      絵馬のサイズに合わせた返しをつけたクリップを設計して3Dプリンターで出力する事で、２つに割らなければ絵馬がクリップから取れないようにした。<br>
-      竹を組み合わせて自立するようにし、割った絵馬をいれるboxを作成した。<br>
-      </p>
-      <p>
-        <div class="copyright-a">
-          &copy;
-          <span class="copyright-t">2020&nbsp;Keisuke Okazaki</span>
-        </div>
-      </p>
-    </div>
-    </div>
-  </body>
+  <div class="page-title">
+    <a href="../works.html" class="breadcrumb">WORKS</a>
+    <span class="breadcrumb-sep">→</span>
+    <span class="breadcrumb-current">競争願理主義</span>
+  </div>
 
+  <div class="work-header">
+    <div>
+      <div class="work-title">競争願理主義</div>
+      <div class="work-desc">人の願いを破り自分の願いを掲げる、という行為が繰り返されるインタラクティブ作品</div>
+    </div>
+    <div class="work-meta">
+      <div class="meta-row">
+        <span class="meta-label">YEAR</span>
+        <span class="meta-value">2019</span>
+      </div>
+      <div class="meta-row">
+        <span class="meta-label">EXHIBIT</span>
+        <span class="meta-value">アート＆テクノロジー東北2019 / 岩手県</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="work-section">
+    <div class="section-title">OVERVIEW</div>
+    <div class="section-body">
+      <div class="section-img">
+        <img src="../img/works/negai/negai4.jpg" alt="競争願理主義">
+      </div>
+      <div class="section-img">
+        <img src="../img/works/negai/negaicap.png" alt="競争願理主義">
+      </div>
+    </div>
+  </div>
+
+  <div class="work-section">
+    <div class="section-title">CONCEPT</div>
+    <div class="section-body">
+      <div class="section-img">
+        <img src="../img/works/negai/negai.jpg" alt="競争願理主義">
+      </div>
+      <div class="section-text">
+        <p>人の願いを破り自分の願いを掲げる、という行為が繰り返されることで、七夕の笹には、選ばれた願いのみが掲げられ、壊された願いは、選ばれた願いの栄養となる。</p>
+        <p>いくらでも願いを掲げられる七夕の裏にも、人よりも自分の願いを叶えて欲しいという思いがある。その思いを強く体感させる事で、体験者に破壊について振り返らせると共に、人々の思いから創り出される七夕の神による願いの淘汰を作品の中に見る。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="work-section">
+    <div class="section-title">EXPERIENCE FLOW</div>
+    <div class="steps">
+      <div class="step"><span class="step-num">01</span><span class="step-text">絵馬に自分の願いを書く</span></div>
+      <div class="step"><span class="step-num">02</span><span class="step-text">破る絵馬を選ぶ</span></div>
+      <div class="step"><span class="step-num">03</span><span class="step-text">絵馬を破る</span></div>
+      <div class="step"><span class="step-num">04</span><span class="step-text">空いたクリップに自分の絵馬を掲げる</span></div>
+    </div>
+  </div>
+
+  <div class="work-section">
+    <div class="section-title">IMPLEMENTATION</div>
+    <div class="section-body four">
+      <div class="section-img"><img src="../img/works/negai/negai8.jpg" alt="実装"></div>
+      <div class="section-img"><img src="../img/works/negai/negai6.jpg" alt="実装"></div>
+      <div class="section-img"><img src="../img/works/negai/negai7.png" alt="実装"></div>
+      <div class="section-img"><img src="../img/works/negai/negai5.jpg" alt="実装"></div>
+    </div>
+    <div class="section-text" style="margin-top: 24px;">
+      <p>絵馬が2つに割れるように堀の深さを調節して、レーザーカッターで絵馬を出力した。</p>
+      <p>絵馬のサイズに合わせた返しをつけたクリップを設計して3Dプリンターで出力する事で、２つに割らなければ絵馬がクリップから取れないようにした。</p>
+      <p>竹を組み合わせて自立するようにし、割った絵馬をいれるboxを作成した。</p>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-copy">© 2026 wistra</div>
+    <div class="footer-links">
+      <a href="https://www.instagram.com/wistra4/" target="_blank">INSTAGRAM</a>
+    </div>
+  </footer>
+
+</body>
 </html>
