@@ -22,6 +22,33 @@
     padding: 12px 20px;
   }
 
+  /* ── Index intro ── */
+  .intro {
+    padding: 28px 20px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .intro-text {
+    font-size: 13px;
+    line-height: 1.8;
+  }
+
+  /* ── Index tagline ── */
+  .tagline {
+    padding: 10px 20px;
+  }
+
+  /* ── Index cards ── */
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  .card-img {
+    aspect-ratio: 3 / 2;
+  }
+
   /* ── Section ── */
   .section {
     padding: 32px 20px;
