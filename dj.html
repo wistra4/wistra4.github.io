@@ -299,6 +299,7 @@
     }
     .footer-links a:hover { color: var(--text); }
   </style>
+  <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
 
@@ -312,30 +313,6 @@
   </header>
 
   <div class="page-title"><h1>DJ</h1></div>
-
-  <!-- REGULAR -->
-  <div class="section">
-    <div class="section-label">REGULAR</div>
-    <div class="regular-grid">
-      <a class="regular-card" href="#">
-        <div class="card-img"><img loading="lazy" src="img/flyers/sukiya/sukiya.jpg" alt="數寄屋"></div>
-        <div class="party-name">數寄屋</div>
-        <div class="party-desc">Coffee &amp; DJ Bar Cafein, 阿佐ヶ谷<br>偶数月第三土曜日</div>
-      </a>
-      <a class="regular-card" href="#">
-        <div class="card-img"><img loading="lazy" src="img/flyers/hibachi/hibachi_20260502.jpg" alt="HIBACHI"></div>
-        <div class="party-name">HIBACHI</div>
-        <div class="party-desc">渋谷 Tangle<br>奇数月第一土曜日</div>
-      </a>
-      <a class="regular-card" href="#">
-        <div class="card-img"><img loading="lazy" src="img/flyers/waves/waves_20260503.JPG" alt="WAVES"></div>
-        <div class="party-name">WAVES</div>
-        <div class="party-desc">Tokyo<br>不定期開催</div>
-      </a>
-    </div>
-  </div>
-
-  <hr class="divider">
 
   <!-- EVENTS -->
   <div class="section">
@@ -531,6 +508,30 @@
 
   <hr class="divider">
 
+  <!-- REGULAR -->
+  <div class="section">
+    <div class="section-label">REGULAR</div>
+    <div class="regular-grid">
+      <a class="regular-card" href="#">
+        <div class="card-img"><img loading="lazy" src="img/flyers/sukiya/sukiya.jpg" alt="數寄屋"></div>
+        <div class="party-name">數寄屋</div>
+        <div class="party-desc">Coffee &amp; DJ Bar Cafein, 阿佐ヶ谷<br>偶数月第三土曜日</div>
+      </a>
+      <a class="regular-card" href="#">
+        <div class="card-img"><img loading="lazy" src="img/flyers/hibachi/hibachi_20260502.jpg" alt="HIBACHI"></div>
+        <div class="party-name">HIBACHI</div>
+        <div class="party-desc">渋谷 Tangle<br>奇数月第一土曜日</div>
+      </a>
+      <a class="regular-card" href="#">
+        <div class="card-img"><img loading="lazy" src="img/flyers/waves/waves_20260503.JPG" alt="WAVES"></div>
+        <div class="party-name">WAVES</div>
+        <div class="party-desc">Tokyo<br>不定期開催</div>
+      </a>
+    </div>
+  </div>
+
+  <hr class="divider">
+
   <!-- MIX -->
   <div class="section">
     <div class="section-label">MIX</div>
@@ -592,6 +593,44 @@
     scroll.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', () => { cachePositions(); updateScales(); });
     updateScales();
+
+    // モバイルのみ: REGULARセクション フェードカルーセル
+    if (window.innerWidth <= 768) {
+      const regular = document.querySelector('.regular-grid');
+      if (regular) {
+        const cards = Array.from(regular.querySelectorAll('.regular-card'));
+        let current = 0;
+        let touchStartX = 0;
+
+        function showCard(index) {
+          cards.forEach((c, i) => c.classList.toggle('active', i === index));
+          current = index;
+        }
+
+        showCard(0);
+
+        // 自動フェード
+        let timer = setInterval(() => {
+          showCard((current + 1) % cards.length);
+        }, 5000);
+
+        // スワイプ対応
+        regular.addEventListener('touchstart', e => {
+          touchStartX = e.touches[0].clientX;
+          clearInterval(timer);
+        }, { passive: true });
+
+        regular.addEventListener('touchend', e => {
+          const diff = touchStartX - e.changedTouches[0].clientX;
+          if (Math.abs(diff) > 40) {
+            showCard(diff > 0
+              ? (current + 1) % cards.length
+              : (current - 1 + cards.length) % cards.length);
+          }
+          timer = setInterval(() => showCard((current + 1) % cards.length), 3000);
+        }, { passive: true });
+      }
+    }
   });
 </script>
 </body>
