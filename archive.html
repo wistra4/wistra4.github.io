@@ -223,6 +223,18 @@
     .poem-save-entry:hover { border-color: var(--accent); color: var(--accent); }
 
     /* ── Write area ── */
+    .draft-indicator {
+      font-size: 9px;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      height: 16px;
+      margin-bottom: 6px;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .draft-indicator.visible { opacity: 1; }
+
     .poem-write {
       display: flex;
       gap: 12px;
@@ -326,6 +338,7 @@
         </div>
         <div class="poem-side">
           <div class="poem-entries"></div>
+          <div class="draft-indicator">下書き保存済み</div>
           <div class="poem-write">
             <textarea class="poem-textarea" placeholder="ことば"></textarea>
             <button class="poem-submit">送る</button>
@@ -378,7 +391,32 @@
     const entriesList = item.querySelector('.poem-entries');
     const textarea    = item.querySelector('.poem-textarea');
     const btn         = item.querySelector('.poem-submit');
+    const indicator   = item.querySelector('.draft-indicator');
     const entriesRef  = collection(db, 'poems', id, 'entries');
+    const draftKey    = `draft_${id}`;
+
+    // 下書き復元
+    const saved = localStorage.getItem(draftKey);
+    if (saved) {
+      textarea.value = saved;
+      textarea.style.height = '100px';
+      indicator.classList.add('visible');
+    }
+
+    // 自動保存
+    let saveTimer;
+    textarea.addEventListener('input', () => {
+      clearTimeout(saveTimer);
+      saveTimer = setTimeout(() => {
+        if (textarea.value.trim()) {
+          localStorage.setItem(draftKey, textarea.value);
+          indicator.classList.add('visible');
+        } else {
+          localStorage.removeItem(draftKey);
+          indicator.classList.remove('visible');
+        }
+      }, 600);
+    });
 
     onSnapshot(query(entriesRef, orderBy('createdAt', 'asc')), snapshot => {
       entriesList.innerHTML = '';
@@ -395,6 +433,8 @@
       textarea.value = '';
       textarea.style.height = '32px';
       btn.textContent = '送る';
+      localStorage.removeItem(draftKey);
+      indicator.classList.remove('visible');
     });
   });
 
