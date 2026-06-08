@@ -157,8 +157,70 @@
       opacity: 0;
     }
 
-    .poem-entry:hover .poem-delete-entry { opacity: 1; }
+    .poem-entry:hover .poem-delete-entry,
+    .poem-entry:hover .poem-edit-entry { opacity: 1; }
     .poem-delete-entry:hover { color: #c0392b; }
+    .poem-edit-entry:hover { color: var(--text); }
+
+    .poem-entry-btns {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+
+    .poem-edit-entry {
+      font-family: 'Inter', sans-serif;
+      font-size: 9px;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px 0;
+      transition: color 0.15s, opacity 0.15s;
+      opacity: 0;
+    }
+
+    .poem-inline-edit {
+      display: none;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .poem-inline-edit.open { display: flex; }
+
+    .poem-inline-textarea {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      line-height: 1.8;
+      border: none;
+      border-bottom: 1px solid var(--accent);
+      background: transparent;
+      outline: none;
+      resize: none;
+      color: var(--text);
+      padding: 4px 0;
+      height: 80px;
+    }
+
+    .poem-inline-btns { display: flex; gap: 10px; }
+
+    .poem-save-entry,
+    .poem-cancel-entry {
+      font-family: 'Inter', sans-serif;
+      font-size: 9px;
+      letter-spacing: 0.12em;
+      padding: 4px 10px;
+      border: 1px solid var(--border);
+      background: transparent;
+      cursor: pointer;
+      color: var(--muted);
+      transition: all 0.15s;
+    }
+
+    .poem-save-entry:hover { border-color: var(--accent); color: var(--accent); }
 
     /* ── Write area ── */
     .poem-write {
@@ -296,7 +358,7 @@
 
 <script type="module">
   import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
-  import { getFirestore, collection, doc, addDoc, deleteDoc, query, orderBy, onSnapshot, serverTimestamp }
+  import { getFirestore, collection, doc, addDoc, updateDoc, deleteDoc, query, orderBy, onSnapshot, serverTimestamp }
     from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
 
   const firebaseConfig = {
@@ -344,16 +406,75 @@
     textEl.className = 'poem-text';
     textEl.textContent = text;
 
-    const del = document.createElement('button');
-    del.className = 'poem-delete-entry';
-    del.textContent = '消す';
-    del.addEventListener('click', async () => {
+    const btns = document.createElement('div');
+    btns.className = 'poem-entry-btns';
+
+    const editBtn = document.createElement('button');
+    editBtn.className = 'poem-edit-entry';
+    editBtn.textContent = '編集';
+
+    const delBtn = document.createElement('button');
+    delBtn.className = 'poem-delete-entry';
+    delBtn.textContent = '消す';
+
+    btns.appendChild(editBtn);
+    btns.appendChild(delBtn);
+
+    const inlineEdit = document.createElement('div');
+    inlineEdit.className = 'poem-inline-edit';
+
+    const inlineTextarea = document.createElement('textarea');
+    inlineTextarea.className = 'poem-inline-textarea';
+
+    const inlineBtns = document.createElement('div');
+    inlineBtns.className = 'poem-inline-btns';
+
+    const saveBtn = document.createElement('button');
+    saveBtn.className = 'poem-save-entry';
+    saveBtn.textContent = '保存';
+
+    const cancelBtn = document.createElement('button');
+    cancelBtn.className = 'poem-cancel-entry';
+    cancelBtn.textContent = 'キャンセル';
+
+    inlineBtns.appendChild(saveBtn);
+    inlineBtns.appendChild(cancelBtn);
+    inlineEdit.appendChild(inlineTextarea);
+    inlineEdit.appendChild(inlineBtns);
+
+    editBtn.addEventListener('click', () => {
+      inlineTextarea.value = textEl.textContent;
+      inlineEdit.classList.add('open');
+      textEl.style.display = 'none';
+      btns.style.display = 'none';
+      inlineTextarea.focus();
+    });
+
+    cancelBtn.addEventListener('click', () => {
+      inlineEdit.classList.remove('open');
+      textEl.style.display = '';
+      btns.style.display = '';
+    });
+
+    saveBtn.addEventListener('click', async () => {
+      const newText = inlineTextarea.value.trim();
+      if (!newText) return;
+      saveBtn.textContent = '...';
+      await updateDoc(doc(db, 'poems', trackId, 'entries', entryId), { text: newText });
+      inlineEdit.classList.remove('open');
+      textEl.style.display = '';
+      btns.style.display = '';
+      saveBtn.textContent = '保存';
+    });
+
+    delBtn.addEventListener('click', async () => {
       if (!confirm('消していい？')) return;
       await deleteDoc(doc(db, 'poems', trackId, 'entries', entryId));
     });
 
     wrap.appendChild(textEl);
-    wrap.appendChild(del);
+    wrap.appendChild(btns);
+    wrap.appendChild(inlineEdit);
     return wrap;
   }
 </script>
