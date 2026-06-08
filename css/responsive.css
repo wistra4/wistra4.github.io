@@ -85,6 +85,21 @@
     pointer-events: auto;
   }
 
+  /* ── Event filter (DJ) ── */
+  .event-filter {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .filter-search {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .filter-search input {
+    width: 100%;
+  }
+
   /* ── Events scroll (DJ) ── */
   .upcoming-scroll {
     padding: 16px 20px 24px;

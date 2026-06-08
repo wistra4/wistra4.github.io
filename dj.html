@@ -272,6 +272,60 @@
       letter-spacing: 0.1em;
     }
 
+    /* ── Event filter ── */
+    .event-filter {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      margin-bottom: 16px;
+    }
+
+    .filter-chips { display: flex; gap: 6px; }
+
+    .filter-chip {
+      font-family: 'Inter', sans-serif;
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      padding: 5px 12px;
+      border: 1px solid var(--border);
+      background: transparent;
+      cursor: pointer;
+      transition: all 0.15s;
+      color: var(--muted);
+    }
+
+    .filter-chip.active {
+      background: var(--text);
+      color: #fff;
+      border-color: var(--text);
+    }
+
+    .filter-chip:hover:not(.active) {
+      border-color: #bbb;
+      color: var(--text);
+    }
+
+    .filter-search { margin-left: auto; }
+
+    .filter-search input {
+      font-family: 'Inter', sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      border: none;
+      border-bottom: 1px solid var(--border);
+      background: transparent;
+      padding: 4px 0;
+      width: 140px;
+      outline: none;
+      color: var(--text);
+    }
+
+    .filter-search input::placeholder {
+      color: var(--muted);
+      letter-spacing: 0.1em;
+    }
+
     /* ── Scroll hint ── */
     .scroll-hint {
       font-size: 9px;
@@ -317,8 +371,19 @@
   <!-- EVENTS -->
   <div class="section">
     <div class="section-label">EVENTS</div>
+    <div class="event-filter">
+      <div class="filter-chips">
+        <button class="filter-chip active" data-filter="all">ALL</button>
+        <button class="filter-chip" data-filter="數寄屋">數寄屋</button>
+        <button class="filter-chip" data-filter="HIBACHI">HIBACHI</button>
+        <button class="filter-chip" data-filter="WAVES">WAVES</button>
+      </div>
+      <div class="filter-search">
+        <input type="text" id="event-search" placeholder="SEARCH">
+      </div>
+    </div>
     <div class="upcoming-scroll">
-      <a class="upcoming-card coming-soon" href="#">
+      <a class="upcoming-card coming-soon" href="#" data-title="HIBACHI" data-year="2026">
         <div class="coming-soon-img">
           <span class="cs-label">COMING SOON</span>
           <span class="cs-event">HIBACHI</span>
@@ -329,7 +394,7 @@
           <div class="card-venue">渋谷 Tangle</div>
         </div>
       </a>
-      <a class="upcoming-card coming-soon" href="#">
+      <a class="upcoming-card coming-soon" href="#" data-title="數寄屋" data-year="2026">
         <div class="coming-soon-img">
           <span class="cs-label">COMING SOON</span>
           <span class="cs-event">數寄屋</span>
@@ -340,7 +405,7 @@
           <div class="card-venue">Coffee &amp; DJ Bar Cafein</div>
         </div>
       </a>
-      <a class="upcoming-card coming-soon" href="#">
+      <a class="upcoming-card coming-soon" href="#" data-title="HIBACHI" data-year="2026">
         <div class="coming-soon-img">
           <span class="cs-label">COMING SOON</span>
           <span class="cs-event">HIBACHI</span>
@@ -351,7 +416,7 @@
           <div class="card-venue">渋谷 Tangle</div>
         </div>
       </a>
-      <a class="upcoming-card featured" href="#">
+      <a class="upcoming-card featured" href="#" data-title="數寄屋" data-year="2026">
         <div class="card-img"><img loading="lazy" src="img/flyers/sukiya/sukiya_20260620.jpg" alt="數寄屋 2026.06.20" onerror="this.parentNode.innerHTML='<div class=\'card-placeholder\'>FLYER</div>'"></div>
         <div class="card-info">
           <div class="card-date">2026.06.20 SAT</div>
@@ -359,7 +424,7 @@
           <div class="card-venue">Coffee &amp; DJ Bar Cafein</div>
         </div>
       </a>
-      <a class="upcoming-card" href="#">
+      <a class="upcoming-card" href="#" data-title="WAVES" data-year="2026">
         <div class="card-img"><img loading="lazy" src="img/flyers/waves/waves_20260503.JPG" alt="WAVES 2026.05.03" onerror="this.parentNode.innerHTML='<div class=\'card-placeholder\'>FLYER</div>'"></div>
         <div class="card-info">
           <div class="card-date">2026.05.03 SUN</div>
@@ -367,7 +432,7 @@
           <div class="card-venue">Tokyo</div>
         </div>
       </a>
-      <a class="upcoming-card" href="#">
+      <a class="upcoming-card" href="#" data-title="HIBACHI" data-year="2026">
         <div class="card-img"><img loading="lazy" src="img/flyers/hibachi/hibachi_20260502.jpg" alt="HIBACHI 2026.05.02" onerror="this.parentNode.innerHTML='<div class=\'card-placeholder\'>FLYER</div>'"></div>
         <div class="card-info">
           <div class="card-date">2026.05.02 SAT</div>
@@ -375,7 +440,7 @@
           <div class="card-venue">渋谷 Tangle</div>
         </div>
       </a>
-      <a class="upcoming-card" href="#">
+      <a class="upcoming-card" href="#" data-title="數寄屋" data-year="2026">
         <div class="card-img"><img loading="lazy" src="img/flyers/sukiya/sukiya_20260418.jpg" alt="數寄屋 2026.04.18" onerror="this.parentNode.innerHTML='<div class=\'card-placeholder\'>FLYER</div>'"></div>
         <div class="card-info">
           <div class="card-date">2026.04.18 SAT</div>
@@ -383,7 +448,7 @@
           <div class="card-venue">Coffee &amp; DJ Bar Cafein</div>
         </div>
       </a>
-      <a class="upcoming-card" href="#">
+      <a class="upcoming-card" href="#" data-title="HIBACHI" data-year="2026">
         <div class="card-img"><img loading="lazy" src="img/flyers/hibachi/hibachi_20260320.jpg" alt="HIBACHI 2026.03.20" onerror="this.parentNode.innerHTML='<div class=\'card-placeholder\'>FLYER</div>'"></div>
         <div class="card-info">
           <div class="card-date">2026.03.20 FRI</div>
@@ -391,7 +456,7 @@
           <div class="card-venue">渋谷 Tangle</div>
         </div>
       </a>
-      <a class="upcoming-card" href="#">
+      <a class="upcoming-card" href="#" data-title="數寄屋" data-year="2026">
         <div class="card-img"><img loading="lazy" src="img/flyers/sukiya/sukiya_20260207.JPG" alt="數寄屋 2026.02.07" onerror="this.parentNode.innerHTML='<div class=\'card-placeholder\'>FLYER</div>'"></div>
         <div class="card-info">
           <div class="card-date">2026.02.07 SAT</div>
@@ -399,7 +464,7 @@
           <div class="card-venue">Coffee &amp; DJ Bar Cafein</div>
         </div>
       </a>
-      <a class="upcoming-card" href="#">
+      <a class="upcoming-card" href="#" data-title="HIBACHI" data-year="2026">
         <div class="card-img"><img loading="lazy" src="img/flyers/hibachi/hibachi_20260103.jpg" alt="HIBACHI 2026.01.03" onerror="this.parentNode.innerHTML='<div class=\'card-placeholder\'>FLYER</div>'"></div>
         <div class="card-info">
           <div class="card-date">2026.01.03 SAT</div>
@@ -407,7 +472,7 @@
           <div class="card-venue">渋谷 Tangle</div>
         </div>
       </a>
-      <a class="upcoming-card" href="#">
+      <a class="upcoming-card" href="#" data-title="數寄屋" data-year="2025">
         <div class="card-img"><img loading="lazy" src="img/flyers/sukiya/sukiya_20251220.jpg" alt="數寄屋 2025.12.20" onerror="this.parentNode.innerHTML='<div class=\'card-placeholder\'>FLYER</div>'"></div>
         <div class="card-info">
           <div class="card-date">2025.12.20 SAT</div>
@@ -415,7 +480,7 @@
           <div class="card-venue">Coffee &amp; DJ Bar Cafein</div>
         </div>
       </a>
-      <a class="upcoming-card" href="#">
+      <a class="upcoming-card" href="#" data-title="WAVES" data-year="2025">
         <div class="card-img"><img loading="lazy" src="img/flyers/waves/waves_20251207.jpg" alt="WAVES 2025.12.07" onerror="this.parentNode.innerHTML='<div class=\'card-placeholder\'>FLYER</div>'"></div>
         <div class="card-info">
           <div class="card-date">2025.12.07 SUN</div>
@@ -423,7 +488,7 @@
           <div class="card-venue">Tokyo</div>
         </div>
       </a>
-      <a class="upcoming-card" href="#">
+      <a class="upcoming-card" href="#" data-title="HIBACHI" data-year="2025">
         <div class="card-img"><img loading="lazy" src="img/flyers/hibachi/hibachi_20251101.JPG" alt="HIBACHI 2025.11.01" onerror="this.parentNode.innerHTML='<div class=\'card-placeholder\'>FLYER</div>'"></div>
         <div class="card-info">
           <div class="card-date">2025.11.01 SAT</div>
@@ -431,7 +496,7 @@
           <div class="card-venue">渋谷 Tangle</div>
         </div>
       </a>
-      <a class="upcoming-card" href="#">
+      <a class="upcoming-card" href="#" data-title="數寄屋" data-year="2025">
         <div class="card-img"><img loading="lazy" src="img/flyers/sukiya/sukiya_20251018.jpg" alt="數寄屋 2025.10.18" onerror="this.parentNode.innerHTML='<div class=\'card-placeholder\'>FLYER</div>'"></div>
         <div class="card-info">
           <div class="card-date">2025.10.18 SAT</div>
@@ -439,7 +504,7 @@
           <div class="card-venue">Coffee &amp; DJ Bar Cafein</div>
         </div>
       </a>
-      <a class="upcoming-card" href="#">
+      <a class="upcoming-card" href="#" data-title="數寄屋" data-year="2025">
         <div class="card-img"><img loading="lazy" src="img/flyers/sukiya/sukiya_20250816.jpg" alt="數寄屋 2025.08.16" onerror="this.parentNode.innerHTML='<div class=\'card-placeholder\'>FLYER</div>'"></div>
         <div class="card-info">
           <div class="card-date">2025.08.16 SAT</div>
@@ -447,7 +512,7 @@
           <div class="card-venue">Coffee &amp; DJ Bar Cafein</div>
         </div>
       </a>
-      <a class="upcoming-card" href="#">
+      <a class="upcoming-card" href="#" data-title="數寄屋" data-year="2025">
         <div class="card-img"><img loading="lazy" src="img/flyers/sukiya/sukiya_20250621.png" alt="數寄屋 2025.06.21" onerror="this.parentNode.innerHTML='<div class=\'card-placeholder\'>FLYER</div>'"></div>
         <div class="card-info">
           <div class="card-date">2025.06.21 SAT</div>
@@ -455,7 +520,7 @@
           <div class="card-venue">Coffee &amp; DJ Bar Cafein</div>
         </div>
       </a>
-      <a class="upcoming-card" href="#">
+      <a class="upcoming-card" href="#" data-title="數寄屋" data-year="2025">
         <div class="card-img"><img loading="lazy" src="img/flyers/sukiya/sukiya_20250419.png" alt="數寄屋 2025.04.19" onerror="this.parentNode.innerHTML='<div class=\'card-placeholder\'>FLYER</div>'"></div>
         <div class="card-info">
           <div class="card-date">2025.04.19 SAT</div>
@@ -463,7 +528,7 @@
           <div class="card-venue">Coffee &amp; DJ Bar Cafein</div>
         </div>
       </a>
-      <a class="upcoming-card" href="#">
+      <a class="upcoming-card" href="#" data-title="數寄屋" data-year="2025">
         <div class="card-img"><img loading="lazy" src="img/flyers/sukiya/sukiya_20250215.jpg" alt="數寄屋 2025.02.15" onerror="this.parentNode.innerHTML='<div class=\'card-placeholder\'>FLYER</div>'"></div>
         <div class="card-info">
           <div class="card-date">2025.02.15 SAT</div>
@@ -471,7 +536,7 @@
           <div class="card-venue">Coffee &amp; DJ Bar Cafein</div>
         </div>
       </a>
-      <a class="upcoming-card" href="#">
+      <a class="upcoming-card" href="#" data-title="數寄屋" data-year="2024">
         <div class="card-img"><img loading="lazy" src="img/flyers/sukiya/sukiya_20241221.png" alt="數寄屋 2024.12.21" onerror="this.parentNode.innerHTML='<div class=\'card-placeholder\'>FLYER</div>'"></div>
         <div class="card-info">
           <div class="card-date">2024.12.21 SAT</div>
@@ -479,7 +544,7 @@
           <div class="card-venue">Coffee &amp; DJ Bar Cafein</div>
         </div>
       </a>
-      <a class="upcoming-card" href="#">
+      <a class="upcoming-card" href="#" data-title="數寄屋" data-year="2024">
         <div class="card-img"><img loading="lazy" src="img/flyers/sukiya/sukiya_20241019.png" alt="數寄屋 2024.10.19" onerror="this.parentNode.innerHTML='<div class=\'card-placeholder\'>FLYER</div>'"></div>
         <div class="card-info">
           <div class="card-date">2024.10.19 SAT</div>
@@ -487,7 +552,7 @@
           <div class="card-venue">Coffee &amp; DJ Bar Cafein</div>
         </div>
       </a>
-      <a class="upcoming-card" href="#">
+      <a class="upcoming-card" href="#" data-title="數寄屋" data-year="2024">
         <div class="card-img"><img loading="lazy" src="img/flyers/sukiya/sukiya_20240817.png" alt="數寄屋 2024.08.17" onerror="this.parentNode.innerHTML='<div class=\'card-placeholder\'>FLYER</div>'"></div>
         <div class="card-info">
           <div class="card-date">2024.08.17 SAT</div>
@@ -495,7 +560,7 @@
           <div class="card-venue">Coffee &amp; DJ Bar Cafein</div>
         </div>
       </a>
-      <a class="upcoming-card" href="#">
+      <a class="upcoming-card" href="#" data-title="數寄屋" data-year="2024">
         <div class="card-img"><img loading="lazy" src="img/flyers/sukiya/sukiya_20240615.png" alt="數寄屋 2024.06.15" onerror="this.parentNode.innerHTML='<div class=\'card-placeholder\'>FLYER</div>'"></div>
         <div class="card-info">
           <div class="card-date">2024.06.15 SAT</div>
@@ -593,6 +658,43 @@
     scroll.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', () => { cachePositions(); updateScales(); });
     updateScales();
+
+    // ── Event filter ──
+    const filterChips = document.querySelectorAll('.filter-chip');
+    const searchInput = document.getElementById('event-search');
+    const allEventCards = Array.from(scroll.querySelectorAll('.upcoming-card'));
+    let activeFilter = 'all';
+
+    function applyFilter() {
+      const query = searchInput.value.trim().toLowerCase();
+      allEventCards.forEach(card => {
+        const title = (card.dataset.title || '').toLowerCase();
+        const year  = card.dataset.year || '';
+        const venue = (card.querySelector('.card-venue')?.textContent || '').toLowerCase();
+        const matchChip   = activeFilter === 'all' || card.dataset.title === activeFilter;
+        const matchSearch = !query || title.includes(query) || year.includes(query) || venue.includes(query);
+        card.style.display = (matchChip && matchSearch) ? '' : 'none';
+      });
+      cachePositions();
+      updateScales();
+    }
+
+    filterChips.forEach(chip => {
+      chip.addEventListener('click', () => {
+        filterChips.forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+        activeFilter = chip.dataset.filter;
+        applyFilter();
+      });
+    });
+
+    searchInput.addEventListener('input', () => {
+      if (searchInput.value.trim().toLowerCase() === 'oshaberi') {
+        window.location.href = 'archive.html';
+        return;
+      }
+      applyFilter();
+    });
 
     // モバイルのみ: REGULARセクション フェードカルーセル
     if (window.innerWidth <= 768) {
