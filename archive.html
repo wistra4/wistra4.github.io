@@ -143,6 +143,13 @@
       letter-spacing: 0.01em;
     }
 
+    .poem-date {
+      font-size: 9px;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      margin-top: 4px;
+    }
+
     .poem-delete-entry {
       font-family: 'Inter', sans-serif;
       font-size: 9px;
@@ -421,7 +428,7 @@
     onSnapshot(query(entriesRef, orderBy('createdAt', 'asc')), snapshot => {
       entriesList.innerHTML = '';
       snapshot.forEach(snap => {
-        entriesList.appendChild(createEntry(id, snap.id, snap.data().text));
+        entriesList.appendChild(createEntry(id, snap.id, snap.data().text, snap.data().createdAt));
       });
     });
 
@@ -438,13 +445,28 @@
     });
   });
 
-  function createEntry(trackId, entryId, text) {
+  function formatDate(ts) {
+    if (!ts) return '';
+    const d = ts.toDate();
+    const y = d.getFullYear();
+    const m = String(d.getMonth() + 1).padStart(2, '0');
+    const day = String(d.getDate()).padStart(2, '0');
+    const h = String(d.getHours()).padStart(2, '0');
+    const min = String(d.getMinutes()).padStart(2, '0');
+    return `${y}.${m}.${day}  ${h}:${min}`;
+  }
+
+  function createEntry(trackId, entryId, text, createdAt) {
     const wrap = document.createElement('div');
     wrap.className = 'poem-entry';
 
     const textEl = document.createElement('div');
     textEl.className = 'poem-text';
     textEl.textContent = text;
+
+    const dateEl = document.createElement('div');
+    dateEl.className = 'poem-date';
+    dateEl.textContent = formatDate(createdAt);
 
     const btns = document.createElement('div');
     btns.className = 'poem-entry-btns';
@@ -513,6 +535,7 @@
     });
 
     wrap.appendChild(textEl);
+    wrap.appendChild(dateEl);
     wrap.appendChild(btns);
     wrap.appendChild(inlineEdit);
     return wrap;
