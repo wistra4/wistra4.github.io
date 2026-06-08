@@ -78,6 +78,35 @@
       letter-spacing: 0.08em;
     }
 
+    /* ── Intro ── */
+    .intro {
+      padding: 48px 56px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 32px;
+    }
+
+    .intro-text {
+      font-size: 15px;
+      line-height: 1.9;
+      letter-spacing: -0.01em;
+      max-width: 520px;
+    }
+
+    .intro-link {
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-decoration: none;
+      color: var(--muted);
+      transition: color 0.2s;
+      white-space: nowrap;
+    }
+
+    .intro-link:hover { color: var(--text); }
+
     /* ── Section ── */
     .section {
       padding: 48px 56px;
@@ -215,8 +244,12 @@
   <div class="tagline">
     <span class="tagline-label">BASED IN</span>
     <span class="tagline-value">TOKYO</span>
-    <span class="tagline-label">/ DJ ·</span>
-    <span class="tagline-value">DESIGNER</span>
+    <span class="tagline-label">/ DJ</span>
+  </div>
+
+  <div class="intro">
+    <p class="intro-text">山口県出身。青年期の心象風景を元に選曲とオーガナイズを模索するDJ。<br>東京を拠点に數寄屋・HIBACHI・WAVESを主宰し、2026年にレコードショップ「三輪社」を共同創設。</p>
+    <a href="about.html" class="intro-link">ABOUT →</a>
   </div>
 
   <div class="section">
