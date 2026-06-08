@@ -95,7 +95,6 @@
 
     .track-item:first-child { border-top: 1px solid var(--border); }
 
-    /* ── Track side (left) ── */
     .track-num {
       font-size: 9px;
       color: var(--muted);
@@ -116,10 +115,27 @@
       margin-top: 6px;
     }
 
-    /* ── Poem side (right) ── */
-    .poem-side { display: flex; flex-direction: column; gap: 12px; }
+    /* ── Poem side ── */
+    .poem-side { display: flex; flex-direction: column; gap: 0; }
 
-    .poem-display {
+    .poem-entries {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 20px;
+    }
+
+    .poem-entry {
+      padding: 16px 0;
+      border-bottom: 1px dashed var(--border);
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .poem-entry:first-child { border-top: 1px dashed var(--border); }
+
+    .poem-text {
+      flex: 1;
       font-size: 14px;
       line-height: 2;
       white-space: pre-wrap;
@@ -127,13 +143,7 @@
       letter-spacing: 0.01em;
     }
 
-    .poem-btns {
-      display: flex;
-      gap: 12px;
-    }
-
-    .poem-edit,
-    .poem-delete {
+    .poem-delete-entry {
       font-family: 'Inter', sans-serif;
       font-size: 9px;
       letter-spacing: 0.12em;
@@ -141,13 +151,16 @@
       background: none;
       border: none;
       cursor: pointer;
-      padding: 0;
-      transition: color 0.15s;
+      padding: 4px 0;
+      transition: color 0.15s, opacity 0.15s;
+      flex-shrink: 0;
+      opacity: 0;
     }
 
-    .poem-edit:hover  { color: var(--text); }
-    .poem-delete:hover { color: #c0392b; }
+    .poem-entry:hover .poem-delete-entry { opacity: 1; }
+    .poem-delete-entry:hover { color: #c0392b; }
 
+    /* ── Write area ── */
     .poem-write {
       display: flex;
       gap: 12px;
@@ -238,10 +251,6 @@
     <span class="page-label">PRIVATE</span>
   </header>
 
-  <div class="hero">
-    <div class="hero-eyebrow">PRIVATE</div>
-    <div class="hero-title">—</div>
-  </div>
 
   <div class="section">
     <div class="section-label">TRACKS</div>
@@ -254,13 +263,7 @@
           <div class="track-meta">—</div>
         </div>
         <div class="poem-side">
-          <div class="poem-actions" style="display:none;">
-            <div class="poem-display"></div>
-            <div class="poem-btns">
-              <button class="poem-edit">編集</button>
-              <button class="poem-delete">消す</button>
-            </div>
-          </div>
+          <div class="poem-entries"></div>
           <div class="poem-write">
             <textarea class="poem-textarea" placeholder="ことば"></textarea>
             <button class="poem-submit">送る</button>
@@ -292,8 +295,8 @@
 <canvas id="overlay" style="position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:999;"></canvas>
 
 <script type="module">
-  import { initializeApp }    from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
-  import { getFirestore, doc, setDoc, deleteDoc, onSnapshot, serverTimestamp }
+  import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
+  import { getFirestore, collection, doc, addDoc, deleteDoc, query, orderBy, onSnapshot, serverTimestamp }
     from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
 
   const firebaseConfig = {
@@ -309,41 +312,50 @@
   const db  = getFirestore(app);
 
   document.querySelectorAll('.track-item').forEach(item => {
-    const id      = item.dataset.id;
-    const actions = item.querySelector('.poem-actions');
-    const display = item.querySelector('.poem-display');
-    const editBtn = item.querySelector('.poem-edit');
-    const delBtn  = item.querySelector('.poem-delete');
-    const textarea = item.querySelector('.poem-textarea');
-    const btn     = item.querySelector('.poem-submit');
+    const id          = item.dataset.id;
+    const entriesList = item.querySelector('.poem-entries');
+    const textarea    = item.querySelector('.poem-textarea');
+    const btn         = item.querySelector('.poem-submit');
+    const entriesRef  = collection(db, 'poems', id, 'entries');
 
-    onSnapshot(doc(db, 'poems', id), snap => {
-      const text = snap.exists() ? snap.data().text : '';
-      display.textContent = text || '';
-      actions.style.display = text ? 'flex' : 'none';
-    });
-
-    editBtn.addEventListener('click', () => {
-      textarea.value = display.textContent;
-      textarea.style.height = '100px';
-      textarea.focus();
-    });
-
-    delBtn.addEventListener('click', async () => {
-      if (!confirm('消していい？')) return;
-      await deleteDoc(doc(db, 'poems', id));
+    onSnapshot(query(entriesRef, orderBy('createdAt', 'asc')), snapshot => {
+      entriesList.innerHTML = '';
+      snapshot.forEach(snap => {
+        entriesList.appendChild(createEntry(id, snap.id, snap.data().text));
+      });
     });
 
     btn.addEventListener('click', async () => {
       const text = textarea.value.trim();
       if (!text) return;
       btn.textContent = '...';
-      await setDoc(doc(db, 'poems', id), { text, updatedAt: serverTimestamp() });
+      await addDoc(entriesRef, { text, createdAt: serverTimestamp() });
       textarea.value = '';
       textarea.style.height = '32px';
       btn.textContent = '送る';
     });
   });
+
+  function createEntry(trackId, entryId, text) {
+    const wrap = document.createElement('div');
+    wrap.className = 'poem-entry';
+
+    const textEl = document.createElement('div');
+    textEl.className = 'poem-text';
+    textEl.textContent = text;
+
+    const del = document.createElement('button');
+    del.className = 'poem-delete-entry';
+    del.textContent = '消す';
+    del.addEventListener('click', async () => {
+      if (!confirm('消していい？')) return;
+      await deleteDoc(doc(db, 'poems', trackId, 'entries', entryId));
+    });
+
+    wrap.appendChild(textEl);
+    wrap.appendChild(del);
+    return wrap;
+  }
 </script>
 
 <script>
