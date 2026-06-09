@@ -692,9 +692,9 @@
     });
   }
 
-  // ── 交換日記 ──
+  // ── 書き置き（既存データそのまま） ──
   setupSection({
-    colRef:       ['diary'],
+    colRef:       ['poems', 'track_01', 'entries'],
     draftKey:     'draft_diary',
     entriesList:  document.getElementById('diary-entries'),
     pageControls: document.getElementById('diary-page-controls'),
@@ -707,7 +707,7 @@
   document.querySelectorAll('.track-item').forEach(item => {
     const id = item.dataset.id;
     setupSection({
-      colRef:       ['poems', id, 'entries'],
+      colRef:       ['words', id, 'entries'],
       draftKey:     `draft_${id}`,
       entriesList:  item.querySelector('.entry-list'),
       pageControls: item.querySelector('.page-controls'),
