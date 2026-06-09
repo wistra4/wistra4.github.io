@@ -47,24 +47,46 @@
       color: var(--muted);
     }
 
-    .hero {
+    /* ── Author bar ── */
+    .author-bar {
       border-top: 1px solid var(--border);
-      padding: 80px 56px 64px;
+      border-bottom: 1px solid var(--border);
+      padding: 12px 56px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
     }
 
-    .hero-eyebrow {
+    .author-bar-label {
+      font-size: 9px;
+      letter-spacing: 0.15em;
+      color: var(--muted);
+    }
+
+    .author-choices { display: flex; gap: 6px; }
+
+    .author-btn {
+      font-family: 'Inter', sans-serif;
       font-size: 9px;
       font-weight: 500;
-      letter-spacing: 0.3em;
-      color: var(--accent);
-      margin-bottom: 20px;
+      letter-spacing: 0.15em;
+      padding: 4px 12px;
+      border: 1px solid var(--border);
+      background: transparent;
+      cursor: pointer;
+      color: var(--muted);
+      transition: all 0.15s;
     }
 
-    .hero-title {
-      font-size: clamp(40px, 7vw, 80px);
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      line-height: 1;
+    .author-btn.active {
+      background: var(--text);
+      color: #fff;
+      border-color: var(--text);
+    }
+
+    .author-btn:hover:not(.active) {
+      border-color: #bbb;
+      color: var(--text);
     }
 
     /* ── Section ── */
@@ -118,13 +140,10 @@
     /* ── Poem side ── */
     .poem-side { display: flex; flex-direction: column; gap: 0; }
 
-    .poem-entries {
-      display: flex;
-      flex-direction: column;
-      margin-bottom: 20px;
-    }
+    /* ── Entry list ── */
+    .entry-list { display: flex; flex-direction: column; margin-top: 16px; }
 
-    .poem-entry {
+    .entry-item {
       padding: 16px 0;
       border-bottom: 1px dashed var(--border);
       display: flex;
@@ -132,10 +151,20 @@
       gap: 16px;
     }
 
-    .poem-entry:first-child { border-top: 1px dashed var(--border); }
+    .entry-item:first-child { border-top: 1px dashed var(--border); }
 
-    .poem-text {
-      flex: 1;
+    .entry-body { flex: 1; }
+
+    .entry-meta {
+      font-size: 9px;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      margin-bottom: 6px;
+    }
+
+    .entry-author-name { color: var(--accent); }
+
+    .entry-text {
       font-size: 14px;
       line-height: 2;
       white-space: pre-wrap;
@@ -143,40 +172,15 @@
       letter-spacing: 0.01em;
     }
 
-    .poem-date {
-      font-size: 9px;
-      color: var(--muted);
-      letter-spacing: 0.1em;
-      margin-top: 4px;
-    }
-
-    .poem-delete-entry {
-      font-family: 'Inter', sans-serif;
-      font-size: 9px;
-      letter-spacing: 0.12em;
-      color: var(--muted);
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 4px 0;
-      transition: color 0.15s, opacity 0.15s;
-      flex-shrink: 0;
-      opacity: 0;
-    }
-
-    .poem-entry:hover .poem-delete-entry,
-    .poem-entry:hover .poem-edit-entry { opacity: 1; }
-    .poem-delete-entry:hover { color: #c0392b; }
-    .poem-edit-entry:hover { color: var(--text); }
-
-    .poem-entry-btns {
+    .entry-btns {
       display: flex;
       flex-direction: column;
       gap: 6px;
       flex-shrink: 0;
     }
 
-    .poem-edit-entry {
+    .entry-edit-btn,
+    .entry-del-btn {
       font-family: 'Inter', sans-serif;
       font-size: 9px;
       letter-spacing: 0.12em;
@@ -189,16 +193,23 @@
       opacity: 0;
     }
 
-    .poem-inline-edit {
+    .entry-item:hover .entry-edit-btn,
+    .entry-item:hover .entry-del-btn { opacity: 1; }
+
+    .entry-edit-btn:hover { color: var(--text); }
+    .entry-del-btn:hover  { color: #c0392b; }
+
+    /* ── Inline edit ── */
+    .entry-inline-edit {
       display: none;
       flex-direction: column;
       gap: 8px;
       margin-top: 8px;
     }
 
-    .poem-inline-edit.open { display: flex; }
+    .entry-inline-edit.open { display: flex; }
 
-    .poem-inline-textarea {
+    .entry-inline-textarea {
       font-family: 'Inter', sans-serif;
       font-size: 13px;
       line-height: 1.8;
@@ -213,10 +224,10 @@
       border-radius: 2px;
     }
 
-    .poem-inline-btns { display: flex; gap: 10px; }
+    .entry-inline-btns { display: flex; gap: 10px; }
 
-    .poem-save-entry,
-    .poem-cancel-entry {
+    .entry-save-btn,
+    .entry-cancel-btn {
       font-family: 'Inter', sans-serif;
       font-size: 9px;
       letter-spacing: 0.12em;
@@ -228,26 +239,17 @@
       transition: all 0.15s;
     }
 
-    .poem-save-entry:hover { border-color: var(--accent); color: var(--accent); }
+    .entry-save-btn:hover { border-color: var(--accent); color: var(--accent); }
 
     /* ── Pagination ── */
-    .pagination-controls {
+    .page-controls {
       display: flex;
       align-items: center;
-      gap: 12px;
-      margin-top: 24px;
-      margin-bottom: 4px;
+      gap: 6px;
+      margin-top: 16px;
     }
 
-    .per-page-label {
-      font-size: 9px;
-      color: var(--muted);
-      letter-spacing: 0.1em;
-    }
-
-    .per-page-chips { display: flex; gap: 4px; }
-
-    .per-page-chip {
+    .page-chip {
       font-family: 'Inter', sans-serif;
       font-size: 9px;
       width: 24px;
@@ -259,43 +261,27 @@
       transition: all 0.15s;
     }
 
-    .per-page-chip.active {
+    .page-chip.active {
       background: var(--text);
       color: #fff;
       border-color: var(--text);
     }
 
-    .per-page-chip:hover:not(.active) {
-      border-color: #bbb;
-      color: var(--text);
-    }
+    .page-chip:hover:not(.active) { border-color: #bbb; color: var(--text); }
 
-    .page-nav {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      margin-top: 16px;
-    }
-
-    .page-prev, .page-next {
+    .page-arrow {
       font-family: 'Inter', sans-serif;
       font-size: 12px;
       background: none;
       border: none;
       cursor: pointer;
       color: var(--muted);
-      padding: 0;
+      padding: 0 2px;
       transition: color 0.15s;
     }
 
-    .page-prev:hover, .page-next:hover { color: var(--text); }
-    .page-prev:disabled, .page-next:disabled { opacity: 0.25; cursor: default; }
-
-    .page-info {
-      font-size: 9px;
-      color: var(--muted);
-      letter-spacing: 0.1em;
-    }
+    .page-arrow:hover { color: var(--text); }
+    .page-arrow:disabled { opacity: 0.25; cursor: default; }
 
     /* ── Write area ── */
     .draft-indicator {
@@ -310,13 +296,13 @@
 
     .draft-indicator.visible { opacity: 1; }
 
-    .poem-write {
+    .write-area {
       display: flex;
       gap: 12px;
       align-items: flex-end;
     }
 
-    .poem-textarea {
+    .write-textarea {
       flex: 1;
       font-family: 'Inter', sans-serif;
       font-size: 13px;
@@ -333,18 +319,18 @@
       overflow: hidden;
     }
 
-    .poem-textarea:focus {
+    .write-textarea:focus {
       height: 100px;
       border-bottom-color: var(--accent);
     }
 
-    .poem-textarea::placeholder {
+    .write-textarea::placeholder {
       color: var(--muted);
       letter-spacing: 0.06em;
       font-style: italic;
     }
 
-    .poem-submit {
+    .write-submit {
       font-family: 'Inter', sans-serif;
       font-size: 9px;
       font-weight: 500;
@@ -359,8 +345,11 @@
       flex-shrink: 0;
     }
 
-    .poem-submit:hover  { border-color: var(--accent); color: var(--accent); }
-    .poem-submit:active { background: var(--accent); border-color: var(--accent); color: #fff; }
+    .write-submit:hover  { border-color: var(--accent); color: var(--accent); }
+    .write-submit:active { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+    /* ── Diary section ── */
+    .diary-write-area { max-width: 600px; }
 
     /* ── Playlist embed ── */
     .music-embed { max-width: 660px; }
@@ -381,10 +370,10 @@
     .footer-back:hover { color: var(--text); }
 
     @media (max-width: 768px) {
-      header   { padding: 24px 20px; }
-      .hero    { padding: 48px 20px 40px; }
-      .section { padding: 40px 20px; }
-      footer   { padding: 20px; }
+      header      { padding: 24px 20px; }
+      .author-bar { padding: 12px 20px; }
+      .section    { padding: 40px 20px; }
+      footer      { padding: 20px; }
 
       .track-item {
         grid-template-columns: 1fr;
@@ -400,7 +389,29 @@
     <span class="page-label">PRIVATE</span>
   </header>
 
+  <div class="author-bar">
+    <span class="author-bar-label">あなたは？</span>
+    <div class="author-choices">
+      <button class="author-btn" data-author="keisuke">keisuke</button>
+      <button class="author-btn" data-author="なみ">なみ</button>
+    </div>
+  </div>
 
+  <!-- 交換日記 -->
+  <div class="section">
+    <div class="section-label">交換日記</div>
+    <div class="diary-write-area">
+      <div class="draft-indicator" id="diary-draft-indicator">下書き保存済み</div>
+      <div class="write-area">
+        <textarea class="write-textarea" id="diary-textarea" placeholder="ことば"></textarea>
+        <button class="write-submit" id="diary-submit">送る</button>
+      </div>
+    </div>
+    <div class="entry-list" id="diary-entries"></div>
+    <div class="page-controls" id="diary-page-controls"></div>
+  </div>
+
+  <!-- TRACKS -->
   <div class="section">
     <div class="section-label">TRACKS</div>
     <div class="track-list">
@@ -413,32 +424,19 @@
         </div>
         <div class="poem-side">
           <div class="draft-indicator">下書き保存済み</div>
-          <div class="poem-write">
-            <textarea class="poem-textarea" placeholder="ことば"></textarea>
-            <button class="poem-submit">送る</button>
+          <div class="write-area">
+            <textarea class="write-textarea" placeholder="ことば"></textarea>
+            <button class="write-submit">送る</button>
           </div>
-          <div class="pagination-controls">
-            <span class="per-page-label">表示</span>
-            <div class="per-page-chips">
-              <button class="per-page-chip" data-n="1">1</button>
-              <button class="per-page-chip" data-n="2">2</button>
-              <button class="per-page-chip active" data-n="3">3</button>
-              <button class="per-page-chip" data-n="4">4</button>
-              <button class="per-page-chip" data-n="5">5</button>
-            </div>
-          </div>
-          <div class="poem-entries"></div>
-          <div class="page-nav">
-            <button class="page-prev">←</button>
-            <span class="page-info"></span>
-            <button class="page-next">→</button>
-          </div>
+          <div class="entry-list"></div>
+          <div class="page-controls"></div>
         </div>
       </div>
 
     </div>
   </div>
 
+  <!-- PLAYLIST -->
   <div class="section">
     <div class="section-label">PLAYLIST</div>
     <div class="music-embed">
@@ -476,57 +474,181 @@
   const app = initializeApp(firebaseConfig);
   const db  = getFirestore(app);
 
-  document.querySelectorAll('.track-item').forEach(item => {
-    const id          = item.dataset.id;
-    const entriesList = item.querySelector('.poem-entries');
-    const textarea    = item.querySelector('.poem-textarea');
-    const btn         = item.querySelector('.poem-submit');
-    const indicator   = item.querySelector('.draft-indicator');
-    const prevBtn     = item.querySelector('.page-prev');
-    const nextBtn     = item.querySelector('.page-next');
-    const pageInfo    = item.querySelector('.page-info');
-    const chips       = item.querySelectorAll('.per-page-chip');
-    const entriesRef  = collection(db, 'poems', id, 'entries');
-    const draftKey    = `draft_${id}`;
-    const perPageKey  = `perPage_${id}`;
+  // ── 著者選択 ──
+  let currentAuthor = localStorage.getItem('author') || '';
+  const authorBtns = document.querySelectorAll('.author-btn');
 
+  function updateAuthorUI() {
+    authorBtns.forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.author === currentAuthor);
+    });
+  }
+
+  authorBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      currentAuthor = btn.dataset.author;
+      localStorage.setItem('author', currentAuthor);
+      updateAuthorUI();
+    });
+  });
+
+  updateAuthorUI();
+
+  // ── エントリー描画ユーティリティ ──
+  const PER_PAGE = 3;
+
+  function formatDate(ts) {
+    if (!ts) return '';
+    const d = ts.toDate();
+    const y = d.getFullYear();
+    const m = String(d.getMonth() + 1).padStart(2, '0');
+    const day = String(d.getDate()).padStart(2, '0');
+    const h   = String(d.getHours()).padStart(2, '0');
+    const min = String(d.getMinutes()).padStart(2, '0');
+    return `${y}.${m}.${day}  ${h}:${min}`;
+  }
+
+  function createEntryEl(docRef, data, onUpdate) {
+    const { text, author, createdAt } = data;
+    const wrap = document.createElement('div');
+    wrap.className = 'entry-item';
+
+    const body = document.createElement('div');
+    body.className = 'entry-body';
+
+    const meta = document.createElement('div');
+    meta.className = 'entry-meta';
+    if (author) {
+      const nameSpan = document.createElement('span');
+      nameSpan.className = 'entry-author-name';
+      nameSpan.textContent = author;
+      meta.appendChild(nameSpan);
+      meta.appendChild(document.createTextNode('  ·  ' + formatDate(createdAt)));
+    } else {
+      meta.textContent = formatDate(createdAt);
+    }
+
+    const textEl = document.createElement('div');
+    textEl.className = 'entry-text';
+    textEl.textContent = text;
+
+    const inlineEdit = document.createElement('div');
+    inlineEdit.className = 'entry-inline-edit';
+
+    const inlineTA = document.createElement('textarea');
+    inlineTA.className = 'entry-inline-textarea';
+
+    const inlineBtns = document.createElement('div');
+    inlineBtns.className = 'entry-inline-btns';
+
+    const saveBtn = document.createElement('button');
+    saveBtn.className = 'entry-save-btn';
+    saveBtn.textContent = '保存';
+
+    const cancelBtn = document.createElement('button');
+    cancelBtn.className = 'entry-cancel-btn';
+    cancelBtn.textContent = 'キャンセル';
+
+    inlineBtns.appendChild(saveBtn);
+    inlineBtns.appendChild(cancelBtn);
+    inlineEdit.appendChild(inlineTA);
+    inlineEdit.appendChild(inlineBtns);
+
+    body.appendChild(meta);
+    body.appendChild(textEl);
+    body.appendChild(inlineEdit);
+
+    const btns = document.createElement('div');
+    btns.className = 'entry-btns';
+
+    const editBtn = document.createElement('button');
+    editBtn.className = 'entry-edit-btn';
+    editBtn.textContent = '編集';
+
+    const delBtn = document.createElement('button');
+    delBtn.className = 'entry-del-btn';
+    delBtn.textContent = '消す';
+
+    btns.appendChild(editBtn);
+    btns.appendChild(delBtn);
+
+    editBtn.addEventListener('click', () => {
+      inlineTA.value = textEl.textContent;
+      inlineEdit.classList.add('open');
+      textEl.style.display = 'none';
+      btns.style.display = 'none';
+      inlineTA.focus();
+    });
+
+    cancelBtn.addEventListener('click', () => {
+      inlineEdit.classList.remove('open');
+      textEl.style.display = '';
+      btns.style.display = '';
+    });
+
+    saveBtn.addEventListener('click', async () => {
+      const newText = inlineTA.value.trim();
+      if (!newText) return;
+      saveBtn.textContent = '...';
+      await updateDoc(docRef, { text: newText });
+      inlineEdit.classList.remove('open');
+      textEl.style.display = '';
+      btns.style.display = '';
+      saveBtn.textContent = '保存';
+    });
+
+    delBtn.addEventListener('click', async () => {
+      if (!confirm('消していい？')) return;
+      await deleteDoc(docRef);
+    });
+
+    wrap.appendChild(body);
+    wrap.appendChild(btns);
+    return wrap;
+  }
+
+  function setupSection({ colRef, draftKey, entriesList, pageControls, textarea, submitBtn, indicator }) {
     let allEntries = [];
     let currentPage = 1;
-    let perPage = parseInt(localStorage.getItem(perPageKey) || '3');
-
-    // per-page チップ初期化
-    chips.forEach(chip => {
-      if (parseInt(chip.dataset.n) === perPage) chip.classList.add('active');
-      else chip.classList.remove('active');
-      chip.addEventListener('click', () => {
-        chips.forEach(c => c.classList.remove('active'));
-        chip.classList.add('active');
-        perPage = parseInt(chip.dataset.n);
-        localStorage.setItem(perPageKey, perPage);
-        currentPage = 1;
-        renderPage();
-      });
-    });
 
     function renderPage() {
       entriesList.innerHTML = '';
       const total = allEntries.length;
-      const totalPages = Math.max(1, Math.ceil(total / perPage));
+      const totalPages = Math.max(1, Math.ceil(total / PER_PAGE));
       if (currentPage > totalPages) currentPage = totalPages;
-      const start = (currentPage - 1) * perPage;
-      allEntries.slice(start, start + perPage).forEach(e => {
-        entriesList.appendChild(createEntry(id, e.id, e.text, e.createdAt));
-      });
-      pageInfo.textContent = total > 0 ? `${currentPage} / ${totalPages}` : '';
-      prevBtn.disabled = currentPage <= 1;
-      nextBtn.disabled = currentPage >= totalPages;
-      prevBtn.style.display = totalPages <= 1 ? 'none' : '';
-      nextBtn.style.display = totalPages <= 1 ? 'none' : '';
-      pageInfo.style.display = totalPages <= 1 ? 'none' : '';
-    }
 
-    prevBtn.addEventListener('click', () => { currentPage--; renderPage(); });
-    nextBtn.addEventListener('click', () => { currentPage++; renderPage(); });
+      const start = (currentPage - 1) * PER_PAGE;
+      allEntries.slice(start, start + PER_PAGE).forEach(e => {
+        const docRef = doc(db, ...colRef, e.id);
+        entriesList.appendChild(createEntryEl(docRef, e, renderPage));
+      });
+
+      // page chips
+      pageControls.innerHTML = '';
+      if (totalPages > 1) {
+        const prevBtn = document.createElement('button');
+        prevBtn.className = 'page-arrow';
+        prevBtn.textContent = '←';
+        prevBtn.disabled = currentPage <= 1;
+        prevBtn.addEventListener('click', () => { currentPage--; renderPage(); });
+        pageControls.appendChild(prevBtn);
+
+        for (let p = 1; p <= totalPages; p++) {
+          const chip = document.createElement('button');
+          chip.className = 'page-chip' + (p === currentPage ? ' active' : '');
+          chip.textContent = p;
+          chip.addEventListener('click', () => { currentPage = p; renderPage(); });
+          pageControls.appendChild(chip);
+        }
+
+        const nextBtn = document.createElement('button');
+        nextBtn.className = 'page-arrow';
+        nextBtn.textContent = '→';
+        nextBtn.disabled = currentPage >= totalPages;
+        nextBtn.addEventListener('click', () => { currentPage++; renderPage(); });
+        pageControls.appendChild(nextBtn);
+      }
+    }
 
     // 下書き復元
     const saved = localStorage.getItem(draftKey);
@@ -536,7 +658,6 @@
       indicator.classList.add('visible');
     }
 
-    // 自動保存
     let saveTimer;
     textarea.addEventListener('input', () => {
       clearTimeout(saveTimer);
@@ -551,122 +672,50 @@
       }, 600);
     });
 
-    onSnapshot(query(entriesRef, orderBy('createdAt', 'desc')), snapshot => {
-      allEntries = snapshot.docs.map(snap => ({
-        id: snap.id, ...snap.data()
-      }));
+    const ref = collection(db, ...colRef);
+    onSnapshot(query(ref, orderBy('createdAt', 'desc')), snapshot => {
+      allEntries = snapshot.docs.map(s => ({ id: s.id, ...s.data() }));
       renderPage();
     });
 
-    btn.addEventListener('click', async () => {
+    submitBtn.addEventListener('click', async () => {
       const text = textarea.value.trim();
       if (!text) return;
-      btn.textContent = '...';
-      await addDoc(entriesRef, { text, createdAt: serverTimestamp() });
+      submitBtn.textContent = '...';
+      await addDoc(ref, { text, author: currentAuthor, createdAt: serverTimestamp() });
       textarea.value = '';
       textarea.style.height = '32px';
-      btn.textContent = '送る';
+      submitBtn.textContent = '送る';
       localStorage.removeItem(draftKey);
       indicator.classList.remove('visible');
       currentPage = 1;
     });
+  }
+
+  // ── 交換日記 ──
+  setupSection({
+    colRef:       ['diary'],
+    draftKey:     'draft_diary',
+    entriesList:  document.getElementById('diary-entries'),
+    pageControls: document.getElementById('diary-page-controls'),
+    textarea:     document.getElementById('diary-textarea'),
+    submitBtn:    document.getElementById('diary-submit'),
+    indicator:    document.getElementById('diary-draft-indicator'),
   });
 
-  function formatDate(ts) {
-    if (!ts) return '';
-    const d = ts.toDate();
-    const y = d.getFullYear();
-    const m = String(d.getMonth() + 1).padStart(2, '0');
-    const day = String(d.getDate()).padStart(2, '0');
-    const h = String(d.getHours()).padStart(2, '0');
-    const min = String(d.getMinutes()).padStart(2, '0');
-    return `${y}.${m}.${day}  ${h}:${min}`;
-  }
-
-  function createEntry(trackId, entryId, text, createdAt) {
-    const wrap = document.createElement('div');
-    wrap.className = 'poem-entry';
-
-    const textEl = document.createElement('div');
-    textEl.className = 'poem-text';
-    textEl.textContent = text;
-
-    const dateEl = document.createElement('div');
-    dateEl.className = 'poem-date';
-    dateEl.textContent = formatDate(createdAt);
-
-    const btns = document.createElement('div');
-    btns.className = 'poem-entry-btns';
-
-    const editBtn = document.createElement('button');
-    editBtn.className = 'poem-edit-entry';
-    editBtn.textContent = '編集';
-
-    const delBtn = document.createElement('button');
-    delBtn.className = 'poem-delete-entry';
-    delBtn.textContent = '消す';
-
-    btns.appendChild(editBtn);
-    btns.appendChild(delBtn);
-
-    const inlineEdit = document.createElement('div');
-    inlineEdit.className = 'poem-inline-edit';
-
-    const inlineTextarea = document.createElement('textarea');
-    inlineTextarea.className = 'poem-inline-textarea';
-
-    const inlineBtns = document.createElement('div');
-    inlineBtns.className = 'poem-inline-btns';
-
-    const saveBtn = document.createElement('button');
-    saveBtn.className = 'poem-save-entry';
-    saveBtn.textContent = '保存';
-
-    const cancelBtn = document.createElement('button');
-    cancelBtn.className = 'poem-cancel-entry';
-    cancelBtn.textContent = 'キャンセル';
-
-    inlineBtns.appendChild(saveBtn);
-    inlineBtns.appendChild(cancelBtn);
-    inlineEdit.appendChild(inlineTextarea);
-    inlineEdit.appendChild(inlineBtns);
-
-    editBtn.addEventListener('click', () => {
-      inlineTextarea.value = textEl.textContent;
-      inlineEdit.classList.add('open');
-      textEl.style.display = 'none';
-      btns.style.display = 'none';
-      inlineTextarea.focus();
+  // ── TRACKS ──
+  document.querySelectorAll('.track-item').forEach(item => {
+    const id = item.dataset.id;
+    setupSection({
+      colRef:       ['poems', id, 'entries'],
+      draftKey:     `draft_${id}`,
+      entriesList:  item.querySelector('.entry-list'),
+      pageControls: item.querySelector('.page-controls'),
+      textarea:     item.querySelector('.write-textarea'),
+      submitBtn:    item.querySelector('.write-submit'),
+      indicator:    item.querySelector('.draft-indicator'),
     });
-
-    cancelBtn.addEventListener('click', () => {
-      inlineEdit.classList.remove('open');
-      textEl.style.display = '';
-      btns.style.display = '';
-    });
-
-    saveBtn.addEventListener('click', async () => {
-      const newText = inlineTextarea.value.trim();
-      if (!newText) return;
-      saveBtn.textContent = '...';
-      await updateDoc(doc(db, 'poems', trackId, 'entries', entryId), { text: newText });
-      inlineEdit.classList.remove('open');
-      textEl.style.display = '';
-      btns.style.display = '';
-      saveBtn.textContent = '保存';
-    });
-
-    delBtn.addEventListener('click', async () => {
-      if (!confirm('消していい？')) return;
-      await deleteDoc(doc(db, 'poems', trackId, 'entries', entryId));
-    });
-
-    wrap.appendChild(textEl);
-    wrap.appendChild(dateEl);
-    wrap.appendChild(btns);
-    wrap.appendChild(inlineEdit);
-    return wrap;
-  }
+  });
 </script>
 
 <script>
