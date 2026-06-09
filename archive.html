@@ -106,16 +106,294 @@
     /* ── Track items ── */
     .track-list { display: flex; flex-direction: column; }
 
-    .track-item {
+    /* ── TRACKS + ことば 横並び ── */
+    .tracks-words-section {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 56px;
-      border-bottom: 1px solid var(--border);
-      padding: 36px 0;
       align-items: start;
     }
 
+    .tracks-words-section.nami .tracks-col { order: 2; }
+    .tracks-words-section.nami .words-col  { order: 1; }
+
+    .track-item {
+      position: relative;
+      border-bottom: 1px solid var(--border);
+      padding: 24px 0;
+      cursor: pointer;
+      transition: opacity 0.15s;
+    }
+
     .track-item:first-child { border-top: 1px solid var(--border); }
+
+    .track-item:not(.active) { opacity: 0.45; }
+    .track-item:not(.active):hover { opacity: 0.7; }
+
+    .track-item .entry-del-btn {
+      position: absolute;
+      top: 24px;
+      right: 0;
+      opacity: 0;
+    }
+    .track-item:hover .entry-del-btn { opacity: 1; }
+
+    .track-add-btn {
+      font-family: 'Inter', sans-serif;
+      font-size: 18px;
+      color: var(--muted);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 12px 0;
+      display: block;
+      transition: color 0.15s;
+      line-height: 1;
+    }
+    .track-add-btn:hover { color: var(--text); }
+
+    .track-editable {
+      outline: none;
+      border-bottom: 1px dashed transparent;
+      transition: border-color 0.15s;
+    }
+    .track-editable:focus { border-color: var(--muted); }
+
+    .track-add-form {
+      display: none;
+      align-items: center;
+      gap: 8px;
+      margin-top: 4px;
+    }
+    .track-add-form.open { display: flex; }
+
+    .track-url-input {
+      flex: 1;
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid var(--border);
+      padding: 4px 0;
+      outline: none;
+      color: var(--text);
+    }
+    .track-url-input::placeholder { color: var(--muted); }
+
+    .track-url-submit {
+      font-family: 'Inter', sans-serif;
+      font-size: 9px;
+      letter-spacing: 0.1em;
+      background: none;
+      border: 1px solid var(--border);
+      padding: 4px 10px;
+      cursor: pointer;
+      color: var(--muted);
+      transition: all 0.15s;
+      white-space: nowrap;
+    }
+    .track-url-submit:hover { border-color: var(--text); color: var(--text); }
+
+    .track-title a {
+      color: inherit;
+      text-decoration: none;
+    }
+    .track-title a:hover { opacity: 0.6; }
+
+    /* ── col layout (TRACKS / ことば 共通) ── */
+    .col-view {
+      height: 166px;
+      margin-bottom: 20px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+      overflow-y: auto;
+    }
+    #sc-player:empty { height: 0; padding-bottom: 0; border-bottom: none; margin-bottom: 8px; }
+
+    .col-view iframe { display: block; width: 100%; height: 166px; }
+
+    .col-write {
+      margin-bottom: 16px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+      min-height: 180px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    .col-titles { display: flex; flex-direction: column; }
+
+    .title-item {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      cursor: pointer;
+      transition: opacity 0.15s;
+    }
+    .title-item:first-child { border-top: 1px solid var(--border); }
+    .title-item:not(.active) { opacity: 0.45; }
+    .title-item:not(.active):hover { opacity: 0.8; }
+    .title-item.active { opacity: 1; }
+    .title-item .entry-del-btn,
+    .title-item .entry-edit-btn { opacity: 0; }
+    .title-item:hover .entry-del-btn,
+    .title-item:hover .entry-edit-btn { opacity: 1; }
+
+    .title-item-name {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      flex: 1;
+    }
+    .title-item-meta {
+      font-size: 9px;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      flex-shrink: 0;
+      margin-left: 12px;
+    }
+    .title-item-track {
+      font-size: 9px;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      flex-shrink: 0;
+      opacity: 0.7;
+      margin-left: 8px;
+    }
+    .title-item.track-linked:not(.active),
+    .title-item.kotoba-linked:not(.active) { opacity: 0.8; }
+    .title-item.track-dim:not(.active),
+    .title-item.kotoba-dim:not(.active) { opacity: 0.18; }
+    .title-item.track-dim:not(.active):hover,
+    .title-item.kotoba-dim:not(.active):hover { opacity: 0.5; }
+
+    /* ことば ビュー */
+    #kotoba-view {
+      background: linear-gradient(150deg, #ede5d8 0%, #e3d8c6 100%);
+      border-radius: 4px;
+      padding: 18px 22px;
+      box-sizing: border-box;
+      box-shadow: 0 2px 14px rgba(80, 60, 40, 0.09);
+    }
+    #kotoba-view:empty { background: none; padding: 0; box-shadow: none; }
+
+    .track-kotoba-panel {
+      display: none;
+      gap: 8px;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 8px;
+    }
+    .track-kotoba-panel.visible { display: flex; }
+    .track-kotoba-select {
+      flex: 1;
+      font-size: 11px;
+      background: none;
+      border: none;
+      border-bottom: 1px solid var(--border);
+      color: var(--text);
+      cursor: pointer;
+      padding: 2px 0;
+    }
+    .track-kotoba-select:focus { outline: none; }
+
+    .kotoba-track-select {
+      font-size: 9px;
+      background: none;
+      border: none;
+      border-bottom: 1px solid var(--border);
+      color: var(--muted);
+      cursor: pointer;
+      padding: 2px 0;
+      letter-spacing: 0.05em;
+      text-align: right;
+      max-width: 100px;
+    }
+    .kotoba-track-select:focus { outline: none; }
+
+    .kotoba-view-title {
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+    .kotoba-view-text {
+      font-size: 13px;
+      line-height: 1.9;
+      white-space: pre-wrap;
+      word-break: break-all;
+    }
+
+    .words-write-area { flex-direction: column; gap: 6px; align-items: stretch; }
+    .words-btn-row { display: flex; gap: 8px; justify-content: flex-end; align-self: flex-end; }
+
+    .words-title-input {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid var(--border);
+      padding: 4px 0;
+      outline: none;
+      color: var(--muted);
+      width: 100%;
+    }
+    .words-title-input::placeholder { color: var(--border); }
+
+    .words-write-area .write-textarea {
+      width: 100%;
+      height: 100px;
+      box-sizing: border-box;
+    }
+    .words-write-area .write-textarea:focus {
+      height: 140px;
+    }
+
+    .entry-kotoba-title {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .track-open-link {
+      font-family: 'Inter', sans-serif;
+      font-size: 9px;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.1em;
+      transition: color 0.15s;
+      margin-top: 4px;
+      display: inline-block;
+    }
+    .track-open-link:hover { color: var(--text); }
+
+    .inline-track-form {
+      display: none;
+      align-items: center;
+      gap: 6px;
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px solid var(--border);
+    }
+    .inline-track-form.open { display: flex; }
+
+    .words-track-label {
+      font-size: 9px;
+      letter-spacing: 0.15em;
+      color: var(--muted);
+      margin-bottom: 12px;
+      min-height: 14px;
+    }
+
 
     .track-num {
       font-size: 9px;
@@ -289,10 +567,34 @@
     /* ── Pagination ── */
     .page-controls {
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
       gap: 6px;
       margin-top: 16px;
     }
+
+    /* 書き置き専用: 折りたたみ式ページネーション */
+    .diary-page-toggle {
+      font-family: 'Inter', sans-serif;
+      font-size: 9px;
+      letter-spacing: 0.15em;
+      color: var(--muted);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      margin-top: 16px;
+      display: none;
+      transition: color 0.15s;
+    }
+    .diary-page-toggle.visible { display: inline-block; }
+    .diary-page-toggle:hover { color: var(--text); }
+
+    .diary-page-controls-wrap {
+      display: none;
+      margin-top: 8px;
+    }
+    .diary-page-controls-wrap.open { display: block; }
 
     .page-chip {
       font-family: 'Inter', sans-serif;
@@ -424,6 +726,11 @@
         grid-template-columns: 1fr;
         gap: 24px;
       }
+
+      .tracks-words-section {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
     }
   </style>
 </head>
@@ -452,32 +759,53 @@
       </div>
     </div>
     <div class="entry-list chat-mode" id="diary-entries"></div>
-    <div class="page-controls" id="diary-page-controls"></div>
+    <button class="diary-page-toggle" id="diary-page-toggle">過去の書き置き ↓</button>
+    <div class="diary-page-controls-wrap" id="diary-page-controls-wrap">
+      <div class="page-controls" id="diary-page-controls"></div>
+    </div>
   </div>
 
-  <!-- TRACKS -->
-  <div class="section">
-    <div class="section-label">TRACKS</div>
-    <div class="track-list">
+  <!-- TRACKS + ことば 横並び -->
+  <div class="section tracks-words-section" id="tracks-words-wrap">
 
-      <div class="track-item" data-id="track_01">
-        <div class="track-side">
-          <div class="track-num">01</div>
-          <div class="track-title">—</div>
-          <div class="track-meta">—</div>
-        </div>
-        <div class="poem-side">
-          <div class="draft-indicator">下書き保存済み</div>
-          <div class="write-area">
-            <textarea class="write-textarea" placeholder="ことば"></textarea>
-            <button class="write-submit">送る</button>
-          </div>
-          <div class="entry-list"></div>
-          <div class="page-controls"></div>
+    <!-- TRACKS column -->
+    <div class="tracks-col">
+      <div class="section-label">TRACKS</div>
+      <div class="col-view" id="sc-player"></div>
+      <div class="track-kotoba-panel" id="track-kotoba-panel"></div>
+      <div class="col-write">
+        <button class="track-add-btn" id="track-add">+</button>
+        <div class="track-add-form" id="track-add-form">
+          <input class="track-url-input" id="track-url-input" type="url" placeholder="SoundCloud URL">
+          <select class="track-kotoba-select" id="track-add-word-select">
+            <option value="">新規のことば</option>
+          </select>
+          <button class="track-url-submit" id="track-url-submit">追加</button>
         </div>
       </div>
-
+      <div class="col-titles" id="track-list"></div>
     </div>
+
+    <!-- ことば column -->
+    <div class="words-col">
+      <div class="section-label">ことば</div>
+      <div class="col-view" id="kotoba-view"></div>
+      <div class="col-write">
+        <div class="words-write-area">
+          <input class="words-title-input" id="words-title-input" type="text" placeholder="題名">
+          <textarea class="write-textarea" id="words-textarea" placeholder="ことば"></textarea>
+          <select class="track-kotoba-select" id="words-track-select" style="margin-bottom:4px;">
+            <option value="">新規のトラック</option>
+          </select>
+          <div class="words-btn-row">
+            <button class="entry-edit-btn" id="words-cancel" style="display:none">キャンセル</button>
+            <button class="write-submit" id="words-submit">送る</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-titles" id="words-titles"></div>
+    </div>
+
   </div>
 
   <!-- PLAYLIST -->
@@ -522,10 +850,15 @@
   let currentAuthor = localStorage.getItem('author') || '';
   const authorBtns = document.querySelectorAll('.author-btn');
 
+  const tracksWordsWrap = document.getElementById('tracks-words-wrap');
+  let latestWordsSnap = null;
+
   function updateAuthorUI() {
     authorBtns.forEach(btn => {
       btn.classList.toggle('active', btn.dataset.author === currentAuthor);
     });
+    tracksWordsWrap.classList.toggle('nami', currentAuthor === 'なみ');
+    if (latestWordsSnap) renderWordsTitles(latestWordsSnap);
   }
 
   authorBtns.forEach(btn => {
@@ -553,7 +886,7 @@
   }
 
   function createEntryEl(docRef, data, onUpdate) {
-    const { text, author, createdAt } = data;
+    const { text, author, createdAt, title } = data;
     const wrap = document.createElement('div');
     wrap.className = 'entry-item';
     if (author) wrap.dataset.author = author;
@@ -571,6 +904,13 @@
       meta.appendChild(document.createTextNode('  ·  ' + formatDate(createdAt)));
     } else {
       meta.textContent = formatDate(createdAt);
+    }
+
+    if (title) {
+      const titleEl = document.createElement('div');
+      titleEl.className = 'entry-kotoba-title';
+      titleEl.textContent = title;
+      body.appendChild(titleEl);
     }
 
     const textEl = document.createElement('div');
@@ -652,18 +992,18 @@
     return wrap;
   }
 
-  function setupSection({ colRef, draftKey, entriesList, pageControls, textarea, submitBtn, indicator }) {
+  function setupSection({ colRef, draftKey, entriesList, pageControls, textarea, submitBtn, indicator, perPage = PER_PAGE, pageToggle = null, pageControlsWrap = null }) {
     let allEntries = [];
     let currentPage = 1;
 
     function renderPage() {
       entriesList.innerHTML = '';
       const total = allEntries.length;
-      const totalPages = Math.max(1, Math.ceil(total / PER_PAGE));
+      const totalPages = Math.max(1, Math.ceil(total / perPage));
       if (currentPage > totalPages) currentPage = totalPages;
 
-      const start = (currentPage - 1) * PER_PAGE;
-      allEntries.slice(start, start + PER_PAGE).forEach(e => {
+      const start = (currentPage - 1) * perPage;
+      allEntries.slice(start, start + perPage).forEach(e => {
         const docRef = doc(db, ...colRef, e.id);
         entriesList.appendChild(createEntryEl(docRef, e, renderPage));
       });
@@ -671,6 +1011,8 @@
       // page chips
       pageControls.innerHTML = '';
       if (totalPages > 1) {
+        if (pageToggle) pageToggle.classList.add('visible');
+
         const prevBtn = document.createElement('button');
         prevBtn.className = 'page-arrow';
         prevBtn.textContent = '←';
@@ -692,6 +1034,9 @@
         nextBtn.disabled = currentPage >= totalPages;
         nextBtn.addEventListener('click', () => { currentPage++; renderPage(); });
         pageControls.appendChild(nextBtn);
+      } else {
+        if (pageToggle) pageToggle.classList.remove('visible');
+        if (pageControlsWrap) pageControlsWrap.classList.remove('open');
       }
     }
 
@@ -738,28 +1083,484 @@
   }
 
   // ── 書き置き（既存データそのまま） ──
-  setupSection({
-    colRef:       ['poems', 'track_01', 'entries'],
-    draftKey:     'draft_diary',
-    entriesList:  document.getElementById('diary-entries'),
-    pageControls: document.getElementById('diary-page-controls'),
-    textarea:     document.getElementById('diary-textarea'),
-    submitBtn:    document.getElementById('diary-submit'),
-    indicator:    document.getElementById('diary-draft-indicator'),
+  const diaryToggle = document.getElementById('diary-page-toggle');
+  const diaryControlsWrap = document.getElementById('diary-page-controls-wrap');
+
+  diaryToggle.addEventListener('click', () => {
+    const isOpen = diaryControlsWrap.classList.toggle('open');
+    diaryToggle.textContent = isOpen ? '過去の書き置き ↑' : '過去の書き置き ↓';
   });
 
-  // ── TRACKS ──
-  document.querySelectorAll('.track-item').forEach(item => {
-    const id = item.dataset.id;
-    setupSection({
-      colRef:       ['words', id, 'entries'],
-      draftKey:     `draft_${id}`,
-      entriesList:  item.querySelector('.entry-list'),
-      pageControls: item.querySelector('.page-controls'),
-      textarea:     item.querySelector('.write-textarea'),
-      submitBtn:    item.querySelector('.write-submit'),
-      indicator:    item.querySelector('.draft-indicator'),
+  setupSection({
+    colRef:            ['poems', 'track_01', 'entries'],
+    draftKey:          'draft_diary',
+    entriesList:       document.getElementById('diary-entries'),
+    pageControls:      document.getElementById('diary-page-controls'),
+    textarea:          document.getElementById('diary-textarea'),
+    submitBtn:         document.getElementById('diary-submit'),
+    indicator:         document.getElementById('diary-draft-indicator'),
+    perPage:           1,
+    pageToggle:        diaryToggle,
+    pageControlsWrap:  diaryControlsWrap,
+  });
+
+  // ── TRACKS + ことば ──
+  let activeTrackId = null;
+  let activeKotobaId = null;
+  let editingDocRef = null;
+  const trackMap     = new Map(); // trackId → title
+  const trackWordMap = new Map(); // trackId → wordId (TRACK側の依存)
+  const trackDataMap = new Map(); // trackId → { title, url }
+
+  const trackListEl   = document.getElementById('track-list');
+  const wordsTitlesEl = document.getElementById('words-titles');
+  const kotobView     = document.getElementById('kotoba-view');
+  const scPlayer      = document.getElementById('sc-player');
+  const wordsTextarea = document.getElementById('words-textarea');
+  const wordsSubmit   = document.getElementById('words-submit');
+
+  // ── ことば ビュー更新 ──
+  function showKotoba(data, id, docRef, skipAutoLink = false) {
+    activeKotobaId = id;
+    wordsTitlesEl.querySelectorAll('.title-item').forEach(el => {
+      el.classList.toggle('active', el.dataset.id === id);
+      if (!skipAutoLink) el.classList.remove('track-linked', 'track-dim');
     });
+    // Auto-select linked TRACK first (selectTrack clears kotoba-linked, so we set it after)
+    if (!skipAutoLink && data.trackId) {
+      const td = trackDataMap.get(data.trackId);
+      if (td) selectTrack(data.trackId, td.title, td.url, true);
+    }
+    // Set kotoba-linked AFTER selectTrack (which clears it)
+    trackListEl.querySelectorAll('.title-item').forEach(el => {
+      el.classList.remove('kotoba-linked', 'kotoba-dim');
+      if (data.trackId) {
+        el.classList.add(el.dataset.id === data.trackId ? 'kotoba-linked' : 'kotoba-dim');
+      } else {
+        el.classList.add('kotoba-dim');
+      }
+    });
+
+    kotobView.innerHTML = '';
+
+    const header = document.createElement('div');
+    header.style.cssText = 'display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;';
+
+    const titleEl = document.createElement('div');
+    titleEl.className = 'kotoba-view-title';
+    titleEl.textContent = data.title || '';
+
+    const btnCol = document.createElement('div');
+    btnCol.style.cssText = 'display:flex;flex-direction:column;gap:4px;align-items:flex-end;';
+
+    const editBtn = document.createElement('button');
+    editBtn.className = 'entry-edit-btn';
+    editBtn.style.opacity = '1';
+    editBtn.textContent = '編集';
+
+    const delBtn = document.createElement('button');
+    delBtn.className = 'entry-del-btn';
+    delBtn.style.opacity = '1';
+    delBtn.textContent = '消す';
+
+    const trackSelect = document.createElement('select');
+    trackSelect.className = 'kotoba-track-select';
+    const noneOpt = document.createElement('option');
+    noneOpt.value = '';
+    noneOpt.textContent = '新規のトラック';
+    if (!data.trackId) noneOpt.selected = true;
+    trackSelect.appendChild(noneOpt);
+    trackMap.forEach((title, tid) => {
+      const opt = document.createElement('option');
+      opt.value = tid;
+      opt.textContent = title;
+      if (data.trackId === tid) opt.selected = true;
+      trackSelect.appendChild(opt);
+    });
+    trackSelect.addEventListener('change', async () => {
+      await updateDoc(docRef, { trackId: trackSelect.value || null });
+    });
+
+    btnCol.appendChild(editBtn);
+    btnCol.appendChild(delBtn);
+    btnCol.appendChild(trackSelect);
+    header.appendChild(titleEl);
+    header.appendChild(btnCol);
+    kotobView.appendChild(header);
+
+    const textEl = document.createElement('div');
+    textEl.className = 'kotoba-view-text';
+    textEl.textContent = data.text;
+    kotobView.appendChild(textEl);
+
+    editBtn.addEventListener('click', () => {
+      editingDocRef = docRef;
+      wordsTitleInput.value = data.title || '';
+      wordsTextarea.value = data.text;
+      wordsSubmit.textContent = '保存';
+      wordsCancelBtn.style.display = '';
+      wordsTextarea.focus();
+      wordsTextarea.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+
+    delBtn.addEventListener('click', async () => {
+      if (!confirm('消していい？')) return;
+      await deleteDoc(docRef);
+      kotobView.innerHTML = '';
+      activeKotobaId = null;
+    });
+  }
+
+  // ── ことばタイトルリスト描画 ──
+  function renderWordsTitles(snap) {
+    wordsTitlesEl.innerHTML = '';
+    snap.docs.forEach(d => {
+      const data = d.data();
+      const wRef = doc(db, 'words', d.id);
+      const item = document.createElement('div');
+      item.dataset.id = d.id;
+      item.dataset.trackId = data.trackId || '';
+      let cls = 'title-item';
+      if (d.id === activeKotobaId) cls += ' active';
+      if (activeTrackId) {
+        const linkedWordId = trackWordMap.get(activeTrackId) || null;
+        if (linkedWordId) cls += d.id === linkedWordId ? ' track-linked' : ' track-dim';
+      }
+      item.className = cls;
+
+      const name = document.createElement('div');
+      name.className = 'title-item-name';
+      name.textContent = data.title || data.text?.slice(0, 20) || '—';
+
+      const meta = document.createElement('div');
+      meta.className = 'title-item-meta';
+      meta.textContent = formatDate(data.createdAt);
+
+      const delBtn = document.createElement('button');
+      delBtn.className = 'entry-del-btn';
+      delBtn.textContent = '消す';
+      delBtn.addEventListener('click', async e => {
+        e.stopPropagation();
+        if (!confirm('消していい？')) return;
+        await deleteDoc(wRef);
+        if (activeKotobaId === d.id) { kotobView.innerHTML = ''; activeKotobaId = null; }
+      });
+
+      // けいすけ: トラックと紐づけ
+      if (!data.trackId && currentAuthor === 'けいすけ') {
+        const linkBtn = document.createElement('button');
+        linkBtn.className = 'entry-edit-btn';
+        linkBtn.textContent = 'トラックに';
+
+        const form = document.createElement('div');
+        form.className = 'inline-track-form';
+        form.innerHTML = `<input class="track-url-input" placeholder="SoundCloud URL"><button class="track-url-submit">作る</button>`;
+        const inp = form.querySelector('.track-url-input');
+        const sub = form.querySelector('.track-url-submit');
+
+        linkBtn.addEventListener('click', e => {
+          e.stopPropagation();
+          form.classList.toggle('open');
+          if (form.classList.contains('open')) inp.focus();
+        });
+        sub.addEventListener('click', async () => {
+          const url = inp.value.trim();
+          if (!url) return;
+          sub.textContent = '...';
+          try {
+            const res = await fetch(`https://soundcloud.com/oembed?url=${encodeURIComponent(url)}&format=json`);
+            const od  = await res.json();
+            const newRef = await addDoc(tracksRef, {
+              title: od.title || '—', meta: od.author_name || '—', url, createdAt: serverTimestamp()
+            });
+            await updateDoc(wRef, { trackId: newRef.id });
+            selectTrack(newRef.id, od.title || '—', url);
+          } catch { alert('URLを確認してください'); sub.textContent = '作る'; }
+        });
+        inp.addEventListener('keydown', e => { if (e.key === 'Enter') sub.click(); if (e.key === 'Escape') form.classList.remove('open'); });
+
+        item.appendChild(name);
+        item.appendChild(delBtn);
+        item.appendChild(linkBtn);
+        item.appendChild(form);
+        item.appendChild(meta);
+      } else {
+        item.appendChild(name);
+        item.appendChild(delBtn);
+        if (data.trackId && trackMap.has(data.trackId)) {
+          const trackLabel = document.createElement('div');
+          trackLabel.className = 'title-item-track';
+          trackLabel.textContent = trackMap.get(data.trackId);
+          item.appendChild(trackLabel);
+        }
+        item.appendChild(meta);
+      }
+
+      item.addEventListener('click', e => {
+        if (e.target === delBtn) return;
+        showKotoba(data, d.id, wRef);
+      });
+      wordsTitlesEl.appendChild(item);
+    });
+    // 最新を自動表示 (skipAutoLink=true で連鎖を防ぐ)
+    if (!activeKotobaId && snap.docs.length > 0) {
+      const first = snap.docs[0];
+      showKotoba(first.data(), first.id, doc(db, 'words', first.id), true);
+    }
+  }
+
+  // ── TRACK側 ことば紐づけパネル ──
+  const trackKotobaPanel = document.getElementById('track-kotoba-panel');
+
+  function refreshWordHighlights() {
+    if (!activeTrackId) return;
+    const linkedWordId = trackWordMap.get(activeTrackId) || null;
+    wordsTitlesEl.querySelectorAll('.title-item').forEach(el => {
+      el.classList.remove('track-linked', 'track-dim');
+      if (linkedWordId) {
+        el.classList.add(el.dataset.id === linkedWordId ? 'track-linked' : 'track-dim');
+      } else {
+        el.classList.add('track-dim');
+      }
+    });
+  }
+
+  function updateTrackKotobaPanel() {
+    trackKotobaPanel.innerHTML = '';
+    trackKotobaPanel.classList.remove('visible');
+    if (!activeTrackId || !latestWordsSnap || latestWordsSnap.docs.length === 0) return;
+
+    const currentLinkedWordId = trackWordMap.get(activeTrackId) || null;
+
+    const sel = document.createElement('select');
+    sel.className = 'track-kotoba-select';
+
+    const noneOpt = document.createElement('option');
+    noneOpt.value = '';
+    noneOpt.textContent = '新規のことば';
+    if (!currentLinkedWordId) noneOpt.selected = true;
+    sel.appendChild(noneOpt);
+
+    latestWordsSnap.docs.forEach(d => {
+      const opt = document.createElement('option');
+      opt.value = d.id;
+      opt.textContent = d.data().title || d.data().text?.slice(0, 20) || '—';
+      if (d.id === currentLinkedWordId) opt.selected = true;
+      sel.appendChild(opt);
+    });
+
+    sel.addEventListener('change', async () => {
+      await updateDoc(doc(db, 'tracks', activeTrackId), { wordId: sel.value || null });
+    });
+
+    trackKotobaPanel.appendChild(sel);
+    trackKotobaPanel.classList.add('visible');
+  }
+
+  // ── トラック選択 ──
+  function selectTrack(trackId, trackTitle, trackUrl, skipAutoLink = false) {
+    activeTrackId = trackId;
+    trackListEl.querySelectorAll('.title-item').forEach(el => {
+      el.classList.toggle('active', el.dataset.id === trackId);
+      el.classList.remove('kotoba-linked', 'kotoba-dim');
+    });
+    refreshWordHighlights();
+
+    scPlayer.innerHTML = '';
+    if (trackUrl) {
+      const iframe = document.createElement('iframe');
+      iframe.height = '166';
+      iframe.scrolling = 'no';
+      iframe.frameBorder = 'no';
+      iframe.allow = 'autoplay; encrypted-media';
+      iframe.src = `https://w.soundcloud.com/player/?url=${encodeURIComponent(trackUrl)}&color=%23000000&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false`;
+      scPlayer.appendChild(iframe);
+    }
+
+    updateTrackKotobaPanel();
+
+    if (!skipAutoLink) {
+      const linkedWordId = trackWordMap.get(trackId) || null;
+      if (linkedWordId && latestWordsSnap) {
+        const wordDoc = latestWordsSnap.docs.find(d => d.id === linkedWordId);
+        if (wordDoc) showKotoba(wordDoc.data(), wordDoc.id, doc(db, 'words', wordDoc.id), true);
+      }
+    }
+  }
+
+  // ── トラックリスト ──
+  const tracksRef = collection(db, 'tracks');
+  onSnapshot(query(tracksRef, orderBy('createdAt', 'asc')), snap => {
+    trackMap.clear();
+    trackWordMap.clear();
+    trackDataMap.clear();
+    snap.docs.forEach(d => {
+      const data = d.data();
+      trackMap.set(d.id, data.title || '—');
+      trackWordMap.set(d.id, data.wordId || null);
+      trackDataMap.set(d.id, { title: data.title || '—', url: data.url || null });
+    });
+    syncWordsTrackSelect();
+    syncTrackAddWordSelect();
+    refreshWordHighlights();
+    updateTrackKotobaPanel();
+    const prevActive = activeTrackId;
+    trackListEl.innerHTML = '';
+    snap.docs.forEach((d, i) => {
+      const data = d.data();
+      const item = document.createElement('div');
+      item.className = 'title-item' + (d.id === prevActive ? ' active' : '');
+      item.dataset.id = d.id;
+
+      const name = document.createElement('div');
+      name.className = 'title-item-name';
+      name.textContent = data.title || '—';
+
+      const meta = document.createElement('div');
+      meta.className = 'title-item-meta';
+      meta.textContent = data.meta || '';
+
+      const openLink = data.url ? document.createElement('a') : null;
+      if (openLink) {
+        openLink.href = data.url;
+        openLink.target = '_blank';
+        openLink.rel = 'noopener';
+        openLink.className = 'track-open-link';
+        openLink.textContent = '↗';
+        openLink.addEventListener('click', e => e.stopPropagation());
+      }
+
+      const delBtn = document.createElement('button');
+      delBtn.className = 'entry-del-btn';
+      delBtn.textContent = '消す';
+      delBtn.addEventListener('click', async e => {
+        e.stopPropagation();
+        if (!confirm('このトラックを消していい？')) return;
+        await deleteDoc(doc(db, 'tracks', d.id));
+      });
+
+      item.appendChild(name);
+      item.appendChild(delBtn);
+      if (openLink) item.appendChild(openLink);
+      item.appendChild(meta);
+      item.addEventListener('click', e => {
+        if (e.target === delBtn || e.target === openLink) return;
+        selectTrack(d.id, data.title, data.url);
+      });
+      trackListEl.appendChild(item);
+
+      if (!prevActive && i === 0) selectTrack(d.id, data.title, data.url);
+    });
+  });
+
+  // ── トラック追加フォーム ──
+  const trackAddBtn    = document.getElementById('track-add');
+  const trackAddForm   = document.getElementById('track-add-form');
+  const trackUrlInput  = document.getElementById('track-url-input');
+  const trackUrlSubmit = document.getElementById('track-url-submit');
+
+  trackAddBtn.addEventListener('click', () => {
+    trackAddForm.classList.toggle('open');
+    if (trackAddForm.classList.contains('open')) trackUrlInput.focus();
+  });
+
+  trackUrlSubmit.addEventListener('click', async () => {
+    const url = trackUrlInput.value.trim();
+    if (!url) return;
+    trackUrlSubmit.textContent = '...';
+    try {
+      const res  = await fetch(`https://soundcloud.com/oembed?url=${encodeURIComponent(url)}&format=json`);
+      const data = await res.json();
+      await addDoc(tracksRef, {
+        title: data.title || '—', meta: data.author_name || '—', url,
+        wordId: trackAddWordSelect.value || null, createdAt: serverTimestamp()
+      });
+      trackUrlInput.value = '';
+      trackAddWordSelect.value = '';
+      trackAddForm.classList.remove('open');
+    } catch { alert('URLを確認してください'); }
+    trackUrlSubmit.textContent = '追加';
+  });
+  trackUrlInput.addEventListener('keydown', e => {
+    if (e.key === 'Enter') trackUrlSubmit.click();
+    if (e.key === 'Escape') trackAddForm.classList.remove('open');
+  });
+
+  // ── ことば（全件） ──
+  onSnapshot(query(collection(db, 'words'), orderBy('createdAt', 'desc')), snap => {
+    latestWordsSnap = snap;
+    renderWordsTitles(snap);
+    updateTrackKotobaPanel();
+    syncTrackAddWordSelect();
+  });
+
+  const wordsTitleInput   = document.getElementById('words-title-input');
+  const wordsCancelBtn    = document.getElementById('words-cancel');
+  const wordsTrackSelect  = document.getElementById('words-track-select');
+
+  const trackAddWordSelect = document.getElementById('track-add-word-select');
+
+  function syncTrackAddWordSelect() {
+    const current = trackAddWordSelect.value;
+    trackAddWordSelect.innerHTML = '<option value="">新規のことば</option>';
+    if (!latestWordsSnap) return;
+    latestWordsSnap.docs.forEach(d => {
+      const opt = document.createElement('option');
+      opt.value = d.id;
+      opt.textContent = d.data().title || d.data().text?.slice(0, 20) || '—';
+      if (d.id === current) opt.selected = true;
+      trackAddWordSelect.appendChild(opt);
+    });
+  }
+
+  function syncWordsTrackSelect() {
+    const current = wordsTrackSelect.value;
+    wordsTrackSelect.innerHTML = '<option value="">新規のトラック</option>';
+    trackMap.forEach((title, id) => {
+      const opt = document.createElement('option');
+      opt.value = id;
+      opt.textContent = title;
+      if (id === current || (!current && id === (activeTrackId || ''))) opt.selected = true;
+      wordsTrackSelect.appendChild(opt);
+    });
+    if (activeTrackId && !current) wordsTrackSelect.value = activeTrackId;
+  }
+
+  function todayStr() {
+    const d = new Date();
+    const y = d.getFullYear();
+    const m = String(d.getMonth() + 1).padStart(2, '0');
+    const day = String(d.getDate()).padStart(2, '0');
+    return `${y}.${m}.${day}`;
+  }
+
+  function resetWriteArea() {
+    editingDocRef = null;
+    wordsTextarea.value = '';
+    wordsTextarea.style.height = '';
+    wordsTitleInput.value = todayStr();
+    wordsSubmit.textContent = '送る';
+    wordsCancelBtn.style.display = 'none';
+    wordsTrackSelect.value = activeTrackId || '';
+  }
+
+  wordsTitleInput.value = todayStr();
+
+  wordsCancelBtn.addEventListener('click', resetWriteArea);
+
+  wordsSubmit.addEventListener('click', async () => {
+    const text  = wordsTextarea.value.trim();
+    const title = wordsTitleInput.value.trim() || todayStr();
+    if (!text) return;
+    wordsSubmit.textContent = '...';
+    if (editingDocRef) {
+      await updateDoc(editingDocRef, { title, text });
+    } else {
+      await addDoc(collection(db, 'words'), {
+        title, text, author: currentAuthor, trackId: wordsTrackSelect.value || null, createdAt: serverTimestamp()
+      });
+    }
+    resetWriteArea();
   });
 </script>
 
