@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>静岡旅行 — oshaberi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #f2ede8;
+      --border: #ddd8d2;
+      --text: #1a1a1a;
+      --muted: #999;
+      --accent: #b89a80;
+    }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+    header {
+      padding: 36px 56px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo { font-size: 28px; font-weight: 700; letter-spacing: -0.02em; text-decoration: none; color: var(--text); }
+    .page-label { font-size: 9px; font-weight: 500; letter-spacing: 0.25em; color: var(--muted); }
+
+    .section { padding: 0 56px 48px; }
+    .section:first-of-type { padding-top: 0; }
+
+    .trip-header { padding: 48px 56px 40px; }
+    .trip-back {
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      text-decoration: none;
+      display: inline-block;
+      margin-bottom: 20px;
+      transition: color 0.2s;
+    }
+    .trip-back:hover { color: var(--text); }
+    .trip-title { font-size: 32px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 8px; }
+    .trip-subtitle { font-size: 12px; color: var(--muted); letter-spacing: 0.1em; margin-bottom: 6px; }
+    .trip-meta { font-size: 11px; color: var(--muted); letter-spacing: 0.08em; }
+    .trip-badge {
+      display: inline-block;
+      font-size: 9px;
+      letter-spacing: 0.1em;
+      padding: 2px 8px;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      margin-left: 10px;
+      vertical-align: middle;
+    }
+
+    .divider { border: none; border-top: 1px solid var(--border); margin: 0 56px 36px; }
+
+    .section-label {
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    /* info grid */
+    .info-grid {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      max-width: 520px;
+    }
+    .info-grid .label {
+      font-size: 10px;
+      color: var(--muted);
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border);
+    }
+    .info-grid .val {
+      font-size: 12px;
+      font-weight: 500;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border);
+    }
+    .info-grid .sub {
+      font-size: 10px;
+      color: var(--muted);
+      font-weight: 400;
+      display: block;
+      margin-top: 2px;
+    }
+
+    /* schedule */
+    .day-block { margin-bottom: 28px; }
+    .day-title {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      color: var(--accent);
+      margin-bottom: 10px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--border);
+    }
+    .schedule-row {
+      display: flex;
+      gap: 20px;
+      padding: 6px 0;
+      font-size: 12px;
+      border-bottom: 1px dashed var(--border);
+      align-items: flex-start;
+    }
+    .schedule-row:last-child { border-bottom: none; }
+    .schedule-time { min-width: 80px; color: var(--muted); font-size: 11px; padding-top: 1px; }
+    .schedule-item { flex: 1; }
+    .schedule-item strong { font-weight: 600; }
+    .schedule-note {
+      font-size: 10px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    /* spots */
+    .spot-list { max-width: 560px; }
+    .spot-row {
+      display: flex;
+      gap: 16px;
+      padding: 10px 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: 12px;
+      align-items: flex-start;
+    }
+    .spot-row:last-child { border-bottom: none; }
+    .spot-name { min-width: 140px; font-weight: 600; }
+    .spot-desc { flex: 1; color: #666; font-size: 11px; line-height: 1.7; }
+
+    /* budget */
+    .budget-table { width: 100%; max-width: 560px; border-collapse: collapse; margin-bottom: 16px; font-size: 12px; }
+    .budget-table th { font-size: 10px; font-weight: 500; letter-spacing: 0.08em; color: var(--muted); padding: 6px 0; border-bottom: 1px solid var(--border); text-align: left; }
+    .budget-table th:last-child { text-align: right; }
+    .budget-table td { padding: 7px 0; border-bottom: 1px dashed var(--border); vertical-align: top; }
+    .budget-table tr:last-child td { border-bottom: none; }
+    .budget-table .cat { font-size: 9px; color: var(--muted); letter-spacing: 0.1em; padding: 12px 0 4px; font-weight: 500; border-bottom: none; }
+    .budget-table .name { }
+    .budget-table .detail { color: var(--muted); font-size: 11px; }
+    .budget-table .amount { text-align: right; font-weight: 500; white-space: nowrap; padding-left: 16px; }
+    .budget-total {
+      background: var(--text);
+      color: #fff;
+      padding: 12px 16px;
+      max-width: 560px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      margin-top: 12px;
+    }
+    .budget-total .total-label { letter-spacing: 0.05em; }
+    .budget-total .total-amount { font-size: 16px; font-weight: 700; }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 24px 56px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 48px;
+    }
+    .footer-copy { font-size: 9px; color: var(--muted); letter-spacing: 0.1em; }
+    .footer-back { font-size: 9px; letter-spacing: 0.12em; text-decoration: none; color: var(--muted); transition: color 0.2s; }
+    .footer-back:hover { color: var(--text); }
+
+    @media (max-width: 768px) {
+      header { padding: 24px 20px; }
+      .trip-header { padding: 40px 20px 32px; }
+      .section { padding: 0 20px 40px; }
+      .divider { margin: 0 20px 32px; }
+      footer { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="../archive.html" class="logo">oshaberi</a>
+    <span class="page-label">PRIVATE</span>
+  </header>
+
+  <div class="trip-header">
+    <a class="trip-back" href="../archive.html">← たびのきろく</a>
+    <div class="trip-title">静岡旅行</div>
+    <div class="trip-subtitle">DJ at BELL STORE × 伊豆・温泉旅</div>
+    <div class="trip-meta">2026年5月19日（火）前泊 — 5月24日（日） · 静岡 / 伊豆</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- 概要 -->
+  <div class="section">
+    <div class="section-label">OVERVIEW</div>
+    <div class="info-grid">
+      <div class="label">日程</div>
+      <div class="val">5/19（火）前泊 — 5/24（日）</div>
+      <div class="label">DJ会場</div>
+      <div class="val">BELL STORE<span class="sub">静岡市葵区七間町</span></div>
+      <div class="label">移動手段</div>
+      <div class="val">レンタカー（ヤリスクロス）<span class="sub">日進レンタカー 日野営業所 / 受付番号 hino2026051308</span></div>
+      <div class="label">1泊目</div>
+      <div class="val">静鉄ホテルプレジオ 静岡駅南<span class="sub">予約番号 0YM1NMP1 / CI 15:00〜24:00 / CO 11:00</span></div>
+      <div class="label">2泊目</div>
+      <div class="val">大仁ホテル（伊豆の国市）<span class="sub">予約番号 A0031993305 / CI 18:30 / 夕食・朝食・飲み放題込</span></div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- スケジュール -->
+  <div class="section">
+    <div class="section-label">SCHEDULE</div>
+
+    <div class="day-block">
+      <div class="day-title">5/19（火） 前泊</div>
+      <div class="schedule-row">
+        <div class="schedule-time">夜</div>
+        <div class="schedule-item">
+          <strong>なみちゃん来訪</strong>（前泊）
+          <div class="schedule-note">翌朝一緒に日野へ出発</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="day-block">
+      <div class="day-title">5/22（金） 移動 & DJ Day</div>
+      <div class="schedule-row">
+        <div class="schedule-time">13:00</div>
+        <div class="schedule-item">日野（レンタカー営業所）着・出発</div>
+      </div>
+      <div class="schedule-row">
+        <div class="schedule-time">16:30〜17:00</div>
+        <div class="schedule-item">
+          <strong>さわやか</strong>でげんこつハンバーグ
+        </div>
+      </div>
+      <div class="schedule-row">
+        <div class="schedule-time">17:30</div>
+        <div class="schedule-item">静鉄ホテルプレジオ チェックイン</div>
+      </div>
+      <div class="schedule-row">
+        <div class="schedule-time">19:30〜</div>
+        <div class="schedule-item">
+          <strong>BELL STORE</strong> でDJ
+        </div>
+      </div>
+    </div>
+
+    <div class="day-block">
+      <div class="day-title">5/23（土） 観光 & 大仁へ</div>
+      <div class="schedule-row">
+        <div class="schedule-time">〜昼</div>
+        <div class="schedule-item">仮眠・回復</div>
+      </div>
+      <div class="schedule-row">
+        <div class="schedule-time">昼食</div>
+        <div class="schedule-item">
+          <strong>丁子屋（丸子）</strong>でとろろ汁・麦飯
+          <div class="schedule-note">創業400年の老舗。BELL STOREから車15分。</div>
+        </div>
+      </div>
+      <div class="schedule-row">
+        <div class="schedule-time">午後</div>
+        <div class="schedule-item"><strong>日本平</strong>（360度パノラマ）</div>
+      </div>
+      <div class="schedule-row">
+        <div class="schedule-time">夕方前</div>
+        <div class="schedule-item"><strong>三保の松原</strong>（富士山 × 海 × 松林 · 世界遺産）</div>
+      </div>
+      <div class="schedule-row">
+        <div class="schedule-time">16:30 出発</div>
+        <div class="schedule-item">
+          <strong>大仁ホテルへ</strong>（日本平から約1.5〜2時間）
+          <div class="schedule-note">チェックイン18:30予約済み。16:30には出発！</div>
+        </div>
+      </div>
+      <div class="schedule-row">
+        <div class="schedule-time">夜</div>
+        <div class="schedule-item">夕食 → そのまま就寝（露天風呂はまたいつか）</div>
+      </div>
+    </div>
+
+    <div class="day-block">
+      <div class="day-title">5/24（日） 帰路</div>
+      <div class="schedule-row">
+        <div class="schedule-time">〜11:30</div>
+        <div class="schedule-item">ホテルでゆっくり → チェックアウト・出発</div>
+      </div>
+      <div class="schedule-row">
+        <div class="schedule-time">12:00〜13:30</div>
+        <div class="schedule-item">
+          <strong>修善寺</strong>周辺散策
+        </div>
+      </div>
+      <div class="schedule-row">
+        <div class="schedule-time">14:45〜15:30</div>
+        <div class="schedule-item">
+          <strong>三島スカイウォーク</strong>でジップライン体験
+          <div class="schedule-note">御殿場へ向かう途中に発見。</div>
+        </div>
+      </div>
+      <div class="schedule-row">
+        <div class="schedule-time">17:00〜18:00</div>
+        <div class="schedule-item">
+          <strong>御殿場プレミアムアウトレット</strong>
+          <div class="schedule-note">時間が足りなかった。またゆっくり来たい。</div>
+        </div>
+      </div>
+      <div class="schedule-row">
+        <div class="schedule-time">夜</div>
+        <div class="schedule-item">都内着 · レンタカー返却 → <strong>阿佐ヶ谷</strong>で中華 → 就寝</div>
+      </div>
+    </div>
+    <div class="day-block">
+      <div class="day-title">5/25（月）</div>
+      <div class="schedule-row">
+        <div class="schedule-time">—</div>
+        <div class="schedule-item">解散</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- フォト -->
+  <div class="section">
+    <div class="section-label">PHOTO</div>
+    <a href="https://photos.app.goo.gl/7vNdQPkuieYnCPWy7" target="_blank" rel="noopener" style="font-size:12px; color:var(--text); text-decoration:none; border-bottom:1px solid var(--border); padding-bottom:12px; display:inline-flex; align-items:center; gap:10px;">
+      Google フォト アルバム
+      <span style="font-size:11px; color:var(--muted);">↗</span>
+    </a>
+  </div>
+
+  <hr class="divider">
+
+  <!-- グルメ -->
+  <div class="section">
+    <div class="section-label">FOOD</div>
+    <div class="spot-list">
+      <div class="spot-row">
+        <div class="spot-name">さわやか</div>
+        <div class="spot-desc">げんこつハンバーグ。静岡のソウルフード。土日は並ぶ覚悟で。開店前から行くのがベスト。</div>
+      </div>
+      <div class="spot-row">
+        <div class="spot-name">丁子屋（丸子）</div>
+        <div class="spot-desc">とろろ汁・麦飯。創業400年超の老舗。BELL STOREから車15〜20分。</div>
+      </div>
+      <div class="spot-row">
+        <div class="spot-name">青葉横丁</div>
+        <div class="spot-desc">静岡おでん。黒はんぺんが名物。会場から徒歩圏内。</div>
+      </div>
+      <div class="spot-row">
+        <div class="spot-name">由比漁港</div>
+        <div class="spot-desc">桜えびのかき揚げ丼。5月は生桜えびの旬。帰路にぴったり。</div>
+      </div>
+      <div class="spot-row">
+        <div class="spot-name">河岸の市（清水）</div>
+        <div class="spot-desc">まぐろ・海鮮全般。清水港直結の市場。</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- 観光 -->
+  <div class="section">
+    <div class="section-label">SPOTS</div>
+    <div class="spot-list">
+      <div class="spot-row">
+        <div class="spot-name">三保の松原</div>
+        <div class="spot-desc">世界遺産。富士山 × 海 × 松林。BELL STOREから車30〜40分。</div>
+      </div>
+      <div class="spot-row">
+        <div class="spot-name">日本平</div>
+        <div class="spot-desc">360度パノラマ。夕暮れがおすすめ。久能山東照宮へのロープウェイあり。</div>
+      </div>
+      <div class="spot-row">
+        <div class="spot-name">久能山東照宮</div>
+        <div class="spot-desc">日本最初の東照宮。日本平からロープウェイで直結。</div>
+      </div>
+      <div class="spot-row">
+        <div class="spot-name">修善寺</div>
+        <div class="spot-desc">大仁から車10分。風情ある温泉街と竹林。帰路の候補。</div>
+      </div>
+      <div class="spot-row">
+        <div class="spot-name">御殿場プレミアムアウトレット</div>
+        <div class="spot-desc">帰路に寄り道。富士山を背景にショッピング。</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- 予算 -->
+  <div class="section">
+    <div class="section-label">BUDGET · 1人あたり目安</div>
+    <table class="budget-table">
+      <tr><th>費目</th><th>内容</th><th class="amount">目安</th></tr>
+      <tr><td colspan="3" class="cat">── 交通費 ──</td></tr>
+      <tr>
+        <td class="name">レンタカー + CDW</td>
+        <td class="detail">ヤリスクロス・免責補償込</td>
+        <td class="amount">8,650円</td>
+      </tr>
+      <tr>
+        <td class="name">高速代</td>
+        <td class="detail">東京 ↔ 静岡（往復）</td>
+        <td class="amount">4,300円</td>
+      </tr>
+      <tr>
+        <td class="name">ガソリン</td>
+        <td class="detail">3日分概算（ハイブリッド）</td>
+        <td class="amount">1,750円</td>
+      </tr>
+      <tr>
+        <td class="name">駐車場</td>
+        <td class="detail">静岡市内・各所</td>
+        <td class="amount">2,000円</td>
+      </tr>
+      <tr><td colspan="3" class="cat">── 宿泊費 ──</td></tr>
+      <tr>
+        <td class="name">1泊目</td>
+        <td class="detail">静鉄ホテルプレジオ 静岡駅南（食事なし・決済済み）</td>
+        <td class="amount">4,600円</td>
+      </tr>
+      <tr>
+        <td class="name">2泊目</td>
+        <td class="detail">大仁ホテル（夕食・朝食・飲み放題込）</td>
+        <td class="amount">11,865円</td>
+      </tr>
+      <tr><td colspan="3" class="cat">── 食費 ──</td></tr>
+      <tr>
+        <td class="name">さわやか</td>
+        <td class="detail">げんこつハンバーグ</td>
+        <td class="amount">1,500〜2,000円</td>
+      </tr>
+      <tr>
+        <td class="name">丁子屋</td>
+        <td class="detail">とろろ汁・麦飯</td>
+        <td class="amount">1,500〜2,500円</td>
+      </tr>
+      <tr>
+        <td class="name">その他食事</td>
+        <td class="detail">DJ中・帰路ランチなど</td>
+        <td class="amount">3,000〜5,000円</td>
+      </tr>
+      <tr><td colspan="3" class="cat">── 観光・その他 ──</td></tr>
+      <tr>
+        <td class="name">観光入場料</td>
+        <td class="detail">ロープウェイ・東照宮など</td>
+        <td class="amount">1,000〜2,000円</td>
+      </tr>
+      <tr>
+        <td class="name">お土産</td>
+        <td class="detail">安倍川もち・お茶など</td>
+        <td class="amount">〜1,500円</td>
+      </tr>
+    </table>
+    <div class="budget-total">
+      <span class="total-label">1人あたり合計目安</span>
+      <span class="total-amount">40,000 〜 46,000円</span>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-copy">© 2026 wistra</div>
+    <a href="../archive.html" class="footer-back">← たびのきろく</a>
+  </footer>
+
+</body>
+</html>

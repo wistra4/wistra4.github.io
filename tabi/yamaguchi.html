@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>山口帰省 — oshaberi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #f2ede8;
+      --border: #ddd8d2;
+      --text: #1a1a1a;
+      --muted: #999;
+      --accent: #b89a80;
+    }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+    header {
+      padding: 36px 56px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo { font-size: 28px; font-weight: 700; letter-spacing: -0.02em; text-decoration: none; color: var(--text); }
+    .page-label { font-size: 9px; font-weight: 500; letter-spacing: 0.25em; color: var(--muted); }
+
+    .trip-header { padding: 48px 56px 40px; }
+    .trip-back {
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      text-decoration: none;
+      display: inline-block;
+      margin-bottom: 20px;
+      transition: color 0.2s;
+    }
+    .trip-back:hover { color: var(--text); }
+    .trip-title { font-size: 32px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 8px; }
+    .trip-subtitle { font-size: 12px; color: var(--muted); letter-spacing: 0.1em; margin-bottom: 6px; }
+    .trip-meta { font-size: 11px; color: var(--muted); letter-spacing: 0.08em; }
+    .tbd-badge {
+      display: inline-block;
+      font-size: 9px;
+      letter-spacing: 0.1em;
+      padding: 2px 8px;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      margin-left: 10px;
+      vertical-align: middle;
+    }
+
+    .divider { border: none; border-top: 1px solid var(--border); margin: 0 56px 36px; }
+
+    .section { padding: 0 56px 48px; }
+
+    .section-label {
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .notice {
+      font-size: 11px;
+      color: var(--muted);
+      border-left: 2px solid var(--border);
+      padding: 8px 14px;
+      margin-bottom: 20px;
+      line-height: 1.8;
+    }
+
+    /* info grid */
+    .info-grid {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      max-width: 520px;
+    }
+    .info-grid .label {
+      font-size: 10px;
+      color: var(--muted);
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border);
+    }
+    .info-grid .val {
+      font-size: 12px;
+      font-weight: 500;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border);
+    }
+    .info-grid .sub {
+      font-size: 10px;
+      color: var(--muted);
+      font-weight: 400;
+      display: block;
+      margin-top: 2px;
+    }
+    .tbd { font-size: 9px; color: var(--muted); border: 1px solid var(--border); padding: 1px 6px; margin-left: 6px; vertical-align: middle; }
+
+    /* transport comparison */
+    .transport-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      max-width: 560px;
+      margin-bottom: 8px;
+    }
+    .transport-card {
+      border: 1px solid var(--border);
+      padding: 16px;
+    }
+    .transport-type {
+      font-size: 9px;
+      letter-spacing: 0.15em;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    .transport-main { font-size: 13px; font-weight: 700; margin-bottom: 10px; }
+    .transport-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-size: 11px;
+      padding: 4px 0;
+      border-bottom: 1px dashed var(--border);
+    }
+    .transport-row:last-child { border-bottom: none; }
+    .transport-row .tkey { color: var(--muted); }
+    .transport-row .tval { font-weight: 500; }
+    .transport-note {
+      font-size: 10px;
+      color: var(--muted);
+      margin-top: 10px;
+      line-height: 1.6;
+    }
+
+    /* spots */
+    .spot-list { max-width: 560px; }
+    .spot-row {
+      display: flex;
+      gap: 16px;
+      padding: 10px 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: 12px;
+      align-items: flex-start;
+    }
+    .spot-row:last-child { border-bottom: none; }
+    .spot-name { min-width: 130px; font-weight: 600; }
+    .spot-desc { flex: 1; color: #666; font-size: 11px; line-height: 1.7; }
+
+    /* schedule */
+    .day-block { margin-bottom: 28px; }
+    .day-title {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      color: var(--accent);
+      margin-bottom: 10px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--border);
+    }
+    .schedule-row {
+      display: flex;
+      gap: 20px;
+      padding: 6px 0;
+      font-size: 12px;
+      border-bottom: 1px dashed var(--border);
+      align-items: flex-start;
+    }
+    .schedule-row:last-child { border-bottom: none; }
+    .schedule-time { min-width: 80px; color: var(--muted); font-size: 11px; padding-top: 1px; }
+    .schedule-item { flex: 1; }
+    .schedule-item strong { font-weight: 600; }
+    .schedule-note { font-size: 10px; color: var(--muted); margin-top: 2px; }
+
+    /* todo */
+    .todo-list { list-style: none; padding: 0; max-width: 420px; }
+    .todo-list li {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      padding: 7px 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: 12px;
+    }
+    .todo-list li:last-child { border-bottom: none; }
+    .todo-list li::before { content: "·"; color: var(--accent); font-size: 16px; line-height: 1.2; min-width: 10px; }
+    .todo-note { font-size: 10px; color: var(--muted); margin-top: 2px; }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 24px 56px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 48px;
+    }
+    .footer-copy { font-size: 9px; color: var(--muted); letter-spacing: 0.1em; }
+    .footer-back { font-size: 9px; letter-spacing: 0.12em; text-decoration: none; color: var(--muted); transition: color 0.2s; }
+    .footer-back:hover { color: var(--text); }
+
+    @media (max-width: 768px) {
+      header { padding: 24px 20px; }
+      .trip-header { padding: 40px 20px 32px; }
+      .section { padding: 0 20px 40px; }
+      .divider { margin: 0 20px 32px; }
+      .transport-grid { grid-template-columns: 1fr; }
+      footer { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="../archive.html" class="logo">oshaberi</a>
+    <span class="page-label">PRIVATE</span>
+  </header>
+
+  <div class="trip-header">
+    <a class="trip-back" href="../archive.html">← たびのきろく</a>
+    <div class="trip-title">山口帰省<span class="tbd-badge">計画中</span></div>
+    <div class="trip-subtitle">なみちゃんと山口</div>
+    <div class="trip-meta">2026年8月21日（金）— 8月24日（月）（仮） · 3泊4日</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- 概要 -->
+  <div class="section">
+    <div class="section-label">OVERVIEW</div>
+    <div class="notice">日程・交通手段は三輪社の状況次第で変更可能性あり。確定したら更新予定。</div>
+    <div class="info-grid">
+      <div class="label">日程</div>
+      <div class="val">2026年8月21日（金）— 8月24日（月）<span class="tbd">仮</span><span class="sub">3泊4日</span></div>
+      <div class="label">行き先</div>
+      <div class="val">山口県下関市<span class="sub">豊浦町 川棚エリア</span></div>
+      <div class="label">メンバー</div>
+      <div class="val">ケイスケ + なみちゃん</div>
+      <div class="label">宿泊</div>
+      <div class="val">実家<span class="sub">3泊 / 費用なし</span></div>
+      <div class="label">交通手段</div>
+      <div class="val">新幹線 or 飛行機<span class="tbd">検討中</span></div>
+      <div class="label">現地移動</div>
+      <div class="val">親の車で送迎</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- 交通手段 -->
+  <div class="section">
+    <div class="section-label">TRANSPORT OPTIONS</div>
+    <div class="transport-grid">
+
+      <div class="transport-card">
+        <div class="transport-type">OPTION A</div>
+        <div class="transport-main">新幹線（のぞみ）</div>
+        <div class="transport-row"><span class="tkey">ルート</span><span class="tval">東京 → 新下関</span></div>
+        <div class="transport-row"><span class="tkey">所要時間</span><span class="tval">約 4.5 時間</span></div>
+        <div class="transport-row"><span class="tkey">運賃（片道）</span><span class="tval">約 22,000 円 / 人</span></div>
+        <div class="transport-row"><span class="tkey">現地まで</span><span class="tval">新下関から車 35〜40 分</span></div>
+        <div class="transport-note">変更・払戻しやすい。荷物多くても楽。早割なし。EX予約での割引あり。</div>
+      </div>
+
+      <div class="transport-card">
+        <div class="transport-type">OPTION B</div>
+        <div class="transport-main">飛行機（ANA/JAL）</div>
+        <div class="transport-row"><span class="tkey">ルート</span><span class="tval">羽田 → 北九州空港</span></div>
+        <div class="transport-row"><span class="tkey">飛行時間</span><span class="tval">約 1 時間 35 分</span></div>
+        <div class="transport-row"><span class="tval" style="font-size:10px; color:var(--muted);">（空港移動込み 4〜5 時間）</span></div>
+        <div class="transport-row"><span class="tkey">運賃（片道）</span><span class="tval">早割 7,000〜15,000 円 / 人</span></div>
+        <div class="transport-row"><span class="tkey">現地まで</span><span class="tval">北九州から車 40〜50 分</span></div>
+        <div class="transport-note">早割（28〜45日前）で圧倒的に安い。夏休み期間は埋まりやすいので早めに。</div>
+      </div>
+
+    </div>
+    <div style="font-size: 10px; color: var(--muted); margin-top: 4px;">* 運賃は目安。実際の予約時に要確認。2人分で新幹線 88,000〜 / 飛行機早割 28,000〜（往復）。</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- スケジュール -->
+  <div class="section">
+    <div class="section-label">SCHEDULE（案）</div>
+
+    <div class="day-block">
+      <div class="day-title">DAY 1 · 8/21（金） 移動日</div>
+      <div class="schedule-row">
+        <div class="schedule-time">朝</div>
+        <div class="schedule-item">
+          <strong>羽田 出発</strong>
+        </div>
+      </div>
+      <div class="schedule-row">
+        <div class="schedule-time">昼前</div>
+        <div class="schedule-item"><strong>北九州空港 着</strong> → 親の車で実家方面へ</div>
+      </div>
+      <div class="schedule-row">
+        <div class="schedule-time">昼（途中）</div>
+        <div class="schedule-item">
+          <strong><a href="https://tabelog.com/yamaguchi/A3502/A350201/35005335/" target="_blank" rel="noopener" style="color:inherit;">PAPUA CLUB ↗</a></strong> or <strong><a href="https://tabelog.com/yamaguchi/A3502/A350201/35006547/" target="_blank" rel="noopener" style="color:inherit;">ラーメン楽 ↗</a></strong>
+          <div class="schedule-note">どちらも福江エリア・実家への道中</div>
+        </div>
+      </div>
+      <div class="schedule-row">
+        <div class="schedule-time">昼過ぎ</div>
+        <div class="schedule-item">実家 到着</div>
+      </div>
+      <div class="schedule-row">
+        <div class="schedule-time">夕方</div>
+        <div class="schedule-item">
+          <strong><a href="https://yamaguchi-tourism.jp/spot/detail_10706.html" target="_blank" rel="noopener" style="color:inherit;">福徳稲荷神社 ↗</a></strong>
+          <div class="schedule-note">赤い千本鳥居 × 青い海。実家から車5分ほど。無料。</div>
+        </div>
+      </div>
+      <div class="schedule-row">
+        <div class="schedule-time">夕方〜夜</div>
+        <div class="schedule-item">
+          <strong><a href="https://www.kgh-otafuku.co.jp/spa/" target="_blank" rel="noopener" style="color:inherit;">大浴場 山頭火（川棚グランドホテルお多福）↗</a></strong>
+          <div class="schedule-note">川棚温泉。露天風呂・サウナ。〜23:00。土日祝1,150円。実家から車すぐ。</div>
+        </div>
+      </div>
+      <div class="schedule-row">
+        <div class="schedule-time">夜</div>
+        <div class="schedule-item">
+          実家で夕食
+          <div class="schedule-note">なみちゃんがよければ地元の友人も一緒に</div>
+        </div>
+      </div>
+      <div class="schedule-row">
+        <div class="schedule-time">夜（食後）</div>
+        <div class="schedule-item">
+          川棚神社 / 川棚小学校 / 花火
+          <div class="schedule-note">気分で</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="day-block">
+      <div class="day-title">DAY 2 · 8/22（土） 下関</div>
+      <div class="schedule-row">
+        <div class="schedule-time">朝</div>
+        <div class="schedule-item">海沿い散歩</div>
+      </div>
+      <div class="schedule-row">
+        <div class="schedule-time">午前</div>
+        <div class="schedule-item">
+          <strong><a href="https://www.kanmonnote.com/sigco-cafeandcraft/" target="_blank" rel="noopener" style="color:inherit;">sig co. CAFE&CRAFT ↗</a></strong>
+          <div class="schedule-note">海辺の小さな港町のカフェ。10:00〜sunset。</div>
+        </div>
+      </div>
+      <div class="schedule-row">
+        <div class="schedule-time">昼</div>
+        <div class="schedule-item">
+          <strong>唐戸市場</strong>で海鮮
+          <div class="schedule-note">土曜は「活きいき馬関街」開催。その場で食べ歩き。</div>
+        </div>
+      </div>
+      <div class="schedule-row">
+        <div class="schedule-time">午後</div>
+        <div class="schedule-item"><strong>壇ノ浦</strong></div>
+      </div>
+      <div class="schedule-row">
+        <div class="schedule-time">午後</div>
+        <div class="schedule-item">
+          <strong>門司</strong>（門司港レトロエリア）
+          <div class="schedule-note">関門橋を渡って福岡県側へ。レトロな建物・海峡ビュー。</div>
+        </div>
+      </div>
+      <div class="schedule-row">
+        <div class="schedule-time">夕方〜夜</div>
+        <div class="schedule-item">
+          <strong><a href="https://yonezawakoji.com/matsudayusaku-akasen/" target="_blank" rel="noopener" style="color:inherit;">松田優作 生誕の地 ↗</a></strong>（今浦町）
+          <div class="schedule-note">生家は焼失済みで標識なし。まんなおしと同じ今浦町エリア。雰囲気を感じに。</div>
+        </div>
+      </div>
+      <div class="schedule-row">
+        <div class="schedule-time">夜</div>
+        <div class="schedule-item">
+          <strong>まんなおし</strong>でろばた焼き
+          <div class="schedule-note">下関駅近く · 要予約確認 · 親に迎えを頼む</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="day-block">
+      <div class="day-title">DAY 3 · 8/23（日） 海・自然</div>
+      <div class="schedule-row">
+        <div class="schedule-time">朝〜午前</div>
+        <div class="schedule-item">
+          <strong><a href="https://yamaguchi-tourism.jp/spot/detail_11030.html" target="_blank" rel="noopener" style="color:inherit;">角島大橋 / 角島 ↗</a></strong>
+          <div class="schedule-note">実家から車50〜60分。朝イチで行くと混雑少ない。コバルトブルーの海。</div>
+        </div>
+      </div>
+      <div class="schedule-row">
+        <div class="schedule-time">午後</div>
+        <div class="schedule-item">
+          <strong><a href="https://nanavi.jp/sightseeing/motonosumiinarijinja/" target="_blank" rel="noopener" style="color:inherit;">元乃隅神社 ↗</a></strong>
+          <div class="schedule-note">角島から車30〜40分。123基の赤鳥居が海に向かって並ぶ絶景。⚠ 2026年3〜11月の日曜は参拝一部休止あり・要確認。</div>
+        </div>
+      </div>
+      <div class="schedule-row">
+        <div class="schedule-time">午後</div>
+        <div class="schedule-item">
+          <strong><a href="https://yamaguchi-tourism.jp/spot/detail_13388.html" target="_blank" rel="noopener" style="color:inherit;">千畳敷高原 ↗</a></strong>
+          <div class="schedule-note">元乃隅神社のすぐ近く。標高333mから日本海のパノラマ。デイキャンプ無料・予約不要。</div>
+        </div>
+      </div>
+      <div class="schedule-row">
+        <div class="schedule-time">午後〜夕方</div>
+        <div class="schedule-item">
+          <strong><a href="https://akiyoshidai-park.com/" target="_blank" rel="noopener" style="color:inherit;">秋吉台 / 秋芳洞 ↗</a></strong>
+          <div class="schedule-note">千畳敷高原から車1時間。カルスト台地 + 日本屈指の大鍾乳洞。洞内は年間17℃で夏でも涼しい。</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="day-block">
+      <div class="day-title">DAY 4 · 8/24（月） 福岡</div>
+      <div class="schedule-row">
+        <div class="schedule-time">午前</div>
+        <div class="schedule-item">実家 出発 → 福岡へ</div>
+      </div>
+      <div class="schedule-row">
+        <div class="schedule-time">昼〜夕方</div>
+        <div class="schedule-item">
+          <strong>博多 / 天神</strong>散策
+          <div class="schedule-note">屋台・中洲・大濠公園など</div>
+        </div>
+      </div>
+      <div class="schedule-row">
+        <div class="schedule-time">夜</div>
+        <div class="schedule-item">福岡空港 → 羽田 → 帰宅</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- 観光 -->
+  <div class="section">
+    <div class="section-label">SPOTS</div>
+    <div class="spot-list">
+      <div class="spot-row">
+        <div class="spot-name">唐戸市場</div>
+        <div class="spot-desc">ふく・海鮮の直売市場。土日は「活きいき馬関街」でその場で食べられる。朝〜昼がベスト。</div>
+      </div>
+      <div class="spot-row">
+        <div class="spot-name">赤間神宮</div>
+        <div class="spot-desc">壇ノ浦を見下ろす朱色の神社。平家一門の御廟所。関門海峡沿いに徒歩。</div>
+      </div>
+      <div class="spot-row">
+        <div class="spot-name">巌流島（船島）</div>
+        <div class="spot-desc">宮本武蔵と佐々木小次郎の決闘の地。唐戸か彦島からフェリー10分。人の少ない島を散歩するだけで雰囲気がある。</div>
+      </div>
+      <div class="spot-row">
+        <div class="spot-name">角島大橋</div>
+        <div class="spot-desc">CM・ドラマロケ地として有名。エメラルドグリーンの海と長い橋のコントラストが絶景。実家から車50〜60分。</div>
+      </div>
+      <div class="spot-row">
+        <div class="spot-name">川棚温泉</div>
+        <div class="spot-desc">実家のすぐ近く。グランドホテルの日帰り温泉が使いやすい。ゆっくりしたい日に。</div>
+      </div>
+      <div class="spot-row">
+        <div class="spot-name">秋吉台 / 秋芳洞</div>
+        <div class="spot-desc">日本最大のカルスト台地。鍾乳洞（秋芳洞）は夏でも涼しい。実家から車1時間。</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- グルメ -->
+  <div class="section">
+    <div class="section-label">FOOD</div>
+    <div class="spot-list">
+      <div class="spot-row">
+        <div class="spot-name"><a href="https://tabelog.com/yamaguchi/A3502/A350201/35000488/" target="_blank" rel="noopener" style="color:inherit;">まんなおし ↗</a></div>
+        <div class="spot-desc">居酒屋・ろばた焼き。下関駅西口から徒歩7分。ふく・海老・くじらなど新鮮な魚介が揃う。居酒屋百名店2024選出。4,000〜5,000円 / 人。</div>
+      </div>
+      <div class="spot-row">
+        <div class="spot-name">ふく（フグ）料理</div>
+        <div class="spot-desc">下関はふくの本場。刺身・鍋・唐揚げ。唐戸市場で気軽に食べるのもあり。</div>
+      </div>
+      <div class="spot-row">
+        <div class="spot-name">瓦そば</div>
+        <div class="spot-desc">下関・長府発祥。熱した瓦の上に抹茶そばと具をのせて食べる郷土料理。川棚温泉エリアに本場あり（元祖 たかせ）。</div>
+      </div>
+      <div class="spot-row">
+        <div class="spot-name">うに・あわび</div>
+        <div class="spot-desc">角島方面に行くなら帰りに道の駅「北浦街道豊北」に寄るとうに丼が食べられる。</div>
+      </div>
+      <div class="spot-row">
+        <div class="spot-name">ちゃんぽん / 皿うどん</div>
+        <div class="spot-desc">長崎が有名だが九州・山口でも定番。実家近くの食堂でも食べられる。</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- TODO -->
+  <div class="section">
+    <div class="section-label">TODO</div>
+    <ul class="todo-list">
+      <li>
+        三輪社の状況確認 → 日程確定
+        <div class="todo-note">確定したら保護者にも連絡</div>
+      </li>
+      <li>
+        なみちゃんに日程共有・調整
+      </li>
+      <li>
+        交通手段を決める（飛行機なら早割 45日前 = 7/7 まで）
+        <div class="todo-note">夏休み期間は混むため早めに</div>
+      </li>
+      <li>
+        往路・復路 予約
+      </li>
+      <li>
+        やりたいこと・行きたいところをなみちゃんとすり合わせ
+      </li>
+      <li>
+        持ち物リスト作成
+        <div class="todo-note">夏・帰省・実家泊なので最低限</div>
+      </li>
+    </ul>
+  </div>
+
+  <footer>
+    <div class="footer-copy">© 2026 wistra</div>
+    <a href="../archive.html" class="footer-back">← たびのきろく</a>
+  </footer>
+
+</body>
+</html>

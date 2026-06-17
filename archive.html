@@ -703,6 +703,26 @@
     .music-embed { max-width: 660px; }
     .music-embed iframe { width: 100%; display: block; border: none; }
 
+    /* ── たびのきろく ── */
+    .tabi-list { display: flex; flex-direction: column; gap: 1px; }
+    .tabi-card {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+      text-decoration: none;
+      color: var(--text);
+      transition: opacity 0.15s;
+    }
+    .tabi-card:first-child { border-top: 1px solid var(--border); }
+    .tabi-card:hover { opacity: 0.6; }
+    .tabi-card-left { display: flex; flex-direction: column; gap: 3px; }
+    .tabi-card-title { font-size: 13px; font-weight: 500; }
+    .tabi-card-meta { font-size: 10px; color: var(--muted); letter-spacing: 0.08em; }
+    .tabi-card-right { display: flex; align-items: center; }
+    .tabi-arrow { font-size: 11px; color: var(--muted); }
+
     /* ── Footer ── */
     footer {
       border-top: 1px solid var(--border);
@@ -820,6 +840,31 @@
         sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
         src="https://embed.music.apple.com/jp/playlist/walk-dance-sleep/pl.u-EdAVA33IaXqe4ly">
       </iframe>
+    </div>
+  </div>
+
+  <!-- たびのきろく -->
+  <div class="section">
+    <div class="section-label">たびのきろく</div>
+    <div class="tabi-list">
+      <a class="tabi-card" href="tabi/yamaguchi.html">
+        <div class="tabi-card-left">
+          <div class="tabi-card-title">山口帰省</div>
+          <div class="tabi-card-meta">2026.08.21 — 08.24（仮） · 山口 / 下関 · 予定</div>
+        </div>
+        <div class="tabi-card-right">
+          <span class="tabi-arrow">→</span>
+        </div>
+      </a>
+      <a class="tabi-card" href="tabi/shizuoka.html">
+        <div class="tabi-card-left">
+          <div class="tabi-card-title">静岡旅行</div>
+          <div class="tabi-card-meta">2026.05.19 — 05.24 · 静岡 / 伊豆 · 済</div>
+        </div>
+        <div class="tabi-card-right">
+          <span class="tabi-arrow">→</span>
+        </div>
+      </a>
     </div>
   </div>
 
