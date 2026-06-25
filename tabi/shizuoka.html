@@ -184,45 +184,6 @@
   </style>
 </head>
 
-<script>
-(function() {
-  const KEY = 'wx_auth';
-  const PIN = '990901';
-  if (localStorage.getItem(KEY) === '1') return;
-  document.documentElement.style.visibility = 'hidden';
-  const overlay = document.createElement('div');
-  overlay.style.cssText = 'position:fixed;inset:0;background:#000;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:99999;font-family:Inter,sans-serif;visibility:visible;';
-  overlay.innerHTML = `
-    <div style="text-align:center;">
-      <div style="color:#fff;font-size:11px;letter-spacing:.15em;text-transform:uppercase;margin-bottom:32px;opacity:.4;">private</div>
-      <input id="wx_pin" type="password" inputmode="numeric" maxlength="8"
-        style="background:transparent;border:none;border-bottom:1px solid rgba(255,255,255,.3);color:#fff;font-size:24px;letter-spacing:.3em;text-align:center;width:160px;outline:none;padding:4px 0;"
-        autofocus>
-      <div id="wx_err" style="color:rgba(255,80,80,.8);font-size:11px;margin-top:16px;opacity:0;transition:opacity .2s;">incorrect</div>
-    </div>`;
-  document.body.appendChild(overlay);
-  const input = overlay.querySelector('#wx_pin');
-  const err   = overlay.querySelector('#wx_err');
-  input.addEventListener('keydown', e => {
-    if (e.key === 'Enter') check();
-  });
-  input.addEventListener('input', () => {
-    err.style.opacity = '0';
-    if (input.value.length === PIN.length) check();
-  });
-  function check() {
-    if (input.value === PIN) {
-      localStorage.setItem(KEY, '1');
-      overlay.remove();
-      document.documentElement.style.visibility = '';
-    } else {
-      err.style.opacity = '1';
-      input.value = '';
-      input.focus();
-    }
-  }
-})();
-</script>
 
 <body>
 
