@@ -1,0 +1,393 @@
+<title>なみちゃん誕生日</title>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;700&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #faf8f4;
+  --surface: #f3ede3;
+  --border: #e0d5c5;
+  --text: #2a2218;
+  --dim: #8a7a6a;
+  --accent: #c85c7a;
+  --accent-soft: #f0d4dc;
+  --gold: #b8924a;
+  --tbd: #e8ddd0;
+  --tbd-border: #c8b89a;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #1e1a16;
+    --surface: #2a2420;
+    --border: #3a342c;
+    --text: #ede5d8;
+    --dim: #8a7a6a;
+    --accent: #e07090;
+    --accent-soft: #3d2028;
+    --gold: #c8a055;
+    --tbd: #2e2820;
+    --tbd-border: #5a4e3a;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #1e1a16;
+  --surface: #2a2420;
+  --border: #3a342c;
+  --text: #ede5d8;
+  --dim: #8a7a6a;
+  --accent: #e07090;
+  --accent-soft: #3d2028;
+  --gold: #c8a055;
+  --tbd: #2e2820;
+  --tbd-border: #5a4e3a;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: 300;
+  min-height: 100%;
+  padding: 48px 20px 64px;
+}
+
+.wrap {
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+/* Header */
+.hero {
+  text-align: center;
+  margin-bottom: 52px;
+}
+.hero-eyebrow {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 11px;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 14px;
+}
+.hero-title {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--text);
+  margin-bottom: 10px;
+  text-wrap: balance;
+}
+.hero-date {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 14px;
+  color: var(--dim);
+  letter-spacing: .08em;
+}
+.hero-rule {
+  width: 48px;
+  height: 1px;
+  background: var(--accent);
+  margin: 20px auto 0;
+  opacity: .5;
+}
+
+/* Day section */
+.day {
+  margin-bottom: 44px;
+}
+.day-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.day-label-text {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .12em;
+  color: var(--dim);
+  white-space: nowrap;
+}
+.day-label-line {
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* Timeline */
+.timeline {
+  position: relative;
+  padding-left: 80px;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 56px;
+  top: 10px;
+  bottom: 10px;
+  width: 1px;
+  background: var(--border);
+}
+
+.event {
+  position: relative;
+  margin-bottom: 28px;
+}
+.event:last-child { margin-bottom: 0; }
+
+.event::before {
+  content: '';
+  position: absolute;
+  left: -28px;
+  top: 10px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--border);
+  border: 1.5px solid var(--border);
+}
+.event.highlight::before {
+  background: var(--accent);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+.event.special::before {
+  background: var(--gold);
+  border-color: var(--gold);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--gold) 18%, transparent);
+  width: 9px;
+  height: 9px;
+  left: -29px;
+  top: 9px;
+}
+
+.event-time {
+  position: absolute;
+  left: -80px;
+  top: 7px;
+  width: 50px;
+  text-align: right;
+  font-family: 'Shippori Mincho', serif;
+  font-size: 12px;
+  color: var(--dim);
+  letter-spacing: .03em;
+}
+.event.highlight .event-time { color: var(--accent); font-weight: 600; }
+.event.special .event-time { color: var(--gold); font-weight: 600; }
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px 16px;
+}
+.card.highlight {
+  border-color: color-mix(in srgb, var(--accent) 40%, transparent);
+  background: var(--accent-soft);
+}
+.card.special {
+  border-color: color-mix(in srgb, var(--gold) 40%, transparent);
+  background: color-mix(in srgb, var(--gold) 8%, var(--surface));
+  position: relative;
+  overflow: hidden;
+}
+.card.special::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, color-mix(in srgb, var(--gold) 12%, transparent) 0%, transparent 60%);
+  pointer-events: none;
+}
+.card.tbd {
+  border: 1.5px dashed var(--tbd-border);
+  background: var(--tbd);
+}
+
+.card-title {
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 4px;
+  line-height: 1.5;
+}
+.card-sub {
+  font-size: 11.5px;
+  color: var(--dim);
+  line-height: 1.6;
+}
+.card-tag {
+  display: inline-block;
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 20px;
+  margin-top: 7px;
+  letter-spacing: .06em;
+}
+.tag-cake {
+  background: color-mix(in srgb, var(--accent) 15%, transparent);
+  color: var(--accent);
+}
+.tag-tbd {
+  background: color-mix(in srgb, var(--tbd-border) 30%, transparent);
+  color: var(--dim);
+}
+
+.midnight-moment {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--gold);
+  margin-bottom: 4px;
+}
+
+.option-list {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.option-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 11.5px;
+  color: var(--dim);
+  line-height: 1.5;
+}
+.option-bullet {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  border: 1px solid var(--tbd-border);
+  border-radius: 50%;
+  margin-top: 1px;
+}
+
+.footer {
+  text-align: center;
+  margin-top: 48px;
+  font-family: 'Shippori Mincho', serif;
+  font-size: 12px;
+  color: var(--dim);
+  letter-spacing: .08em;
+}
+</style>
+
+<div class="wrap">
+
+  <header class="hero">
+    <div class="hero-eyebrow">Birthday Plan</div>
+    <h1 class="hero-title">なみちゃんの誕生日</h1>
+    <div class="hero-date">August 31 – September 1, 2026</div>
+    <div class="hero-rule"></div>
+  </header>
+
+  <section class="day">
+    <div class="day-label">
+      <span class="day-label-text">8月31日（月）前夜</span>
+      <div class="day-label-line"></div>
+    </div>
+    <div class="timeline">
+      <div class="event">
+        <div class="event-time">19:00</div>
+        <div class="card">
+          <div class="card-title">グラマシーニューヨーク</div>
+          <div class="card-sub">高島屋新宿店 — ケーキ受け取り</div>
+        </div>
+      </div>
+      <div class="event">
+        <div class="event-time">19:30</div>
+        <div class="card">
+          <div class="card-title">帰宅・パエリア仕込み開始</div>
+          <div class="card-sub">ケーキは冷蔵庫へ</div>
+        </div>
+      </div>
+      <div class="event">
+        <div class="event-time">〜20:45</div>
+        <div class="card">
+          <div class="card-title">パエリア完成</div>
+          <div class="card-sub">なみちゃん帰宅まで保温</div>
+        </div>
+      </div>
+      <div class="event">
+        <div class="event-time">22:00</div>
+        <div class="card">
+          <div class="card-title">なみちゃん帰宅</div>
+          <div class="card-sub">一緒にパエリアを食べる</div>
+        </div>
+      </div>
+      <div class="event special">
+        <div class="event-time">23:59</div>
+        <div class="card special">
+          <div class="midnight-moment">誕生日の瞬間</div>
+          <div class="card-sub">グラマシーニューヨークのケーキで乾杯</div>
+          <span class="card-tag tag-cake">🎂 ケーキ</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="day">
+    <div class="day-label">
+      <span class="day-label-text">9月1日（火）誕生日当日</span>
+      <div class="day-label-line"></div>
+    </div>
+    <div class="timeline">
+      <div class="event highlight">
+        <div class="event-time">13:00</div>
+        <div class="card highlight">
+          <div class="card-title">TERAKOYA — ランチ</div>
+          <div class="card-sub">武蔵小金井<br>お店からバースデーケーキも出る</div>
+          <span class="card-tag tag-cake">🎂 ケーキ</span>
+        </div>
+      </div>
+      <div class="event">
+        <div class="event-time">〜15:00</div>
+        <div class="card">
+          <div class="card-title">ランチ終了</div>
+          <div class="card-sub">武蔵小金井 出発</div>
+        </div>
+      </div>
+      <div class="event">
+        <div class="event-time">15:00</div>
+        <div class="card tbd">
+          <div class="card-title">午後の過ごし方</div>
+          <div class="option-list">
+            <div class="option-item">
+              <div class="option-bullet"></div>
+              <span>吉祥寺でカフェ・散歩（武蔵小金井から5分）</span>
+            </div>
+            <div class="option-item">
+              <div class="option-bullet"></div>
+              <span>阿佐ヶ谷の家に帰ってのんびり</span>
+            </div>
+            <div class="option-item">
+              <div class="option-bullet"></div>
+              <span>なみちゃんが行きたい場所に合わせる</span>
+            </div>
+          </div>
+          <span class="card-tag tag-tbd">未定</span>
+        </div>
+      </div>
+      <div class="event">
+        <div class="event-time">18:10</div>
+        <div class="card">
+          <div class="card-title">下井草へ出発</div>
+          <div class="card-sub">武蔵小金井 → 吉祥寺 → 荻窪 → 下井草（約45分）</div>
+        </div>
+      </div>
+      <div class="event">
+        <div class="event-time">19:00</div>
+        <div class="card">
+          <div class="card-title">仕事</div>
+          <div class="card-sub">下井草</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">Happy Birthday, Nami ✦</footer>
+
+</div>
