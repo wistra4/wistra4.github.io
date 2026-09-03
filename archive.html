@@ -701,16 +701,25 @@
 
     /* ── Stamp ── */
     .stamp-link {
-      display: inline-block;
-      font-size: 13px;
-      color: var(--text);
+      display: inline-flex;
+      flex-direction: column;
+      gap: 8px;
       text-decoration: none;
-      border-bottom: 1px solid var(--text);
-      padding-bottom: 1px;
-      opacity: .75;
-      transition: opacity .15s;
+      opacity: .85;
+      transition: opacity .2s;
     }
     .stamp-link:hover { opacity: 1; }
+    .stamp-link img {
+      width: 240px;
+      max-width: 100%;
+      display: block;
+      border-radius: 8px;
+    }
+    .stamp-link span {
+      font-size: 11px;
+      letter-spacing: .05em;
+      color: var(--text-muted);
+    }
 
     /* ── Playlist embed ── */
     .music-embed { max-width: 660px; }
@@ -868,7 +877,8 @@
   <div class="section">
     <div class="section-label">STAMP</div>
     <a class="stamp-link" href="https://line.me/S/sticker/36189584/?lang=ja&utm_source=gnsh_stickerDetail" target="_blank" rel="noopener">
-      okazaki to takeda
+      <img src="https://stickershop.line-scdn.net/stickershop/v1/product/36189584/LINEStorePC/main.png" alt="okazaki to takeda">
+      <span>okazaki to takeda</span>
     </a>
   </div>
 
