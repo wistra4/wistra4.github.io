@@ -234,184 +234,154 @@ body {
 
 /* ─── CONTENT ─── */
 .content {
-  background: var(--content-bg);
-  max-width: 520px;
+  background: #0d1208;
+  max-width: 600px;
   margin: 0 auto;
-  padding: 60px 24px 80px;
+  padding: 72px 40px 80px;
 }
 
-.day { margin-bottom: 56px; }
-
+/* section header — like a menu chapter */
+.day {
+  margin-bottom: 64px;
+}
 .day-header {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-bottom: 32px;
+  text-align: center;
+  margin-bottom: 48px;
+  position: relative;
 }
+.day-header::before,
+.day-header::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: calc(50% - 80px);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #c8a04060);
+}
+.day-header::before { left: 0; }
+.day-header::after  { right: 0; background: linear-gradient(270deg, transparent, #c8a04060); }
 .day-num {
   font-family: 'Shippori Mincho', serif;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: .2em;
-  color: var(--dim);
-  white-space: nowrap;
-}
-.day-rule {
-  flex: 1;
-  height: 1px;
-  background: var(--border);
+  font-size: 10px;
+  letter-spacing: .35em;
+  color: #c8a040;
+  text-transform: uppercase;
+  display: inline-block;
+  padding: 0 20px;
 }
 
-/* timeline */
-.tl {
-  position: relative;
-  padding-left: 84px;
+/* course items */
+.course {
+  border-top: 1px solid #ffffff0a;
+  padding: 28px 0;
 }
-.tl::before {
-  content: '';
-  position: absolute;
-  left: 58px;
-  top: 16px; bottom: 16px;
-  width: 1px;
-  background: linear-gradient(180deg, var(--border) 0%, transparent 100%);
-}
+.course:last-child { border-bottom: 1px solid #ffffff0a; }
 
-.ev {
-  position: relative;
-  margin-bottom: 20px;
-}
-.ev:last-child { margin-bottom: 0; }
-
-/* dot */
-.ev::after {
-  content: '';
-  position: absolute;
-  left: -30px; top: 14px;
-  width: 8px; height: 8px;
-  border-radius: 50%;
-  background: var(--border);
-}
-.ev.special::after {
-  width: 12px; height: 12px;
-  left: -32px; top: 12px;
-  background: var(--gold);
-  box-shadow: 0 0 0 4px #c8904022, 0 0 12px #c8904066;
-}
-.ev.featured::after {
-  width: 10px; height: 10px;
-  left: -31px; top: 13px;
-  background: var(--pink);
-  box-shadow: 0 0 0 3px #e0607a1a;
-}
-
-.ev-time {
-  position: absolute;
-  left: -84px; top: 12px;
-  width: 52px;
-  text-align: right;
-  font-family: 'Shippori Mincho', serif;
-  font-size: 12px;
-  color: var(--dim);
-  line-height: 1;
-}
-.ev.special .ev-time  { color: var(--gold); font-weight: 600; }
-.ev.featured .ev-time { color: var(--pink); font-weight: 600; }
-
-/* cards */
-.card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 16px 20px;
-}
-
-.card.special {
-  background: linear-gradient(135deg, #fdf8ec 0%, #fef4e0 100%);
-  border: 1.5px solid #e8c07040;
-  box-shadow: 0 4px 24px #c8904014, 0 0 0 1px #e8c07030;
-  padding: 20px 22px;
-}
-.card.featured {
-  background: linear-gradient(135deg, #fff4f6 0%, #fde8ee 100%);
-  border: 1.5px solid #e060781a;
-}
-.card.open {
-  border: 1.5px dashed #e0d0c8;
-  background: transparent;
-}
-
-.card-title {
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 1.5;
-  margin-bottom: 5px;
-  color: var(--text);
-}
-.card.special .card-title {
-  font-family: 'Shippori Mincho', serif;
-  font-size: 20px;
-  font-weight: 700;
-  color: var(--gold);
+.course-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
   margin-bottom: 8px;
 }
-.card.featured .card-title { color: var(--pink); }
+.course-title {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 17px;
+  font-weight: 600;
+  color: #f0e8d8;
+  line-height: 1.4;
+  letter-spacing: .03em;
+}
+.course.special .course-title {
+  color: #c8a040;
+  font-size: 20px;
+}
+.course.featured .course-title {
+  color: #e888a8;
+}
+.course-time {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 12px;
+  color: #80706050;
+  letter-spacing: .08em;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.course.special .course-time { color: #c8a04088; }
+.course.featured .course-time { color: #e888a868; }
 
-.card-sub {
+.course-desc {
   font-size: 12.5px;
-  color: var(--dim);
-  line-height: 1.75;
+  color: #80706090;
+  line-height: 1.8;
+  font-style: italic;
+  letter-spacing: .02em;
 }
-.cake-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  margin-top: 10px;
-  font-size: 10.5px;
-  padding: 3px 10px;
-  border-radius: 20px;
-  letter-spacing: .05em;
-}
-.card.special  .cake-badge { background: #c8904018; color: var(--gold); }
-.card.featured .cake-badge { background: #e060781a; color: var(--pink); }
+.course.special .course-desc { color: #c8a04080; }
 
-.options {
+.course-badge {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 10px;
+  letter-spacing: .18em;
+  color: #c8a04088;
+  border-top: 1px solid #c8a04030;
+  padding-top: 8px;
+}
+.course.featured .course-badge { color: #e888a870; border-color: #e888a820; }
+
+/* open course (未定) */
+.course.open .course-title { color: #60504870; font-style: italic; }
+.course.open .course-time  { color: #60504848; }
+.open-options {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  margin-top: 12px;
+  gap: 6px;
+  margin-top: 10px;
 }
-.opt {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  font-size: 12.5px;
-  color: var(--dim);
-  line-height: 1.6;
+.open-opt {
+  font-size: 12px;
+  color: #60504878;
+  line-height: 1.7;
+  padding-left: 14px;
+  position: relative;
+  font-style: italic;
 }
-.opt-dot {
-  flex-shrink: 0;
-  width: 4px; height: 4px;
-  border-radius: 50%;
-  background: #e0d0c8;
-  margin-top: 8px;
+.open-opt::before {
+  content: '–';
+  position: absolute;
+  left: 0;
+  color: #60504848;
 }
 .open-note {
   display: block;
-  margin-top: 10px;
-  font-size: 10.5px;
-  color: #c0a898;
-  letter-spacing: .06em;
+  margin-top: 14px;
+  font-size: 10px;
+  letter-spacing: .2em;
+  color: #60504860;
+  border-top: 1px solid #ffffff08;
+  padding-top: 10px;
+}
+
+/* divider ornament */
+.ornament {
+  text-align: center;
+  margin: 48px 0;
+  font-size: 11px;
+  letter-spacing: .5em;
+  color: #c8a04030;
 }
 
 /* footer */
 footer {
-  background: var(--hero-bg);
+  background: #080c06;
   text-align: center;
-  padding: 52px 20px;
+  padding: 56px 20px;
   font-family: 'Shippori Mincho', serif;
-  font-size: 14px;
-  color: #c09088;
-  letter-spacing: .18em;
+  font-size: 13px;
+  color: #c8a04060;
+  letter-spacing: .25em;
+  border-top: 1px solid #c8a04018;
 }
 </style>
 </head>
@@ -454,60 +424,60 @@ footer {
 
   <section class="day">
     <div class="day-header">
-      <span class="day-num">8月31日（月）前夜</span>
-      <div class="day-rule"></div>
+      <span class="day-num">8月31日（月）Soir</span>
     </div>
-    <div class="tl">
-      <div class="ev">
-        <div class="ev-time">22:00</div>
-        <div class="card">
-          <div class="card-title">帰ってきたら、パエリアができてる</div>
-          <div class="card-sub">一緒に食べよう</div>
-        </div>
+
+    <div class="course">
+      <div class="course-row">
+        <div class="course-title">帰ってきたら、パエリアができてる</div>
+        <div class="course-time">22:00</div>
       </div>
-      <div class="ev special">
-        <div class="ev-time">23:59</div>
-        <div class="card special">
-          <div class="card-title">誕生日の瞬間</div>
-          <div class="card-sub">グラマシーニューヨークのケーキで乾杯</div>
-          <span class="cake-badge">🎂 ケーキ</span>
-        </div>
+      <div class="course-desc">一緒に食べよう</div>
+    </div>
+
+    <div class="course special">
+      <div class="course-row">
+        <div class="course-title">誕生日の瞬間</div>
+        <div class="course-time">23:59</div>
       </div>
+      <div class="course-desc">グラマシーニューヨークのケーキで乾杯</div>
+      <span class="course-badge">🎂 GÂTEAU D'ANNIVERSAIRE</span>
     </div>
   </section>
 
+  <div class="ornament">✦ &nbsp; ✦ &nbsp; ✦</div>
+
   <section class="day">
     <div class="day-header">
-      <span class="day-num">9月1日（火）誕生日当日</span>
-      <div class="day-rule"></div>
+      <span class="day-num">9月1日（火）Journée</span>
     </div>
-    <div class="tl">
-      <div class="ev featured">
-        <div class="ev-time">13:00</div>
-        <div class="card featured">
-          <div class="card-title">TERAKOYA でランチ</div>
-          <div class="card-sub">武蔵小金井<br>お店からバースデーケーキも出る</div>
-          <span class="cake-badge">🎂 ケーキ</span>
-        </div>
+
+    <div class="course featured">
+      <div class="course-row">
+        <div class="course-title">TERAKOYA でランチ</div>
+        <div class="course-time">13:00</div>
       </div>
-      <div class="ev">
-        <div class="ev-time">15:00〜</div>
-        <div class="card open">
-          <div class="card-title">午後の過ごし方</div>
-          <div class="options">
-            <div class="opt"><div class="opt-dot"></div><span>吉祥寺でカフェ・散歩（武蔵小金井から5分）</span></div>
-            <div class="opt"><div class="opt-dot"></div><span>阿佐ヶ谷の家に帰ってのんびり</span></div>
-            <div class="opt"><div class="opt-dot"></div><span>なみちゃんが行きたい場所に合わせる</span></div>
-          </div>
-          <span class="open-note">なみちゃんに決めてもらう</span>
-        </div>
+      <div class="course-desc">武蔵小金井 — お店からバースデーケーキも出る</div>
+      <span class="course-badge">🎂 GÂTEAU SPÉCIAL</span>
+    </div>
+
+    <div class="course open">
+      <div class="course-row">
+        <div class="course-title">午後の過ごし方</div>
+        <div class="course-time">15:00 —</div>
       </div>
+      <div class="open-options">
+        <div class="open-opt">吉祥寺でカフェ・散歩（武蔵小金井から5分）</div>
+        <div class="open-opt">阿佐ヶ谷の家に帰ってのんびり</div>
+        <div class="open-opt">なみちゃんが行きたい場所に合わせる</div>
+      </div>
+      <span class="open-note">À votre goût — なみちゃんに決めてもらう</span>
     </div>
   </section>
 
 </div>
 
-<footer>Happy Birthday, Nami ✦</footer>
+<footer>Joyeux Anniversaire, Nami &nbsp;✦</footer>
 
 <script>
 (function(){
