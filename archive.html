@@ -699,6 +699,19 @@
     /* ── Diary section ── */
     .diary-write-area { max-width: 600px; }
 
+    /* ── Stamp ── */
+    .stamp-link {
+      display: inline-block;
+      font-size: 13px;
+      color: var(--text);
+      text-decoration: none;
+      border-bottom: 1px solid var(--text);
+      padding-bottom: 1px;
+      opacity: .75;
+      transition: opacity .15s;
+    }
+    .stamp-link:hover { opacity: 1; }
+
     /* ── Playlist embed ── */
     .music-embed { max-width: 660px; }
     .music-embed iframe { width: 100%; display: block; border: none; }
@@ -849,6 +862,14 @@
       <div class="col-titles" id="words-titles"></div>
     </div>
 
+  </div>
+
+  <!-- STAMP -->
+  <div class="section">
+    <div class="section-label">STAMP</div>
+    <a class="stamp-link" href="https://line.me/S/sticker/36189584/?lang=ja&utm_source=gnsh_stickerDetail" target="_blank" rel="noopener">
+      okazaki to takeda
+    </a>
   </div>
 
   <!-- PLAYLIST -->
