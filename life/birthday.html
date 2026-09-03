@@ -1,112 +1,214 @@
-<title>なみちゃん誕生日</title>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>なみちゃんの誕生日</title>
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;700&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
-
 <style>
 :root {
-  --bg: #faf8f4;
-  --surface: #f3ede3;
-  --border: #e0d5c5;
-  --text: #2a2218;
-  --dim: #8a7a6a;
-  --accent: #c85c7a;
-  --accent-soft: #f0d4dc;
-  --gold: #b8924a;
-  --tbd: #e8ddd0;
-  --tbd-border: #c8b89a;
+  --bg:           #fff9f6;
+  --surface:      #ffffff;
+  --border:       #f0d8d0;
+  --text:         #2a1a18;
+  --dim:          #9a7a72;
+  --pink:         #d95c78;
+  --pink-soft:    #fdeef2;
+  --gold:         #c08840;
+  --gold-soft:    #fdf3e4;
+  --cream:        #fef6f0;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #1e1a16;
-    --surface: #2a2420;
-    --border: #3a342c;
-    --text: #ede5d8;
-    --dim: #8a7a6a;
-    --accent: #e07090;
-    --accent-soft: #3d2028;
-    --gold: #c8a055;
-    --tbd: #2e2820;
-    --tbd-border: #5a4e3a;
+    --bg:         #1e1612;
+    --surface:    #2a1e1a;
+    --border:     #3e2e28;
+    --text:       #f0e4dc;
+    --dim:        #9a7a72;
+    --pink:       #e87090;
+    --pink-soft:  #3d1828;
+    --gold:       #d09850;
+    --gold-soft:  #2a1e0a;
+    --cream:      #261a14;
   }
 }
 :root[data-theme="dark"] {
-  --bg: #1e1a16;
-  --surface: #2a2420;
-  --border: #3a342c;
-  --text: #ede5d8;
-  --dim: #8a7a6a;
-  --accent: #e07090;
-  --accent-soft: #3d2028;
-  --gold: #c8a055;
-  --tbd: #2e2820;
-  --tbd-border: #5a4e3a;
+  --bg:         #1e1612;
+  --surface:    #2a1e1a;
+  --border:     #3e2e28;
+  --text:       #f0e4dc;
+  --dim:        #9a7a72;
+  --pink:       #e87090;
+  --pink-soft:  #3d1828;
+  --gold:       #d09850;
+  --gold-soft:  #2a1e0a;
+  --cream:      #261a14;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
+
 body {
   background: var(--bg);
   color: var(--text);
   font-family: 'Noto Sans JP', sans-serif;
   font-weight: 300;
-  min-height: 100%;
-  padding: 48px 20px 64px;
+  min-height: 100vh;
 }
 
-.wrap {
-  max-width: 560px;
-  margin: 0 auto;
-}
-
-/* Header */
+/* ── Hero ── */
 .hero {
+  background: var(--cream);
+  border-bottom: 1px solid var(--border);
+  padding: 60px 20px 52px;
   text-align: center;
-  margin-bottom: 52px;
+  position: relative;
+  overflow: hidden;
 }
-.hero-eyebrow {
+
+/* cake illustration */
+.cake {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  margin-bottom: 36px;
+}
+
+/* candles */
+.candles {
+  display: flex;
+  gap: 16px;
+  align-items: flex-end;
+  margin-bottom: 2px;
+}
+.candle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+.flame {
+  width: 8px;
+  height: 12px;
+  background: radial-gradient(ellipse at 50% 80%, #ffdd44 0%, #ff9900 60%, transparent 100%);
+  border-radius: 50% 50% 40% 40%;
+  position: relative;
+  animation: flicker 1.8s ease-in-out infinite alternate;
+  filter: drop-shadow(0 0 4px #ff990088);
+}
+.candle:nth-child(2) .flame { animation-delay: .4s; animation-duration: 2.1s; }
+.candle:nth-child(3) .flame { animation-delay: .8s; animation-duration: 1.5s; }
+@keyframes flicker {
+  0%   { transform: scaleX(1) scaleY(1) rotate(-1deg); }
+  40%  { transform: scaleX(.9) scaleY(1.05) rotate(1.5deg); }
+  100% { transform: scaleX(1.05) scaleY(.97) rotate(-0.5deg); }
+}
+.wick {
+  width: 2px;
+  height: 6px;
+  background: #5a3a20;
+  border-radius: 1px;
+}
+.candle-body {
+  width: 10px;
+  height: 28px;
+  border-radius: 2px;
+}
+.candle:nth-child(1) .candle-body { background: linear-gradient(180deg, #f9c0cc 0%, #e88098 100%); }
+.candle:nth-child(2) .candle-body { background: linear-gradient(180deg, #fbe0a8 0%, #e8b850 100%); height: 34px; }
+.candle:nth-child(3) .candle-body { background: linear-gradient(180deg, #f9c0cc 0%, #e88098 100%); }
+
+/* tiers */
+.tier {
+  border-radius: 4px;
+  position: relative;
+}
+.tier-top {
+  width: 90px;
+  height: 32px;
+  background: linear-gradient(180deg, #ffffff 0%, #fde8f0 100%);
+  border: 1.5px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  letter-spacing: .2em;
+}
+.tier-bottom {
+  width: 130px;
+  height: 38px;
+  background: linear-gradient(180deg, #fde8f0 0%, #f8c8d8 100%);
+  border: 1.5px solid var(--border);
+  border-top: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.tier-dots {
+  display: flex;
+  gap: 6px;
+}
+.tier-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #fff;
+  opacity: .7;
+}
+.cake-base {
+  width: 150px;
+  height: 10px;
+  background: linear-gradient(180deg, #f0c8d4 0%, #e8b0c0 100%);
+  border: 1.5px solid var(--border);
+  border-top: none;
+  border-radius: 0 0 6px 6px;
+}
+
+.hero-sub {
   font-family: 'Shippori Mincho', serif;
   font-size: 11px;
-  letter-spacing: .25em;
+  letter-spacing: .28em;
+  color: var(--pink);
   text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
 .hero-title {
   font-family: 'Shippori Mincho', serif;
-  font-size: 28px;
-  font-weight: 600;
-  line-height: 1.4;
+  font-size: 30px;
+  font-weight: 700;
   color: var(--text);
+  line-height: 1.3;
   margin-bottom: 10px;
   text-wrap: balance;
 }
 .hero-date {
   font-family: 'Shippori Mincho', serif;
-  font-size: 14px;
+  font-size: 13px;
   color: var(--dim);
-  letter-spacing: .08em;
+  letter-spacing: .1em;
 }
-.hero-rule {
-  width: 48px;
-  height: 1px;
-  background: var(--accent);
-  margin: 20px auto 0;
-  opacity: .5;
+
+/* ── Content ── */
+.wrap {
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 52px 20px 80px;
 }
 
 /* Day section */
-.day {
-  margin-bottom: 44px;
-}
+.day { margin-bottom: 52px; }
+
 .day-label {
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 24px;
+  gap: 14px;
+  margin-bottom: 28px;
 }
 .day-label-text {
   font-family: 'Shippori Mincho', serif;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 600;
-  letter-spacing: .12em;
+  letter-spacing: .14em;
   color: var(--dim);
   white-space: nowrap;
 }
@@ -125,15 +227,15 @@ body {
   content: '';
   position: absolute;
   left: 56px;
-  top: 10px;
-  bottom: 10px;
+  top: 14px;
+  bottom: 14px;
   width: 1px;
   background: var(--border);
 }
 
 .event {
   position: relative;
-  margin-bottom: 28px;
+  margin-bottom: 24px;
 }
 .event:last-child { margin-bottom: 0; }
 
@@ -141,105 +243,101 @@ body {
   content: '';
   position: absolute;
   left: -28px;
-  top: 10px;
+  top: 12px;
   width: 7px;
   height: 7px;
   border-radius: 50%;
   background: var(--border);
-  border: 1.5px solid var(--border);
 }
-.event.highlight::before {
-  background: var(--accent);
-  border-color: var(--accent);
-  box-shadow: 0 0 0 3px var(--accent-soft);
-}
-.event.special::before {
-  background: var(--gold);
-  border-color: var(--gold);
-  box-shadow: 0 0 0 4px color-mix(in srgb, var(--gold) 18%, transparent);
+.event.pink::before {
+  background: var(--pink);
+  border-color: var(--pink);
+  box-shadow: 0 0 0 3px var(--pink-soft);
   width: 9px;
   height: 9px;
   left: -29px;
-  top: 9px;
+  top: 11px;
+}
+.event.gold::before {
+  background: var(--gold);
+  box-shadow: 0 0 0 4px var(--gold-soft);
+  width: 11px;
+  height: 11px;
+  left: -30px;
+  top: 10px;
 }
 
 .event-time {
   position: absolute;
   left: -80px;
-  top: 7px;
+  top: 10px;
   width: 50px;
   text-align: right;
   font-family: 'Shippori Mincho', serif;
   font-size: 12px;
   color: var(--dim);
-  letter-spacing: .03em;
 }
-.event.highlight .event-time { color: var(--accent); font-weight: 600; }
-.event.special .event-time { color: var(--gold); font-weight: 600; }
+.event.pink .event-time { color: var(--pink); font-weight: 600; }
+.event.gold .event-time { color: var(--gold); font-weight: 600; }
 
+/* Cards */
 .card {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 14px 16px;
+  border-radius: 10px;
+  padding: 14px 18px;
 }
-.card.highlight {
-  border-color: color-mix(in srgb, var(--accent) 40%, transparent);
-  background: var(--accent-soft);
+.card.pink {
+  background: var(--pink-soft);
+  border-color: color-mix(in srgb, var(--pink) 30%, transparent);
 }
-.card.special {
-  border-color: color-mix(in srgb, var(--gold) 40%, transparent);
-  background: color-mix(in srgb, var(--gold) 8%, var(--surface));
+.card.gold {
+  background: var(--gold-soft);
+  border-color: color-mix(in srgb, var(--gold) 30%, transparent);
   position: relative;
   overflow: hidden;
 }
-.card.special::after {
+.card.gold::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, color-mix(in srgb, var(--gold) 12%, transparent) 0%, transparent 60%);
+  background: linear-gradient(135deg, color-mix(in srgb, var(--gold) 10%, transparent) 0%, transparent 55%);
   pointer-events: none;
 }
 .card.tbd {
-  border: 1.5px dashed var(--tbd-border);
-  background: var(--tbd);
+  border: 1.5px dashed var(--border);
+  background: transparent;
 }
 
 .card-title {
-  font-size: 13.5px;
+  font-size: 14px;
   font-weight: 500;
   color: var(--text);
   margin-bottom: 4px;
   line-height: 1.5;
 }
+.card.pink .card-title { color: var(--pink); }
+.card.gold .card-title {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 6px;
+}
 .card-sub {
-  font-size: 11.5px;
+  font-size: 12px;
   color: var(--dim);
-  line-height: 1.6;
+  line-height: 1.7;
 }
 .card-tag {
   display: inline-block;
   font-size: 10px;
-  padding: 2px 8px;
+  padding: 2px 9px;
   border-radius: 20px;
-  margin-top: 7px;
+  margin-top: 8px;
   letter-spacing: .06em;
-}
-.tag-cake {
-  background: color-mix(in srgb, var(--accent) 15%, transparent);
-  color: var(--accent);
-}
-.tag-tbd {
-  background: color-mix(in srgb, var(--tbd-border) 30%, transparent);
-  color: var(--dim);
-}
-
-.midnight-moment {
-  font-family: 'Shippori Mincho', serif;
-  font-size: 17px;
-  font-weight: 600;
-  color: var(--gold);
-  margin-bottom: 4px;
+  background: color-mix(in srgb, var(--pink) 15%, transparent);
+  color: var(--pink);
 }
 
 .option-list {
@@ -252,37 +350,78 @@ body {
   display: flex;
   align-items: flex-start;
   gap: 8px;
-  font-size: 11.5px;
-  color: var(--dim);
-  line-height: 1.5;
-}
-.option-bullet {
-  flex-shrink: 0;
-  width: 16px;
-  height: 16px;
-  border: 1px solid var(--tbd-border);
-  border-radius: 50%;
-  margin-top: 1px;
-}
-
-.footer {
-  text-align: center;
-  margin-top: 48px;
-  font-family: 'Shippori Mincho', serif;
   font-size: 12px;
   color: var(--dim);
+  line-height: 1.6;
+}
+.option-dot {
+  flex-shrink: 0;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  margin-top: 6px;
+}
+.tbd-label {
+  font-size: 10px;
+  color: var(--dim);
   letter-spacing: .08em;
+  margin-top: 8px;
+  display: inline-block;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 40px 20px 60px;
+  font-family: 'Shippori Mincho', serif;
+  font-size: 13px;
+  color: var(--dim);
+  letter-spacing: .12em;
+  border-top: 1px solid var(--border);
 }
 </style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="cake">
+    <div class="candles">
+      <div class="candle">
+        <div class="flame"></div>
+        <div class="wick"></div>
+        <div class="candle-body"></div>
+      </div>
+      <div class="candle">
+        <div class="flame"></div>
+        <div class="wick"></div>
+        <div class="candle-body"></div>
+      </div>
+      <div class="candle">
+        <div class="flame"></div>
+        <div class="wick"></div>
+        <div class="candle-body"></div>
+      </div>
+    </div>
+    <div class="tier tier-top"><span>✦</span></div>
+    <div class="tier tier-bottom">
+      <div class="tier-dots">
+        <div class="tier-dot"></div>
+        <div class="tier-dot"></div>
+        <div class="tier-dot"></div>
+        <div class="tier-dot"></div>
+        <div class="tier-dot"></div>
+      </div>
+    </div>
+    <div class="cake-base"></div>
+  </div>
+
+  <div class="hero-sub">Happy Birthday</div>
+  <h1 class="hero-title">なみちゃんの誕生日</h1>
+  <div class="hero-date">August 31 – September 1, 2026</div>
+</div>
 
 <div class="wrap">
-
-  <header class="hero">
-    <div class="hero-eyebrow">Birthday Plan</div>
-    <h1 class="hero-title">なみちゃんの誕生日</h1>
-    <div class="hero-date">August 31 – September 1, 2026</div>
-    <div class="hero-rule"></div>
-  </header>
 
   <section class="day">
     <div class="day-label">
@@ -291,39 +430,18 @@ body {
     </div>
     <div class="timeline">
       <div class="event">
-        <div class="event-time">19:00</div>
-        <div class="card">
-          <div class="card-title">グラマシーニューヨーク</div>
-          <div class="card-sub">高島屋新宿店 — ケーキ受け取り</div>
-        </div>
-      </div>
-      <div class="event">
-        <div class="event-time">19:30</div>
-        <div class="card">
-          <div class="card-title">帰宅・パエリア仕込み開始</div>
-          <div class="card-sub">ケーキは冷蔵庫へ</div>
-        </div>
-      </div>
-      <div class="event">
-        <div class="event-time">〜20:45</div>
-        <div class="card">
-          <div class="card-title">パエリア完成</div>
-          <div class="card-sub">なみちゃん帰宅まで保温</div>
-        </div>
-      </div>
-      <div class="event">
         <div class="event-time">22:00</div>
         <div class="card">
-          <div class="card-title">なみちゃん帰宅</div>
-          <div class="card-sub">一緒にパエリアを食べる</div>
+          <div class="card-title">帰ってきたら、パエリアができてる</div>
+          <div class="card-sub">一緒に食べよう</div>
         </div>
       </div>
-      <div class="event special">
+      <div class="event gold">
         <div class="event-time">23:59</div>
-        <div class="card special">
-          <div class="midnight-moment">誕生日の瞬間</div>
+        <div class="card gold">
+          <div class="card-title">誕生日の瞬間</div>
           <div class="card-sub">グラマシーニューヨークのケーキで乾杯</div>
-          <span class="card-tag tag-cake">🎂 ケーキ</span>
+          <span class="card-tag">🎂 ケーキ</span>
         </div>
       </div>
     </div>
@@ -335,40 +453,33 @@ body {
       <div class="day-label-line"></div>
     </div>
     <div class="timeline">
-      <div class="event highlight">
+      <div class="event pink">
         <div class="event-time">13:00</div>
-        <div class="card highlight">
-          <div class="card-title">TERAKOYA — ランチ</div>
+        <div class="card pink">
+          <div class="card-title">TERAKOYA でランチ</div>
           <div class="card-sub">武蔵小金井<br>お店からバースデーケーキも出る</div>
-          <span class="card-tag tag-cake">🎂 ケーキ</span>
+          <span class="card-tag">🎂 ケーキ</span>
         </div>
       </div>
       <div class="event">
-        <div class="event-time">〜15:00</div>
-        <div class="card">
-          <div class="card-title">ランチ終了</div>
-          <div class="card-sub">武蔵小金井 出発</div>
-        </div>
-      </div>
-      <div class="event">
-        <div class="event-time">15:00</div>
+        <div class="event-time">15:00〜</div>
         <div class="card tbd">
           <div class="card-title">午後の過ごし方</div>
           <div class="option-list">
             <div class="option-item">
-              <div class="option-bullet"></div>
+              <div class="option-dot"></div>
               <span>吉祥寺でカフェ・散歩（武蔵小金井から5分）</span>
             </div>
             <div class="option-item">
-              <div class="option-bullet"></div>
+              <div class="option-dot"></div>
               <span>阿佐ヶ谷の家に帰ってのんびり</span>
             </div>
             <div class="option-item">
-              <div class="option-bullet"></div>
+              <div class="option-dot"></div>
               <span>なみちゃんが行きたい場所に合わせる</span>
             </div>
           </div>
-          <span class="card-tag tag-tbd">未定</span>
+          <span class="tbd-label">なみちゃんに決めてもらう</span>
         </div>
       </div>
       <div class="event">
@@ -378,16 +489,12 @@ body {
           <div class="card-sub">武蔵小金井 → 吉祥寺 → 荻窪 → 下井草（約45分）</div>
         </div>
       </div>
-      <div class="event">
-        <div class="event-time">19:00</div>
-        <div class="card">
-          <div class="card-title">仕事</div>
-          <div class="card-sub">下井草</div>
-        </div>
-      </div>
     </div>
   </section>
 
-  <footer class="footer">Happy Birthday, Nami ✦</footer>
-
 </div>
+
+<footer>Happy Birthday, Nami ✦</footer>
+
+</body>
+</html>
