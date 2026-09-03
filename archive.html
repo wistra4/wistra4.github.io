@@ -830,49 +830,6 @@
     </div>
   </div>
 
-  <!-- TRACKS + ことば 横並び -->
-  <div class="section tracks-words-section" id="tracks-words-wrap">
-
-    <!-- TRACKS column -->
-    <div class="tracks-col">
-      <div class="section-label">TRACKS</div>
-      <div class="col-view" id="sc-player"></div>
-      <div class="track-kotoba-panel" id="track-kotoba-panel"></div>
-      <div class="col-write">
-        <button class="track-add-btn" id="track-add">+</button>
-        <div class="track-add-form" id="track-add-form">
-          <input class="track-url-input" id="track-url-input" type="url" placeholder="SoundCloud URL">
-          <select class="track-kotoba-select" id="track-add-word-select">
-            <option value="">新規のことば</option>
-          </select>
-          <button class="track-url-submit" id="track-url-submit">追加</button>
-        </div>
-      </div>
-      <div class="col-titles" id="track-list"></div>
-    </div>
-
-    <!-- ことば column -->
-    <div class="words-col">
-      <div class="section-label">ことば</div>
-      <div class="col-view" id="kotoba-view"></div>
-      <div class="col-write">
-        <div class="words-write-area">
-          <input class="words-title-input" id="words-title-input" type="text" placeholder="題名">
-          <textarea class="write-textarea" id="words-textarea" placeholder="ことば"></textarea>
-          <select class="track-kotoba-select" id="words-track-select" style="margin-bottom:4px;">
-            <option value="">新規のトラック</option>
-          </select>
-          <div class="words-btn-row">
-            <button class="entry-edit-btn" id="words-cancel" style="display:none">キャンセル</button>
-            <button class="write-submit" id="words-submit">送る</button>
-          </div>
-        </div>
-      </div>
-      <div class="col-titles" id="words-titles"></div>
-    </div>
-
-  </div>
-
   <!-- STAMP -->
   <div class="section">
     <div class="section-label">STAMP</div>
@@ -954,6 +911,49 @@
         </div>
       </a>
     </div>
+  </div>
+
+  <!-- TRACKS + ことば 横並び -->
+  <div class="section tracks-words-section" id="tracks-words-wrap">
+
+    <!-- TRACKS column -->
+    <div class="tracks-col">
+      <div class="section-label">TRACKS</div>
+      <div class="col-view" id="sc-player"></div>
+      <div class="track-kotoba-panel" id="track-kotoba-panel"></div>
+      <div class="col-write">
+        <button class="track-add-btn" id="track-add">+</button>
+        <div class="track-add-form" id="track-add-form">
+          <input class="track-url-input" id="track-url-input" type="url" placeholder="SoundCloud URL">
+          <select class="track-kotoba-select" id="track-add-word-select">
+            <option value="">新規のことば</option>
+          </select>
+          <button class="track-url-submit" id="track-url-submit">追加</button>
+        </div>
+      </div>
+      <div class="col-titles" id="track-list"></div>
+    </div>
+
+    <!-- ことば column -->
+    <div class="words-col">
+      <div class="section-label">ことば</div>
+      <div class="col-view" id="kotoba-view"></div>
+      <div class="col-write">
+        <div class="words-write-area">
+          <input class="words-title-input" id="words-title-input" type="text" placeholder="題名">
+          <textarea class="write-textarea" id="words-textarea" placeholder="ことば"></textarea>
+          <select class="track-kotoba-select" id="words-track-select" style="margin-bottom:4px;">
+            <option value="">新規のトラック</option>
+          </select>
+          <div class="words-btn-row">
+            <button class="entry-edit-btn" id="words-cancel" style="display:none">キャンセル</button>
+            <button class="write-submit" id="words-submit">送る</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-titles" id="words-titles"></div>
+    </div>
+
   </div>
 
   <footer>
