@@ -702,6 +702,26 @@
     /* ── Playlist embed ── */
     .music-embed { max-width: 660px; }
     .music-embed iframe { width: 100%; display: block; border: none; }
+    .pl-tabs { display: flex; gap: 6px; margin-bottom: 10px; }
+    .pl-tab {
+      font: inherit;
+      font-size: 11px;
+      letter-spacing: .04em;
+      padding: 4px 12px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: transparent;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: background .15s, color .15s, border-color .15s;
+    }
+    .pl-tab.active {
+      background: var(--text);
+      color: var(--bg);
+      border-color: var(--text);
+    }
+    .pl-panel { display: none; }
+    .pl-panel.active { display: block; }
 
     /* ── たびのきろく ── */
     .tabi-list { display: flex; flex-direction: column; gap: 1px; }
@@ -835,13 +855,30 @@
   <div class="section">
     <div class="section-label">PLAYLIST</div>
     <div class="music-embed">
-      <iframe
-        allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write"
-        frameborder="0"
-        height="450"
-        sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
-        src="https://embed.music.apple.com/jp/playlist/walk-dance-sleep/pl.u-EdAVA33IaXqe4ly">
-      </iframe>
+      <div class="pl-tabs">
+        <button class="pl-tab active" data-pl="0">walk-dance-sleep</button>
+        <button class="pl-tab" data-pl="1">ギャルドライブサマー</button>
+      </div>
+      <div class="pl-panels">
+        <div class="pl-panel active">
+          <iframe
+            allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write"
+            frameborder="0"
+            height="450"
+            sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
+            src="https://embed.music.apple.com/jp/playlist/walk-dance-sleep/pl.u-EdAVA33IaXqe4ly">
+          </iframe>
+        </div>
+        <div class="pl-panel">
+          <iframe
+            allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write"
+            frameborder="0"
+            height="450"
+            sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
+            src="https://embed.music.apple.com/jp/playlist/%E3%82%AE%E3%83%A3%E3%83%AB%E3%83%89%E3%83%A9%E3%82%A4%E3%83%96%E3%82%B5%E3%83%9E%E3%83%BC/pl.u-XkD0J4LFD4gL5Ex">
+          </iframe>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -1677,6 +1714,14 @@
   }, { passive: true });
 
   window.addEventListener('load', () => { resizeOverlay(); loop(); });
+
+  document.querySelectorAll('.pl-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      const idx = tab.dataset.pl;
+      document.querySelectorAll('.pl-tab').forEach(t => t.classList.toggle('active', t.dataset.pl === idx));
+      document.querySelectorAll('.pl-panel').forEach((p, i) => p.classList.toggle('active', String(i) === idx));
+    });
+  });
 </script>
 </body>
 </html>
