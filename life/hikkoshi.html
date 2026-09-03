@@ -1,0 +1,1314 @@
+<!DOCTYPE html>
+<html lang="ja" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>引越し計画</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700&family=Noto+Sans+JP:wght@300;400;500&display=swap">
+<style>
+:root {
+  --bg:         #fffcf5;
+  --surface:    #ffffff;
+  --surface-2:  #fff8ee;
+  --border:     #edd8c0;
+  --text:       #2a2218;
+  --dim:        #9a8c7e;
+  --accent:     #e8613e;
+  --accent-soft:#fff0eb;
+  --green:      #3aaa80;
+  --green-soft: #eaf7f2;
+  --yellow:     #e8a820;
+  --yellow-soft:#fef8e6;
+  --blue:       #6b8dd6;
+  --blue-soft:  #eef2fc;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg:         #24201a;
+    --surface:    #2e2820;
+    --surface-2:  #342e26;
+    --border:     #4a4038;
+    --text:       #f0e8dc;
+    --dim:        #9a8c7e;
+    --accent:     #f07050;
+    --accent-soft:#3a201a;
+    --green:      #4abf90;
+    --green-soft: #1a3028;
+    --yellow:     #f0b830;
+    --yellow-soft:#302610;
+    --blue:       #8aa8e8;
+    --blue-soft:  #1e2840;
+  }
+}
+:root[data-theme="dark"] {
+  --bg:         #24201a;
+  --surface:    #2e2820;
+  --surface-2:  #342e26;
+  --border:     #4a4038;
+  --text:       #f0e8dc;
+  --dim:        #9a8c7e;
+  --accent:     #f07050;
+  --accent-soft:#3a201a;
+  --green:      #4abf90;
+  --green-soft: #1a3028;
+  --yellow:     #f0b830;
+  --yellow-soft:#302610;
+  --blue:       #8aa8e8;
+  --blue-soft:  #1e2840;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: 300;
+  line-height: 1.85;
+  padding: 0 0 80px;
+}
+
+.wrap {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ── Header hero ── */
+.header {
+  background: linear-gradient(135deg, #fff0e8 0%, #fef8ee 50%, #eef8f4 100%);
+  padding: 44px 20px 36px;
+  margin-bottom: 40px;
+  border-bottom: 2px solid var(--border);
+}
+.header-inner {
+  max-width: 680px;
+  margin: 0 auto;
+}
+.header-eyebrow {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+.header h1 {
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.35;
+  margin-bottom: 6px;
+  text-wrap: balance;
+  color: var(--text);
+}
+.header-catch {
+  font-size: 13.5px;
+  color: var(--dim);
+  margin-bottom: 14px;
+}
+.header-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.header-pill {
+  font-size: 11.5px;
+  font-weight: 500;
+  padding: 3px 12px;
+  border-radius: 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--dim);
+}
+.header-pill.accent { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); }
+.header-pill.green  { background: var(--green-soft);  border-color: var(--green);  color: var(--green); }
+
+/* ── Section ── */
+.section {
+  margin-bottom: 44px;
+  padding-bottom: 44px;
+  border-bottom: 1px solid var(--border);
+}
+.section:last-of-type { border-bottom: none; }
+
+.section-title {
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text);
+}
+.section-title .icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  flex-shrink: 0;
+}
+.icon-orange { background: var(--accent-soft); }
+.icon-green  { background: var(--green-soft); }
+.icon-yellow { background: var(--yellow-soft); }
+.icon-blue   { background: var(--blue-soft); }
+
+/* Body text */
+p { font-size: 13.5px; line-height: 1.85; }
+em { font-style: normal; font-weight: 500; color: var(--accent); }
+
+/* Plain list */
+.plain-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 6px;
+}
+.plain-list li {
+  font-size: 13px;
+  padding-left: 14px;
+  position: relative;
+  line-height: 1.7;
+}
+.plain-list li::before {
+  content: '–';
+  position: absolute;
+  left: 0;
+  color: var(--border);
+}
+
+/* Sub-heading */
+.sub-head {
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  margin-top: 24px;
+  margin-bottom: 10px;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.sub-head::before {
+  content: '';
+  display: inline-block;
+  width: 3px;
+  height: 14px;
+  background: var(--accent);
+  border-radius: 2px;
+}
+.sub-head:first-child { margin-top: 0; }
+
+/* Principle list */
+.principle-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.principle-list li {
+  font-size: 13px;
+  padding: 8px 12px 8px 36px;
+  position: relative;
+  line-height: 1.7;
+  background: var(--green-soft);
+  border-radius: 8px;
+}
+.principle-list li::before {
+  content: '✓';
+  position: absolute;
+  left: 12px;
+  color: var(--green);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* Risk list */
+.risk-list { display: flex; flex-direction: column; gap: 12px; }
+.risk-item {
+  background: #fff8f6;
+  border: 1.5px solid #f0a090;
+  border-left: 4px solid var(--accent);
+  border-radius: 0 10px 10px 0;
+  padding: 12px 14px;
+}
+.risk-label {
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 5px;
+  color: #c03020;
+  display: flex;
+  align-items: flex-start;
+  gap: 5px;
+}
+.risk-label::before {
+  content: '⚠';
+  font-size: 12px;
+  margin-top: 1px;
+  flex-shrink: 0;
+}
+.risk-body {
+  font-size: 12.5px;
+  color: #5a3a30;
+  line-height: 1.75;
+  margin-bottom: 8px;
+}
+.risk-action {
+  font-size: 12.5px;
+  padding: 7px 11px;
+  background: var(--green-soft);
+  border: 1px solid var(--green);
+  border-radius: 6px;
+  line-height: 1.7;
+  color: var(--text);
+}
+.risk-action::before {
+  content: '→ 対策：';
+  font-weight: 500;
+  color: var(--green);
+  margin-right: 2px;
+}
+
+/* Blocker */
+.blocker {
+  background: var(--accent-soft);
+  border: 1.5px solid var(--accent);
+  border-radius: 12px;
+  padding: 18px 20px;
+  margin-bottom: 40px;
+}
+.blocker-title {
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 14px;
+}
+.blocker-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+@media (max-width: 500px) { .blocker-cols { grid-template-columns: 1fr; } }
+.blocker-col {
+  background: var(--surface);
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+.blocker-col-label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .08em;
+  color: var(--dim);
+  margin-bottom: 5px;
+}
+.blocker-col-body { font-size: 12.5px; line-height: 1.7; }
+.blocker-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-bottom: 12px;
+}
+.chip {
+  font-size: 11.5px;
+  padding: 3px 10px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  color: var(--text);
+  background: var(--surface);
+}
+.blocker-note {
+  font-size: 12.5px;
+  color: var(--text);
+  line-height: 1.75;
+  padding-top: 12px;
+  border-top: 1px dashed var(--accent);
+}
+
+/* Time resource */
+.time-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+@media (max-width: 500px) { .time-cols { grid-template-columns: 1fr; } }
+.time-col {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 16px;
+}
+.time-col-label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .1em;
+  color: var(--dim);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.time-slot {
+  font-size: 12.5px;
+  line-height: 1.7;
+  padding: 4px 0;
+  border-bottom: 1px solid var(--border);
+}
+.time-slot:last-child { border-bottom: none; }
+.time-slot-key { font-weight: 500; font-size: 11.5px; display: block; }
+.joint-note {
+  font-size: 12.5px;
+  color: var(--text);
+  line-height: 1.75;
+  padding: 12px 14px;
+  background: var(--green-soft);
+  border-radius: 10px;
+  border: 1px solid var(--green);
+  margin-top: 12px;
+}
+
+/* Joint schedule */
+.js-total {
+  background: var(--blue-soft);
+  border: 2px solid var(--blue);
+  border-radius: 12px;
+  padding: 14px 18px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.js-total-num {
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--blue);
+  white-space: nowrap;
+  line-height: 1;
+}
+.js-total-note {
+  font-size: 11.5px;
+  color: var(--dim);
+  line-height: 1.6;
+}
+
+.joint-schedule {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+.js-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 9px 14px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 10px;
+}
+.js-item.js-big {
+  background: var(--blue-soft);
+  border-color: var(--blue);
+}
+.js-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.js-date {
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--text);
+  white-space: nowrap;
+}
+.js-item.js-big .js-date { color: var(--blue); }
+.js-day {
+  font-size: 10px;
+  font-weight: 400;
+  margin: 0 1px;
+  opacity: .7;
+}
+.js-badge {
+  font-size: 10px;
+  font-weight: 500;
+  padding: 2px 7px;
+  border-radius: 20px;
+  background: var(--border);
+  color: var(--dim);
+  white-space: nowrap;
+}
+.js-item.js-big .js-badge {
+  background: var(--blue);
+  color: #fff;
+}
+.js-right {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.js-time-main {
+  font-size: 12.5px;
+  color: var(--text);
+}
+.js-duration {
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--blue);
+  white-space: nowrap;
+}
+
+/* Task cols */
+.task-rule {
+  font-size: 12.5px;
+  color: var(--dim);
+  line-height: 1.75;
+  margin-bottom: 14px;
+}
+.task-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+@media (max-width: 500px) { .task-cols { grid-template-columns: 1fr; } }
+.task-col {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 16px;
+}
+.task-col-label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--dim);
+  margin-bottom: 12px;
+}
+.task-group { margin-bottom: 12px; }
+.task-group-title {
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: .08em;
+  color: var(--dim);
+  text-transform: uppercase;
+  margin-bottom: 5px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--border);
+}
+.task-check {
+  display: flex;
+  align-items: flex-start;
+  gap: 7px;
+  font-size: 12.5px;
+  line-height: 1.6;
+  padding: 3px 0;
+  cursor: pointer;
+}
+.task-check input[type="checkbox"] {
+  accent-color: var(--accent);
+  margin-top: 4px;
+  flex-shrink: 0;
+}
+
+/* Room grid */
+.room-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  background: var(--surface);
+}
+.room-header {
+  display: grid;
+  grid-template-columns: 108px 1fr 1fr;
+  background: var(--surface-2);
+  border-bottom: 1px solid var(--border);
+}
+.room-header-cell {
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: .08em;
+  color: var(--dim);
+  padding: 7px 12px;
+  text-transform: uppercase;
+}
+.room-header-cell + .room-header-cell { border-left: 1px solid var(--border); }
+.room-item {
+  display: grid;
+  grid-template-columns: 108px 1fr 1fr;
+  border-bottom: 1px solid var(--border);
+}
+.room-item:last-child { border-bottom: none; }
+.room-item:nth-child(even) { background: var(--surface-2); }
+.room-name {
+  font-size: 11.5px;
+  font-weight: 500;
+  color: var(--accent);
+  padding: 11px 12px;
+  border-right: 1px solid var(--border);
+  display: flex;
+  align-items: flex-start;
+  padding-top: 13px;
+  line-height: 1.4;
+}
+.room-purpose, .room-items {
+  padding: 10px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.room-purpose {
+  border-right: 1px solid var(--border);
+}
+.room-purpose span, .room-items span {
+  font-size: 12.5px;
+  line-height: 1.65;
+  padding-left: 12px;
+  position: relative;
+}
+.room-purpose span::before, .room-items span::before {
+  content: '·';
+  position: absolute;
+  left: 2px;
+  color: var(--border);
+  font-size: 16px;
+  line-height: 1.2;
+}
+.room-items span.undecided { color: var(--dim); font-style: italic; }
+
+/* Undecided stages */
+.undecided-stages {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+.us-item {
+  padding: 12px 14px;
+  background: var(--yellow-soft);
+  border: 1px solid var(--yellow);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.us-header { display: flex; flex-direction: column; gap: 3px; }
+.us-label {
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--yellow);
+}
+.us-note {
+  font-size: 12px;
+  color: var(--dim);
+  line-height: 1.65;
+}
+.us-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  padding-left: 2px;
+}
+.us-list li {
+  font-size: 12px;
+  padding: 2px 10px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  color: var(--text);
+}
+
+/* Undecided items */
+.undecided-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 20px;
+}
+.undecided-item {
+  font-size: 12.5px;
+  padding: 9px 13px;
+  border: 1px solid var(--yellow);
+  background: var(--yellow-soft);
+  border-radius: 8px;
+  line-height: 1.65;
+}
+.undecided-item strong { font-weight: 500; color: var(--yellow); }
+
+/* Money table */
+.money-wrap { overflow-x: auto; border-radius: 10px; border: 1px solid var(--border); }
+.money-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12.5px;
+}
+.money-table th {
+  text-align: left;
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: .1em;
+  color: var(--dim);
+  text-transform: uppercase;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface-2);
+}
+.money-table td {
+  padding: 9px 12px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+  line-height: 1.65;
+  background: var(--surface);
+}
+.money-table tr:nth-child(even) td { background: var(--surface-2); }
+.money-table tr:last-child td { border-bottom: none; }
+.money-table td:first-child { font-weight: 500; white-space: nowrap; }
+.money-table td.pri { font-size: 11.5px; font-weight: 500; }
+.pri-high { color: var(--accent); }
+.pri-mid  { color: var(--yellow); }
+.pri-low  { color: var(--dim); }
+
+/* Timeline */
+.timeline { display: flex; flex-direction: column; }
+.tl-item {
+  display: grid;
+  grid-template-columns: 76px 1fr;
+  gap: 0 16px;
+}
+.tl-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding-top: 8px;
+}
+.tl-date {
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-size: 11.5px;
+  font-weight: 700;
+  text-align: right;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+.tl-date.past   { color: var(--dim); }
+.tl-date.now    { color: var(--accent); }
+.tl-date.future { color: var(--dim); }
+.tl-right {
+  padding-bottom: 22px;
+  border-left: 2px solid var(--border);
+  padding-left: 18px;
+  position: relative;
+}
+.tl-right::before {
+  content: '';
+  position: absolute;
+  left: -6px;
+  top: 10px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--border);
+  border: 2px solid var(--bg);
+}
+.tl-item.now .tl-right::before    { background: var(--accent); width: 12px; height: 12px; left: -7px; top: 8px; box-shadow: 0 0 0 3px var(--accent-soft); }
+.tl-item.past .tl-right::before   { background: var(--dim); }
+.tl-item.green .tl-right::before  { background: var(--green); }
+.tl-item.yellow .tl-right::before { background: var(--yellow); }
+.tl-item:last-child .tl-right { border-left-color: transparent; }
+
+.tl-content {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 14px;
+}
+.tl-item.past .tl-content    { opacity: .65; }
+.tl-item.now .tl-content     { border-color: var(--accent); background: var(--accent-soft); }
+.tl-item.green .tl-content   { border-color: var(--green);  background: var(--green-soft); }
+.tl-item.yellow .tl-content  { border-color: var(--yellow); background: var(--yellow-soft); }
+
+.tl-head {
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: var(--text);
+}
+.tl-item.now    .tl-head { color: var(--accent); }
+.tl-item.green  .tl-head { color: var(--green); }
+.tl-item.yellow .tl-head { color: var(--yellow); }
+.tl-item.past   .tl-head { color: var(--dim); }
+
+.now-tag {
+  display: inline-block;
+  font-size: 9.5px;
+  font-weight: 500;
+  letter-spacing: .06em;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 4px;
+  padding: 1px 7px;
+  margin-left: 7px;
+  vertical-align: middle;
+}
+
+footer {
+  margin-top: 52px;
+  font-size: 12px;
+  color: var(--dim);
+  text-align: center;
+  line-height: 1.85;
+  padding: 20px;
+  border-top: 1px solid var(--border);
+}
+</style>
+</head>
+<body>
+<header class="header">
+  <div class="header-inner">
+    <div class="header-eyebrow">Moving Plan</div>
+    <h1>ふたりの引越し計画 🏠</h1>
+    <div class="header-catch">楽しく同棲スタートするための、けいすけ × なみちゃんの引越し作戦</div>
+    <div class="header-pills">
+      <span class="header-pill accent">8/26〜10/31</span>
+      <span class="header-pill green">9月中に快適な状態へ</span>
+      <span class="header-pill">10月は仕上げ・家具購入</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- 目的 -->
+  <section class="section">
+    <div class="section-title"><span class="icon icon-orange">🎯</span>目的</div>
+    <p>
+      すり合わせ不足によるストレスを最小化して、楽しく同棲をスタートする。<br>
+      どちらかが「なんか使いにくい」「急に言われた」「自分だけ損してる気がする」と感じないよう、荷物・ルール・お金の使い方を事前に話し合って共通認識をつくる。<br>
+      完璧な状態を目指すのではなく、<em>住みながらアップデートを続けられる環境・関係をつくる</em>ことが最終ゴール。
+    </p>
+  </section>
+
+  <!-- 今いちばん先に話し合うこと -->
+  <div class="blocker">
+    <div class="blocker-title">⚠ 今いちばん先に話し合うこと</div>
+    <div class="blocker-cols">
+      <div class="blocker-col">
+        <div class="blocker-col-label">けいすけの気持ち</div>
+        <div class="blocker-col-body">家具の配置も収納も、なみちゃんの荷物がいつ来るか決まらないと何も決められない。住みながら未整備な状態が続くのはじわじわストレスになる。</div>
+      </div>
+      <div class="blocker-col">
+        <div class="blocker-col-label">なみちゃんの気持ち（たぶん）</div>
+        <div class="blocker-col-body">今の家でもう少し一人の時間を過ごしたい気持ちがある。引っ越しは大きな変化なので、自分のペースで気持ちの準備をしたい。</div>
+      </div>
+    </div>
+    <div style="font-size:11.5px;color:var(--dim);margin-bottom:7px;">まだタイミングが決まっていないもの：</div>
+    <div class="blocker-chips">
+      <span class="chip">着る服</span>
+      <span class="chip">テーブル・椅子</span>
+      <span class="chip">洗濯機</span>
+      <span class="chip">冷蔵庫</span>
+      <span class="chip">化粧品</span>
+      <span class="chip">全身鏡</span>
+      <span class="chip">食器</span>
+      <span class="chip">生活雑貨</span>
+    </div>
+    <div class="blocker-note">
+      どちらの気持ちも正しい。「いつ頃を目安にするか」だけでもお互い話してみるのが最初の一歩。決定ではなく、まず見通しを共有するだけでもかなり楽になる。
+    </div>
+  </div>
+
+  <!-- 方針とリスク -->
+  <section class="section">
+    <div class="section-title"><span class="icon icon-green">🛡</span>方針とリスク管理</div>
+
+    <div class="sub-head">部屋・収納の方針</div>
+    <ul class="principle-list">
+      <li>二人の荷物の最大量を断捨離も含めて決定した上で、最適な収納場所・方法を一緒に決める</li>
+    </ul>
+
+    <div class="sub-head">お金の方針</div>
+    <ul class="principle-list">
+      <li>収入は開示せず、生活・遊びに使っていい予算を各自で決めて共有し、共用で買うものはその予算をベースに二人で決定していく</li>
+    </ul>
+
+    <div class="sub-head">生活ルールの方針</div>
+    <ul class="principle-list">
+      <li>二人の得意・不得意を尊重する</li>
+    </ul>
+
+    <div class="sub-head">避けたいリスクと対策</div>
+    <div class="risk-list">
+      <div class="risk-item">
+        <div class="risk-label">収納・配置を一人が決めて、もう一人が使いにくくなる</div>
+        <div class="risk-body">服の収納を一人が整理すると「どこに何があるか分からない」状態に。整理した側が洗濯・片付けを一人でやり続けることになりがち。</div>
+        <div class="risk-action">共用スペースの収納・配置は必ず二人で決める。自分専用エリアと共用スペースを最初に分けておく。</div>
+      </div>
+      <div class="risk-item">
+        <div class="risk-label">急な支払いが「請求された」感になる</div>
+        <div class="risk-body">共用品を一人が立て替えて後から「払って」と言うと、受け取る側は突然請求された気持ちになる。金額が大きいほど関係がギクシャクする。</div>
+        <div class="risk-action">購入前に「これ二人のお金で買う？」の確認を習慣にする。何円以上は相談、という基準を決めておく。</div>
+      </div>
+      <div class="risk-item">
+        <div class="risk-label">家事の役割が暗黙のうちに固定される</div>
+        <div class="risk-body">最初の数週間で「なんとなく自分がやってる」が定着すると、それが「担当」になる。変えようとするとモメやすい。</div>
+        <div class="risk-action">固定割り当てより「気づいた方がやる」が揉めにくい。やってみて合わなければすぐ変える前提で仮決めする。</div>
+      </div>
+      <div class="risk-item">
+        <div class="risk-label">「使いにくい」を言い出しにくくなる</div>
+        <div class="risk-body">相手が整えてくれた収納・配置に「使いにくい」と言うのは心理的ハードルが高い。我慢が積み重なると関係に影響する。</div>
+        <div class="risk-action">最初から「変えたいと思ったら気軽に言おう」をルールにする。変更は失敗ではなく調整の一部という空気をつくる。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 時間のリソースと進め方 -->
+  <section class="section">
+    <div class="section-title"><span class="icon icon-blue">⏰</span>時間のリソースと進め方</div>
+
+    <div class="sub-head">二人で使える時間（9月）</div>
+    <div class="joint-schedule">
+      <div class="js-item">
+        <div class="js-left">
+          <div class="js-date">9/6<span class="js-day">日</span></div>
+          <div class="js-badge">丸一日</div>
+        </div>
+        <div class="js-right">
+          <div class="js-time-main">終日（目安）</div>
+        </div>
+      </div>
+      <div class="js-item">
+        <div class="js-left">
+          <div class="js-date">9/9<span class="js-day">水</span></div>
+          <div class="js-badge">夜〜深夜</div>
+        </div>
+        <div class="js-right">
+          <div class="js-time-main">19:00 〜 翌 01:00</div>
+        </div>
+      </div>
+      <div class="js-item">
+        <div class="js-left">
+          <div class="js-date">9/12<span class="js-day">土</span></div>
+          <div class="js-badge">夜</div>
+        </div>
+        <div class="js-right">
+          <div class="js-time-main">19:00 以降</div>
+        </div>
+      </div>
+      <div class="js-item">
+        <div class="js-left">
+          <div class="js-date">9/16<span class="js-day">水</span></div>
+          <div class="js-badge">夜</div>
+        </div>
+        <div class="js-right">
+          <div class="js-time-main">19:00 〜 23:00</div>
+        </div>
+      </div>
+      <div class="js-item">
+        <div class="js-left">
+          <div class="js-date">9/19<span class="js-day">土</span>〜20<span class="js-day">日</span></div>
+          <div class="js-badge">深夜〜翌昼</div>
+        </div>
+        <div class="js-right">
+          <div class="js-time-main">22:00 〜 翌 15:00</div>
+        </div>
+      </div>
+      <div class="js-item">
+        <div class="js-left">
+          <div class="js-date">9/21<span class="js-day">月</span></div>
+          <div class="js-badge">午前</div>
+        </div>
+        <div class="js-right">
+          <div class="js-time-main">9:00 〜 14:00</div>
+        </div>
+      </div>
+      <div class="js-item">
+        <div class="js-left">
+          <div class="js-date">9/22<span class="js-day">火</span></div>
+          <div class="js-badge">午前</div>
+        </div>
+        <div class="js-right">
+          <div class="js-time-main">9:00 〜 14:00</div>
+        </div>
+      </div>
+      <div class="js-item">
+        <div class="js-left">
+          <div class="js-date">9/23<span class="js-day">水</span></div>
+          <div class="js-badge">午前</div>
+        </div>
+        <div class="js-right">
+          <div class="js-time-main">9:00 〜 14:00</div>
+        </div>
+      </div>
+    </div>
+    <div class="joint-note">
+      共用スペースの収納・配置を決めるのは二人の時間を使う。個人の荷物整理は一人の時間でやっておく。
+    </div>
+
+    <div class="sub-head">個人で使える時間</div>
+    <p style="font-size:13px;color:var(--dim);">各自カレンダーで要確認</p>
+
+    <div class="sub-head" style="margin-top:22px;">個人で進めてよいこと / 二人で決めること</div>
+    <div class="task-rule">
+      自分の荷物を片付ける・整理する → 個人で進めてOK。
+      共用スペースの収納・配置を決める → 必ず二人で。
+      お金が関わること → 金額を問わず事前に確認する。
+    </div>
+    <div class="task-cols">
+      <div class="task-col">
+        <div class="task-col-label">個人で進めてよいタスク</div>
+        <div class="task-group">
+          <div class="task-group-title">搬入前（各自）</div>
+          <label class="task-check"><input type="checkbox"> 不要品の処分・売却</label>
+          <label class="task-check"><input type="checkbox"> 住所変更手続き</label>
+        </div>
+        <div class="task-group">
+          <div class="task-group-title">搬入後（各自）</div>
+          <label class="task-check"><input type="checkbox"> 自分の私物エリアの整理</label>
+          <label class="task-check"><input type="checkbox"> 仕事道具・趣味グッズの整理</label>
+        </div>
+      </div>
+      <div class="task-col">
+        <div class="task-col-label">二人で進めるタスク</div>
+        <div class="task-group">
+          <div class="task-group-title">搬入前</div>
+          <label class="task-check"><input type="checkbox"> <strong>搬入の目安時期を話し合う</strong></label>
+          <label class="task-check"><input type="checkbox"> 残りの荷物リストアップ・量の把握</label>
+          <label class="task-check"><input type="checkbox"> 持ち込む大型家具・家電の最終確認</label>
+          <label class="task-check"><input type="checkbox"> 部屋のレイアウト案をイメージ合わせ</label>
+          <label class="task-check"><input type="checkbox"> お金まわりのルールを決める</label>
+        </div>
+        <div class="task-group">
+          <div class="task-group-title">搬入後・9月中</div>
+          <label class="task-check"><input type="checkbox"> 大物家具・家電の配置決定</label>
+          <label class="task-check"><input type="checkbox"> 服・クローゼットの割り当て</label>
+          <label class="task-check"><input type="checkbox"> キッチン・食器の配置決定</label>
+          <label class="task-check"><input type="checkbox"> 洗面・バスルームの収納決定</label>
+          <label class="task-check"><input type="checkbox"> 家事ルールの仮決め</label>
+        </div>
+        <div class="task-group">
+          <div class="task-group-title">10月</div>
+          <label class="task-check"><input type="checkbox"> 9月の振り返り・ルール調整</label>
+          <label class="task-check"><input type="checkbox"> 大型家具の購入・設置</label>
+          <label class="task-check"><input type="checkbox"> インテリアの方向性を決める</label>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 詳細に決めること -->
+  <section class="section">
+    <div class="section-title"><span class="icon icon-yellow">📋</span>詳細に決めること</div>
+
+    <div class="sub-head">大物家具・家電・収納家具（配置未定）</div>
+    <div class="undecided-list">
+      <div class="undecided-item"><strong>洗濯機</strong>　なみちゃんのものを持ってくる？今あるものとどちらを使う？置き場所は？</div>
+      <div class="undecided-item"><strong>冷蔵庫</strong>　どちらを使うか・容量は足りるか？</div>
+      <div class="undecided-item"><strong>テーブル・椅子</strong>　なみちゃんのが来た後、今あるものとどう統合するか</div>
+      <div class="undecided-item"><strong>全身鏡</strong>　どこに置くか（寝室・洗面所・玄関など）</div>
+      <div class="undecided-item"><strong>収納家具</strong>　二人が作りたい部屋の趣向に合っているか。持ち込むもの・新たに買うものを含めて確認する</div>
+    </div>
+
+    <div class="sub-head">場所ごとの収納・配置</div>
+    <div class="room-grid">
+      <div class="room-header">
+        <div class="room-header-cell">エリア</div>
+        <div class="room-header-cell">目的</div>
+        <div class="room-header-cell">アイテム</div>
+      </div>
+      <div class="room-item">
+        <div class="room-name">玄関</div>
+        <div class="room-purpose"><span>出入り・収納</span></div>
+        <div class="room-items">
+          <span>靴・アウトドア用品</span>
+          <span>キックボード・傘</span>
+        </div>
+      </div>
+      <div class="room-item">
+        <div class="room-name">キッチン</div>
+        <div class="room-purpose"><span>料理・食事管理</span></div>
+        <div class="room-items">
+          <span>食器・調理道具（どちらを使うか要確認）</span>
+          <span>冷蔵庫・ゴミ箱</span>
+        </div>
+      </div>
+      <div class="room-item">
+        <div class="room-name">風呂・トイレ・<br>洗濯機周辺</div>
+        <div class="room-purpose"><span>衛生・洗濯</span></div>
+        <div class="room-items">
+          <span>洗濯機（どちらを使うか要確認）</span>
+          <span>洗濯用品・シャンプー類・タオル</span>
+        </div>
+      </div>
+      <div class="room-item">
+        <div class="room-name">リビング（小）</div>
+        <div class="room-purpose"><span>けいすけの仕事スペース</span></div>
+        <div class="room-items">
+          <span class="undecided">アイテム要確認</span>
+        </div>
+      </div>
+      <div class="room-item">
+        <div class="room-name">リビング<br>ソファ前</div>
+        <div class="room-purpose"><span>エンタメ・くつろぎ</span></div>
+        <div class="room-items">
+          <span>音響機器・ソファ・ちゃぶ台</span>
+          <span>ゲーム機類</span>
+        </div>
+      </div>
+      <div class="room-item">
+        <div class="room-name">リビング<br>ソファ後</div>
+        <div class="room-purpose"><span>本・趣味グッズ</span></div>
+        <div class="room-items">
+          <span>本・雑誌</span>
+          <span>魔法の杖・ラジオ・ボードゲームなど</span>
+        </div>
+      </div>
+      <div class="room-item">
+        <div class="room-name">クローゼット（小）</div>
+        <div class="room-purpose"><span>機材収納</span></div>
+        <div class="room-items">
+          <span>楽器・三脚・カメラなど</span>
+        </div>
+      </div>
+      <div class="room-item">
+        <div class="room-name">クローゼット（大）</div>
+        <div class="room-purpose"><span>衣服・旅行用品</span></div>
+        <div class="room-items">
+          <span>キャリーケース・ハンガー衣服</span>
+          <span class="undecided">けいすけ側・なみちゃん側の割り当て要確認</span>
+        </div>
+      </div>
+      <div class="room-item">
+        <div class="room-name">ベッド横<br>収納スペース</div>
+        <div class="room-purpose"><span class="undecided">未定</span></div>
+        <div class="room-items"><span class="undecided">未定</span></div>
+      </div>
+    </div>
+
+    <div class="sub-head">置き場が決まっていないもの</div>
+    <div class="undecided-stages">
+      <div class="us-item">
+        <div class="us-header">
+          <div class="us-label">① なみちゃんの家にまだあるもの</div>
+          <div class="us-note">けいすけのものと合わせた総量が不明。搬入タイミングを決めた上で量を把握する必要がある。</div>
+        </div>
+        <ul class="us-list">
+          <li>キッチン用品</li>
+          <li>大切なもの</li>
+          <li>靴類</li>
+          <li>生活雑貨</li>
+        </ul>
+      </div>
+      <div class="us-item">
+        <div class="us-header">
+          <div class="us-label">② けいすけの家に移したもの</div>
+          <div class="us-note">断捨離をして総量を確定させる。確定後に置き場を決める。</div>
+        </div>
+        <ul class="us-list">
+          <li>本・雑誌</li>
+          <li>思い出品（プリクラ・アルバムなど）</li>
+        </ul>
+      </div>
+      <div class="us-item">
+        <div class="us-header">
+          <div class="us-label">③ けいすけの家に元々あるもの</div>
+          <div class="us-note">なみちゃんに確認をとって、場所や使い方を二人で決めるべきもの。</div>
+        </div>
+        <ul class="us-list">
+          <li>リビング（小）の仕事スペースのアイテム</li>
+          <li>ベッド横収納スペース全体</li>
+          <li>クローゼット（大）の空きスペースの割り当て範囲</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sub-head">お金まわり</div>
+    <div class="money-wrap">
+      <table class="money-table">
+        <thead>
+          <tr>
+            <th>項目</th>
+            <th>決めること・選択肢</th>
+            <th>優先度</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>家賃</td>
+            <td>折半 / 収入比で按分 / どちらかが持つ</td>
+            <td class="pri pri-high">高</td>
+          </tr>
+          <tr>
+            <td>食費・日用品</td>
+            <td>共通財布（定額入金） / 都度割り勘 / 交互に払う</td>
+            <td class="pri pri-high">高</td>
+          </tr>
+          <tr>
+            <td>光熱費・通信費</td>
+            <td>折半 / まとめてどちらかが払う</td>
+            <td class="pri pri-high">高</td>
+          </tr>
+          <tr>
+            <td>引越し初期費用</td>
+            <td>新たに購入するものの負担（収納グッズ・カーテンなど）</td>
+            <td class="pri pri-high">高</td>
+          </tr>
+          <tr>
+            <td>購入相談の基準</td>
+            <td>何円以上は相談してから買う？（例：3,000円以上は事前確認など）</td>
+            <td class="pri pri-mid">中</td>
+          </tr>
+          <tr>
+            <td>立替・精算ルール</td>
+            <td>買ったら即報告 / アプリで管理 / 月締め清算</td>
+            <td class="pri pri-mid">中</td>
+          </tr>
+          <tr>
+            <td>外食・デート費</td>
+            <td>割り勘 / 誘った方が払う / 交互 / 気にしない</td>
+            <td class="pri pri-mid">中</td>
+          </tr>
+          <tr>
+            <td>家具・家電の買い替え</td>
+            <td>どちらかが持ち込んだものが壊れたとき、二人のものとして買い替えるか</td>
+            <td class="pri pri-mid">中</td>
+          </tr>
+          <tr>
+            <td>個人費</td>
+            <td>趣味・服・美容などは個人管理・干渉しない範囲を決める</td>
+            <td class="pri pri-low">低</td>
+          </tr>
+          <tr>
+            <td>貯金・将来</td>
+            <td>二人で共同貯金をするかどうか、するならいくら積み立てるか</td>
+            <td class="pri pri-low">低</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- タイムライン -->
+  <section class="section">
+    <div class="section-title"><span class="icon icon-orange">📅</span>タイムライン（週ごと）</div>
+    <div class="timeline">
+
+      <div class="tl-item past">
+        <div class="tl-left"><div class="tl-date past">8/26<br>〜8/30</div></div>
+        <div class="tl-right">
+          <div class="tl-content">
+            <div class="tl-head">済み ✓　スペース確保・思い出品の移動</div>
+            <ul class="plain-list">
+              <li>けいすけ：受け入れスペース確保完了</li>
+              <li>なみちゃんの非日常品（本・プリクラ・思い出の品など）を移動済み</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item now">
+        <div class="tl-left"><div class="tl-date now">8/31<br>〜9/6</div></div>
+        <div class="tl-right">
+          <div class="tl-content">
+            <div class="tl-head">今週 <span class="now-tag">NOW</span>　搬入タイミングを話し合う</div>
+            <ul class="plain-list">
+              <li>お互いの気持ち・ペースを確認する（まず見通しを共有するだけでOK）</li>
+              <li>粗大ゴミとして出す項目の申請を完了する（9/7目標）</li>
+              <li>大型家具・家電の最終リストを確認する</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-left"><div class="tl-date future">9/7<br>〜9/13</div></div>
+        <div class="tl-right">
+          <div class="tl-content">
+            <div class="tl-head">不用品整理・梱包・家具検討</div>
+            <ul class="plain-list">
+              <li>けいすけ・なみちゃん：それぞれ不用品の整理を進める</li>
+              <li>移動する荷物の梱包</li>
+              <li>できれば：必要な家具・収納家具を二人で検討する</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item green">
+        <div class="tl-left"><div class="tl-date future">9/14<br>〜9/20</div></div>
+        <div class="tl-right">
+          <div class="tl-content">
+            <div class="tl-head">搬入・収納の仮決め</div>
+            <ul class="plain-list">
+              <li>なみちゃんの荷物の搬入を完了する</li>
+              <li>追加荷物の収納・収納場所の仮決め（服・キッチン・洗面・生活雑貨）</li>
+              <li>「自分の場所」と「共用の場所」の区分けを決める</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item green">
+        <div class="tl-left"><div class="tl-date future">9/21<br>〜9/27</div></div>
+        <div class="tl-right">
+          <div class="tl-content">
+            <div class="tl-head">細かい収納の調整・ルール決め</div>
+            <ul class="plain-list">
+              <li>収納・配置の細かい調整（9/25目標）</li>
+              <li>お金まわりのルールを運用しながら確認する</li>
+              <li>家事ルールの仮決め</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item green">
+        <div class="tl-left"><div class="tl-date future">9/28<br>〜10/4</div></div>
+        <div class="tl-right">
+          <div class="tl-content">
+            <div class="tl-head">引越し打ち上げ 🎉</div>
+            <ul class="plain-list">
+              <li>この週のどこかで二人でお祝いする</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item yellow">
+        <div class="tl-left"><div class="tl-date future">10月〜</div></div>
+        <div class="tl-right">
+          <div class="tl-content">
+            <div class="tl-head">9月の雰囲気を見て収納・調整</div>
+            <ul class="plain-list">
+              <li>住んでみて感じた使いにくさを二人でアップデートしていく</li>
+              <li>必要に応じて収納家具・棚などを追加検討する</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    このページはたたき台。住んでみて変わったことは、ふたりでどんどん上書きしていい。
+  </footer>
+
+</div>
+</body>
+</html>
