@@ -551,7 +551,7 @@ em { font-style: normal; font-weight: 500; color: var(--accent); }
 }
 .room-header {
   display: grid;
-  grid-template-columns: 108px 1fr 1fr;
+  grid-template-columns: 108px 1fr 1fr 110px 1fr;
   background: var(--surface-2);
   border-bottom: 1px solid var(--border);
 }
@@ -566,7 +566,7 @@ em { font-style: normal; font-weight: 500; color: var(--accent); }
 .room-header-cell + .room-header-cell { border-left: 1px solid var(--border); }
 .room-item {
   display: grid;
-  grid-template-columns: 108px 1fr 1fr;
+  grid-template-columns: 108px 1fr 1fr 110px 1fr;
   border-bottom: 1px solid var(--border);
 }
 .room-item:last-child { border-bottom: none; }
@@ -597,7 +597,7 @@ em { font-style: normal; font-weight: 500; color: var(--accent); }
   padding-left: 12px;
   position: relative;
 }
-.room-purpose span::before, .room-items span::before {
+.room-purpose span::before {
   content: '·';
   position: absolute;
   left: 2px;
@@ -605,7 +605,55 @@ em { font-style: normal; font-weight: 500; color: var(--accent); }
   font-size: 16px;
   line-height: 1.2;
 }
+.room-items span {
+  padding-left: 0;
+}
 .room-items span.undecided { color: var(--dim); font-style: italic; }
+.room-status {
+  padding: 10px 10px;
+  display: flex;
+  align-items: flex-start;
+  padding-top: 13px;
+  border-right: 1px solid var(--border);
+}
+.room-progress {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  justify-content: center;
+  padding: 0 10px;
+}
+.room-progress-bar {
+  width: 100%;
+  height: 4px;
+  background: var(--border);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.room-progress-fill {
+  height: 100%;
+  background: var(--green);
+  border-radius: 2px;
+  transition: width .3s;
+}
+.room-progress-fill.low  { background: var(--accent); }
+.room-progress-fill.mid  { background: var(--yellow); }
+.room-progress-fill.high { background: var(--green); }
+.room-progress-pct {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--dim);
+  font-variant-numeric: tabular-nums;
+}
+.room-note {
+  padding: 10px 14px;
+  font-size: 12px;
+  color: var(--dim);
+  line-height: 1.65;
+  display: flex;
+  align-items: flex-start;
+  padding-top: 13px;
+}
 
 /* Undecided stages */
 .undecided-stages {
@@ -1006,10 +1054,10 @@ footer {
 
     <div class="sub-head">大物家具・家電・収納家具（配置未定）</div>
     <div class="undecided-list">
-      <div class="undecided-item"><strong>洗濯機</strong>　なみちゃんのものを持ってくる？今あるものとどちらを使う？置き場所は？</div>
-      <div class="undecided-item"><strong>冷蔵庫</strong>　どちらを使うか・容量は足りるか？</div>
+      <div class="undecided-item"><strong>洗濯機</strong>　けいすけのものを使う</div>
+      <div class="undecided-item"><strong>冷蔵庫</strong>　けいすけのものを使う</div>
       <div class="undecided-item"><strong>テーブル・椅子</strong>　なみちゃんのが来た後、今あるものとどう統合するか</div>
-      <div class="undecided-item"><strong>全身鏡</strong>　どこに置くか（寝室・洗面所・玄関など）</div>
+      <div class="undecided-item"><strong>全身鏡</strong>　化粧台の近くかお風呂前に置く</div>
       <div class="undecided-item"><strong>収納家具</strong>　二人が作りたい部屋の趣向に合っているか。持ち込むもの・新たに買うものを含めて確認する</div>
     </div>
 
@@ -1019,79 +1067,117 @@ footer {
         <div class="room-header-cell">エリア</div>
         <div class="room-header-cell">目的</div>
         <div class="room-header-cell">アイテム</div>
+        <div class="room-header-cell">進捗</div>
+        <div class="room-header-cell">備考</div>
       </div>
       <div class="room-item">
         <div class="room-name">玄関</div>
         <div class="room-purpose"><span>出入り・収納</span></div>
         <div class="room-items">
-          <span>靴・アウトドア用品</span>
-          <span>キックボード・傘</span>
+          <span>靴</span>
+          <span>アウトドア用品</span>
+          <span>キックボード</span>
+          <span>傘</span>
         </div>
+        <div class="room-status"><div class="room-progress"><div class="room-progress-bar"><div class="room-progress-fill low" style="width:20%"></div></div><span class="room-progress-pct">20%</span></div></div>
+        <div class="room-note"></div>
       </div>
       <div class="room-item">
         <div class="room-name">キッチン</div>
         <div class="room-purpose"><span>料理・食事管理</span></div>
         <div class="room-items">
-          <span>食器・調理道具（どちらを使うか要確認）</span>
-          <span>冷蔵庫・ゴミ箱</span>
+          <span>食器</span>
+          <span>調理道具</span>
+          <span>冷蔵庫</span>
+          <span>ゴミ箱</span>
         </div>
+        <div class="room-status"><div class="room-progress"><div class="room-progress-bar"><div class="room-progress-fill mid" style="width:40%"></div></div><span class="room-progress-pct">40%</span></div></div>
+        <div class="room-note"></div>
       </div>
       <div class="room-item">
         <div class="room-name">風呂・トイレ・<br>洗濯機周辺</div>
         <div class="room-purpose"><span>衛生・洗濯</span></div>
         <div class="room-items">
-          <span>洗濯機（どちらを使うか要確認）</span>
-          <span>洗濯用品・シャンプー類・タオル</span>
+          <span>洗濯機</span>
+          <span>洗濯用品</span>
+          <span>シャンプー類</span>
+          <span>タオル</span>
         </div>
+        <div class="room-status"><div class="room-progress"><div class="room-progress-bar"><div class="room-progress-fill mid" style="width:60%"></div></div><span class="room-progress-pct">60%</span></div></div>
+        <div class="room-note"></div>
       </div>
       <div class="room-item">
         <div class="room-name">リビング（小）</div>
         <div class="room-purpose"><span>けいすけの仕事スペース</span></div>
         <div class="room-items">
-          <span>デスクトップ・キーボード・マウス</span>
-          <span>炊飯器・トースター・給湯器</span>
+          <span>デスクトップ</span>
+          <span>キーボード</span>
+          <span>マウス</span>
+          <span>炊飯器</span>
+          <span>トースター</span>
+          <span>給湯器</span>
           <span>空気清浄機</span>
         </div>
+        <div class="room-status"><div class="room-progress"><div class="room-progress-bar"><div class="room-progress-fill low" style="width:10%"></div></div><span class="room-progress-pct">10%</span></div></div>
+        <div class="room-note"></div>
       </div>
       <div class="room-item">
         <div class="room-name">リビング<br>ソファ前</div>
         <div class="room-purpose"><span>エンタメ・くつろぎ</span></div>
         <div class="room-items">
-          <span>音響機器・ソファ・ちゃぶ台</span>
+          <span>音響機器</span>
+          <span>ソファ</span>
+          <span>ちゃぶ台</span>
           <span>ゲーム機類</span>
         </div>
+        <div class="room-status"><div class="room-progress"><div class="room-progress-bar"><div class="room-progress-fill high" style="width:80%"></div></div><span class="room-progress-pct">80%</span></div></div>
+        <div class="room-note"></div>
       </div>
       <div class="room-item">
         <div class="room-name">リビング<br>ソファ後</div>
         <div class="room-purpose"><span>本・小物ゾーン／なみちゃんの化粧台</span></div>
         <div class="room-items">
-          <span>本・雑誌・小物</span>
+          <span>本・雑誌</span>
+          <span>小物</span>
           <span>化粧台</span>
         </div>
+        <div class="room-status"><div class="room-progress"><div class="room-progress-bar"><div class="room-progress-fill low" style="width:30%"></div></div><span class="room-progress-pct">30%</span></div></div>
+        <div class="room-note"></div>
       </div>
       <div class="room-item">
         <div class="room-name">クローゼット（小）</div>
         <div class="room-purpose"><span>機材収納</span></div>
         <div class="room-items">
-          <span>楽器・三脚・カメラなど</span>
+          <span>楽器</span>
+          <span>三脚</span>
+          <span>カメラ</span>
         </div>
+        <div class="room-status"><div class="room-progress"><div class="room-progress-bar"><div class="room-progress-fill high" style="width:90%"></div></div><span class="room-progress-pct">90%</span></div></div>
+        <div class="room-note"></div>
       </div>
       <div class="room-item">
         <div class="room-name">クローゼット（大）</div>
         <div class="room-purpose"><span>衣服・寝具・旅行用品</span></div>
         <div class="room-items">
-          <span>衣服（ハンガー・折りたたみ）</span>
+          <span>衣服（ハンガー）</span>
+          <span>衣服（折りたたみ）</span>
           <span>寝具</span>
           <span>キャリーケース</span>
         </div>
+        <div class="room-status"><div class="room-progress"><div class="room-progress-bar"><div class="room-progress-fill mid" style="width:60%"></div></div><span class="room-progress-pct">60%</span></div></div>
+        <div class="room-note"></div>
       </div>
       <div class="room-item">
         <div class="room-name">ベッド横<br>収納スペース</div>
         <div class="room-purpose"><span>思い出品・貴重品</span></div>
         <div class="room-items">
           <span>思い出品</span>
-          <span>パスポート・カード・金庫など</span>
+          <span>パスポート</span>
+          <span>カード類</span>
+          <span>金庫</span>
         </div>
+        <div class="room-status"><div class="room-progress"><div class="room-progress-bar"><div class="room-progress-fill low" style="width:0%"></div></div><span class="room-progress-pct">0%</span></div></div>
+        <div class="room-note"></div>
       </div>
     </div>
 
@@ -1172,6 +1258,101 @@ footer {
         </tbody>
       </table>
     </div>
+
+    <div class="sub-head">引越し手続き</div>
+    <div class="money-wrap">
+      <table class="money-table">
+        <thead>
+          <tr>
+            <th>手続き</th>
+            <th>けいすけ</th>
+            <th>なみちゃん</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>入居手続き（大家への届出）</td>
+            <td>9/6 完了予定</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td>合鍵の作成</td>
+            <td>✓ 作成済み</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td>転出届（旧住所の役所）</td>
+            <td>—</td>
+            <td>要対応</td>
+          </tr>
+          <tr>
+            <td>転入届（新住所の役所）</td>
+            <td>—</td>
+            <td>要対応</td>
+          </tr>
+          <tr>
+            <td>運転免許証の住所変更</td>
+            <td>—</td>
+            <td>要対応</td>
+          </tr>
+          <tr>
+            <td>マイナンバーカードの住所変更</td>
+            <td>—</td>
+            <td>要対応</td>
+          </tr>
+          <tr>
+            <td>銀行口座の住所変更</td>
+            <td>—</td>
+            <td>要対応</td>
+          </tr>
+          <tr>
+            <td>クレジットカードの住所変更</td>
+            <td>—</td>
+            <td>要対応</td>
+          </tr>
+          <tr>
+            <td>郵便の転送手続き</td>
+            <td>—</td>
+            <td>要対応</td>
+          </tr>
+          <tr>
+            <td>勤務先への住所変更届</td>
+            <td>—</td>
+            <td>要対応</td>
+          </tr>
+          <tr>
+            <td>健康保険証の住所変更</td>
+            <td>—</td>
+            <td>要対応</td>
+          </tr>
+          <tr>
+            <td>Amazon・各種ECサービスの住所変更</td>
+            <td>—</td>
+            <td>要対応</td>
+          </tr>
+          <tr>
+            <td>旧居の電気・ガス・水道解約</td>
+            <td>—</td>
+            <td>要対応</td>
+          </tr>
+          <tr>
+            <td>旧居の退去・鍵返却</td>
+            <td>—</td>
+            <td>9/26</td>
+          </tr>
+          <tr>
+            <td>旧居の合鍵をなみちゃんに返す</td>
+            <td>要対応</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td>火災保険への入居者追加</td>
+            <td>契約内容を確認</td>
+            <td>—</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </section>
 
   <!-- タイムライン -->
@@ -1198,7 +1379,7 @@ footer {
           <div class="tl-content">
             <div class="tl-head">今週 <span class="now-tag">NOW</span>　断捨離 → 9/6（日）に荷物移動</div>
             <ul class="plain-list">
-              <li class="log-done">9/3（木）✓　なみちゃんが先に持ってきてくれた荷物を断捨離して配置を決めた。残りの荷物の移動タイミングも9/6に決まった。</li>
+              <li class="log-done">9/3（木）✓　なみちゃんの非日常品の断捨離を完了して、残りの荷物も含めて配置を決めた。残りの荷物の移動タイミングも9/6に決まった。</li>
               <li>9/6（日）：残りの荷物を移動 ／ 入居手続き（14:00〜 / 印鑑・62,150円 持参）</li>
               <li>粗大ゴミとして出す項目の申請を完了する（9/7目標）</li>
             </ul>
@@ -1210,11 +1391,11 @@ footer {
         <div class="tl-left"><div class="tl-date future">9/7<br>〜9/13</div></div>
         <div class="tl-right">
           <div class="tl-content">
-            <div class="tl-head">不用品整理・梱包・家具検討</div>
+            <div class="tl-head">手続き・収納家具の検討</div>
             <ul class="plain-list">
-              <li>けいすけ・なみちゃん：それぞれ不用品の整理を進める</li>
-              <li>移動する荷物の梱包</li>
-              <li>できれば：必要な家具・収納家具を二人で検討する</li>
+              <li>粗大ゴミ排出（9/7申請完了目標）</li>
+              <li>住所変更手続き（役所・免許証・銀行・各種サービス）</li>
+              <li>必要な収納家具を二人で検討する</li>
             </ul>
           </div>
         </div>
@@ -1224,11 +1405,11 @@ footer {
         <div class="tl-left"><div class="tl-date future">9/14<br>〜9/20</div></div>
         <div class="tl-right">
           <div class="tl-content">
-            <div class="tl-head">搬入・収納の仮決め</div>
+            <div class="tl-head">収納完了 ／ 友人来訪（9/20）</div>
             <ul class="plain-list">
-              <li>なみちゃんの荷物の搬入を完了する</li>
-              <li>追加荷物の収納・収納場所の仮決め（服・キッチン・洗面・生活雑貨）</li>
-              <li>「自分の場所」と「共用の場所」の区分けを決める</li>
+              <li>今ある収納家具に収まるものはすべて収納した状態にする</li>
+              <li>なみちゃんの旧居の退去・解約手続きの確認</li>
+              <li>9/20 友人来訪</li>
             </ul>
           </div>
         </div>
@@ -1238,9 +1419,10 @@ footer {
         <div class="tl-left"><div class="tl-date future">9/21<br>〜9/27</div></div>
         <div class="tl-right">
           <div class="tl-content">
-            <div class="tl-head">細かい収納の調整・ルール決め</div>
+            <div class="tl-head">小物・収納家具の追加検討</div>
             <ul class="plain-list">
-              <li>収納・配置の細かい調整（9/25目標）</li>
+              <li>必要に応じて収納家具を購入・設置する</li>
+              <li>小物の収納・配置を整える</li>
               <li>お金まわりのルールを運用しながら確認する</li>
               <li>家事ルールの仮決め</li>
             </ul>
