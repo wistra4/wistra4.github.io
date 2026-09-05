@@ -181,6 +181,12 @@ em { font-style: normal; font-weight: 500; color: var(--accent); }
   left: 0;
   color: var(--border);
 }
+.plain-list li.log-done {
+  color: var(--dim);
+}
+.plain-list li.log-done::before {
+  content: none;
+}
 
 /* Sub-heading */
 .sub-head {
@@ -1223,8 +1229,8 @@ footer {
           <div class="tl-content">
             <div class="tl-head">今週 <span class="now-tag">NOW</span>　断捨離 → 9/6（日）に荷物移動</div>
             <ul class="plain-list">
-              <li>なみちゃん：断捨離して持ってくるものを決める</li>
-              <li>9/6（日）：タイミングが決まっていなかった荷物を移動</li>
+              <li class="log-done">9/3（木）✓　なみちゃんが先に荷物を持ってきてくれた。断捨離して搬入するものを決定し、残りの荷物の移動タイミングも9/6に決まった。</li>
+              <li>9/6（日）：残りの荷物を移動</li>
               <li>粗大ゴミとして出す項目の申請を完了する（9/7目標）</li>
             </ul>
           </div>
