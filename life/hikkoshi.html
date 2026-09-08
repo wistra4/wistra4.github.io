@@ -842,6 +842,11 @@ footer {
   padding: 20px;
   border-top: 1px solid var(--border);
 }
+
+.place-group { margin-bottom: 14px; }
+.place-label { font-size: 0.75rem; font-weight: 700; color: var(--text-sub); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 7px; padding-bottom: 4px; border-bottom: 1px solid var(--border); }
+.item-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.item-chip { font-size: 0.82rem; padding: 4px 11px; background: var(--card-bg); border: 1px solid var(--border); border-radius: 20px; white-space: nowrap; }
 </style>
 </head>
 <body>
@@ -1425,377 +1430,57 @@ footer {
 
   <section class="section">
     <div class="section-title"><span class="icon icon-green">🛍</span>ようこそリスト</div>
-    <p style="font-size:0.85rem;color:var(--text-sub);margin-bottom:1rem;">新しく購入する家具・家電をまとめたリスト。</p>
-    <table style="width:100%;border-collapse:collapse;font-size:0.88rem;">
-      <thead>
-        <tr style="background:var(--card-bg);border-bottom:2px solid var(--border);">
-          <th style="text-align:left;padding:8px 10px;font-weight:600;">アイテム</th>
-          <th style="text-align:left;padding:8px 10px;font-weight:600;">置き場所</th>
-          <th style="text-align:left;padding:8px 10px;font-weight:600;">予算</th>
-          <th style="text-align:left;padding:8px 10px;font-weight:600;">予定</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr style="border-bottom:1px solid var(--border);">
-          <td style="padding:9px 10px;">料理家電の棚</td>
-          <td style="padding:9px 10px;color:var(--text-sub);">リビングソファ前</td>
-          <td style="padding:9px 10px;">—</td>
-          <td style="padding:9px 10px;">—</td>
-        </tr>
-        <tr style="border-bottom:1px solid var(--border);">
-          <td style="padding:9px 10px;">本棚</td>
-          <td style="padding:9px 10px;color:var(--text-sub);">リビングソファ後</td>
-          <td style="padding:9px 10px;">—</td>
-          <td style="padding:9px 10px;">—</td>
-        </tr>
-        <tr style="border-bottom:1px solid var(--border);">
-          <td style="padding:9px 10px;">化粧台</td>
-          <td style="padding:9px 10px;color:var(--text-sub);">リビングソファ後</td>
-          <td style="padding:9px 10px;">—</td>
-          <td style="padding:9px 10px;">—</td>
-        </tr>
-        <tr style="border-bottom:1px solid var(--border);">
-          <td style="padding:9px 10px;">タンス</td>
-          <td style="padding:9px 10px;color:var(--text-sub);">クローゼット（大）</td>
-          <td style="padding:9px 10px;">—</td>
-          <td style="padding:9px 10px;">—</td>
-        </tr>
-      </tbody>
-    </table>
+    <p style="font-size:0.85rem;color:var(--text-sub);margin-bottom:1.2rem;">新しく購入する家具・家電。</p>
+    <div class="place-group">
+      <div class="place-label">リビングソファ前</div>
+      <div class="item-chips"><span class="item-chip">料理家電の棚</span></div>
+    </div>
+    <div class="place-group">
+      <div class="place-label">リビングソファ後</div>
+      <div class="item-chips"><span class="item-chip">本棚</span><span class="item-chip">化粧台</span></div>
+    </div>
+    <div class="place-group">
+      <div class="place-label">クローゼット（大）</div>
+      <div class="item-chips"><span class="item-chip">タンス</span></div>
+    </div>
   </section>
 
   <section class="section">
     <div class="section-title"><span class="icon icon-orange">🙏</span>ありがとうさようならリスト</div>
-    <p style="font-size:0.85rem;color:var(--text-sub);margin-bottom:1rem;">処分予定のものをまとめて、いつ・どうやってさようならするかを決めるリスト。</p>
-    <table style="width:100%;border-collapse:collapse;font-size:0.88rem;">
-      <thead>
-        <tr style="background:var(--card-bg);border-bottom:2px solid var(--border);">
-          <th style="text-align:left;padding:8px 10px;font-weight:600;">アイテム</th>
-          <th style="text-align:left;padding:8px 10px;font-weight:600;">場所</th>
-          <th style="text-align:left;padding:8px 10px;font-weight:600;">処分方法</th>
-          <th style="text-align:left;padding:8px 10px;font-weight:600;">予定</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr style="border-bottom:1px solid var(--border);">
-          <td style="padding:9px 10px;">洗濯機</td>
-          <td style="padding:9px 10px;color:var(--text-sub);">なみちゃんの家</td>
-          <td style="padding:9px 10px;">—</td>
-          <td style="padding:9px 10px;">—</td>
-        </tr>
-        <tr style="border-bottom:1px solid var(--border);">
-          <td style="padding:9px 10px;">冷蔵庫</td>
-          <td style="padding:9px 10px;color:var(--text-sub);">なみちゃんの家</td>
-          <td style="padding:9px 10px;">—</td>
-          <td style="padding:9px 10px;">—</td>
-        </tr>
-        <tr style="border-bottom:1px solid var(--border);">
-          <td style="padding:9px 10px;">本棚</td>
-          <td style="padding:9px 10px;color:var(--text-sub);">玄関</td>
-          <td style="padding:9px 10px;">—</td>
-          <td style="padding:9px 10px;">—</td>
-        </tr>
-        <tr style="border-bottom:1px solid var(--border);">
-          <td style="padding:9px 10px;">棚（大）</td>
-          <td style="padding:9px 10px;color:var(--text-sub);">旅立ちゾーン</td>
-          <td style="padding:9px 10px;">—</td>
-          <td style="padding:9px 10px;">—</td>
-        </tr>
-        <tr style="border-bottom:1px solid var(--border);">
-          <td style="padding:9px 10px;">網ラック</td>
-          <td style="padding:9px 10px;color:var(--text-sub);">玄関</td>
-          <td style="padding:9px 10px;">—</td>
-          <td style="padding:9px 10px;">—</td>
-        </tr>
-        <tr style="border-bottom:1px solid var(--border);">
-          <td style="padding:9px 10px;">レコードラック</td>
-          <td style="padding:9px 10px;color:var(--text-sub);">リビングソファ前</td>
-          <td style="padding:9px 10px;">—</td>
-          <td style="padding:9px 10px;">—</td>
-        </tr>
-        <tr style="border-bottom:1px solid var(--border);">
-          <td style="padding:9px 10px;">机（白）</td>
-          <td style="padding:9px 10px;color:var(--text-sub);">旅立ちゾーン</td>
-          <td style="padding:9px 10px;">—</td>
-          <td style="padding:9px 10px;">—</td>
-        </tr>
-        <tr style="border-bottom:1px solid var(--border);">
-          <td style="padding:9px 10px;">椅子（黒）</td>
-          <td style="padding:9px 10px;color:var(--text-sub);">旅立ちゾーン</td>
-          <td style="padding:9px 10px;">—</td>
-          <td style="padding:9px 10px;">—</td>
-        </tr>
-        <tr style="border-bottom:1px solid var(--border);">
-          <td style="padding:9px 10px;">椅子（赤）</td>
-          <td style="padding:9px 10px;color:var(--text-sub);">ソファ後ろ</td>
-          <td style="padding:9px 10px;">—</td>
-          <td style="padding:9px 10px;">—</td>
-        </tr>
-        <tr style="border-bottom:1px solid var(--border);">
-          <td style="padding:9px 10px;">キャリー</td>
-          <td style="padding:9px 10px;color:var(--text-sub);">玄関</td>
-          <td style="padding:9px 10px;">—</td>
-          <td style="padding:9px 10px;">—</td>
-        </tr>
-        <tr style="border-bottom:1px solid var(--border);">
-          <td style="padding:9px 10px;">棚（小）</td>
-          <td style="padding:9px 10px;color:var(--text-sub);">旅立ちゾーン</td>
-          <td style="padding:9px 10px;">—</td>
-          <td style="padding:9px 10px;">—</td>
-        </tr>
-        <tr style="border-bottom:1px solid var(--border);">
-          <td style="padding:9px 10px;">サイドテーブル</td>
-          <td style="padding:9px 10px;color:var(--text-sub);">旅立ちゾーン</td>
-          <td style="padding:9px 10px;">—</td>
-          <td style="padding:9px 10px;">—</td>
-        </tr>
-        <tr style="border-bottom:1px solid var(--border);">
-          <td style="padding:9px 10px;">照明（赤）</td>
-          <td style="padding:9px 10px;color:var(--text-sub);">旅立ちゾーン</td>
-          <td style="padding:9px 10px;">—</td>
-          <td style="padding:9px 10px;">—</td>
-        </tr>
-        <tr style="border-bottom:1px solid var(--border);">
-          <td style="padding:9px 10px;">洗濯かご</td>
-          <td style="padding:9px 10px;color:var(--text-sub);">旅立ちゾーン</td>
-          <td style="padding:9px 10px;">—</td>
-          <td style="padding:9px 10px;">—</td>
-        </tr>
-        <tr style="border-bottom:1px solid var(--border);">
-          <td style="padding:9px 10px;">まくら</td>
-          <td style="padding:9px 10px;color:var(--text-sub);">旅立ちゾーン</td>
-          <td style="padding:9px 10px;">—</td>
-          <td style="padding:9px 10px;">—</td>
-        </tr>
-        <tr style="border-bottom:1px solid var(--border);">
-          <td style="padding:9px 10px;">クッション × 2</td>
-          <td style="padding:9px 10px;color:var(--text-sub);">旅立ちゾーン</td>
-          <td style="padding:9px 10px;">—</td>
-          <td style="padding:9px 10px;">—</td>
-        </tr>
-        <tr style="border-bottom:1px solid var(--border);">
-          <td style="padding:9px 10px;">ぬいぐるみ</td>
-          <td style="padding:9px 10px;color:var(--text-sub);">旅立ちゾーン</td>
-          <td style="padding:9px 10px;">—</td>
-          <td style="padding:9px 10px;">—</td>
-        </tr>
-        <tr style="border-bottom:1px solid var(--border);">
-          <td style="padding:9px 10px;">コート</td>
-          <td style="padding:9px 10px;color:var(--text-sub);">旅立ちゾーン</td>
-          <td style="padding:9px 10px;">—</td>
-          <td style="padding:9px 10px;">—</td>
-        </tr>
-        <tr style="border-bottom:1px solid var(--border);">
-          <td style="padding:9px 10px;">振袖</td>
-          <td style="padding:9px 10px;color:var(--text-sub);">旅立ちゾーン</td>
-          <td style="padding:9px 10px;">—</td>
-          <td style="padding:9px 10px;">—</td>
-        </tr>
-        <tr style="border-bottom:1px solid var(--border);">
-          <td style="padding:9px 10px;">AKBジャケット</td>
-          <td style="padding:9px 10px;color:var(--text-sub);">旅立ちゾーン</td>
-          <td style="padding:9px 10px;">—</td>
-          <td style="padding:9px 10px;">—</td>
-        </tr>
-        <tr style="border-bottom:1px solid var(--border);">
-          <td style="padding:9px 10px;">スピーカー</td>
-          <td style="padding:9px 10px;color:var(--text-sub);">旅立ちゾーン</td>
-          <td style="padding:9px 10px;">—</td>
-          <td style="padding:9px 10px;">—</td>
-        </tr>
-        <tr style="border-bottom:1px solid var(--border);">
-          <td style="padding:9px 10px;">絵</td>
-          <td style="padding:9px 10px;color:var(--text-sub);">旅立ちゾーン</td>
-          <td style="padding:9px 10px;">—</td>
-          <td style="padding:9px 10px;">—</td>
-        </tr>
-        <tr style="border-bottom:1px solid var(--border);">
-          <td style="padding:9px 10px;">フライパン</td>
-          <td style="padding:9px 10px;color:var(--text-sub);">旅立ちゾーン</td>
-          <td style="padding:9px 10px;">—</td>
-          <td style="padding:9px 10px;">—</td>
-        </tr>
-        <tr style="border-bottom:1px solid var(--border);">
-          <td style="padding:9px 10px;">鍋</td>
-          <td style="padding:9px 10px;color:var(--text-sub);">旅立ちゾーン</td>
-          <td style="padding:9px 10px;">—</td>
-          <td style="padding:9px 10px;">—</td>
-        </tr>
-        <tr style="border-bottom:1px solid var(--border);">
-          <td style="padding:9px 10px;">本</td>
-          <td style="padding:9px 10px;color:var(--text-sub);">旅立ちゾーン</td>
-          <td style="padding:9px 10px;">—</td>
-          <td style="padding:9px 10px;">—</td>
-        </tr>
-        <tr style="border-bottom:1px solid var(--border);">
-          <td style="padding:9px 10px;">本立て</td>
-          <td style="padding:9px 10px;color:var(--text-sub);">旅立ちゾーン</td>
-          <td style="padding:9px 10px;">—</td>
-          <td style="padding:9px 10px;">—</td>
-        </tr>
-        <tr style="border-bottom:1px solid var(--border);">
-          <td style="padding:9px 10px;">カーテン（青）</td>
-          <td style="padding:9px 10px;color:var(--text-sub);">旅立ちゾーン</td>
-          <td style="padding:9px 10px;">—</td>
-          <td style="padding:9px 10px;">—</td>
-        </tr>
-        <tr style="border-bottom:1px solid var(--border);">
-          <td style="padding:9px 10px;">カーテン（赤）</td>
-          <td style="padding:9px 10px;color:var(--text-sub);">旅立ちゾーン</td>
-          <td style="padding:9px 10px;">—</td>
-          <td style="padding:9px 10px;">—</td>
-        </tr>
-        <tr style="border-bottom:1px solid var(--border);">
-          <td style="padding:9px 10px;">鏡（小）</td>
-          <td style="padding:9px 10px;color:var(--text-sub);">旅立ちゾーン</td>
-          <td style="padding:9px 10px;">—</td>
-          <td style="padding:9px 10px;">—</td>
-        </tr>
-        <tr style="border-bottom:1px solid var(--border);">
-          <td style="padding:9px 10px;">ディフューザー × 2</td>
-          <td style="padding:9px 10px;color:var(--text-sub);">旅立ちゾーン</td>
-          <td style="padding:9px 10px;">—</td>
-          <td style="padding:9px 10px;">—</td>
-        </tr>
-        <tr style="border-bottom:1px solid var(--border);">
-          <td style="padding:9px 10px;">水筒</td>
-          <td style="padding:9px 10px;color:var(--text-sub);">旅立ちゾーン</td>
-          <td style="padding:9px 10px;">—</td>
-          <td style="padding:9px 10px;">—</td>
-        </tr>
-        <tr style="border-bottom:1px solid var(--border);">
-          <td style="padding:9px 10px;">ドライヤー</td>
-          <td style="padding:9px 10px;color:var(--text-sub);">旅立ちゾーン</td>
-          <td style="padding:9px 10px;">—</td>
-          <td style="padding:9px 10px;">—</td>
-        </tr>
-        <tr style="border-bottom:1px solid var(--border);">
-          <td style="padding:9px 10px;">金属板</td>
-          <td style="padding:9px 10px;color:var(--text-sub);">旅立ちゾーン</td>
-          <td style="padding:9px 10px;">—</td>
-          <td style="padding:9px 10px;">—</td>
-        </tr>
-        <tr style="border-bottom:1px solid var(--border);">
-          <td style="padding:9px 10px;">ギター用フック</td>
-          <td style="padding:9px 10px;color:var(--text-sub);">旅立ちゾーン</td>
-          <td style="padding:9px 10px;">—</td>
-          <td style="padding:9px 10px;">—</td>
-        </tr>
-        <tr style="border-bottom:1px solid var(--border);">
-          <td style="padding:9px 10px;">作品キャプション</td>
-          <td style="padding:9px 10px;color:var(--text-sub);">旅立ちゾーン</td>
-          <td style="padding:9px 10px;">—</td>
-          <td style="padding:9px 10px;">—</td>
-        </tr>
-        <tr style="border-bottom:1px solid var(--border);">
-          <td style="padding:9px 10px;">Wi-Fiルータ等</td>
-          <td style="padding:9px 10px;color:var(--text-sub);">旅立ちゾーン</td>
-          <td style="padding:9px 10px;">—</td>
-          <td style="padding:9px 10px;">—</td>
-        </tr>
-        <tr style="border-bottom:1px solid var(--border);">
-          <td style="padding:9px 10px;">筆記用具</td>
-          <td style="padding:9px 10px;color:var(--text-sub);">旅立ちゾーン</td>
-          <td style="padding:9px 10px;">—</td>
-          <td style="padding:9px 10px;">—</td>
-        </tr>
-        <tr style="border-bottom:1px solid var(--border);">
-          <td style="padding:9px 10px;">洗濯バサミのやつ</td>
-          <td style="padding:9px 10px;color:var(--text-sub);">旅立ちゾーン</td>
-          <td style="padding:9px 10px;">—</td>
-          <td style="padding:9px 10px;">—</td>
-        </tr>
-        <tr style="border-bottom:1px solid var(--border);">
-          <td style="padding:9px 10px;">腰を絞めるやつ</td>
-          <td style="padding:9px 10px;color:var(--text-sub);">旅立ちゾーン</td>
-          <td style="padding:9px 10px;">—</td>
-          <td style="padding:9px 10px;">—</td>
-        </tr>
-      </tbody>
-    </table>
+    <p style="font-size:0.85rem;color:var(--text-sub);margin-bottom:1.2rem;">処分予定のもの。処分方法・予定は追って決める。</p>
+    <div class="place-group">
+      <div class="place-label">なみちゃんの家</div>
+      <div class="item-chips"><span class="item-chip">洗濯機</span><span class="item-chip">冷蔵庫</span></div>
+    </div>
+    <div class="place-group">
+      <div class="place-label">玄関</div>
+      <div class="item-chips"><span class="item-chip">本棚</span><span class="item-chip">網ラック</span><span class="item-chip">キャリー</span></div>
+    </div>
+    <div class="place-group">
+      <div class="place-label">リビングソファ前</div>
+      <div class="item-chips"><span class="item-chip">レコードラック</span></div>
+    </div>
+    <div class="place-group">
+      <div class="place-label">ソファ後ろ</div>
+      <div class="item-chips"><span class="item-chip">椅子（赤）</span></div>
+    </div>
+    <div class="place-group">
+      <div class="place-label">旅立ちゾーン</div>
+      <div class="item-chips">
+        <span class="item-chip">棚（大）</span><span class="item-chip">机（白）</span><span class="item-chip">椅子（黒）</span><span class="item-chip">棚（小）</span><span class="item-chip">サイドテーブル</span><span class="item-chip">照明（赤）</span><span class="item-chip">洗濯かご</span><span class="item-chip">まくら</span><span class="item-chip">クッション × 2</span><span class="item-chip">ぬいぐるみ</span><span class="item-chip">コート</span><span class="item-chip">振袖</span><span class="item-chip">AKBジャケット</span><span class="item-chip">スピーカー</span><span class="item-chip">絵</span><span class="item-chip">フライパン</span><span class="item-chip">鍋</span><span class="item-chip">本</span><span class="item-chip">本立て</span><span class="item-chip">カーテン（青）</span><span class="item-chip">カーテン（赤）</span><span class="item-chip">鏡（小）</span><span class="item-chip">ディフューザー × 2</span><span class="item-chip">水筒</span><span class="item-chip">金属板</span><span class="item-chip">ギター用フック</span><span class="item-chip">ドライヤー</span><span class="item-chip">作品キャプション</span><span class="item-chip">Wi-Fiルータ等</span><span class="item-chip">筆記用具</span><span class="item-chip">洗濯バサミのやつ</span><span class="item-chip">腰を絞めるやつ</span>
+      </div>
+    </div>
   </section>
 
   <section class="section">
-    <div class="section-title"><span class="icon icon-blue">🗺</span>迷子案内所</div>
-    <p style="font-size:0.85rem;color:var(--text-sub);margin-bottom:1rem;">どうするか決まっていないもの。使う？処分？保留中のリスト。</p>
-    <table style="width:100%;border-collapse:collapse;font-size:0.88rem;">
-      <thead>
-        <tr style="background:var(--card-bg);border-bottom:2px solid var(--border);">
-          <th style="text-align:left;padding:8px 10px;font-weight:600;">アイテム</th>
-          <th style="text-align:left;padding:8px 10px;font-weight:600;">場所</th>
-          <th style="text-align:left;padding:8px 10px;font-weight:600;">行き先</th>
-          <th style="text-align:left;padding:8px 10px;font-weight:600;">メモ</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr style="border-bottom:1px solid var(--border);">
-          <td style="padding:9px 10px;">物干し竿</td>
-          <td style="padding:9px 10px;color:var(--text-sub);">—</td>
-          <td style="padding:9px 10px;">—</td>
-          <td style="padding:9px 10px;">—</td>
-        </tr>
-        <tr style="border-bottom:1px solid var(--border);">
-          <td style="padding:9px 10px;">布団のマット</td>
-          <td style="padding:9px 10px;color:var(--text-sub);">—</td>
-          <td style="padding:9px 10px;">—</td>
-          <td style="padding:9px 10px;">—</td>
-        </tr>
-        <tr style="border-bottom:1px solid var(--border);">
-          <td style="padding:9px 10px;">シーツ</td>
-          <td style="padding:9px 10px;color:var(--text-sub);">—</td>
-          <td style="padding:9px 10px;">—</td>
-          <td style="padding:9px 10px;">—</td>
-        </tr>
-        <tr style="border-bottom:1px solid var(--border);">
-          <td style="padding:9px 10px;">枕</td>
-          <td style="padding:9px 10px;color:var(--text-sub);">—</td>
-          <td style="padding:9px 10px;">—</td>
-          <td style="padding:9px 10px;">—</td>
-        </tr>
-        <tr style="border-bottom:1px solid var(--border);">
-          <td style="padding:9px 10px;">箒</td>
-          <td style="padding:9px 10px;color:var(--text-sub);">—</td>
-          <td style="padding:9px 10px;">—</td>
-          <td style="padding:9px 10px;">—</td>
-        </tr>
-        <tr style="border-bottom:1px solid var(--border);">
-          <td style="padding:9px 10px;">サッカーボール</td>
-          <td style="padding:9px 10px;color:var(--text-sub);">—</td>
-          <td style="padding:9px 10px;">—</td>
-          <td style="padding:9px 10px;">—</td>
-        </tr>
-        <tr style="border-bottom:1px solid var(--border);">
-          <td style="padding:9px 10px;">絨毯</td>
-          <td style="padding:9px 10px;color:var(--text-sub);">—</td>
-          <td style="padding:9px 10px;">—</td>
-          <td style="padding:9px 10px;">—</td>
-        </tr>
-        <tr style="border-bottom:1px solid var(--border);">
-          <td style="padding:9px 10px;">プランター（小）</td>
-          <td style="padding:9px 10px;color:var(--text-sub);">—</td>
-          <td style="padding:9px 10px;">—</td>
-          <td style="padding:9px 10px;">—</td>
-        </tr>
-        <tr style="border-bottom:1px solid var(--border);">
-          <td style="padding:9px 10px;">電子レンジ</td>
-          <td style="padding:9px 10px;color:var(--text-sub);">—</td>
-          <td style="padding:9px 10px;">—</td>
-          <td style="padding:9px 10px;">—</td>
-        </tr>
-        <tr style="border-bottom:1px solid var(--border);">
-          <td style="padding:9px 10px;">ゴミ箱</td>
-          <td style="padding:9px 10px;color:var(--text-sub);">—</td>
-          <td style="padding:9px 10px;">—</td>
-          <td style="padding:9px 10px;">—</td>
-        </tr>
-        <tr style="border-bottom:1px solid var(--border);">
-          <td style="padding:9px 10px;">ゴミ箱（黒）</td>
-          <td style="padding:9px 10px;color:var(--text-sub);">—</td>
-          <td style="padding:9px 10px;">—</td>
-          <td style="padding:9px 10px;">—</td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="section-title"><span class="icon icon-blue">🗺</span>迷子のご案内</div>
+    <p style="font-size:0.85rem;color:var(--text-sub);margin-bottom:1.2rem;">どうするか決まっていないもの。使う？処分？保留中。</p>
+    <div class="place-group">
+      <div class="place-label">行き先未定</div>
+      <div class="item-chips">
+        <span class="item-chip">物干し竿</span><span class="item-chip">布団のマット</span><span class="item-chip">シーツ</span><span class="item-chip">枕</span><span class="item-chip">箒</span><span class="item-chip">サッカーボール</span><span class="item-chip">絨毯</span><span class="item-chip">プランター（小）</span><span class="item-chip">電子レンジ</span><span class="item-chip">ゴミ箱</span><span class="item-chip">ゴミ箱（黒）</span>
+      </div>
+    </div>
   </section>
 
   <footer>
