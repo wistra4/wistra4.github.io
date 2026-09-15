@@ -750,6 +750,31 @@ em { font-style: normal; font-weight: 500; color: var(--accent); }
 .pri-mid  { color: var(--yellow); }
 .pri-low  { color: var(--dim); }
 
+/* Procedure status badges */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 9px;
+  border-radius: 20px;
+  font-size: 11.5px;
+  font-weight: 600;
+  white-space: nowrap;
+  line-height: 1.6;
+}
+.sb-done    { background: #d4edda; color: #1a6630; border: 1px solid #b2dfbb; }
+.sb-todo    { background: #fff3cd; color: #865500; border: 1px solid #ffe08a; }
+.sb-sched   { background: #d0e8ff; color: #1a5a9e; border: 1px solid #a0c8f0; }
+.sb-check   { background: #ede5f8; color: #5b3e91; border: 1px solid #d0b8f4; }
+.sb-na      { color: var(--dim); font-size: 12px; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .sb-done  { background: #1a3d22; color: #6ee087; border-color: #2a6040; }
+  :root:not([data-theme="light"]) .sb-todo  { background: #3d2e00; color: #ffd060; border-color: #6b5000; }
+  :root:not([data-theme="light"]) .sb-sched { background: #0d2a4a; color: #7ec2ff; border-color: #1a4a80; }
+  :root:not([data-theme="light"]) .sb-check { background: #2a1d40; color: #c4a0f0; border-color: #4a2e70; }
+}
+.sb-date { font-size: 10.5px; color: var(--dim); margin-left: 4px; white-space: nowrap; }
+
 /* Timeline */
 .timeline { display: flex; flex-direction: column; }
 .tl-item {
@@ -847,6 +872,106 @@ footer {
 .place-label { font-size: 0.75rem; font-weight: 700; color: var(--text-sub); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 7px; padding-bottom: 4px; border-bottom: 1px solid var(--border); }
 .item-chips { display: flex; flex-wrap: wrap; gap: 6px; }
 .item-chip { font-size: 0.82rem; padding: 4px 11px; background: var(--card-bg); border: 1px solid var(--border); border-radius: 20px; white-space: nowrap; }
+.d-tag { display: inline-block; font-size: 9px; padding: 1px 5px; border-radius: 5px; margin-left: 4px; font-weight: 500; vertical-align: middle; line-height: 1.5; }
+.d-sodai { background: #fde8e0; color: #b02010; }
+.d-kanet { background: #e8f0fe; color: #2060b0; }
+.d-fumen { background: #eeeeee; color: #505060; }
+.d-shohin { background: #e4f4e8; color: #206830; }
+.d-kaen { background: #f0f0ec; color: #606058; }
+.d-bunbetsu { background: #f5f0e8; color: #806830; }
+.disposal-note { font-size: 11px; color: var(--dim); margin-top: 10px; padding: 7px 11px; background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px; line-height: 1.7; }
+
+/* ── Pixel Shiba Inu — ページを自由に走る ── */
+.dog-runner {
+  position: fixed;
+  bottom: 18px;
+  left: 0;
+  width: 100%;
+  height: 110px;
+  pointer-events: none;
+  z-index: 999;
+  overflow: hidden;
+}
+.dog-wrap {
+  position: absolute;
+  bottom: 0;
+  animation: dog-run 18s linear infinite;
+}
+@keyframes dog-run {
+  0%   { transform: translateX(-130px); }
+  100% { transform: translateX(calc(100vw + 20px)); }
+}
+.dog-body {
+  display: block;
+  image-rendering: pixelated;
+  animation: dog-trot 0.38s steps(2) infinite;
+}
+@keyframes dog-trot {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(-4px); }
+}
+.dog-tail {
+  transform-box: fill-box;
+  transform-origin: 0% 100%;
+  animation: tail-wag 0.42s steps(2) infinite alternate;
+}
+@keyframes tail-wag {
+  from { transform: rotate(-15deg); }
+  to   { transform: rotate(15deg); }
+}
+.legs-front {
+  transform-box: fill-box;
+  transform-origin: 50% 0%;
+  animation: stride-a 0.38s steps(2) infinite;
+}
+.legs-back {
+  transform-box: fill-box;
+  transform-origin: 50% 0%;
+  animation: stride-b 0.38s steps(2) infinite;
+}
+@keyframes stride-a {
+  0%   { transform: rotate(-24deg); }
+  100% { transform: rotate(24deg); }
+}
+@keyframes stride-b {
+  0%   { transform: rotate(24deg); }
+  100% { transform: rotate(-24deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .dog-wrap, .dog-body, .dog-tail, .legs-front, .legs-back { animation: none; }
+  .dog-wrap { transform: translateX(60px); }
+}
+.bird-wrap {
+  position: absolute;
+  bottom: 58px;
+  animation: bird-fly 11s linear infinite;
+  animation-delay: -4s;
+}
+@keyframes bird-fly {
+  0%   { transform: translateX(-60px); }
+  100% { transform: translateX(calc(100vw + 20px)); }
+}
+.bird-body { display: block; image-rendering: pixelated; }
+.bird-wing {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  animation: wing-flap 0.28s steps(2) infinite alternate;
+}
+@keyframes wing-flap {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-5px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bird-wrap, .bird-wing { animation: none; }
+  .bird-wrap { transform: translateX(80px); }
+}
+.habitat-scene {
+  margin: 12px 0 16px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+.habitat-scene svg { display: block; width: 100%; image-rendering: pixelated; }
 </style>
 </head>
 <body>
@@ -925,31 +1050,31 @@ footer {
     <div class="sub-head">二人で使える時間（9月）</div>
     <div class="js-candidate-note">※ 以下は候補。確定したら更新する。</div>
     <div class="joint-schedule">
-      <div class="js-item candidate" style="opacity:0.4;">
+      <div class="js-item done">
         <div class="js-left">
           <div class="js-date">9/6<span class="js-day">日</span></div>
-          <div class="js-badge" style="background:var(--dim);color:#fff;">済み ✓</div>
+          <div class="js-badge">終日</div>
         </div>
         <div class="js-right">
           <div class="js-time-main" style="text-decoration:line-through;">終日（目安）</div>
         </div>
       </div>
-      <div class="js-item candidate">
+      <div class="js-item done">
         <div class="js-left">
           <div class="js-date">9/9<span class="js-day">水</span></div>
           <div class="js-badge">夜〜深夜</div>
         </div>
         <div class="js-right">
-          <div class="js-time-main">19:00 〜 翌 01:00</div>
+          <div class="js-time-main" style="text-decoration:line-through;">19:00 〜 翌 01:00</div>
         </div>
       </div>
-      <div class="js-item candidate">
+      <div class="js-item done">
         <div class="js-left">
           <div class="js-date">9/12<span class="js-day">土</span></div>
           <div class="js-badge">夜</div>
         </div>
         <div class="js-right">
-          <div class="js-time-main">19:00 以降</div>
+          <div class="js-time-main" style="text-decoration:line-through;">19:00 以降</div>
         </div>
       </div>
 
@@ -1058,6 +1183,444 @@ footer {
     </div>
 
     <div class="sub-head">場所ごとの収納・配置</div>
+
+    <!-- Pixel art habitat: 9 rooms sorted by progress, dog & bird inside -->
+    <div class="habitat-scene" aria-hidden="true">
+      <svg width="100%" viewBox="0 0 820 218" xmlns="http://www.w3.org/2000/svg" style="display:block;image-rendering:pixelated">
+        <!-- == SKY + ATMOSPHERE == -->
+        <rect width="820" height="218" fill="#c8e8ff"/>
+        <!-- SUN -->
+        <rect x="772" y="12" width="22" height="22" fill="#ffdd44"/>
+        <rect x="768" y="20" width="30" height="4" fill="#ffdd44"/>
+        <rect x="781" y="8" width="4" height="30" fill="#ffdd44"/>
+        <rect x="770" y="14" width="4" height="4" fill="#ffdd44"/>
+        <rect x="790" y="14" width="4" height="4" fill="#ffdd44"/>
+        <rect x="770" y="28" width="4" height="4" fill="#ffdd44"/>
+        <rect x="790" y="28" width="4" height="4" fill="#ffdd44"/>
+        <!-- CLOUDS -->
+        <rect x="36" y="24" width="48" height="10" fill="#fff"/><rect x="32" y="16" width="56" height="12" fill="#fff"/><rect x="40" y="12" width="36" height="8" fill="#fff"/>
+        <rect x="320" y="28" width="42" height="10" fill="#fff"/><rect x="316" y="20" width="50" height="12" fill="#fff"/><rect x="324" y="16" width="32" height="8" fill="#fff"/>
+        <rect x="620" y="24" width="36" height="8" fill="#fff"/><rect x="616" y="18" width="44" height="10" fill="#fff"/><rect x="624" y="14" width="28" height="8" fill="#fff"/>
+        <!-- STARS -->
+        <rect x="160" y="10" width="2" height="2" fill="#fffde0"/>
+        <rect x="260" y="18" width="2" height="2" fill="#fffde0"/>
+        <rect x="700" y="10" width="2" height="2" fill="#fffde0"/>
+
+        <!-- CHIMNEY at キッチン/ソファ前 border (x=492-514), before roof -->
+        <rect x="494" y="46" width="20" height="46" fill="#c8a070"/>
+        <rect x="492" y="44" width="24" height="6" fill="#a88050"/>
+        <rect x="494" y="52" width="8" height="4" fill="#b88040"/><rect x="502" y="52" width="6" height="4" fill="#c8a070"/><rect x="508" y="52" width="6" height="4" fill="#b88040"/>
+        <rect x="496" y="60" width="8" height="4" fill="#c8a070"/><rect x="504" y="60" width="10" height="4" fill="#b88040"/>
+        <rect x="494" y="68" width="8" height="4" fill="#b88040"/><rect x="502" y="68" width="6" height="4" fill="#c8a070"/><rect x="508" y="68" width="6" height="4" fill="#b88040"/>
+        <rect x="496" y="76" width="8" height="4" fill="#c8a070"/><rect x="504" y="76" width="10" height="4" fill="#b88040"/>
+        <rect x="494" y="84" width="8" height="4" fill="#b88040"/><rect x="502" y="84" width="6" height="4" fill="#c8a070"/><rect x="508" y="84" width="6" height="4" fill="#b88040"/>
+
+        <!-- ROOF -->
+        <polygon points="408,18 796,92 20,92" fill="#8b4513"/>
+        <rect x="404" y="16" width="8" height="6" fill="#6b3010"/>
+        <rect x="296" y="62" width="224" height="2" fill="#7a3c10" opacity="0.35"/>
+        <rect x="220" y="76" width="376" height="2" fill="#7a3c10" opacity="0.35"/>
+        <rect x="144" y="88" width="528" height="2" fill="#7a3c10" opacity="0.35"/>
+        <!-- EAVE -->
+        <rect x="20" y="92" width="776" height="4" fill="#6b3010"/>
+
+        <!-- HOUSE WALL BASE (all rooms) -->
+        <rect x="24" y="96" width="768" height="96" fill="#f2e0c8"/>
+        <!-- LOW-PROGRESS tint: 40% rooms greyed out -->
+        <rect x="680" y="96" width="72" height="96" fill="#e8e4da"/>
+        <rect x="756" y="96" width="36" height="96" fill="#e4e0d6"/>
+
+        <!-- OUTER WALLS + 8 ROOM DIVIDERS -->
+        <!-- Rooms: 玄関(80) リビ小(92) クロ小(78) 風呂(90) ソファ前(112) キッチン(88) クロ大(88) ソファ後(72) ベッド横(36) -->
+        <!-- starts: 24,108,204,286,380,496,588,680,756 ends: 104,200,282,376,492,584,676,752,792 -->
+        <rect x="20" y="92" width="4" height="100" fill="#c8a070"/><!-- left outer -->
+        <rect x="792" y="92" width="4" height="100" fill="#c8a070"/><!-- right outer -->
+        <rect x="104" y="92" width="4" height="100" fill="#c8a070"/><!-- div 1 -->
+        <rect x="200" y="92" width="4" height="100" fill="#c8a070"/><!-- div 2 -->
+        <rect x="282" y="92" width="4" height="100" fill="#c8a070"/><!-- div 3 -->
+        <rect x="376" y="92" width="4" height="100" fill="#c8a070"/><!-- div 4 -->
+        <rect x="492" y="92" width="4" height="100" fill="#c8a070"/><!-- div 5 -->
+        <rect x="584" y="92" width="4" height="100" fill="#c8a070"/><!-- div 6 -->
+        <rect x="676" y="92" width="4" height="100" fill="#c8a070"/><!-- div 7 -->
+        <rect x="752" y="92" width="4" height="100" fill="#c8a070"/><!-- div 8 -->
+
+        <!-- PROGRESS COLOR STRIPS at room top -->
+        <rect x="24"  y="96" width="80"  height="3" fill="#40cc60"/><!-- 玄関 90% -->
+        <rect x="108" y="96" width="92"  height="3" fill="#40cc60"/><!-- リビ小 90% -->
+        <rect x="204" y="96" width="78"  height="3" fill="#40cc60"/><!-- クロ小 90% -->
+        <rect x="286" y="96" width="90"  height="3" fill="#a8cc20"/><!-- 風呂 80% -->
+        <rect x="380" y="96" width="112" height="3" fill="#a8cc20"/><!-- ソファ前 80% -->
+        <rect x="496" y="96" width="88"  height="3" fill="#ccaa20"/><!-- キッチン 70% -->
+        <rect x="588" y="96" width="88"  height="3" fill="#ccaa20"/><!-- クロ大 70% -->
+        <rect x="680" y="96" width="72"  height="3" fill="#cc5520"/><!-- ソファ後 40% -->
+        <rect x="756" y="96" width="36"  height="3" fill="#cc5520"/><!-- ベッド横 40% -->
+
+        <!-- FLOOR LINE -->
+        <rect x="24" y="188" width="768" height="6" fill="#d4b880"/>
+        <!-- GROUND -->
+        <rect x="0" y="194" width="820" height="6" fill="#7ab040"/>
+        <rect x="0" y="200" width="820" height="18" fill="#5a8030"/>
+        <rect x="16"  y="192" width="4" height="4" fill="#4a7028"/>
+        <rect x="794" y="192" width="4" height="4" fill="#4a7028"/>
+        <rect x="200" y="192" width="3" height="3" fill="#4a7028"/>
+        <rect x="490" y="192" width="3" height="3" fill="#4a7028"/>
+        <rect x="680" y="192" width="3" height="3" fill="#4a7028"/>
+
+        <!-- ========================================================= -->
+        <!-- ROOM 1: 玄関 90% (x=24-104) 備考:靴箱上の小物/粗大ゴミ -->
+        <!-- ========================================================= -->
+        <!-- DOOR -->
+        <rect x="48" y="118" width="26" height="70" fill="#9b6540"/>
+        <rect x="46" y="114" width="30" height="4" fill="#8b5530"/>
+        <rect x="44" y="114" width="4" height="78" fill="#8b5530"/>
+        <rect x="74" y="114" width="4" height="78" fill="#8b5530"/>
+        <rect x="50" y="120" width="10" height="14" fill="#8b5a2b"/>
+        <rect x="62" y="120" width="10" height="14" fill="#8b5a2b"/>
+        <rect x="50" y="136" width="22" height="48" fill="#8b5a2b"/>
+        <rect x="68" y="156" width="4" height="4" fill="#d4a800"/>
+        <rect x="40" y="188" width="42" height="6" fill="#d4c090"/>
+        <!-- SHOE RACK (90%: 3 shelves full) -->
+        <rect x="24" y="108" width="20" height="80" fill="#9b6540"/>
+        <rect x="24" y="124" width="20" height="2" fill="#7a4a28"/>
+        <rect x="24" y="142" width="20" height="2" fill="#7a4a28"/>
+        <rect x="24" y="160" width="20" height="2" fill="#7a4a28"/>
+        <rect x="26" y="108" width="6" height="16" fill="#cc4422"/>
+        <rect x="32" y="108" width="6" height="16" fill="#224488"/>
+        <rect x="26" y="126" width="6" height="16" fill="#228844"/>
+        <rect x="32" y="126" width="6" height="16" fill="#888840"/>
+        <rect x="26" y="144" width="6" height="16" fill="#884422"/>
+        <rect x="32" y="144" width="6" height="16" fill="#cc8844"/>
+        <!-- MESS on shoe rack top (備考: 靴箱の上の小物の整理) -->
+        <rect x="26" y="100" width="5" height="8" fill="#aa6644"/>
+        <rect x="31" y="98" width="4" height="10" fill="#6688aa"/>
+        <rect x="35" y="101" width="5" height="7" fill="#ccaa44"/>
+        <rect x="40" y="103" width="4" height="5" fill="#999"/>
+        <!-- COAT HOOKS (full: coat+bag+umbrella) -->
+        <rect x="82" y="108" width="20" height="2" fill="#9b6540"/>
+        <rect x="83" y="104" width="4" height="6" fill="#c8a000"/>
+        <rect x="92" y="104" width="4" height="6" fill="#c8a000"/>
+        <rect x="100" y="104" width="4" height="6" fill="#c8a000"/>
+        <rect x="80" y="110" width="12" height="34" fill="#aa4422"/>
+        <rect x="92" y="110" width="10" height="22" fill="#226688"/>
+        <rect x="93" y="106" width="8" height="6" fill="#1a5570"/>
+        <rect x="100" y="114" width="4" height="38" fill="#4488cc"/>
+        <rect x="96" y="112" width="10" height="4" fill="#4488cc"/>
+        <!-- TRASH BAG corner (備考: 粗大ゴミの処分) -->
+        <rect x="82" y="168" width="14" height="22" fill="#4a7a20"/>
+        <rect x="84" y="165" width="10" height="5" fill="#4a7a20"/>
+        <rect x="82" y="188" width="14" height="2" fill="#3a6a10"/>
+
+        <!-- ========================================================= -->
+        <!-- ROOM 2: リビング小 90% (x=108-200) 仕事スペース -->
+        <!-- ========================================================= -->
+        <!-- WIDE MONITOR -->
+        <rect x="116" y="106" width="52" height="34" fill="#1a1a2e"/>
+        <rect x="118" y="108" width="48" height="30" fill="#2a3a8e"/>
+        <rect x="122" y="110" width="12" height="10" fill="#88aaff"/>
+        <rect x="136" y="111" width="26" height="4" fill="#aaccff"/>
+        <rect x="136" y="117" width="22" height="3" fill="#aaccff" opacity="0.6"/>
+        <rect x="136" y="122" width="18" height="3" fill="#aaccff" opacity="0.4"/>
+        <rect x="136" y="127" width="24" height="4" fill="#88aaff" opacity="0.4"/>
+        <rect x="138" y="140" width="10" height="6" fill="#555"/>
+        <rect x="130" y="146" width="26" height="2" fill="#444"/>
+        <!-- DESK -->
+        <rect x="108" y="148" width="90" height="8" fill="#c8a060"/>
+        <rect x="108" y="148" width="90" height="2" fill="#b89050"/>
+        <!-- KEYBOARD + MOUSE -->
+        <rect x="118" y="158" width="54" height="10" fill="#ddd"/>
+        <rect x="120" y="159" width="50" height="4" fill="#ccc"/>
+        <rect x="120" y="164" width="50" height="3" fill="#bbb"/>
+        <rect x="176" y="158" width="12" height="10" fill="#ddd"/>
+        <rect x="177" y="158" width="10" height="5" fill="#ccc"/>
+        <!-- SPEAKERS -->
+        <rect x="108" y="112" width="8" height="26" fill="#222"/>
+        <rect x="110" y="114" width="4" height="18" fill="#444"/>
+        <rect x="184" y="112" width="8" height="26" fill="#222"/>
+        <rect x="186" y="114" width="4" height="18" fill="#444"/>
+        <!-- BOOKSHELF right wall -->
+        <rect x="188" y="104" width="10" height="44" fill="#c8a060"/>
+        <rect x="189" y="96" width="2" height="10" fill="#884422"/>
+        <rect x="192" y="97" width="2" height="9" fill="#cc4422"/>
+        <rect x="195" y="96" width="2" height="10" fill="#226688"/>
+        <rect x="198" y="98" width="2" height="8" fill="#228844"/>
+
+        <!-- ========================================================= -->
+        <!-- ROOM 3: クローゼット小 90% (x=204-282) 機材収納 -->
+        <!-- ========================================================= -->
+        <!-- UPPER SHELF: カメラ・三脚 -->
+        <rect x="204" y="112" width="78" height="4" fill="#c8a060"/>
+        <rect x="212" y="108" width="2" height="6" fill="#9b6540"/>
+        <rect x="274" y="108" width="2" height="6" fill="#9b6540"/>
+        <!-- Camera body -->
+        <rect x="210" y="100" width="18" height="12" fill="#1a1a1a"/>
+        <rect x="208" y="102" width="6" height="8" fill="#333"/>
+        <rect x="224" y="98" width="4" height="6" fill="#555"/>
+        <!-- Tripod folded -->
+        <rect x="236" y="98" width="4" height="16" fill="#888"/>
+        <rect x="234" y="112" width="8" height="2" fill="#666"/>
+        <!-- Camera case -->
+        <rect x="244" y="100" width="16" height="12" fill="#333"/>
+        <rect x="262" y="102" width="12" height="10" fill="#444"/>
+        <!-- LOWER SHELF: 楽器 -->
+        <rect x="204" y="148" width="78" height="4" fill="#c8a060"/>
+        <!-- Guitar (simplified) -->
+        <rect x="220" y="124" width="16" height="24" fill="#c89040"/>
+        <rect x="218" y="128" width="20" height="16" fill="#c89040"/>
+        <rect x="224" y="112" width="6" height="14" fill="#a07030"/>
+        <rect x="225" y="106" width="8" height="8" fill="#a07030"/>
+        <rect x="224" y="124" width="8" height="8" fill="#6a4010"/><!-- sound hole -->
+        <rect x="225" y="112" width="1" height="14" fill="#ccc"/>
+        <rect x="227" y="112" width="1" height="14" fill="#ccc"/>
+        <rect x="229" y="112" width="1" height="14" fill="#ccc"/>
+        <!-- FLOOR: keyboard case -->
+        <rect x="204" y="164" width="76" height="24" fill="#2a2a2a"/>
+        <rect x="204" y="164" width="76" height="2" fill="#444"/>
+        <rect x="204" y="184" width="76" height="2" fill="#444"/>
+        <rect x="240" y="164" width="2" height="22" fill="#555"/>
+        <rect x="248" y="172" width="8" height="6" fill="#888"/>
+
+        <!-- ========================================================= -->
+        <!-- ROOM 4: 風呂・トイレ 80% (x=286-376) 備考:棚を設置 -->
+        <!-- ========================================================= -->
+        <!-- WINDOW -->
+        <rect x="330" y="100" width="28" height="22" fill="#b8e0f8"/>
+        <rect x="330" y="100" width="28" height="2" fill="#8b4513"/>
+        <rect x="330" y="120" width="28" height="2" fill="#8b4513"/>
+        <rect x="330" y="100" width="2" height="22" fill="#8b4513"/>
+        <rect x="356" y="100" width="2" height="22" fill="#8b4513"/>
+        <rect x="342" y="100" width="2" height="22" fill="#8b4513"/>
+        <!-- WASHING MACHINE -->
+        <rect x="288" y="112" width="36" height="76" fill="#e8e8f0"/>
+        <rect x="288" y="112" width="36" height="18" fill="#d8d8e8"/>
+        <rect x="292" y="116" width="8" height="8" fill="#aaaacc"/>
+        <rect x="304" y="116" width="8" height="8" fill="#aaaacc"/>
+        <rect x="316" y="117" width="5" height="5" fill="#88aacc"/>
+        <rect x="292" y="132" width="28" height="28" fill="#c0eeff"/>
+        <rect x="295" y="135" width="22" height="22" fill="#a0d8f8"/>
+        <rect x="288" y="176" width="36" height="6" fill="#d8d8e0"/>
+        <!-- TOWEL BAR + TOWELS -->
+        <rect x="342" y="112" width="30" height="2" fill="#b0b0c0"/>
+        <rect x="342" y="114" width="14" height="26" fill="#ffdddd"/>
+        <rect x="358" y="114" width="14" height="26" fill="#ddeeff"/>
+        <!-- LAUNDRY BASKET -->
+        <rect x="344" y="168" width="24" height="22" fill="#c8a040"/>
+        <rect x="344" y="165" width="24" height="5" fill="#b89030"/>
+        <rect x="346" y="160" width="20" height="8" fill="#aaa" opacity="0.6"/>
+        <!-- DOTTED OUTLINE: 棚を設置 (備考) -->
+        <rect x="342" y="144" width="32" height="22" fill="#f5f0e8" stroke="#c0a878" stroke-dasharray="4,3" stroke-width="1.5" shape-rendering="auto"/>
+        <!-- small install hint inside dotted box -->
+        <rect x="350" y="151" width="16" height="2" fill="#c0a878" opacity="0.6"/>
+        <rect x="350" y="156" width="16" height="2" fill="#c0a878" opacity="0.6"/>
+        <rect x="350" y="147" width="2" height="20" fill="#c0a878" opacity="0.6"/>
+        <rect x="364" y="147" width="2" height="20" fill="#c0a878" opacity="0.6"/>
+
+        <!-- ========================================================= -->
+        <!-- ROOM 5: リビングソファ前 80% (x=380-492) 備考:料理家電棚 -->
+        <!-- ========================================================= -->
+        <!-- TV -->
+        <rect x="388" y="102" width="40" height="26" fill="#1a1a1a"/>
+        <rect x="390" y="104" width="36" height="22" fill="#1a2a3a"/>
+        <rect x="393" y="106" width="30" height="16" fill="#2a3a4a"/>
+        <rect x="404" y="128" width="14" height="4" fill="#333"/>
+        <rect x="398" y="132" width="26" height="2" fill="#444"/>
+        <!-- FLOOR SPEAKERS -->
+        <rect x="380" y="110" width="10" height="38" fill="#222"/>
+        <rect x="382" y="112" width="6" height="26" fill="#444"/>
+        <rect x="480" y="110" width="10" height="38" fill="#222"/>
+        <rect x="482" y="112" width="6" height="26" fill="#444"/>
+        <!-- SOFA -->
+        <rect x="418" y="116" width="30" height="16" fill="#4a6aaa"/>
+        <rect x="450" y="114" width="30" height="18" fill="#4070aa"/>
+        <rect x="418" y="132" width="62" height="12" fill="#3560aa"/>
+        <rect x="414" y="116" width="4" height="28" fill="#3a5a9a"/>
+        <rect x="480" y="116" width="4" height="28" fill="#3a5a9a"/>
+        <rect x="414" y="142" width="70" height="4" fill="#2a4a8a"/>
+        <!-- BIRD on sofa next to dog, reading (本を読んでいる) -->
+        <!-- bird body, facing right toward dog -->
+        <rect x="418" y="108" width="12" height="8" fill="#2266cc"/>
+        <rect x="418" y="108" width="12" height="4" fill="#55aaff"/><!-- wing -->
+        <rect x="416" y="108" width="2" height="7" fill="#1a4488"/><!-- tail -->
+        <rect x="422" y="100" width="10" height="10" fill="#2266cc"/><!-- head -->
+        <rect x="432" y="105" width="4" height="3" fill="#f09020"/><!-- beak right -->
+        <rect x="424" y="101" width="2" height="2" fill="#0a0814"/><!-- eye -->
+        <rect x="422" y="116" width="2" height="4" fill="#f09020"/><!-- foot L -->
+        <rect x="426" y="116" width="2" height="4" fill="#f09020"/><!-- foot R -->
+        <!-- open book on chabudai in front of bird -->
+        <rect x="432" y="130" width="7" height="9" fill="#f5f0e0"/><!-- left page -->
+        <rect x="439" y="130" width="7" height="9" fill="#f8f4e8"/><!-- right page -->
+        <rect x="439" y="130" width="1" height="9" fill="#c8a870"/><!-- spine -->
+        <rect x="432" y="139" width="14" height="2" fill="#7a3c1a"/><!-- cover -->
+        <rect x="434" y="132" width="4" height="1" fill="#bbb"/>
+        <rect x="434" y="134" width="5" height="1" fill="#bbb"/>
+        <rect x="434" y="136" width="4" height="1" fill="#bbb"/>
+        <rect x="441" y="132" width="4" height="1" fill="#bbb"/>
+        <rect x="441" y="134" width="5" height="1" fill="#bbb"/>
+        <rect x="441" y="136" width="4" height="1" fill="#bbb"/>
+        <!-- PIXEL DOG on sofa (headphones: 音楽を聴いている) -->
+        <rect x="476" y="108" width="4" height="4" fill="#c06018"/>
+        <rect x="480" y="104" width="4" height="4" fill="#c06018"/>
+        <rect x="484" y="101" width="4" height="4" fill="#c06018"/>
+        <rect x="460" y="116" width="16" height="12" fill="#e89030"/>
+        <rect x="464" y="106" width="12" height="12" fill="#e89030"/>
+        <rect x="472" y="102" width="4" height="6" fill="#c06018"/>
+        <rect x="467" y="109" width="3" height="3" fill="#1a0c04"/>
+        <rect x="472" y="112" width="4" height="4" fill="#f8d080"/>
+        <rect x="462" y="128" width="4" height="4" fill="#d07828"/>
+        <rect x="472" y="128" width="4" height="4" fill="#d07828"/>
+        <!-- headphone band -->
+        <rect x="462" y="103" width="16" height="3" fill="#222"/>
+        <!-- left cup -->
+        <rect x="459" y="107" width="5" height="8" fill="#333"/>
+        <rect x="460" y="108" width="3" height="6" fill="#555"/>
+        <!-- right cup -->
+        <rect x="476" y="107" width="5" height="8" fill="#333"/>
+        <rect x="477" y="108" width="3" height="6" fill="#555"/>
+        <!-- cord hanging down -->
+        <rect x="462" y="115" width="2" height="4" fill="#555"/>
+        <rect x="461" y="119" width="2" height="6" fill="#555"/>
+        <!-- GAME CONSOLE -->
+        <rect x="392" y="136" width="24" height="8" fill="#111"/>
+        <rect x="394" y="138" width="20" height="4" fill="#333"/>
+        <!-- CHABUDAI -->
+        <rect x="420" y="138" width="44" height="4" fill="#c89850"/>
+        <rect x="422" y="142" width="4" height="8" fill="#a87838"/>
+        <rect x="458" y="142" width="4" height="8" fill="#a87838"/>
+        <!-- RUG -->
+        <rect x="382" y="188" width="106" height="2" fill="#cc8844"/>
+        <!-- 炊飯器 on FLOOR (備考: 料理家電の棚を購入 → 棚なしで床置き) -->
+        <rect x="484" y="166" width="16" height="16" fill="#d0d0d0"/>
+        <rect x="484" y="166" width="16" height="4" fill="#888"/>
+        <rect x="486" y="163" width="12" height="5" fill="#aaa"/>
+        <!-- トースター on floor -->
+        <rect x="462" y="164" width="20" height="14" fill="#aaaaaa"/>
+        <rect x="462" y="164" width="20" height="4" fill="#999"/>
+        <rect x="464" y="169" width="16" height="5" fill="#bbb"/>
+        <rect x="464" y="176" width="16" height="2" fill="#888"/>
+
+        <!-- ========================================================= -->
+        <!-- ROOM 6: キッチン 70% (x=496-584) -->
+        <!-- ========================================================= -->
+        <!-- WINDOW -->
+        <rect x="520" y="100" width="30" height="20" fill="#b8e0f8"/>
+        <rect x="520" y="100" width="30" height="2" fill="#8b4513"/>
+        <rect x="520" y="118" width="30" height="2" fill="#8b4513"/>
+        <rect x="520" y="100" width="2" height="20" fill="#8b4513"/>
+        <rect x="548" y="100" width="2" height="20" fill="#8b4513"/>
+        <rect x="534" y="100" width="2" height="20" fill="#8b4513"/>
+        <!-- UPPER CABINETS (left + right of window) -->
+        <rect x="496" y="100" width="22" height="20" fill="#d4b880"/>
+        <rect x="496" y="100" width="22" height="2" fill="#b89860"/>
+        <rect x="498" y="102" width="18" height="16" fill="#c8a870"/>
+        <rect x="504" y="110" width="8" height="2" fill="#a88040"/>
+        <rect x="552" y="100" width="30" height="20" fill="#d4b880"/>
+        <rect x="552" y="100" width="30" height="2" fill="#b89860"/>
+        <rect x="554" y="102" width="26" height="16" fill="#c8a870"/>
+        <rect x="560" y="110" width="10" height="2" fill="#a88040"/>
+        <!-- COUNTER -->
+        <rect x="496" y="122" width="86" height="22" fill="#d0d0d0"/>
+        <rect x="496" y="122" width="86" height="4" fill="#b8b8b8"/>
+        <!-- FRIDGE (right side) -->
+        <rect x="566" y="100" width="18" height="90" fill="#e4e4e4"/>
+        <rect x="566" y="133" width="18" height="2" fill="#c4c4c4"/>
+        <rect x="568" y="106" width="2" height="20" fill="#aaaaaa"/>
+        <rect x="568" y="137" width="2" height="12" fill="#aaaaaa"/>
+        <!-- SINK -->
+        <rect x="502" y="116" width="26" height="8" fill="#a0d0ee"/>
+        <rect x="502" y="124" width="26" height="2" fill="#80b0cc"/>
+        <rect x="512" y="108" width="4" height="10" fill="#b8b8b8"/>
+        <rect x="506" y="108" width="14" height="2" fill="#b8b8b8"/>
+        <!-- STOVE + POT + STEAM -->
+        <rect x="534" y="120" width="28" height="8" fill="#888"/>
+        <rect x="536" y="120" width="8" height="8" fill="#555"/>
+        <rect x="548" y="120" width="8" height="8" fill="#555"/>
+        <rect x="536" y="108" width="14" height="14" fill="#444"/>
+        <rect x="534" y="106" width="18" height="4" fill="#333"/>
+        <rect x="528" y="106" width="6" height="4" fill="#333"/>
+        <rect x="552" y="106" width="6" height="4" fill="#333"/>
+        <rect x="538" y="100" width="2" height="6" fill="#d0e8f0" opacity="0.7"/>
+        <rect x="542" y="98" width="2" height="8" fill="#d0e8f0" opacity="0.5"/>
+        <rect x="546" y="100" width="2" height="6" fill="#d0e8f0" opacity="0.7"/>
+        <!-- GARBAGE BIN -->
+        <rect x="496" y="162" width="12" height="28" fill="#5a6640"/>
+        <rect x="496" y="160" width="12" height="4" fill="#4a5630"/>
+        <!-- CUP on counter -->
+        <rect x="554" y="116" width="8" height="8" fill="#aaccee"/>
+        <rect x="553" y="115" width="10" height="2" fill="#88aacc"/>
+
+        <!-- ========================================================= -->
+        <!-- ROOM 7: クローゼット大 70% (x=588-676) 備考:タンス購入 -->
+        <!-- ========================================================= -->
+        <!-- HANGER ROD -->
+        <rect x="592" y="108" width="80" height="4" fill="#9b6540"/>
+        <rect x="600" y="104" width="2" height="6" fill="#9b6540"/>
+        <rect x="666" y="104" width="2" height="6" fill="#9b6540"/>
+        <!-- 5 clothes + 2 empty slots (70%) -->
+        <rect x="594" y="112" width="8" height="4" fill="#e86060"/><rect x="596" y="116" width="4" height="22" fill="#e86060"/>
+        <rect x="606" y="112" width="8" height="4" fill="#4488cc"/><rect x="608" y="116" width="4" height="22" fill="#4488cc"/>
+        <rect x="618" y="112" width="8" height="4" fill="#e8c040"/><rect x="620" y="116" width="4" height="22" fill="#e8c040"/>
+        <rect x="630" y="112" width="8" height="4" fill="#40cc70"/><rect x="632" y="116" width="4" height="22" fill="#40cc70"/>
+        <rect x="642" y="112" width="8" height="4" fill="#9966cc"/><rect x="644" y="116" width="4" height="22" fill="#9966cc"/>
+        <!-- empty hanger outlines -->
+        <rect x="655" y="112" width="8" height="2" fill="#c8a070" opacity="0.5"/>
+        <rect x="667" y="112" width="8" height="2" fill="#c8a070" opacity="0.5"/>
+        <!-- SHELF + folded items -->
+        <rect x="592" y="142" width="56" height="4" fill="#c89850"/>
+        <rect x="594" y="132" width="14" height="10" fill="#ee8870"/>
+        <rect x="610" y="132" width="14" height="10" fill="#7088ee"/>
+        <rect x="626" y="132" width="14" height="10" fill="#e8e860"/>
+        <!-- SUITCASE -->
+        <rect x="650" y="146" width="20" height="42" fill="#885533"/>
+        <rect x="650" y="146" width="20" height="2" fill="#664422"/>
+        <rect x="656" y="142" width="8" height="6" fill="#664422"/>
+        <rect x="658" y="142" width="4" height="2" fill="#553311"/>
+        <rect x="650" y="160" width="20" height="2" fill="#664422"/>
+        <rect x="652" y="186" width="4" height="2" fill="#333"/>
+        <rect x="664" y="186" width="4" height="2" fill="#333"/>
+        <!-- DOTTED OUTLINE: タンスの購入と収納 (備考) -->
+        <rect x="592" y="150" width="46" height="38" fill="#f0ece6" stroke="#c0a878" stroke-dasharray="4,3" stroke-width="1.5" shape-rendering="auto"/>
+        <rect x="608" y="165" width="14" height="2" fill="#c0a878" opacity="0.5"/>
+        <rect x="608" y="170" width="14" height="2" fill="#c0a878" opacity="0.5"/>
+
+        <!-- ========================================================= -->
+        <!-- ROOM 8: リビングソファ後 40% (x=680-752) ほぼ空, 備考:本棚・化粧台購入 -->
+        <!-- ========================================================= -->
+        <!-- CARDBOARD BOXES (main feature: 40% = まだ片付いてない) -->
+        <rect x="684" y="154" width="26" height="34" fill="#c8a040"/>
+        <rect x="684" y="154" width="26" height="4" fill="#b89030"/>
+        <rect x="696" y="154" width="2" height="34" fill="#b89030"/>
+        <rect x="684" y="170" width="26" height="2" fill="#b89030"/>
+        <rect x="718" y="160" width="22" height="28" fill="#c8a040"/>
+        <rect x="718" y="160" width="22" height="4" fill="#b89030"/>
+        <rect x="728" y="160" width="2" height="28" fill="#b89030"/>
+        <rect x="718" y="172" width="22" height="2" fill="#b89030"/>
+        <!-- DOTTED OUTLINE: 本棚を購入 (備考) -->
+        <rect x="680" y="100" width="36" height="52" fill="#f4f0ea" stroke="#c0a878" stroke-dasharray="4,3" stroke-width="1.5" shape-rendering="auto"/>
+        <!-- DOTTED OUTLINE: 化粧台を購入 (備考) -->
+        <rect x="720" y="110" width="30" height="42" fill="#f4f0ea" stroke="#c0a878" stroke-dasharray="4,3" stroke-width="1.5" shape-rendering="auto"/>
+        <!-- ONE item on floor (magazine) -->
+        <rect x="684" y="148" width="22" height="4" fill="#aa88cc"/>
+        <rect x="686" y="149" width="18" height="2" fill="#9977bb"/>
+
+        <!-- ========================================================= -->
+        <!-- ROOM 9: ベッド横 40% (x=756-792) ほぼ何もない -->
+        <!-- ========================================================= -->
+        <!-- Just 1 small box + small items -->
+        <rect x="760" y="166" width="24" height="22" fill="#c8a040"/>
+        <rect x="760" y="166" width="24" height="4" fill="#b89030"/>
+        <rect x="771" y="166" width="2" height="22" fill="#b89030"/>
+        <rect x="760" y="176" width="24" height="2" fill="#b89030"/>
+        <!-- Small folder/envelope on floor -->
+        <rect x="760" y="158" width="16" height="8" fill="#224488"/>
+        <rect x="762" y="160" width="12" height="4" fill="#1a3877"/>
+
+        <!-- CHIMNEY SMOKE (bird moved inside) -->
+        <rect x="498" y="24" width="6" height="4" fill="#d8d8e8" opacity="0.6"/>
+        <rect x="496" y="16" width="8" height="6" fill="#d8d8e8" opacity="0.4"/>
+        <rect x="500" y="8" width="6" height="6" fill="#d8d8e8" opacity="0.3"/>
+
+      </svg>
+    </div>
+
     <div class="room-grid">
       <div class="room-header">
         <div class="room-header-cell">エリア</div>
@@ -1065,42 +1628,6 @@ footer {
         <div class="room-header-cell">アイテム</div>
         <div class="room-header-cell">進捗</div>
         <div class="room-header-cell">備考</div>
-      </div>
-      <div class="room-item">
-        <div class="room-name">玄関</div>
-        <div class="room-purpose"><span>出入り・収納</span></div>
-        <div class="room-items">
-          <span>靴</span>
-          <span>アウトドア用品</span>
-          <span>キックボード</span>
-          <span>傘</span>
-        </div>
-        <div class="room-status"><div class="room-progress"><div class="room-progress-bar"><div class="room-progress-fill mid" style="width:50%"></div></div><span class="room-progress-pct">50%</span></div></div>
-        <div class="room-note">靴箱の上の小物の整理 / 粗大ゴミの処分</div>
-      </div>
-      <div class="room-item">
-        <div class="room-name">キッチン</div>
-        <div class="room-purpose"><span>料理・食事管理</span></div>
-        <div class="room-items">
-          <span>食器</span>
-          <span>調理道具</span>
-          <span>冷蔵庫</span>
-          <span>ゴミ箱</span>
-        </div>
-        <div class="room-status"><div class="room-progress"><div class="room-progress-bar"><div class="room-progress-fill mid" style="width:40%"></div></div><span class="room-progress-pct">40%</span></div></div>
-        <div class="room-note">食器の断捨離 / キッチン下・調味料の整理</div>
-      </div>
-      <div class="room-item">
-        <div class="room-name">風呂・トイレ・<br>洗濯機周辺</div>
-        <div class="room-purpose"><span>衛生・洗濯</span></div>
-        <div class="room-items">
-          <span>洗濯機</span>
-          <span>洗濯用品</span>
-          <span>シャンプー類</span>
-          <span>タオル</span>
-        </div>
-        <div class="room-status"><div class="room-progress"><div class="room-progress-bar"><div class="room-progress-fill mid" style="width:60%"></div></div><span class="room-progress-pct">60%</span></div></div>
-        <div class="room-note">なみちゃんの日用品との統合</div>
       </div>
       <div class="room-item">
         <div class="room-name">リビング（小）</div>
@@ -1111,34 +1638,8 @@ footer {
           <span>マウス</span>
           <span>空気清浄機</span>
         </div>
-        <div class="room-status"><div class="room-progress"><div class="room-progress-bar"><div class="room-progress-fill mid" style="width:60%"></div></div><span class="room-progress-pct">60%</span></div></div>
-        <div class="room-note">デスクトップ利用環境の整備</div>
-      </div>
-      <div class="room-item">
-        <div class="room-name">リビング<br>ソファ前</div>
-        <div class="room-purpose"><span>エンタメ・くつろぎ・ご飯</span></div>
-        <div class="room-items">
-          <span>音響機器</span>
-          <span>ソファ</span>
-          <span>ちゃぶ台</span>
-          <span>ゲーム機類</span>
-          <span>炊飯器</span>
-          <span>トースター</span>
-          <span>給湯器</span>
-        </div>
-        <div class="room-status"><div class="room-progress"><div class="room-progress-bar"><div class="room-progress-fill mid" style="width:70%"></div></div><span class="room-progress-pct">70%</span></div></div>
-        <div class="room-note">レコードの片付け / ござを敷く / 料理家電の棚を購入</div>
-      </div>
-      <div class="room-item">
-        <div class="room-name">リビング<br>ソファ後</div>
-        <div class="room-purpose"><span>本・小物ゾーン／なみちゃんの化粧台</span></div>
-        <div class="room-items">
-          <span>本・雑誌</span>
-          <span>小物</span>
-          <span>化粧台</span>
-        </div>
-        <div class="room-status"><div class="room-progress"><div class="room-progress-bar"><div class="room-progress-fill mid" style="width:40%"></div></div><span class="room-progress-pct">40%</span></div></div>
-        <div class="room-note">本棚・化粧台の購入と収納 / 書類の格納場所の決定</div>
+        <div class="room-status"><div class="room-progress"><div class="room-progress-bar"><div class="room-progress-fill high" style="width:90%"></div></div><span class="room-progress-pct">90%</span></div></div>
+        <div class="room-note"></div>
       </div>
       <div class="room-item">
         <div class="room-name">クローゼット（小）</div>
@@ -1152,6 +1653,56 @@ footer {
         <div class="room-note"></div>
       </div>
       <div class="room-item">
+        <div class="room-name">玄関</div>
+        <div class="room-purpose"><span>出入り・収納</span></div>
+        <div class="room-items">
+          <span>靴</span>
+          <span>アウトドア用品</span>
+          <span>キックボード</span>
+          <span>傘</span>
+        </div>
+        <div class="room-status"><div class="room-progress"><div class="room-progress-bar"><div class="room-progress-fill high" style="width:90%"></div></div><span class="room-progress-pct">90%</span></div></div>
+        <div class="room-note">靴箱の上の小物の整理 / 粗大ゴミの処分</div>
+      </div>
+      <div class="room-item">
+        <div class="room-name">風呂・トイレ・<br>洗濯機周辺</div>
+        <div class="room-purpose"><span>衛生・洗濯</span></div>
+        <div class="room-items">
+          <span>洗濯機</span>
+          <span>洗濯用品</span>
+          <span>シャンプー類</span>
+          <span>タオル</span>
+        </div>
+        <div class="room-status"><div class="room-progress"><div class="room-progress-bar"><div class="room-progress-fill high" style="width:80%"></div></div><span class="room-progress-pct">80%</span></div></div>
+        <div class="room-note">棚を設置</div>
+      </div>
+      <div class="room-item">
+        <div class="room-name">リビング<br>ソファ前</div>
+        <div class="room-purpose"><span>エンタメ・くつろぎ・ご飯</span></div>
+        <div class="room-items">
+          <span>音響機器</span>
+          <span>ソファ</span>
+          <span>ちゃぶ台</span>
+          <span>ゲーム機類</span>
+          <span>炊飯器</span>
+          <span>トースター</span>
+        </div>
+        <div class="room-status"><div class="room-progress"><div class="room-progress-bar"><div class="room-progress-fill high" style="width:80%"></div></div><span class="room-progress-pct">80%</span></div></div>
+        <div class="room-note">料理家電の棚を購入</div>
+      </div>
+      <div class="room-item">
+        <div class="room-name">キッチン</div>
+        <div class="room-purpose"><span>料理・食事管理</span></div>
+        <div class="room-items">
+          <span>食器</span>
+          <span>調理道具</span>
+          <span>冷蔵庫</span>
+          <span>ゴミ箱</span>
+        </div>
+        <div class="room-status"><div class="room-progress"><div class="room-progress-bar"><div class="room-progress-fill mid" style="width:70%"></div></div><span class="room-progress-pct">70%</span></div></div>
+        <div class="room-note"></div>
+      </div>
+      <div class="room-item">
         <div class="room-name">クローゼット（大）</div>
         <div class="room-purpose"><span>衣服・寝具・旅行用品</span></div>
         <div class="room-items">
@@ -1160,8 +1711,19 @@ footer {
           <span>寝具</span>
           <span>キャリーケース</span>
         </div>
-        <div class="room-status"><div class="room-progress"><div class="room-progress-bar"><div class="room-progress-fill mid" style="width:60%"></div></div><span class="room-progress-pct">60%</span></div></div>
+        <div class="room-status"><div class="room-progress"><div class="room-progress-bar"><div class="room-progress-fill mid" style="width:70%"></div></div><span class="room-progress-pct">70%</span></div></div>
         <div class="room-note">タンスの購入と収納 / 横収納スペースの棚の活用方法を決定</div>
+      </div>
+      <div class="room-item">
+        <div class="room-name">リビング<br>ソファ後</div>
+        <div class="room-purpose"><span>本・小物ゾーン／なみちゃんの化粧台</span></div>
+        <div class="room-items">
+          <span>本・雑誌</span>
+          <span>小物</span>
+          <span>化粧台</span>
+        </div>
+        <div class="room-status"><div class="room-progress"><div class="room-progress-bar"><div class="room-progress-fill mid" style="width:40%"></div></div><span class="room-progress-pct">40%</span></div></div>
+        <div class="room-note">本棚・化粧台の購入と収納 / 書類の格納場所の決定</div>
       </div>
       <div class="room-item">
         <div class="room-name">ベッド横<br>収納スペース</div>
@@ -1243,83 +1805,88 @@ footer {
         <tbody>
           <tr>
             <td>入居手続き（大家への届出）</td>
-            <td>9/6 完了予定</td>
-            <td>—</td>
+            <td><span class="status-badge sb-done">✓ 完了</span></td>
+            <td><span class="sb-na">—</span></td>
           </tr>
           <tr>
             <td>合鍵の作成</td>
-            <td>✓ 作成済み</td>
-            <td>—</td>
+            <td><span class="status-badge sb-done">✓ 完了</span></td>
+            <td><span class="sb-na">—</span></td>
           </tr>
           <tr>
             <td>転出届（旧住所の役所）</td>
-            <td>—</td>
-            <td>要対応</td>
+            <td><span class="sb-na">—</span></td>
+            <td><span class="status-badge sb-done">✓ 完了</span></td>
           </tr>
           <tr>
             <td>転入届（新住所の役所）</td>
-            <td>—</td>
-            <td>要対応</td>
+            <td><span class="sb-na">—</span></td>
+            <td><span class="status-badge sb-done">✓ 9/14 完了</span></td>
           </tr>
           <tr>
             <td>運転免許証の住所変更</td>
-            <td>—</td>
-            <td>要対応</td>
+            <td><span class="sb-na">—</span></td>
+            <td><span class="status-badge sb-todo">要対応</span><span class="sb-date"></span></td>
           </tr>
           <tr>
             <td>マイナンバーカードの住所変更</td>
-            <td>—</td>
-            <td>要対応</td>
+            <td><span class="sb-na">—</span></td>
+            <td><span class="status-badge sb-todo">要対応</span><span class="sb-date"></span></td>
           </tr>
           <tr>
             <td>銀行口座の住所変更</td>
-            <td>—</td>
-            <td>要対応</td>
+            <td><span class="sb-na">—</span></td>
+            <td><span class="status-badge sb-todo">要対応</span><span class="sb-date"></span></td>
           </tr>
           <tr>
             <td>クレジットカードの住所変更</td>
-            <td>—</td>
-            <td>要対応</td>
+            <td><span class="sb-na">—</span></td>
+            <td><span class="status-badge sb-todo">要対応</span><span class="sb-date"></span></td>
           </tr>
           <tr>
             <td>郵便の転送手続き</td>
-            <td>—</td>
-            <td>要対応</td>
+            <td><span class="sb-na">—</span></td>
+            <td><span class="status-badge sb-done">✓ 完了</span></td>
           </tr>
           <tr>
             <td>勤務先への住所変更届</td>
-            <td>—</td>
-            <td>要対応</td>
+            <td><span class="sb-na">—</span></td>
+            <td><span class="status-badge sb-todo">要対応</span><span class="sb-date"></span></td>
           </tr>
           <tr>
             <td>健康保険証の住所変更</td>
-            <td>—</td>
-            <td>要対応</td>
+            <td><span class="sb-na">—</span></td>
+            <td><span class="status-badge sb-todo">要対応</span><span class="sb-date"></span></td>
           </tr>
           <tr>
             <td>Amazon・各種ECサービスの住所変更</td>
-            <td>—</td>
-            <td>要対応</td>
+            <td><span class="sb-na">—</span></td>
+            <td><span class="status-badge sb-todo">要対応</span><span class="sb-date"></span></td>
           </tr>
           <tr>
             <td>旧居の電気・ガス・水道解約</td>
-            <td>—</td>
-            <td>要対応</td>
+            <td><span class="sb-na">—</span></td>
+            <td><span class="status-badge sb-done">✓ 完了</span></td>
           </tr>
           <tr>
             <td>旧居の退去・鍵返却</td>
-            <td>—</td>
-            <td>9/26</td>
+            <td><span class="sb-na">—</span></td>
+            <td><span class="status-badge sb-sched">📅 9/26</span></td>
           </tr>
           <tr>
             <td>旧居の合鍵をなみちゃんに返す</td>
-            <td>要対応</td>
-            <td>—</td>
+            <td><span class="status-badge sb-todo">要対応</span><span class="sb-date"></span></td>
+            <td><span class="sb-na">—</span></td>
           </tr>
           <tr>
             <td>火災保険への入居者追加</td>
-            <td>契約内容を確認</td>
-            <td>—</td>
+            <td><span class="status-badge sb-check">確認中</span><span class="sb-date"></span></td>
+            <td><span class="sb-na">—</span></td>
+          </tr>
+          <tr>
+            <td>旧居の火災保険解約</td>
+            <td><span class="sb-na">—</span></td>
+            <td><span class="status-badge sb-done">✓ 完了</span></td>
           </tr>
         </tbody>
       </table>
@@ -1356,27 +1923,30 @@ footer {
         </div>
       </div>
 
-      <div class="tl-item now">
-        <div class="tl-left"><div class="tl-date now">9/7<br>〜9/13</div></div>
+      <div class="tl-item past">
+        <div class="tl-left"><div class="tl-date past">9/7<br>〜9/13</div></div>
         <div class="tl-right">
           <div class="tl-content">
-            <div class="tl-head">今週 <span class="now-tag">NOW</span>　手続き・収納家具の検討</div>
+            <div class="tl-head">手続き・収納家具の検討</div>
             <ul class="plain-list">
-              <li class="log-done">9/7（日）✓　各エリアの収納を進めた。炊飯器・トースター・給湯器はソファ前に置くことを決定。ソファ後ろの断捨離を進めた。ベッド横に思い出品・空箱をまとめた。</li>
-              <li>粗大ゴミ排出（9/7申請完了目標）</li>
-              <li>住所変更手続き（役所・免許証・銀行・各種サービス）</li>
-              <li>必要な収納家具を二人で検討する</li>
+              <li class="log-done">9/7〜9（日〜水）✓　各エリアの収納を進めた。炊飯器・トースターはソファ前に。なみちゃんがキッチン・洗面まわりの日用品を統合。けいすけはデスクトップ利用環境の整備を進めた。</li>
+              <li class="log-done">✓ 粗大ゴミ申請済み（9/18収集・7,300円）</li>
+              <li class="log-done">9/12（土）✓　なみちゃんの残り荷物を搬入</li>
             </ul>
           </div>
         </div>
       </div>
 
-      <div class="tl-item green">
-        <div class="tl-left"><div class="tl-date future">9/14<br>〜9/20</div></div>
+      <div class="tl-item now">
+        <div class="tl-left"><div class="tl-date now">9/14<br>〜9/20</div></div>
         <div class="tl-right">
           <div class="tl-content">
-            <div class="tl-head">収納完了 ／ 友人来訪（9/20）</div>
+            <div class="tl-head">今週 <span class="now-tag">NOW</span>　収納完了 ／ 友人来訪（9/20）</div>
             <ul class="plain-list">
+              <li class="log-done">9/14（月）✓　なみちゃんの転出届・転入届 完了</li>
+              <li>住所変更手続き（役所・免許証・銀行・各種サービス）</li>
+              <li>必要な収納家具を二人で検討する</li>
+              <li>📦 9/18（金）粗大ゴミ収集　AM8:00〜PM3:00過ぎ　共有玄関前に出す</li>
               <li>今ある収納家具に収まるものはすべて収納した状態にする</li>
               <li>なみちゃんの旧居の退去・解約手続きの確認</li>
               <li>9/20 友人来訪</li>
@@ -1437,7 +2007,7 @@ footer {
     </div>
     <div class="place-group">
       <div class="place-label">リビングソファ後</div>
-      <div class="item-chips"><a href="bookshelf.html" style="text-decoration:none;"><span class="item-chip" style="border-color:var(--accent);color:var(--accent);">📐 本棚 設計プラン</span></a><span class="item-chip">化粧台</span></div>
+      <div class="item-chips"><span class="item-chip">本棚</span><span class="item-chip">化粧台</span></div>
     </div>
     <div class="place-group">
       <div class="place-label">クローゼット（大）</div>
@@ -1447,27 +2017,98 @@ footer {
 
   <section class="section">
     <div class="section-title"><span class="icon icon-orange">🙏</span>ありがとうさようならリスト</div>
-    <p style="font-size:0.85rem;color:var(--text-sub);margin-bottom:1.2rem;">処分予定のもの。処分方法・予定は追って決める。</p>
+    <p style="font-size:0.85rem;color:var(--text-sub);margin-bottom:1.2rem;">処分予定のもの。処分方法ごとに整理。</p>
     <div class="place-group">
-      <div class="place-label">なみちゃんの家</div>
-      <div class="item-chips"><span class="item-chip">洗濯機</span><span class="item-chip">冷蔵庫</span></div>
-    </div>
-    <div class="place-group">
-      <div class="place-label">玄関</div>
-      <div class="item-chips"><span class="item-chip">本棚</span><span class="item-chip">網ラック</span><span class="item-chip">キャリー</span></div>
-    </div>
-    <div class="place-group">
-      <div class="place-label">リビングソファ前</div>
-      <div class="item-chips"><span class="item-chip">レコードラック</span></div>
-    </div>
-    <div class="place-group">
-      <div class="place-label">ソファ後ろ</div>
-      <div class="item-chips"><span class="item-chip">椅子（赤）</span></div>
-    </div>
-    <div class="place-group">
-      <div class="place-label">旅立ちゾーン</div>
+      <div class="place-label">粗大ゴミ</div>
       <div class="item-chips">
-        <span class="item-chip">棚（大）</span><span class="item-chip">机（白）</span><span class="item-chip">椅子（黒）</span><span class="item-chip">棚（小）</span><span class="item-chip">サイドテーブル</span><span class="item-chip">照明（赤）</span><span class="item-chip">洗濯かご</span><span class="item-chip">まくら</span><span class="item-chip">クッション × 2</span><span class="item-chip">ぬいぐるみ</span><span class="item-chip">コート</span><span class="item-chip">振袖</span><span class="item-chip">AKBジャケット</span><span class="item-chip">スピーカー</span><span class="item-chip">絵</span><span class="item-chip">フライパン</span><span class="item-chip">鍋</span><span class="item-chip">本</span><span class="item-chip">本立て</span><span class="item-chip">カーテン（青）</span><span class="item-chip">カーテン（赤）</span><span class="item-chip">鏡（小）</span><span class="item-chip">ディフューザー × 2</span><span class="item-chip">水筒</span><span class="item-chip">金属板</span><span class="item-chip">ギター用フック</span><span class="item-chip">ドライヤー</span><span class="item-chip">作品キャプション</span><span class="item-chip">Wi-Fiルータ等</span><span class="item-chip">筆記用具</span><span class="item-chip">洗濯バサミのやつ</span><span class="item-chip">腰を絞めるやつ</span>
+        <span class="item-chip">風呂のイス<span class="d-tag d-sodai">粗大ゴミ</span></span>
+        <span class="item-chip">本棚<span class="d-tag d-sodai">粗大ゴミ</span></span>
+        <span class="item-chip">網ラック<span class="d-tag d-sodai">粗大ゴミ</span></span>
+        <span class="item-chip">キャリー<span class="d-tag d-sodai">粗大ゴミ</span></span>
+        <span class="item-chip">洗濯かご<span class="d-tag d-sodai">粗大ゴミ</span></span>
+        <span class="item-chip">机（白）<span class="d-tag d-sodai">粗大ゴミ</span></span>
+        <span class="item-chip">椅子（黒）<span class="d-tag d-sodai">粗大ゴミ</span></span>
+        <span class="item-chip">棚（小）<span class="d-tag d-sodai">粗大ゴミ</span></span>
+        <span class="item-chip">棚（大）<span class="d-tag d-sodai">粗大ゴミ</span></span>
+        <span class="item-chip">サイドテーブル × 2<span class="d-tag d-sodai">粗大ゴミ</span></span>
+        <span class="item-chip">スピーカー<span class="d-tag d-sodai">粗大ゴミ</span></span>
+        <span class="item-chip">給湯器<span class="d-tag d-sodai">粗大ゴミ</span></span>
+        <span class="item-chip">物干し竿<span class="d-tag d-sodai">粗大ゴミ</span></span>
+        <span class="item-chip">作品キャプション<span class="d-tag d-sodai">粗大ゴミ</span></span>
+      </div>
+      <p class="disposal-note">📋 申請済み — 収集日：9/18（金）AM8:00〜PM3:00過ぎ　排出場所：共有玄関前　合計：7,300円<br>品目：本棚 ¥400 / スチール棚×3 ¥1,300 / 台車 ¥900 / 洗面台 ¥1,300 / 机 ¥900 / ゲーミングチェア ¥900 / 小型調理器 ¥400 / スピーカー ¥400 / 物干し竿 ¥400 / 突っ張り棒 ¥400<br>支払：電子決済 — 紙に「収集日 + 受付番号末尾4桁」を書いて品目ごとに貼付</p>
+    </div>
+    <div class="place-group">
+      <div class="place-label">家電リサイクル</div>
+      <div class="item-chips">
+        <span class="item-chip">洗濯機<span class="d-tag d-kanet">家電リサイクル</span></span>
+        <span class="item-chip">冷蔵庫<span class="d-tag d-kanet">家電リサイクル</span></span>
+      </div>
+    </div>
+    <div class="place-group">
+      <div class="place-label">不燃ゴミ</div>
+      <div class="item-chips">
+        <span class="item-chip" style="opacity:0.45;text-decoration:line-through;">フライパン<span class="d-tag d-fumen">不燃</span></span>
+        <span class="item-chip" style="opacity:0.45;text-decoration:line-through;">鍋<span class="d-tag d-fumen">不燃</span></span>
+        <span class="item-chip" style="opacity:0.45;text-decoration:line-through;">鏡（小）<span class="d-tag d-fumen">不燃</span></span>
+        <span class="item-chip" style="opacity:0.45;text-decoration:line-through;">ディフューザー × 2<span class="d-tag d-fumen">不燃</span></span>
+        <span class="item-chip" style="opacity:0.45;text-decoration:line-through;">水筒<span class="d-tag d-fumen">不燃</span></span>
+        <span class="item-chip" style="opacity:0.45;text-decoration:line-through;">金属板<span class="d-tag d-fumen">不燃</span></span>
+        <span class="item-chip">ギター用フック<span class="d-tag d-fumen">不燃</span></span>
+        <span class="item-chip" style="opacity:0.45;text-decoration:line-through;">Wi-Fiルータ等<span class="d-tag d-fumen">不燃</span></span>
+        <span class="item-chip" style="opacity:0.45;text-decoration:line-through;">食器<span class="d-tag d-fumen">不燃</span></span>
+      </div>
+    </div>
+    <div class="place-group">
+      <div class="place-label">可燃ゴミ</div>
+      <div class="item-chips">
+        <span class="item-chip" style="opacity:0.45;text-decoration:line-through;">カーテン（青）<span class="d-tag d-kaen">可燃・切る</span></span>
+        <span class="item-chip" style="opacity:0.45;text-decoration:line-through;">カーテン（赤）<span class="d-tag d-kaen">可燃・切る</span></span>
+        <span class="item-chip" style="opacity:0.45;text-decoration:line-through;">クッション × 2<span class="d-tag d-kaen">可燃</span></span>
+      </div>
+    </div>
+    <div class="place-group">
+      <div class="place-label">プラ製品（可燃）</div>
+      <div class="item-chips">
+        <span class="item-chip" style="opacity:0.45;text-decoration:line-through;">本立て<span class="d-tag d-kaen">プラ製品</span></span>
+        <span class="item-chip" style="opacity:0.45;text-decoration:line-through;">洗濯ハンガー<span class="d-tag d-kaen">プラ製品</span></span>
+      </div>
+    </div>
+    <div class="place-group">
+      <div class="place-label">小型家電回収</div>
+      <div class="item-chips">
+        <span class="item-chip" style="opacity:0.45;text-decoration:line-through;">ドライヤー<span class="d-tag d-shohin">小型家電</span></span>
+      </div>
+      <p class="disposal-note">📦 無料 — ごみ減量対策課　杉並区阿佐谷南1丁目15番1号 区役所西棟7階</p>
+    </div>
+    <div class="place-group">
+      <div class="place-label">素材別分別</div>
+      <div class="item-chips">
+        <span class="item-chip">筆記用具<span class="d-tag d-bunbetsu">素材別分別</span></span>
+      </div>
+    </div>
+    <div class="place-group">
+      <div class="place-label">譲渡・売却</div>
+      <div class="item-chips">
+        <span class="item-chip">電子レンジ<span class="d-tag d-bunbetsu">譲渡検討</span></span>
+        <span class="item-chip">ぬいぐるみ<span class="d-tag d-bunbetsu">譲渡検討</span></span>
+        <span class="item-chip">レコードラック<span class="d-tag d-bunbetsu">譲渡検討</span></span>
+        <span class="item-chip">椅子（赤）<span class="d-tag d-bunbetsu">譲渡検討</span></span>
+        <span class="item-chip">照明（赤）<span class="d-tag d-bunbetsu">譲渡検討</span></span>
+        <span class="item-chip">コート<span class="d-tag d-bunbetsu">譲渡検討</span></span>
+        <span class="item-chip">着物<span class="d-tag d-bunbetsu">譲渡検討</span></span>
+        <span class="item-chip">AKBジャケット<span class="d-tag d-bunbetsu">譲渡検討</span></span>
+        <span class="item-chip">絵<span class="d-tag d-bunbetsu">譲渡検討</span></span>
+        <span class="item-chip">本<span class="d-tag d-bunbetsu">譲渡検討</span></span>
+        <span class="item-chip">腰を絞めるやつ<span class="d-tag d-bunbetsu">譲渡検討</span></span>
+        <span class="item-chip">ごさ<span class="d-tag d-bunbetsu">譲渡検討</span></span>
+        <span class="item-chip">マフラー<span class="d-tag d-bunbetsu">譲渡検討</span></span>
+      </div>
+    </div>
+    <div class="place-group">
+      <div class="place-label">保留</div>
+      <div class="item-chips">
+        <span class="item-chip">まくら</span>
       </div>
     </div>
   </section>
@@ -1478,15 +2119,149 @@ footer {
     <div class="place-group">
       <div class="place-label">行き先未定</div>
       <div class="item-chips">
-        <span class="item-chip">物干し竿</span><span class="item-chip">布団のマット</span><span class="item-chip">シーツ</span><span class="item-chip">枕</span><span class="item-chip">箒</span><span class="item-chip">サッカーボール</span><span class="item-chip">絨毯</span><span class="item-chip">プランター（小）</span><span class="item-chip">電子レンジ</span><span class="item-chip">ゴミ箱</span><span class="item-chip">ゴミ箱（黒）</span>
-      </div>
+        <span class="item-chip">布団のマット</span><span class="item-chip">シーツ</span><span class="item-chip">枕</span><span class="item-chip">箒</span><span class="item-chip">サッカーボール</span><span class="item-chip">プランター（小）</span><span class="item-chip">ゴミ箱</span>      </div>
     </div>
+  </section>
+
+  <section class="section">
+    <div class="section-title"><span class="icon icon-yellow">📋</span>メモ・比較</div>
+    <div class="sub-head">電子レンジ比較（2026/9/14）</div>
+    <table class="money-table">
+      <thead>
+        <tr><th></th><th>TOSHIBA ER-R16（けいすけ）</th><th>SHARP RE-TF17S（なみちゃん）</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>メリット</td><td>オーブン・グリル機能で「焼く」調理が可能。850Wインバーターで高速温め。重量センサーで自動調整。</td><td>フラット庫内で掃除が楽。縦開きドアで出し入れしやすい。湿度センサーで冷凍食品の自動温め精度が高い。</td></tr>
+        <tr><td>デメリット</td><td>ターンテーブルあり（掃除しにくい）。横開きドア。油分が多い食品はセンサー精度が落ちることがある。</td><td>オーブン・グリル機能なし（温め・解凍のみ）。出力が最大650Wと控えめ。蒸気が出にくい食品はセンサー精度が落ちることがある。</td></tr>
+      </tbody>
+    </table>
+    <div style="height:1rem;"></div>
+    <table class="money-table">
+      <thead>
+        <tr><th>比較項目</th><th>TOSHIBA ER-R16（けいすけ）</th><th>SHARP RE-TF17S（なみちゃん）</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>種別</td><td><strong>オーブンレンジ</strong></td><td>単機能レンジ</td></tr>
+        <tr><td>庫内容量</td><td>16L</td><td>17L</td></tr>
+        <tr><td>最大出力</td><td><strong>850W（インバーター）</strong></td><td>650W（60Hz）</td></tr>
+        <tr><td>オーブン・グリル</td><td><strong>あり（最高200℃）</strong></td><td>なし</td></tr>
+        <tr><td>庫内構造</td><td>ターンテーブル</td><td>フラット（掃除しやすい）</td></tr>
+        <tr><td>センサー</td><td>重量センサー（重さで加熱時間を自動決定。油分多い食品は精度落ちあり）</td><td>絶対湿度センサー（蒸気量で温まりを検知。冷凍食品の自動温め精度が高い）</td></tr>
+        <tr><td>ドア</td><td>横開き</td><td>縦開き</td></tr>
+      </tbody>
+    </table>
   </section>
 
   <footer>
     このページはたたき台。どんどん上書きして良い。
   </footer>
 
+</div>
+<!-- Pixel Shiba Inu - runs freely across the page -->
+<div class="dog-runner" aria-hidden="true">
+  <!-- Pixel bird flying ahead of the dog -->
+  <div class="bird-wrap">
+    <svg class="bird-body" width="34" height="20" viewBox="0 0 34 20" fill="none" shape-rendering="crispEdges" xmlns="http://www.w3.org/2000/svg">
+      <!-- WING (animates up) -->
+      <g class="bird-wing">
+        <rect x="5"  y="0" width="4" height="4" fill="#88ccff"/>
+        <rect x="9"  y="0" width="4" height="4" fill="#88ccff"/>
+        <rect x="13" y="0" width="4" height="4" fill="#88ccff"/>
+      </g>
+      <!-- TAIL -->
+      <rect x="0"  y="4"  width="4" height="4" fill="#1a4488"/>
+      <rect x="0"  y="8"  width="4" height="4" fill="#1a4488"/>
+      <!-- BODY -->
+      <rect x="4"  y="4"  width="4" height="8" fill="#2266cc"/>
+      <rect x="8"  y="4"  width="4" height="8" fill="#2266cc"/>
+      <rect x="12" y="4"  width="4" height="8" fill="#2266cc"/>
+      <rect x="16" y="4"  width="4" height="8" fill="#2266cc"/>
+      <!-- HEAD -->
+      <rect x="20" y="2"  width="4" height="4" fill="#2266cc"/>
+      <rect x="24" y="2"  width="4" height="4" fill="#2266cc"/>
+      <rect x="20" y="6"  width="4" height="4" fill="#2266cc"/>
+      <rect x="24" y="6"  width="4" height="4" fill="#2266cc"/>
+      <!-- EYE -->
+      <rect x="23" y="3"  width="2" height="2" fill="#0a0814"/>
+      <!-- BEAK -->
+      <rect x="28" y="6"  width="5" height="3" fill="#f09020"/>
+      <!-- BELLY (lighter) -->
+      <rect x="8"  y="8"  width="4" height="4" fill="#88aadd"/>
+      <rect x="12" y="8"  width="4" height="4" fill="#88aadd"/>
+    </svg>
+  </div>
+  <div class="dog-wrap">
+    <svg class="dog-body" width="80" height="56" viewBox="0 0 80 56" fill="none" shape-rendering="crispEdges" xmlns="http://www.w3.org/2000/svg">
+      <!-- TAIL (stepped curl going up-left) -->
+      <g class="dog-tail">
+        <rect x="0"  y="18" width="5" height="5" fill="#c06018"/>
+        <rect x="5"  y="13" width="5" height="5" fill="#c06018"/>
+        <rect x="10" y="8"  width="5" height="5" fill="#c06018"/>
+        <rect x="18" y="5"  width="5" height="5" fill="#c06018"/>
+        <rect x="25" y="3"  width="5" height="5" fill="#c06018"/>
+      </g>
+      <!-- EAR (pointed, Shiba style) -->
+      <rect x="52" y="13" width="5" height="5" fill="#c06018"/>
+      <rect x="50" y="18" width="5" height="5" fill="#c06018"/>
+      <rect x="55" y="18" width="5" height="5" fill="#c06018"/>
+      <!-- HEAD top -->
+      <rect x="48" y="20" width="5" height="5" fill="#e89030"/>
+      <rect x="53" y="20" width="5" height="5" fill="#e89030"/>
+      <rect x="58" y="20" width="5" height="5" fill="#e89030"/>
+      <rect x="63" y="20" width="5" height="5" fill="#e89030"/>
+      <rect x="68" y="20" width="5" height="5" fill="#e89030"/>
+      <!-- HEAD mid -->
+      <rect x="46" y="25" width="5" height="5" fill="#e89030"/>
+      <rect x="51" y="25" width="5" height="5" fill="#e89030"/>
+      <rect x="56" y="25" width="5" height="5" fill="#e89030"/>
+      <rect x="61" y="25" width="5" height="5" fill="#1a0c04"/><!-- EYE -->
+      <rect x="66" y="25" width="5" height="5" fill="#e89030"/>
+      <rect x="71" y="25" width="5" height="5" fill="#e89030"/>
+      <!-- BODY + HEAD row -->
+      <rect x="0"  y="30" width="5" height="5" fill="#e89030"/>
+      <rect x="5"  y="30" width="5" height="5" fill="#e89030"/>
+      <rect x="10" y="30" width="5" height="5" fill="#e89030"/>
+      <rect x="15" y="30" width="5" height="5" fill="#e89030"/>
+      <rect x="20" y="30" width="5" height="5" fill="#e89030"/>
+      <rect x="25" y="30" width="5" height="5" fill="#e89030"/>
+      <rect x="30" y="30" width="5" height="5" fill="#e89030"/>
+      <rect x="35" y="30" width="5" height="5" fill="#e89030"/>
+      <rect x="40" y="30" width="5" height="5" fill="#e89030"/>
+      <rect x="45" y="30" width="5" height="5" fill="#e89030"/>
+      <rect x="50" y="30" width="5" height="5" fill="#e89030"/>
+      <rect x="55" y="30" width="5" height="5" fill="#e89030"/>
+      <rect x="60" y="30" width="5" height="5" fill="#f8d080"/><!-- MUZZLE -->
+      <rect x="65" y="30" width="5" height="5" fill="#f8d080"/><!-- MUZZLE -->
+      <rect x="70" y="30" width="5" height="5" fill="#e89030"/>
+      <rect x="75" y="30" width="5" height="5" fill="#1a0c04"/><!-- NOSE -->
+      <!-- BODY lower row -->
+      <rect x="0"  y="35" width="5" height="5" fill="#e89030"/>
+      <rect x="5"  y="35" width="5" height="5" fill="#e89030"/>
+      <rect x="10" y="35" width="5" height="5" fill="#e89030"/>
+      <rect x="15" y="35" width="5" height="5" fill="#e89030"/>
+      <rect x="20" y="35" width="5" height="5" fill="#e89030"/>
+      <rect x="25" y="35" width="5" height="5" fill="#e89030"/>
+      <rect x="30" y="35" width="5" height="5" fill="#e89030"/>
+      <rect x="35" y="35" width="5" height="5" fill="#e89030"/>
+      <rect x="40" y="35" width="5" height="5" fill="#e89030"/>
+      <!-- BELLY (cream) -->
+      <rect x="5"  y="38" width="5" height="5" fill="#f8d080"/>
+      <rect x="10" y="38" width="5" height="5" fill="#f8d080"/>
+      <rect x="15" y="38" width="5" height="5" fill="#f8d080"/>
+      <rect x="20" y="38" width="5" height="5" fill="#f8d080"/>
+      <rect x="25" y="38" width="5" height="5" fill="#f8d080"/>
+      <!-- BACK LEGS -->
+      <g class="legs-back">
+        <rect x="2"  y="43" width="5" height="12" fill="#c06018"/>
+        <rect x="17" y="43" width="5" height="12" fill="#c06018"/>
+      </g>
+      <!-- FRONT LEGS -->
+      <g class="legs-front">
+        <rect x="32" y="43" width="5" height="12" fill="#d07828"/>
+        <rect x="47" y="43" width="5" height="12" fill="#d07828"/>
+      </g>
+    </svg>
+  </div>
 </div>
 </body>
 </html>
