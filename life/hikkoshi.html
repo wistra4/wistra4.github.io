@@ -1136,7 +1136,7 @@ footer {
         <div class="task-group">
           <div class="task-group-title">搬入前（各自）</div>
           <label class="task-check"><input type="checkbox" checked> 不要品の処分・売却</label>
-          <label class="task-check"><input type="checkbox"> 住所変更手続き</label>
+          <label class="task-check"><input type="checkbox" checked> 住所変更手続き</label>
         </div>
         <div class="task-group">
           <div class="task-group-title">搬入後（各自）</div>
@@ -1158,9 +1158,9 @@ footer {
           <div class="task-group-title">搬入後・9月中</div>
           <label class="task-check"><input type="checkbox" checked> 大物家具・家電の配置決定</label>
           <label class="task-check"><input type="checkbox" checked> 服・クローゼットの割り当て</label>
-          <label class="task-check"><input type="checkbox"> キッチン・食器の配置決定</label>
-          <label class="task-check"><input type="checkbox"> 洗面・バスルームの収納決定</label>
-          <label class="task-check"><input type="checkbox"> 家事ルールの仮決め</label>
+          <label class="task-check"><input type="checkbox" checked> キッチン・食器の配置決定</label>
+          <label class="task-check"><input type="checkbox" checked> 洗面・バスルームの収納決定</label>
+          <label class="task-check"><input type="checkbox" checked> 家事ルールの仮決め</label>
         </div>
         <div class="task-group">
           <div class="task-group-title">10月</div>
@@ -2111,6 +2111,136 @@ footer {
       <div class="place-label">保留</div>
       <div class="item-chips">
         <span class="item-chip">まくら</span>
+      </div>
+    </div>
+
+    <!-- 送料目安ドット絵 -->
+    <div style="margin:20px 0 4px">
+      <div class="sub-head" style="margin-bottom:4px">📦 送料目安（ヤマト宅急便・目安額）</div>
+      <p style="font-size:0.78rem;color:var(--text-sub);margin:0 0 10px">譲渡・売却予定品を宅配する場合。全部送ると合計 約¥14,300</p>
+      <div style="border-radius:8px;overflow:hidden;border:1px solid var(--border)">
+        <svg viewBox="0 0 640 210" width="100%" xmlns="http://www.w3.org/2000/svg" style="display:block;image-rendering:pixelated" shape-rendering="crispEdges">
+          <!-- SKY -->
+          <rect width="640" height="160" fill="#ddeeff"/>
+          <!-- soft clouds -->
+          <rect x="20" y="12" width="60" height="10" fill="#fff" opacity="0.7"/><rect x="16" y="8" width="68" height="14" fill="#fff" opacity="0.6"/>
+          <rect x="260" y="16" width="50" height="8" fill="#fff" opacity="0.7"/><rect x="256" y="12" width="58" height="12" fill="#fff" opacity="0.6"/>
+          <!-- FLOOR -->
+          <rect y="156" width="640" height="6" fill="#d4b880"/>
+          <rect y="162" width="640" height="48" fill="#c4a050"/>
+          <rect y="162" width="640" height="3" fill="#b89040"/>
+
+          <!-- LEGEND -->
+          <rect x="490" y="10" width="10" height="8" fill="#e05040"/><text x="504" y="18" font-size="9" fill="#445" font-family="'Noto Sans JP',sans-serif">大型 ¥1,500〜</text>
+          <rect x="490" y="24" width="10" height="8" fill="#e09030"/><text x="504" y="32" font-size="9" fill="#445" font-family="'Noto Sans JP',sans-serif">中型 ¥1,000〜</text>
+          <rect x="490" y="38" width="10" height="8" fill="#50aa40"/><text x="504" y="46" font-size="9" fill="#445" font-family="'Noto Sans JP',sans-serif">小型 ¥700〜</text>
+          <!-- total -->
+          <text x="16" y="22" font-size="11" fill="#334" font-family="'Noto Sans JP',sans-serif" font-weight="bold">全部送ると ≒ ¥14,300</text>
+
+          <!-- BOX 1: レコードラック ¥2,000 x=16 y=96 h=60 -->
+          <rect x="16" y="96" width="36" height="60" fill="#e05040"/>
+          <rect x="16" y="96" width="36" height="4" fill="#b04030"/><rect x="48" y="96" width="4" height="60" fill="#b04030"/>
+          <rect x="28" y="96" width="4" height="60" fill="#f0c840"/><rect x="16" y="122" width="36" height="4" fill="#f0c840"/>
+          <text x="34" y="130" font-size="7" text-anchor="middle" fill="white" font-family="'Noto Sans JP',sans-serif">ラック</text>
+          <text x="34" y="92" font-size="8" text-anchor="middle" fill="#b04030" font-family="'Noto Sans JP',sans-serif">¥2,000</text>
+
+          <!-- BOX 2: 椅子（赤）¥1,800 x=60 y=104 h=52 -->
+          <rect x="60" y="104" width="36" height="52" fill="#e05040"/>
+          <rect x="60" y="104" width="36" height="4" fill="#b04030"/><rect x="92" y="104" width="4" height="52" fill="#b04030"/>
+          <rect x="72" y="104" width="4" height="52" fill="#f0c840"/><rect x="60" y="126" width="36" height="4" fill="#f0c840"/>
+          <text x="78" y="133" font-size="7" text-anchor="middle" fill="white" font-family="'Noto Sans JP',sans-serif">椅子赤</text>
+          <text x="78" y="100" font-size="8" text-anchor="middle" fill="#b04030" font-family="'Noto Sans JP',sans-serif">¥1,800</text>
+
+          <!-- BOX 3: 電子レンジ ¥1,200 x=104 y=120 h=36 -->
+          <rect x="104" y="120" width="36" height="36" fill="#e09030"/>
+          <rect x="104" y="120" width="36" height="4" fill="#b07020"/><rect x="136" y="120" width="4" height="36" fill="#b07020"/>
+          <rect x="116" y="120" width="4" height="36" fill="#f0d840"/><rect x="104" y="134" width="36" height="4" fill="#f0d840"/>
+          <text x="122" y="141" font-size="7" text-anchor="middle" fill="white" font-family="'Noto Sans JP',sans-serif">レンジ</text>
+          <text x="122" y="116" font-size="8" text-anchor="middle" fill="#b07020" font-family="'Noto Sans JP',sans-serif">¥1,200</text>
+
+          <!-- BOX 4: 照明（赤）¥1,100 x=148 y=124 h=32 -->
+          <rect x="148" y="124" width="36" height="32" fill="#e09030"/>
+          <rect x="148" y="124" width="36" height="4" fill="#b07020"/><rect x="180" y="124" width="4" height="32" fill="#b07020"/>
+          <rect x="160" y="124" width="4" height="32" fill="#f0d840"/><rect x="148" y="136" width="36" height="4" fill="#f0d840"/>
+          <text x="166" y="143" font-size="7" text-anchor="middle" fill="white" font-family="'Noto Sans JP',sans-serif">照明</text>
+          <text x="166" y="120" font-size="8" text-anchor="middle" fill="#b07020" font-family="'Noto Sans JP',sans-serif">¥1,100</text>
+
+          <!-- BOX 5: 絵 ¥1,000 x=192 y=128 h=28 -->
+          <rect x="192" y="128" width="36" height="28" fill="#e09030"/>
+          <rect x="192" y="128" width="36" height="4" fill="#b07020"/><rect x="224" y="128" width="4" height="28" fill="#b07020"/>
+          <rect x="204" y="128" width="4" height="28" fill="#f0d840"/><rect x="192" y="138" width="36" height="4" fill="#f0d840"/>
+          <text x="210" y="145" font-size="7" text-anchor="middle" fill="white" font-family="'Noto Sans JP',sans-serif">絵</text>
+          <text x="210" y="124" font-size="8" text-anchor="middle" fill="#b07020" font-family="'Noto Sans JP',sans-serif">¥1,000</text>
+
+          <!-- BOX 6: ぬいぐるみ ¥900 x=236 y=132 h=24 -->
+          <rect x="236" y="132" width="36" height="24" fill="#50aa40"/>
+          <rect x="236" y="132" width="36" height="4" fill="#3a8030"/><rect x="268" y="132" width="4" height="24" fill="#3a8030"/>
+          <rect x="248" y="132" width="4" height="24" fill="#f0e840"/><rect x="236" y="140" width="36" height="4" fill="#f0e840"/>
+          <text x="254" y="148" font-size="7" text-anchor="middle" fill="white" font-family="'Noto Sans JP',sans-serif">ぬい</text>
+          <text x="254" y="128" font-size="8" text-anchor="middle" fill="#3a8030" font-family="'Noto Sans JP',sans-serif">¥900</text>
+
+          <!-- BOX 7: コート ¥900 x=280 y=132 h=24 -->
+          <rect x="280" y="132" width="36" height="24" fill="#50aa40"/>
+          <rect x="280" y="132" width="36" height="4" fill="#3a8030"/><rect x="312" y="132" width="4" height="24" fill="#3a8030"/>
+          <rect x="292" y="132" width="4" height="24" fill="#f0e840"/><rect x="280" y="140" width="36" height="4" fill="#f0e840"/>
+          <text x="298" y="148" font-size="7" text-anchor="middle" fill="white" font-family="'Noto Sans JP',sans-serif">コート</text>
+          <text x="298" y="128" font-size="8" text-anchor="middle" fill="#3a8030" font-family="'Noto Sans JP',sans-serif">¥900</text>
+
+          <!-- BOX 8: 着物 ¥900 x=324 y=132 h=24 -->
+          <rect x="324" y="132" width="36" height="24" fill="#50aa40"/>
+          <rect x="324" y="132" width="36" height="4" fill="#3a8030"/><rect x="356" y="132" width="4" height="24" fill="#3a8030"/>
+          <rect x="336" y="132" width="4" height="24" fill="#f0e840"/><rect x="324" y="140" width="36" height="4" fill="#f0e840"/>
+          <text x="342" y="148" font-size="7" text-anchor="middle" fill="white" font-family="'Noto Sans JP',sans-serif">着物</text>
+          <text x="342" y="128" font-size="8" text-anchor="middle" fill="#3a8030" font-family="'Noto Sans JP',sans-serif">¥900</text>
+
+          <!-- BOX 9: AKBジャケット ¥800 x=368 y=136 h=20 -->
+          <rect x="368" y="136" width="36" height="20" fill="#50aa40"/>
+          <rect x="368" y="136" width="36" height="4" fill="#3a8030"/><rect x="400" y="136" width="4" height="20" fill="#3a8030"/>
+          <rect x="380" y="136" width="4" height="20" fill="#f0e840"/><rect x="368" y="142" width="36" height="4" fill="#f0e840"/>
+          <text x="386" y="149" font-size="7" text-anchor="middle" fill="white" font-family="'Noto Sans JP',sans-serif">AKB</text>
+          <text x="386" y="132" font-size="8" text-anchor="middle" fill="#3a8030" font-family="'Noto Sans JP',sans-serif">¥800</text>
+
+          <!-- BOX 10: 本 ¥800 x=412 y=136 h=20 -->
+          <rect x="412" y="136" width="36" height="20" fill="#50aa40"/>
+          <rect x="412" y="136" width="36" height="4" fill="#3a8030"/><rect x="444" y="136" width="4" height="20" fill="#3a8030"/>
+          <rect x="424" y="136" width="4" height="20" fill="#f0e840"/><rect x="412" y="142" width="36" height="4" fill="#f0e840"/>
+          <text x="430" y="149" font-size="7" text-anchor="middle" fill="white" font-family="'Noto Sans JP',sans-serif">本</text>
+          <text x="430" y="132" font-size="8" text-anchor="middle" fill="#3a8030" font-family="'Noto Sans JP',sans-serif">¥800</text>
+
+          <!-- BOX 11: まくら ¥800 x=456 y=136 h=20 -->
+          <rect x="456" y="136" width="36" height="20" fill="#50aa40"/>
+          <rect x="456" y="136" width="36" height="4" fill="#3a8030"/><rect x="488" y="136" width="4" height="20" fill="#3a8030"/>
+          <rect x="468" y="136" width="4" height="20" fill="#f0e840"/><rect x="456" y="142" width="36" height="4" fill="#f0e840"/>
+          <text x="474" y="149" font-size="7" text-anchor="middle" fill="white" font-family="'Noto Sans JP',sans-serif">まくら</text>
+          <text x="474" y="132" font-size="8" text-anchor="middle" fill="#3a8030" font-family="'Noto Sans JP',sans-serif">¥800</text>
+
+          <!-- BOX 12: マフラー ¥700 x=500 y=140 h=16 -->
+          <rect x="500" y="140" width="36" height="16" fill="#50aa40"/>
+          <rect x="500" y="140" width="36" height="4" fill="#3a8030"/><rect x="532" y="140" width="4" height="16" fill="#3a8030"/>
+          <rect x="512" y="140" width="4" height="16" fill="#f0e840"/><rect x="500" y="144" width="36" height="4" fill="#f0e840"/>
+          <text x="518" y="151" font-size="7" text-anchor="middle" fill="white" font-family="'Noto Sans JP',sans-serif">マフ</text>
+          <text x="518" y="136" font-size="8" text-anchor="middle" fill="#3a8030" font-family="'Noto Sans JP',sans-serif">¥700</text>
+
+          <!-- BOX 13: 腰ベルト ¥700 x=544 y=140 h=16 -->
+          <rect x="544" y="140" width="36" height="16" fill="#50aa40"/>
+          <rect x="544" y="140" width="36" height="4" fill="#3a8030"/><rect x="576" y="140" width="4" height="16" fill="#3a8030"/>
+          <rect x="556" y="140" width="4" height="16" fill="#f0e840"/><rect x="544" y="144" width="36" height="4" fill="#f0e840"/>
+          <text x="562" y="151" font-size="7" text-anchor="middle" fill="white" font-family="'Noto Sans JP',sans-serif">腰</text>
+          <text x="562" y="136" font-size="8" text-anchor="middle" fill="#3a8030" font-family="'Noto Sans JP',sans-serif">¥700</text>
+
+          <!-- BOX 14: ごさ ¥700 x=588 y=140 h=16 -->
+          <rect x="588" y="140" width="36" height="16" fill="#50aa40"/>
+          <rect x="588" y="140" width="36" height="4" fill="#3a8030"/><rect x="620" y="140" width="4" height="16" fill="#3a8030"/>
+          <rect x="600" y="140" width="4" height="16" fill="#f0e840"/><rect x="588" y="144" width="36" height="4" fill="#f0e840"/>
+          <text x="606" y="151" font-size="7" text-anchor="middle" fill="white" font-family="'Noto Sans JP',sans-serif">ごさ</text>
+          <text x="606" y="136" font-size="8" text-anchor="middle" fill="#3a8030" font-family="'Noto Sans JP',sans-serif">¥700</text>
+
+          <!-- PIXEL DOG carrying small package (right of scene) -->
+          <rect x="626" y="144" width="14" height="10" fill="#e89030"/>
+          <rect x="632" y="138" width="10" height="8" fill="#e89030"/>
+          <rect x="636" y="135" width="4" height="5" fill="#c06018"/>
+          <rect x="633" y="140" width="2" height="2" fill="#1a0c04"/>
+        </svg>
       </div>
     </div>
   </section>
