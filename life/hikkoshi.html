@@ -2019,7 +2019,65 @@ footer {
 
   <section class="section">
     <div class="section-title"><span class="icon icon-orange">🙏</span>ありがとうさようならリスト</div>
-    <p style="font-size:0.85rem;color:var(--text-sub);margin-bottom:1.2rem;">処分予定のもの。処分方法ごとに整理。</p>
+    <p style="font-size:0.85rem;color:var(--text-sub);margin-bottom:0.6rem;">処分予定のもの。処分方法ごとに整理。</p>
+    <!-- 残り総量 山積みドット絵 -->
+    <div style="margin-bottom:1.2rem;border-radius:8px;overflow:hidden;border:1px solid var(--border)">
+      <svg viewBox="0 0 640 180" width="100%" xmlns="http://www.w3.org/2000/svg" style="display:block;image-rendering:pixelated" shape-rendering="crispEdges">
+        <!-- SKY -->
+        <rect width="640" height="158" fill="#ddeeff"/>
+        <rect x="28" y="12" width="64" height="8" fill="#fff" opacity="0.7"/><rect x="24" y="8" width="72" height="12" fill="#fff" opacity="0.6"/>
+        <rect x="510" y="16" width="50" height="7" fill="#fff" opacity="0.7"/><rect x="506" y="12" width="58" height="11" fill="#fff" opacity="0.6"/>
+        <text x="16" y="18" font-size="10" fill="#334" font-weight="bold" font-family="'Noto Sans JP',sans-serif">まだ全 32点 残ってる</text>
+        <!-- FLOOR -->
+        <rect y="158" width="640" height="5" fill="#d4b880"/>
+        <rect y="163" width="640" height="17" fill="#c4a050"/>
+        <rect y="163" width="640" height="3" fill="#b89040"/>
+
+        <!-- ROW1: 8 boxes h=40 w=38 y=118 start x=160 slot=40 -->
+        <rect x="160" y="118" width="38" height="40" fill="#c8a040"/><rect x="160" y="118" width="38" height="3" fill="#ddbb20"/><rect x="196" y="118" width="2" height="40" fill="#a07828"/><rect x="178" y="118" width="2" height="40" fill="#f0e060"/><rect x="160" y="136" width="38" height="2" fill="#f0e060"/>
+        <rect x="200" y="118" width="38" height="40" fill="#b89030"/><rect x="200" y="118" width="38" height="3" fill="#ccaa20"/><rect x="236" y="118" width="2" height="40" fill="#9a7030"/><rect x="218" y="118" width="2" height="40" fill="#e8d858"/><rect x="200" y="136" width="38" height="2" fill="#e8d858"/>
+        <rect x="240" y="118" width="38" height="40" fill="#d4b050"/><rect x="240" y="118" width="38" height="3" fill="#e8c840"/><rect x="276" y="118" width="2" height="40" fill="#b09040"/><rect x="258" y="118" width="2" height="40" fill="#f4ec70"/><rect x="240" y="136" width="38" height="2" fill="#f4ec70"/>
+        <rect x="280" y="118" width="38" height="40" fill="#c8a040"/><rect x="280" y="118" width="38" height="3" fill="#ddbb20"/><rect x="316" y="118" width="2" height="40" fill="#a07828"/><rect x="298" y="118" width="2" height="40" fill="#f0e060"/><rect x="280" y="136" width="38" height="2" fill="#f0e060"/>
+        <rect x="320" y="118" width="38" height="40" fill="#b89030"/><rect x="320" y="118" width="38" height="3" fill="#ccaa20"/><rect x="356" y="118" width="2" height="40" fill="#9a7030"/><rect x="338" y="118" width="2" height="40" fill="#e8d858"/><rect x="320" y="136" width="38" height="2" fill="#e8d858"/>
+        <rect x="360" y="118" width="38" height="40" fill="#d4b050"/><rect x="360" y="118" width="38" height="3" fill="#e8c840"/><rect x="396" y="118" width="2" height="40" fill="#b09040"/><rect x="378" y="118" width="2" height="40" fill="#f4ec70"/><rect x="360" y="136" width="38" height="2" fill="#f4ec70"/>
+        <rect x="400" y="118" width="38" height="40" fill="#c8a040"/><rect x="400" y="118" width="38" height="3" fill="#ddbb20"/><rect x="436" y="118" width="2" height="40" fill="#a07828"/><rect x="418" y="118" width="2" height="40" fill="#f0e060"/><rect x="400" y="136" width="38" height="2" fill="#f0e060"/>
+        <rect x="440" y="118" width="38" height="40" fill="#b89030"/><rect x="440" y="118" width="38" height="3" fill="#ccaa20"/><rect x="476" y="118" width="2" height="40" fill="#9a7030"/><rect x="458" y="118" width="2" height="40" fill="#e8d858"/><rect x="440" y="136" width="38" height="2" fill="#e8d858"/>
+
+        <!-- ROW2: 7 boxes h=28 w=36 y=90 start x=187 slot=38 -->
+        <rect x="187" y="90" width="36" height="28" fill="#d4b050"/><rect x="187" y="90" width="36" height="3" fill="#e8c840"/><rect x="221" y="90" width="2" height="28" fill="#b09040"/><rect x="204" y="90" width="2" height="28" fill="#f4ec70"/><rect x="187" y="102" width="36" height="2" fill="#f4ec70"/>
+        <rect x="225" y="90" width="36" height="28" fill="#c8a040"/><rect x="225" y="90" width="36" height="3" fill="#ddbb20"/><rect x="259" y="90" width="2" height="28" fill="#a07828"/><rect x="242" y="90" width="2" height="28" fill="#f0e060"/><rect x="225" y="102" width="36" height="2" fill="#f0e060"/>
+        <rect x="263" y="90" width="36" height="28" fill="#b89030"/><rect x="263" y="90" width="36" height="3" fill="#ccaa20"/><rect x="297" y="90" width="2" height="28" fill="#9a7030"/><rect x="280" y="90" width="2" height="28" fill="#e8d858"/><rect x="263" y="102" width="36" height="2" fill="#e8d858"/>
+        <rect x="301" y="90" width="36" height="28" fill="#d4b050"/><rect x="301" y="90" width="36" height="3" fill="#e8c840"/><rect x="335" y="90" width="2" height="28" fill="#b09040"/><rect x="318" y="90" width="2" height="28" fill="#f4ec70"/><rect x="301" y="102" width="36" height="2" fill="#f4ec70"/>
+        <rect x="339" y="90" width="36" height="28" fill="#c8a040"/><rect x="339" y="90" width="36" height="3" fill="#ddbb20"/><rect x="373" y="90" width="2" height="28" fill="#a07828"/><rect x="356" y="90" width="2" height="28" fill="#f0e060"/><rect x="339" y="102" width="36" height="2" fill="#f0e060"/>
+        <rect x="377" y="90" width="36" height="28" fill="#b89030"/><rect x="377" y="90" width="36" height="3" fill="#ccaa20"/><rect x="411" y="90" width="2" height="28" fill="#9a7030"/><rect x="394" y="90" width="2" height="28" fill="#e8d858"/><rect x="377" y="102" width="36" height="2" fill="#e8d858"/>
+        <rect x="415" y="90" width="36" height="28" fill="#d4b050"/><rect x="415" y="90" width="36" height="3" fill="#e8c840"/><rect x="449" y="90" width="2" height="28" fill="#b09040"/><rect x="432" y="90" width="2" height="28" fill="#f4ec70"/><rect x="415" y="102" width="36" height="2" fill="#f4ec70"/>
+
+        <!-- ROW3: 6 boxes h=24 w=32 y=66 start x=218 slot=34 -->
+        <rect x="218" y="66" width="32" height="24" fill="#c8a040"/><rect x="218" y="66" width="32" height="3" fill="#ddbb20"/><rect x="248" y="66" width="2" height="24" fill="#a07828"/><rect x="233" y="66" width="2" height="24" fill="#f0e060"/><rect x="218" y="76" width="32" height="2" fill="#f0e060"/>
+        <rect x="252" y="66" width="32" height="24" fill="#b89030"/><rect x="252" y="66" width="32" height="3" fill="#ccaa20"/><rect x="282" y="66" width="2" height="24" fill="#9a7030"/><rect x="267" y="66" width="2" height="24" fill="#e8d858"/><rect x="252" y="76" width="32" height="2" fill="#e8d858"/>
+        <rect x="286" y="66" width="32" height="24" fill="#d4b050"/><rect x="286" y="66" width="32" height="3" fill="#e8c840"/><rect x="316" y="66" width="2" height="24" fill="#b09040"/><rect x="301" y="66" width="2" height="24" fill="#f4ec70"/><rect x="286" y="76" width="32" height="2" fill="#f4ec70"/>
+        <rect x="320" y="66" width="32" height="24" fill="#c8a040"/><rect x="320" y="66" width="32" height="3" fill="#ddbb20"/><rect x="350" y="66" width="2" height="24" fill="#a07828"/><rect x="335" y="66" width="2" height="24" fill="#f0e060"/><rect x="320" y="76" width="32" height="2" fill="#f0e060"/>
+        <rect x="354" y="66" width="32" height="24" fill="#b89030"/><rect x="354" y="66" width="32" height="3" fill="#ccaa20"/><rect x="384" y="66" width="2" height="24" fill="#9a7030"/><rect x="369" y="66" width="2" height="24" fill="#e8d858"/><rect x="354" y="76" width="32" height="2" fill="#e8d858"/>
+        <rect x="388" y="66" width="32" height="24" fill="#d4b050"/><rect x="388" y="66" width="32" height="3" fill="#e8c840"/><rect x="418" y="66" width="2" height="24" fill="#b09040"/><rect x="403" y="66" width="2" height="24" fill="#f4ec70"/><rect x="388" y="76" width="32" height="2" fill="#f4ec70"/>
+
+        <!-- ROW4: 5 boxes h=20 w=28 y=46 start x=245 slot=30 -->
+        <rect x="245" y="46" width="28" height="20" fill="#b89030"/><rect x="245" y="46" width="28" height="3" fill="#ccaa20"/><rect x="271" y="46" width="2" height="20" fill="#9a7030"/><rect x="258" y="46" width="2" height="20" fill="#e8d858"/><rect x="245" y="54" width="28" height="2" fill="#e8d858"/>
+        <rect x="275" y="46" width="28" height="20" fill="#d4b050"/><rect x="275" y="46" width="28" height="3" fill="#e8c840"/><rect x="301" y="46" width="2" height="20" fill="#b09040"/><rect x="288" y="46" width="2" height="20" fill="#f4ec70"/><rect x="275" y="54" width="28" height="2" fill="#f4ec70"/>
+        <rect x="305" y="46" width="28" height="20" fill="#c8a040"/><rect x="305" y="46" width="28" height="3" fill="#ddbb20"/><rect x="331" y="46" width="2" height="20" fill="#a07828"/><rect x="318" y="46" width="2" height="20" fill="#f0e060"/><rect x="305" y="54" width="28" height="2" fill="#f0e060"/>
+        <rect x="335" y="46" width="28" height="20" fill="#b89030"/><rect x="335" y="46" width="28" height="3" fill="#ccaa20"/><rect x="361" y="46" width="2" height="20" fill="#9a7030"/><rect x="348" y="46" width="2" height="20" fill="#e8d858"/><rect x="335" y="54" width="28" height="2" fill="#e8d858"/>
+        <rect x="365" y="46" width="28" height="20" fill="#d4b050"/><rect x="365" y="46" width="28" height="3" fill="#e8c840"/><rect x="391" y="46" width="2" height="20" fill="#b09040"/><rect x="378" y="46" width="2" height="20" fill="#f4ec70"/><rect x="365" y="54" width="28" height="2" fill="#f4ec70"/>
+
+        <!-- ROW5: 4 boxes h=16 w=24 y=30 start x=268 slot=26 -->
+        <rect x="268" y="30" width="24" height="16" fill="#c8a040"/><rect x="268" y="30" width="24" height="3" fill="#ddbb20"/><rect x="290" y="30" width="2" height="16" fill="#a07828"/><rect x="279" y="30" width="2" height="16" fill="#f0e060"/><rect x="268" y="36" width="24" height="2" fill="#f0e060"/>
+        <rect x="294" y="30" width="24" height="16" fill="#b89030"/><rect x="294" y="30" width="24" height="3" fill="#ccaa20"/><rect x="316" y="30" width="2" height="16" fill="#9a7030"/><rect x="305" y="30" width="2" height="16" fill="#e8d858"/><rect x="294" y="36" width="24" height="2" fill="#e8d858"/>
+        <rect x="320" y="30" width="24" height="16" fill="#d4b050"/><rect x="320" y="30" width="24" height="3" fill="#e8c840"/><rect x="342" y="30" width="2" height="16" fill="#b09040"/><rect x="331" y="30" width="2" height="16" fill="#f4ec70"/><rect x="320" y="36" width="24" height="2" fill="#f4ec70"/>
+        <rect x="346" y="30" width="24" height="16" fill="#c8a040"/><rect x="346" y="30" width="24" height="3" fill="#ddbb20"/><rect x="368" y="30" width="2" height="16" fill="#a07828"/><rect x="357" y="30" width="2" height="16" fill="#f0e060"/><rect x="346" y="36" width="24" height="2" fill="#f0e060"/>
+
+        <!-- ROW6: 2 boxes h=12 w=20 y=18 start x=300 slot=24 -->
+        <rect x="300" y="18" width="20" height="12" fill="#b89030"/><rect x="300" y="18" width="20" height="3" fill="#ccaa20"/><rect x="318" y="18" width="2" height="12" fill="#9a7030"/><rect x="309" y="18" width="2" height="12" fill="#e8d858"/>
+        <rect x="324" y="18" width="20" height="12" fill="#d4b050"/><rect x="324" y="18" width="20" height="3" fill="#e8c840"/><rect x="342" y="18" width="2" height="12" fill="#b09040"/><rect x="333" y="18" width="2" height="12" fill="#f4ec70"/>
+      </svg>
+    </div>
     <div class="place-group">
       <div class="place-label">粗大ゴミ</div>
       <div class="item-chips">
@@ -2111,99 +2169,6 @@ footer {
       <div class="place-label">保留</div>
       <div class="item-chips">
         <span class="item-chip">まくら</span>
-      </div>
-    </div>
-
-    <!-- 残り総量ドット絵 -->
-    <div style="margin:20px 0 4px">
-      <div class="sub-head" style="margin-bottom:4px">📦 残り総量ビジュアル</div>
-      <p style="font-size:0.78rem;color:var(--text-sub);margin:0 0 10px">処分できていないもの全32点。高さ＝物理サイズ目安。左ほど大きい。</p>
-      <div style="border-radius:8px;overflow:hidden;border:1px solid var(--border)">
-        <svg viewBox="0 0 640 170" width="100%" xmlns="http://www.w3.org/2000/svg" style="display:block;image-rendering:pixelated" shape-rendering="crispEdges">
-          <!-- SKY -->
-          <rect width="640" height="122" fill="#ddeeff"/>
-          <!-- LEGEND top-right -->
-          <rect x="468" y="8" width="8" height="8" fill="#9966cc"/><text x="480" y="16" font-size="8" fill="#445" font-family="'Noto Sans JP',sans-serif">家電リサイクル 2点</text>
-          <rect x="468" y="22" width="8" height="8" fill="#e05040"/><text x="480" y="30" font-size="8" fill="#445" font-family="'Noto Sans JP',sans-serif">粗大ゴミ 14点</text>
-          <rect x="468" y="36" width="8" height="8" fill="#e09030"/><text x="480" y="44" font-size="8" fill="#445" font-family="'Noto Sans JP',sans-serif">譲渡・売却 13点</text>
-          <rect x="468" y="50" width="8" height="8" fill="#888"/><text x="480" y="58" font-size="8" fill="#445" font-family="'Noto Sans JP',sans-serif">その他 3点</text>
-          <text x="10" y="18" font-size="10" fill="#334" font-family="'Noto Sans JP',sans-serif" font-weight="bold">合計 32点 ／ 高さ＝物理サイズ目安</text>
-
-          <!-- FLOOR -->
-          <rect y="122" width="640" height="5" fill="#d4b880"/>
-          <rect y="127" width="640" height="43" fill="#c4a050"/>
-          <rect y="127" width="640" height="3" fill="#b89040"/>
-
-          <!-- 33 COLUMNS sorted by height (large→small), slot=19px (16px col+3px gap) -->
-          <!-- col: x = 1 + i*19, y = 122-h, tape at x+7 w=2 -->
-
-          <!-- 0: 冷蔵庫 h=52 purple x=1 -->
-          <rect x="1"  y="70" width="16" height="52" fill="#9966cc"/><rect x="1"  y="70" width="16" height="3" fill="#7744aa"/><rect x="15" y="70" width="2" height="52" fill="#7744aa"/><rect x="8"  y="70" width="2" height="52" fill="#f0e840"/>
-          <!-- 1: 本棚 h=48 red x=20 -->
-          <rect x="20" y="74" width="16" height="48" fill="#e05040"/><rect x="20" y="74" width="16" height="3" fill="#b04030"/><rect x="34" y="74" width="2" height="48" fill="#b04030"/><rect x="27" y="74" width="2" height="48" fill="#f0c840"/>
-          <!-- 2: 洗濯機 h=44 purple x=39 -->
-          <rect x="39" y="78" width="16" height="44" fill="#9966cc"/><rect x="39" y="78" width="16" height="3" fill="#7744aa"/><rect x="53" y="78" width="2" height="44" fill="#7744aa"/><rect x="46" y="78" width="2" height="44" fill="#f0e840"/>
-          <!-- 3: 棚大 h=40 red x=58 -->
-          <rect x="58" y="82" width="16" height="40" fill="#e05040"/><rect x="58" y="82" width="16" height="3" fill="#b04030"/><rect x="72" y="82" width="2" height="40" fill="#b04030"/><rect x="65" y="82" width="2" height="40" fill="#f0c840"/>
-          <!-- 4: 机白 h=36 red x=77 -->
-          <rect x="77" y="86" width="16" height="36" fill="#e05040"/><rect x="77" y="86" width="16" height="3" fill="#b04030"/><rect x="91" y="86" width="2" height="36" fill="#b04030"/><rect x="84" y="86" width="2" height="36" fill="#f0c840"/>
-          <!-- 5: スピーカー h=34 red x=96 -->
-          <rect x="96" y="88" width="16" height="34" fill="#e05040"/><rect x="96" y="88" width="16" height="3" fill="#b04030"/><rect x="110" y="88" width="2" height="34" fill="#b04030"/><rect x="103" y="88" width="2" height="34" fill="#f0c840"/>
-          <!-- 6: レコードラック h=32 orange x=115 -->
-          <rect x="115" y="90" width="16" height="32" fill="#e09030"/><rect x="115" y="90" width="16" height="3" fill="#b07020"/><rect x="129" y="90" width="2" height="32" fill="#b07020"/><rect x="122" y="90" width="2" height="32" fill="#f0d840"/>
-          <!-- 7: キャリー h=30 red x=134 -->
-          <rect x="134" y="92" width="16" height="30" fill="#e05040"/><rect x="134" y="92" width="16" height="3" fill="#b04030"/><rect x="148" y="92" width="2" height="30" fill="#b04030"/><rect x="141" y="92" width="2" height="30" fill="#f0c840"/>
-          <!-- 8: 照明赤 h=30 orange x=153 -->
-          <rect x="153" y="92" width="16" height="30" fill="#e09030"/><rect x="153" y="92" width="16" height="3" fill="#b07020"/><rect x="167" y="92" width="2" height="30" fill="#b07020"/><rect x="160" y="92" width="2" height="30" fill="#f0d840"/>
-          <!-- 9: 椅子黒 h=26 red x=172 -->
-          <rect x="172" y="96" width="16" height="26" fill="#e05040"/><rect x="172" y="96" width="16" height="3" fill="#b04030"/><rect x="186" y="96" width="2" height="26" fill="#b04030"/><rect x="179" y="96" width="2" height="26" fill="#f0c840"/>
-          <!-- 10: 椅子赤 h=26 orange x=191 -->
-          <rect x="191" y="96" width="16" height="26" fill="#e09030"/><rect x="191" y="96" width="16" height="3" fill="#b07020"/><rect x="205" y="96" width="2" height="26" fill="#b07020"/><rect x="198" y="96" width="2" height="26" fill="#f0d840"/>
-          <!-- 11: 棚小 h=24 red x=210 -->
-          <rect x="210" y="98" width="16" height="24" fill="#e05040"/><rect x="210" y="98" width="16" height="3" fill="#b04030"/><rect x="224" y="98" width="2" height="24" fill="#b04030"/><rect x="217" y="98" width="2" height="24" fill="#f0c840"/>
-          <!-- 12: 給湯器 h=24 red x=229 -->
-          <rect x="229" y="98" width="16" height="24" fill="#e05040"/><rect x="229" y="98" width="16" height="3" fill="#b04030"/><rect x="243" y="98" width="2" height="24" fill="#b04030"/><rect x="236" y="98" width="2" height="24" fill="#f0c840"/>
-          <!-- 13: 電子レンジ h=20 orange x=248 -->
-          <rect x="248" y="102" width="16" height="20" fill="#e09030"/><rect x="248" y="102" width="16" height="3" fill="#b07020"/><rect x="262" y="102" width="2" height="20" fill="#b07020"/><rect x="255" y="102" width="2" height="20" fill="#f0d840"/>
-          <!-- 14: 網ラック h=20 red x=267 -->
-          <rect x="267" y="102" width="16" height="20" fill="#e05040"/><rect x="267" y="102" width="16" height="3" fill="#b04030"/><rect x="281" y="102" width="2" height="20" fill="#b04030"/><rect x="274" y="102" width="2" height="20" fill="#f0c840"/>
-          <!-- 15: サイドT1 h=20 red x=286 -->
-          <rect x="286" y="102" width="16" height="20" fill="#e05040"/><rect x="286" y="102" width="16" height="3" fill="#b04030"/><rect x="300" y="102" width="2" height="20" fill="#b04030"/><rect x="293" y="102" width="2" height="20" fill="#f0c840"/>
-          <!-- 16: サイドT2 h=20 red x=305 -->
-          <rect x="305" y="102" width="16" height="20" fill="#e05040"/><rect x="305" y="102" width="16" height="3" fill="#b04030"/><rect x="319" y="102" width="2" height="20" fill="#b04030"/><rect x="312" y="102" width="2" height="20" fill="#f0c840"/>
-          <!-- 17: コート h=18 orange x=324 -->
-          <rect x="324" y="104" width="16" height="18" fill="#e09030"/><rect x="324" y="104" width="16" height="3" fill="#b07020"/><rect x="338" y="104" width="2" height="18" fill="#b07020"/><rect x="331" y="104" width="2" height="18" fill="#f0d840"/>
-          <!-- 18: 洗濯かご h=16 red x=343 -->
-          <rect x="343" y="106" width="16" height="16" fill="#e05040"/><rect x="343" y="106" width="16" height="3" fill="#b04030"/><rect x="357" y="106" width="2" height="16" fill="#b04030"/><rect x="350" y="106" width="2" height="16" fill="#f0c840"/>
-          <!-- 19: 着物 h=16 orange x=362 -->
-          <rect x="362" y="106" width="16" height="16" fill="#e09030"/><rect x="362" y="106" width="16" height="3" fill="#b07020"/><rect x="376" y="106" width="2" height="16" fill="#b07020"/><rect x="369" y="106" width="2" height="16" fill="#f0d840"/>
-          <!-- 20: AKB h=14 orange x=381 -->
-          <rect x="381" y="108" width="16" height="14" fill="#e09030"/><rect x="381" y="108" width="16" height="3" fill="#b07020"/><rect x="395" y="108" width="2" height="14" fill="#b07020"/><rect x="388" y="108" width="2" height="14" fill="#f0d840"/>
-          <!-- 21: ぬい h=14 orange x=400 -->
-          <rect x="400" y="108" width="16" height="14" fill="#e09030"/><rect x="400" y="108" width="16" height="3" fill="#b07020"/><rect x="414" y="108" width="2" height="14" fill="#b07020"/><rect x="407" y="108" width="2" height="14" fill="#f0d840"/>
-          <!-- 22: 絵 h=14 orange x=419 -->
-          <rect x="419" y="108" width="16" height="14" fill="#e09030"/><rect x="419" y="108" width="16" height="3" fill="#b07020"/><rect x="433" y="108" width="2" height="14" fill="#b07020"/><rect x="426" y="108" width="2" height="14" fill="#f0d840"/>
-          <!-- 23: 本 h=14 orange x=438 -->
-          <rect x="438" y="108" width="16" height="14" fill="#e09030"/><rect x="438" y="108" width="16" height="3" fill="#b07020"/><rect x="452" y="108" width="2" height="14" fill="#b07020"/><rect x="445" y="108" width="2" height="14" fill="#f0d840"/>
-          <!-- 24: まくら h=12 gray x=457 -->
-          <rect x="457" y="110" width="16" height="12" fill="#999"/><rect x="457" y="110" width="16" height="3" fill="#777"/><rect x="471" y="110" width="2" height="12" fill="#777"/><rect x="464" y="110" width="2" height="12" fill="#eee"/>
-          <!-- 25: 筆記用具 h=12 gray x=476 -->
-          <rect x="476" y="110" width="16" height="12" fill="#999"/><rect x="476" y="110" width="16" height="3" fill="#777"/><rect x="490" y="110" width="2" height="12" fill="#777"/><rect x="483" y="110" width="2" height="12" fill="#eee"/>
-          <!-- 26: 風呂イス h=10 red x=495 -->
-          <rect x="495" y="112" width="16" height="10" fill="#e05040"/><rect x="495" y="112" width="16" height="3" fill="#b04030"/><rect x="509" y="112" width="2" height="10" fill="#b04030"/><rect x="502" y="112" width="2" height="10" fill="#f0c840"/>
-          <!-- 27: 腰ベルト h=10 orange x=514 -->
-          <rect x="514" y="112" width="16" height="10" fill="#e09030"/><rect x="514" y="112" width="16" height="3" fill="#b07020"/><rect x="528" y="112" width="2" height="10" fill="#b07020"/><rect x="521" y="112" width="2" height="10" fill="#f0d840"/>
-          <!-- 28: ごさ h=8 orange x=533 -->
-          <rect x="533" y="114" width="16" height="8" fill="#e09030"/><rect x="533" y="114" width="16" height="3" fill="#b07020"/><rect x="547" y="114" width="2" height="8" fill="#b07020"/><rect x="540" y="114" width="2" height="8" fill="#f0d840"/>
-          <!-- 29: 物干し竿 h=8 red x=552 -->
-          <rect x="552" y="114" width="16" height="8" fill="#e05040"/><rect x="552" y="114" width="16" height="3" fill="#b04030"/><rect x="566" y="114" width="2" height="8" fill="#b04030"/><rect x="559" y="114" width="2" height="8" fill="#f0c840"/>
-          <!-- 30: マフラー h=8 orange x=571 -->
-          <rect x="571" y="114" width="16" height="8" fill="#e09030"/><rect x="571" y="114" width="16" height="3" fill="#b07020"/><rect x="585" y="114" width="2" height="8" fill="#b07020"/><rect x="578" y="114" width="2" height="8" fill="#f0d840"/>
-          <!-- 31: 作品キャプション h=8 red x=590 -->
-          <rect x="590" y="114" width="16" height="8" fill="#e05040"/><rect x="590" y="114" width="16" height="3" fill="#b04030"/><rect x="604" y="114" width="2" height="8" fill="#b04030"/><rect x="597" y="114" width="2" height="8" fill="#f0c840"/>
-          <!-- 32: ギターフック h=6 gray x=609 -->
-          <rect x="609" y="116" width="16" height="6" fill="#999"/><rect x="609" y="116" width="16" height="3" fill="#777"/><rect x="623" y="116" width="2" height="6" fill="#777"/><rect x="616" y="116" width="2" height="6" fill="#eee"/>
-        </svg>
       </div>
     </div>
   </section>
