@@ -2030,6 +2030,98 @@ footer {
 
   <section class="section">
     <div class="section-title"><span class="icon icon-orange">📅</span>タイムライン（週ごと）</div>
+    <!-- タイムラインバー -->
+    <div style="margin-bottom:1rem;border-radius:8px;overflow:hidden;border:1px solid var(--border)">
+      <svg viewBox="0 0 640 112" width="100%" xmlns="http://www.w3.org/2000/svg" style="display:block;image-rendering:pixelated" shape-rendering="crispEdges">
+        <!-- SKY (bird lives here) -->
+        <rect width="640" height="27" fill="#cce8ff"/>
+        <!-- light cloud -->
+        <rect x="550" y="6" width="48" height="7" fill="#fff" opacity="0.7"/><rect x="546" y="3" width="56" height="10" fill="#fff" opacity="0.6"/>
+
+        <!-- ===== TIMELINE BAR y=27..51 h=24 ===== -->
+        <!-- Seg1: 8/26〜8/30 PAST done #4a8840 x=50 w=60 -->
+        <rect x="50"  y="27" width="60"  height="24" fill="#4a8840"/>
+        <!-- Seg2: 8/31〜9/6 PAST done #508848 x=110 w=80 -->
+        <rect x="110" y="27" width="80"  height="24" fill="#508848"/>
+        <!-- Seg3: 9/7〜9/13 PAST done #5a9050 x=190 w=80 -->
+        <rect x="190" y="27" width="80"  height="24" fill="#5a9050"/>
+        <!-- Seg4: 9/14〜9/20 NOW amber x=270 w=80 -->
+        <rect x="270" y="27" width="80"  height="24" fill="#e08030"/>
+        <!-- Seg4 top highlight -->
+        <rect x="270" y="27" width="80"  height="3"  fill="#f0a850"/>
+        <!-- Seg5: 9/21〜9/27 future green x=350 w=80 -->
+        <rect x="350" y="27" width="80"  height="24" fill="#a8c880"/>
+        <!-- Seg6: 9/28〜10/4 PARTY pink x=430 w=80 -->
+        <rect x="430" y="27" width="80"  height="24" fill="#e04880"/>
+        <!-- Seg6 confetti dots -->
+        <rect x="440" y="31" width="3" height="3" fill="#fff" opacity="0.6"/>
+        <rect x="452" y="35" width="2" height="2" fill="#fff0a0" opacity="0.8"/>
+        <rect x="466" y="30" width="2" height="3" fill="#fff" opacity="0.5"/>
+        <rect x="480" y="33" width="3" height="2" fill="#ffe080" opacity="0.7"/>
+        <rect x="494" y="29" width="2" height="2" fill="#fff" opacity="0.6"/>
+        <!-- Seg7: 10月〜 muted x=510 w=80 -->
+        <rect x="510" y="27" width="80"  height="24" fill="#9098b0"/>
+
+        <!-- dividers between segments (semi-white 1px) -->
+        <rect x="109"  y="27" width="1" height="24" fill="#ffffff" opacity="0.4"/>
+        <rect x="189"  y="27" width="1" height="24" fill="#ffffff" opacity="0.4"/>
+        <rect x="269"  y="27" width="2" height="24" fill="#ffffff" opacity="0.6"/>
+        <rect x="349"  y="27" width="2" height="24" fill="#ffffff" opacity="0.6"/>
+        <rect x="429"  y="27" width="1" height="24" fill="#ffffff" opacity="0.4"/>
+        <rect x="509"  y="27" width="1" height="24" fill="#ffffff" opacity="0.4"/>
+
+        <!-- bar top/bottom edge -->
+        <rect x="50"  y="27" width="540" height="2" fill="#2a2a20"/>
+        <rect x="50"  y="49" width="540" height="2" fill="#2a2a20"/>
+        <!-- bar left/right caps -->
+        <rect x="50"  y="27" width="2"   height="24" fill="#2a2a20"/>
+        <rect x="588" y="27" width="2"   height="24" fill="#2a2a20"/>
+
+        <!-- "NOW" text inside amber segment -->
+        <text x="310" y="43" text-anchor="middle" font-size="8" fill="#fff" font-weight="bold" font-family="sans-serif">NOW</text>
+
+        <!-- ===== BIRD: なみちゃん at NOW start (x=270), feet at y=27 ===== -->
+        <rect x="264" y="20" width="2"  height="7"  fill="#1a4488"/><!-- tail -->
+        <rect x="266" y="20" width="12" height="7"  fill="#2266cc"/><!-- body -->
+        <rect x="266" y="20" width="12" height="3"  fill="#55aaff"/><!-- wing -->
+        <rect x="270" y="10" width="10" height="10" fill="#2266cc"/><!-- head -->
+        <rect x="280" y="15" width="4"  height="3"  fill="#f09020"/><!-- beak -->
+        <rect x="272" y="12" width="2"  height="2"  fill="#0a0814"/><!-- eye -->
+        <rect x="268" y="27" width="2"  height="3"  fill="#f09020"/><!-- foot L -->
+        <rect x="272" y="27" width="2"  height="3"  fill="#f09020"/><!-- foot R -->
+
+        <!-- ===== LABEL AREA y=51..112 ===== -->
+        <rect y="51" width="640" height="61" fill="#f0ede8"/>
+        <rect y="51" width="640" height="3"  fill="#c8c0a8"/>
+
+        <!-- date labels (top of label area, y=63) -->
+        <text x="80"  y="63" text-anchor="middle" font-size="7" fill="#556" font-family="'Noto Sans JP',sans-serif">8/26</text>
+        <text x="150" y="63" text-anchor="middle" font-size="7" fill="#556" font-family="'Noto Sans JP',sans-serif">8/31</text>
+        <text x="230" y="63" text-anchor="middle" font-size="7" fill="#556" font-family="'Noto Sans JP',sans-serif">9/7</text>
+        <text x="310" y="63" text-anchor="middle" font-size="7" fill="#c05010" font-weight="bold" font-family="'Noto Sans JP',sans-serif">9/14</text>
+        <text x="390" y="63" text-anchor="middle" font-size="7" fill="#556" font-family="'Noto Sans JP',sans-serif">9/21</text>
+        <text x="470" y="63" text-anchor="middle" font-size="7" fill="#883050" font-family="'Noto Sans JP',sans-serif">9/28</text>
+        <text x="550" y="63" text-anchor="middle" font-size="7" fill="#556" font-family="'Noto Sans JP',sans-serif">10月〜</text>
+
+        <!-- event summary labels (y=78) -->
+        <text x="80"  y="78" text-anchor="middle" font-size="7" fill="#445" font-family="'Noto Sans JP',sans-serif">スペース確保</text>
+        <text x="150" y="78" text-anchor="middle" font-size="7" fill="#445" font-family="'Noto Sans JP',sans-serif">入居完了</text>
+        <text x="230" y="78" text-anchor="middle" font-size="7" fill="#445" font-family="'Noto Sans JP',sans-serif">搬入・粗大ゴミ</text>
+        <text x="310" y="78" text-anchor="middle" font-size="7" fill="#c05010" font-weight="bold" font-family="'Noto Sans JP',sans-serif">住所変更・収納</text>
+        <text x="390" y="78" text-anchor="middle" font-size="7" fill="#445" font-family="'Noto Sans JP',sans-serif">小物・家具</text>
+        <text x="470" y="78" text-anchor="middle" font-size="7" fill="#883050" font-family="'Noto Sans JP',sans-serif">引越し打ち上げ🎉</text>
+        <text x="550" y="78" text-anchor="middle" font-size="7" fill="#667" font-family="'Noto Sans JP',sans-serif">運用・調整</text>
+
+        <!-- sub event notes (y=92) -->
+        <text x="80"  y="92" text-anchor="middle" font-size="6" fill="#789" font-family="'Noto Sans JP',sans-serif">✓ 完了</text>
+        <text x="150" y="92" text-anchor="middle" font-size="6" fill="#789" font-family="'Noto Sans JP',sans-serif">✓ 完了</text>
+        <text x="230" y="92" text-anchor="middle" font-size="6" fill="#789" font-family="'Noto Sans JP',sans-serif">✓ 完了</text>
+        <text x="310" y="92" text-anchor="middle" font-size="6" fill="#c05010" font-family="'Noto Sans JP',sans-serif">★ 今週</text>
+        <text x="390" y="92" text-anchor="middle" font-size="6" fill="#789" font-family="'Noto Sans JP',sans-serif">9/26 旧居退去</text>
+        <text x="470" y="92" text-anchor="middle" font-size="6" fill="#789" font-family="'Noto Sans JP',sans-serif">打ち上げ</text>
+        <text x="550" y="92" text-anchor="middle" font-size="6" fill="#789" font-family="'Noto Sans JP',sans-serif">10月以降</text>
+      </svg>
+    </div>
     <div class="timeline">
 
       <div class="tl-item past">
