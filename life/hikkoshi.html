@@ -1057,7 +1057,7 @@ footer {
     <div class="section-title"><span class="icon icon-blue">⏰</span>時間のリソースと進め方</div>
 
     <div class="sub-head">二人で使える時間（9月）</div>
-    <div class="js-candidate-note">※ 以下は候補。確定したら更新する。</div>
+    <div class="js-candidate-note">※ 取り消し線は済み。9/23 は終日で確定。9/22 は候補。</div>
     <div class="joint-schedule">
       <div class="js-item done">
         <div class="js-left">
@@ -1087,22 +1087,22 @@ footer {
         </div>
       </div>
 
-      <div class="js-item candidate">
+      <div class="js-item done">
         <div class="js-left">
           <div class="js-date">9/19<span class="js-day">土</span>〜20<span class="js-day">日</span></div>
           <div class="js-badge">深夜〜翌昼</div>
         </div>
         <div class="js-right">
-          <div class="js-time-main">22:00 〜 翌 15:00</div>
+          <div class="js-time-main" style="text-decoration:line-through;">22:00 〜 翌 15:00</div>
         </div>
       </div>
-      <div class="js-item candidate">
+      <div class="js-item done">
         <div class="js-left">
           <div class="js-date">9/21<span class="js-day">月</span></div>
           <div class="js-badge">午前</div>
         </div>
         <div class="js-right">
-          <div class="js-time-main">9:00 〜 14:00</div>
+          <div class="js-time-main" style="text-decoration:line-through;">9:00 〜 14:00</div>
         </div>
       </div>
       <div class="js-item candidate">
@@ -1114,13 +1114,13 @@ footer {
           <div class="js-time-main">9:00 〜 14:00</div>
         </div>
       </div>
-      <div class="js-item candidate">
+      <div class="js-item js-big">
         <div class="js-left">
           <div class="js-date">9/23<span class="js-day">水</span></div>
-          <div class="js-badge">午前</div>
+          <div class="js-badge">終日</div>
         </div>
         <div class="js-right">
-          <div class="js-time-main">9:00 〜 14:00</div>
+          <div class="js-time-main">終日</div>
         </div>
       </div>
     </div>
@@ -1654,6 +1654,8 @@ footer {
           <div class="subspot">趣味の小物</div>
           <span class="sub">ステッカー</span>
           <span class="sub">バッジ</span>
+          <div class="spot">一旦保管（置き場は未確定）</div>
+          <span>プランター（小）</span>
           <div class="spot">アウトドア用品</div>
           <span>ポータブルスピーカー</span>
           <span>サッカーボール</span>
@@ -1790,6 +1792,7 @@ footer {
           <span>音響系コード類</span>
           <span>カメラ</span>
           <span>三脚</span>
+          <span>サイドテーブル</span>
         </div>
         <div class="room-status"><div class="room-progress"><div class="room-progress-bar"><div class="room-progress-fill high" style="width:90%"></div></div><span class="room-progress-pct">90%</span></div></div>
         <div class="room-note"></div>
@@ -1811,10 +1814,10 @@ footer {
         <div class="room-name">ベッド＋<br>ベッド横収納</div>
         <div class="room-purpose"><span>就寝／寝具と思い出品の収納</span></div>
         <div class="room-items">
-          <span class="loose">ベッド</span>
+          <span class="loose">ベッド（布団のマット）</span>
           <div class="spot">ベッド横収納</div>
-          <span>季節でない寝具</span>
-          <span>来客用寝具</span>
+          <span>シーツ（季節でない寝具）</span>
+          <span>まくら × 2（来客用寝具）</span>
           <span>思い出品</span>
         </div>
         <div class="room-status"><div class="room-progress"><div class="room-progress-bar"><div class="room-progress-fill mid" style="width:50%"></div></div><span class="room-progress-pct">50%</span></div></div>
@@ -2317,11 +2320,11 @@ footer {
         </div>
       </div>
 
-      <div class="tl-item now">
-        <div class="tl-left"><div class="tl-date now">9/14<br>〜9/20</div></div>
+      <div class="tl-item past">
+        <div class="tl-left"><div class="tl-date past">9/14<br>〜9/20</div></div>
         <div class="tl-right">
           <div class="tl-content">
-            <div class="tl-head">今週 <span class="now-tag">NOW</span>　収納完了 ／ 友人来訪（9/20）</div>
+            <div class="tl-head">済み ✓　収納・住所変更 ／ 友人来訪 ／ 譲渡・売却</div>
             <ul class="plain-list">
               <li class="log-done">9/14（月）✓　なみちゃんの転出届・転入届 完了</li>
               <li class="log-done">✓　住所変更手続き完了（銀行・カード・勤務先・健保・EC・火災保険）</li>
@@ -2329,17 +2332,19 @@ footer {
               <li class="log-done">9/18（金）✓　粗大ゴミ10点を排出・収集完了（7,300円）。処分リスト残り29点。</li>
               <li>今ある収納家具に収まるものはすべて収納した状態にする</li>
               <li class="log-done">✓　なみちゃんの旧居の退去・解約手続きを確認（電気・ガス・水道／火災保険は解約済み、退去・鍵返却は9/26で確定）</li>
-              <li>9/20 友人来訪</li>
+              <li class="log-done">9/19（金）✓　ピカチュウシンセ・第3の目シンセ・本とCDの一部をベーチャンへ譲渡</li>
+              <li class="log-done">9/20（土）✓　ござ・絵・照明（赤）・鏡（中）をNEWSで売却／本を古本屋で売却</li>
+              <li class="log-done">9/20（土）✓　友人来訪</li>
             </ul>
           </div>
         </div>
       </div>
 
-      <div class="tl-item green">
-        <div class="tl-left"><div class="tl-date future">9/21<br>〜9/27</div></div>
+      <div class="tl-item now">
+        <div class="tl-left"><div class="tl-date now">9/21<br>〜9/27</div></div>
         <div class="tl-right">
           <div class="tl-content">
-            <div class="tl-head">小物・収納家具の追加検討</div>
+            <div class="tl-head">今週 <span class="now-tag">NOW</span>　小物・収納家具の追加検討</div>
             <ul class="plain-list">
               <li>必要に応じて収納家具を購入・設置する</li>
               <li>小物の収納・配置を整える</li>
@@ -2401,7 +2406,7 @@ footer {
 
   <section class="section">
     <div class="section-title"><span class="icon icon-orange">🙏</span>ありがとうさようならリスト</div>
-    <p style="font-size:0.85rem;color:var(--text-sub);margin-bottom:0.6rem;">処分予定のもの。処分方法ごとに整理。取り消し線は処分済み。<br>左の薄い山が処分済み（粗大ゴミ10・譲渡1・不燃8・可燃3・プラ2・小型家電1）、右の山が残り。「× 2」表記も1点として数えている。</p>
+    <p style="font-size:0.85rem;color:var(--text-sub);margin-bottom:0.6rem;">処分予定のもの。処分方法ごとに整理。取り消し線は処分済み。<br>左の薄い山が処分済み（粗大ゴミ10・譲渡・売却8・不燃8・可燃3・プラ2・小型家電1＝32点）、右の山が残り22点。「× 2」表記も1点として数えている。</p>
     <!-- 残り総量 山積みドット絵 -->
     <div style="margin-bottom:1.2rem;border-radius:8px;overflow:hidden;border:1px solid var(--border)">
       <svg viewBox="0 0 640 200" width="100%%" xmlns="http://www.w3.org/2000/svg" style="display:block;image-rendering:pixelated" shape-rendering="crispEdges">
@@ -2410,9 +2415,9 @@ footer {
       <rect x="252" y="14" width="56" height="7" fill="#fff" opacity="0.7"/><rect x="248" y="10" width="64" height="11" fill="#fff" opacity="0.6"/>
       <rect x="556" y="18" width="44" height="6" fill="#fff" opacity="0.7"/><rect x="552" y="14" width="52" height="10" fill="#fff" opacity="0.6"/>
       <!-- SUMMARY + PROGRESS BAR -->
-      <text x="16" y="20" font-size="11" fill="#334" font-weight="bold" font-family="'Noto Sans JP',sans-serif">全 54点 → 完了 25点（46%）</text>
+      <text x="16" y="20" font-size="11" fill="#334" font-weight="bold" font-family="'Noto Sans JP',sans-serif">全 54点 → 完了 32点（59%）</text>
       <rect x="16" y="28" width="184" height="9" fill="#fff" opacity="0.8"/>
-      <rect x="16" y="28" width="85" height="9" fill="#40cc60"/>
+      <rect x="16" y="28" width="109" height="9" fill="#40cc60"/>
       <rect x="16" y="28" width="184" height="9" fill="none" stroke="#88a" stroke-width="1"/>
       <!-- FLOOR -->
       <rect y="170" width="640" height="5" fill="#d4b880"/>
@@ -2421,9 +2426,9 @@ footer {
       <!-- ZONE DIVIDER -->
       <rect x="270" y="56" width="2" height="114" fill="#9ab" opacity="0.45"/>
       <!-- == さようなら済み (left, faded) == -->
-      <text x="140" y="93" font-size="10" text-anchor="middle" fill="#2a7a20" font-weight="bold" font-family="'Noto Sans JP',sans-serif">さようなら済み 25点 ✓</text>
+      <text x="140" y="93" font-size="10" text-anchor="middle" fill="#2a7a20" font-weight="bold" font-family="'Noto Sans JP',sans-serif">さようなら済み 32点 ✓</text>
       <g opacity="0.42">
-      <!-- D ROW1: 8 boxes (w=22 h=20 y=150) -->
+      <!-- D ROW1: 8 boxes -->
       <!-- D1 Red(本棚) --><rect x="45" y="150" width="22" height="20" fill="#c84040"/><rect x="45" y="150" width="22" height="2" fill="#e86060"/><rect x="65" y="150" width="2" height="20" fill="#983030"/><rect x="55" y="150" width="2" height="20" fill="#ffaaaa"/><rect x="45" y="159" width="22" height="2" fill="#ffaaaa"/>
       <!-- D2 Red(網ラック) --><rect x="69" y="150" width="22" height="20" fill="#c84040"/><rect x="69" y="150" width="22" height="2" fill="#e86060"/><rect x="89" y="150" width="2" height="20" fill="#983030"/><rect x="79" y="150" width="2" height="20" fill="#ffaaaa"/><rect x="69" y="159" width="22" height="2" fill="#ffaaaa"/>
       <!-- D3 Red(キャリー) --><rect x="93" y="150" width="22" height="20" fill="#c84040"/><rect x="93" y="150" width="22" height="2" fill="#e86060"/><rect x="113" y="150" width="2" height="20" fill="#983030"/><rect x="103" y="150" width="2" height="20" fill="#ffaaaa"/><rect x="93" y="159" width="22" height="2" fill="#ffaaaa"/>
@@ -2432,68 +2437,68 @@ footer {
       <!-- D6 Red(椅子黒) --><rect x="165" y="150" width="22" height="20" fill="#c84040"/><rect x="165" y="150" width="22" height="2" fill="#e86060"/><rect x="185" y="150" width="2" height="20" fill="#983030"/><rect x="175" y="150" width="2" height="20" fill="#ffaaaa"/><rect x="165" y="159" width="22" height="2" fill="#ffaaaa"/>
       <!-- D7 Red(棚小) --><rect x="189" y="150" width="22" height="20" fill="#c84040"/><rect x="189" y="150" width="22" height="2" fill="#e86060"/><rect x="209" y="150" width="2" height="20" fill="#983030"/><rect x="199" y="150" width="2" height="20" fill="#ffaaaa"/><rect x="189" y="159" width="22" height="2" fill="#ffaaaa"/>
       <!-- D8 Red(スピーカー) --><rect x="213" y="150" width="22" height="20" fill="#c84040"/><rect x="213" y="150" width="22" height="2" fill="#e86060"/><rect x="233" y="150" width="2" height="20" fill="#983030"/><rect x="223" y="150" width="2" height="20" fill="#ffaaaa"/><rect x="213" y="159" width="22" height="2" fill="#ffaaaa"/>
-      <!-- D ROW2: 7 boxes (w=20 h=16 y=134) -->
-      <!-- D9 Red(給湯器) --><rect x="64" y="134" width="20" height="16" fill="#c84040"/><rect x="64" y="134" width="20" height="2" fill="#e86060"/><rect x="82" y="134" width="2" height="16" fill="#983030"/><rect x="73" y="134" width="2" height="16" fill="#ffaaaa"/><rect x="64" y="141" width="20" height="2" fill="#ffaaaa"/>
-      <!-- D10 Red(物干し竿) --><rect x="86" y="134" width="20" height="16" fill="#c84040"/><rect x="86" y="134" width="20" height="2" fill="#e86060"/><rect x="104" y="134" width="2" height="16" fill="#983030"/><rect x="95" y="134" width="2" height="16" fill="#ffaaaa"/><rect x="86" y="141" width="20" height="2" fill="#ffaaaa"/>
-      <!-- D11 Orange(コート) --><rect x="108" y="134" width="20" height="16" fill="#d08020"/><rect x="108" y="134" width="20" height="2" fill="#f0a030"/><rect x="126" y="134" width="2" height="16" fill="#a06010"/><rect x="117" y="134" width="2" height="16" fill="#ffe080"/><rect x="108" y="141" width="20" height="2" fill="#ffe080"/>
-      <!-- D12 Gray(フライパン) --><rect x="130" y="134" width="20" height="16" fill="#7890a0"/><rect x="130" y="134" width="20" height="2" fill="#a0b8c8"/><rect x="148" y="134" width="2" height="16" fill="#506878"/><rect x="139" y="134" width="2" height="16" fill="#c8dce8"/><rect x="130" y="141" width="20" height="2" fill="#c8dce8"/>
-      <!-- D13 Gray(鍋) --><rect x="152" y="134" width="20" height="16" fill="#7890a0"/><rect x="152" y="134" width="20" height="2" fill="#a0b8c8"/><rect x="170" y="134" width="2" height="16" fill="#506878"/><rect x="161" y="134" width="2" height="16" fill="#c8dce8"/><rect x="152" y="141" width="20" height="2" fill="#c8dce8"/>
-      <!-- D14 Gray(鏡小) --><rect x="174" y="134" width="20" height="16" fill="#7890a0"/><rect x="174" y="134" width="20" height="2" fill="#a0b8c8"/><rect x="192" y="134" width="2" height="16" fill="#506878"/><rect x="183" y="134" width="2" height="16" fill="#c8dce8"/><rect x="174" y="141" width="20" height="2" fill="#c8dce8"/>
-      <!-- D15 Gray(ディフューザー×2) --><rect x="196" y="134" width="20" height="16" fill="#7890a0"/><rect x="196" y="134" width="20" height="2" fill="#a0b8c8"/><rect x="214" y="134" width="2" height="16" fill="#506878"/><rect x="205" y="134" width="2" height="16" fill="#c8dce8"/><rect x="196" y="141" width="20" height="2" fill="#c8dce8"/>
-      <!-- D ROW3: 5 boxes (w=18 h=13 y=121) -->
-      <!-- D16 Gray(水筒) --><rect x="91" y="121" width="18" height="13" fill="#7890a0"/><rect x="91" y="121" width="18" height="2" fill="#a0b8c8"/><rect x="107" y="121" width="2" height="13" fill="#506878"/><rect x="99" y="121" width="2" height="13" fill="#c8dce8"/><rect x="91" y="126" width="18" height="2" fill="#c8dce8"/>
-      <!-- D17 Gray(金属板) --><rect x="111" y="121" width="18" height="13" fill="#7890a0"/><rect x="111" y="121" width="18" height="2" fill="#a0b8c8"/><rect x="127" y="121" width="2" height="13" fill="#506878"/><rect x="119" y="121" width="2" height="13" fill="#c8dce8"/><rect x="111" y="126" width="18" height="2" fill="#c8dce8"/>
-      <!-- D18 Gray(Wi-Fiルータ等) --><rect x="131" y="121" width="18" height="13" fill="#7890a0"/><rect x="131" y="121" width="18" height="2" fill="#a0b8c8"/><rect x="147" y="121" width="2" height="13" fill="#506878"/><rect x="139" y="121" width="2" height="13" fill="#c8dce8"/><rect x="131" y="126" width="18" height="2" fill="#c8dce8"/>
-      <!-- D19 Gray(食器) --><rect x="151" y="121" width="18" height="13" fill="#7890a0"/><rect x="151" y="121" width="18" height="2" fill="#a0b8c8"/><rect x="167" y="121" width="2" height="13" fill="#506878"/><rect x="159" y="121" width="2" height="13" fill="#c8dce8"/><rect x="151" y="126" width="18" height="2" fill="#c8dce8"/>
-      <!-- D20 Gray(カーテン青) --><rect x="171" y="121" width="18" height="13" fill="#7890a0"/><rect x="171" y="121" width="18" height="2" fill="#a0b8c8"/><rect x="187" y="121" width="2" height="13" fill="#506878"/><rect x="179" y="121" width="2" height="13" fill="#c8dce8"/><rect x="171" y="126" width="18" height="2" fill="#c8dce8"/>
-      <!-- D ROW4: 3 boxes (w=16 h=11 y=110) -->
-      <!-- D21 Gray(カーテン赤) --><rect x="114" y="110" width="16" height="11" fill="#7890a0"/><rect x="114" y="110" width="16" height="2" fill="#a0b8c8"/><rect x="128" y="110" width="2" height="11" fill="#506878"/><rect x="121" y="110" width="2" height="11" fill="#c8dce8"/><rect x="114" y="114" width="16" height="2" fill="#c8dce8"/>
-      <!-- D22 Gray(クッション×2) --><rect x="132" y="110" width="16" height="11" fill="#7890a0"/><rect x="132" y="110" width="16" height="2" fill="#a0b8c8"/><rect x="146" y="110" width="2" height="11" fill="#506878"/><rect x="139" y="110" width="2" height="11" fill="#c8dce8"/><rect x="132" y="114" width="16" height="2" fill="#c8dce8"/>
-      <!-- D23 Gray(本立て) --><rect x="150" y="110" width="16" height="11" fill="#7890a0"/><rect x="150" y="110" width="16" height="2" fill="#a0b8c8"/><rect x="164" y="110" width="2" height="11" fill="#506878"/><rect x="157" y="110" width="2" height="11" fill="#c8dce8"/><rect x="150" y="114" width="16" height="2" fill="#c8dce8"/>
-      <!-- D ROW5: 2 boxes (w=14 h=9 y=101) -->
-      <!-- D24 Gray(洗濯ハンガー) --><rect x="125" y="101" width="14" height="9" fill="#7890a0"/><rect x="125" y="101" width="14" height="2" fill="#a0b8c8"/><rect x="137" y="101" width="2" height="9" fill="#506878"/><rect x="131" y="101" width="2" height="9" fill="#c8dce8"/><rect x="125" y="104" width="14" height="2" fill="#c8dce8"/>
-      <!-- D25 Gray(ドライヤー) --><rect x="141" y="101" width="14" height="9" fill="#7890a0"/><rect x="141" y="101" width="14" height="2" fill="#a0b8c8"/><rect x="153" y="101" width="2" height="9" fill="#506878"/><rect x="147" y="101" width="2" height="9" fill="#c8dce8"/><rect x="141" y="104" width="14" height="2" fill="#c8dce8"/>
+      <!-- D ROW2: 8 boxes -->
+      <!-- D9 Red(給湯器) --><rect x="53" y="134" width="20" height="16" fill="#c84040"/><rect x="53" y="134" width="20" height="2" fill="#e86060"/><rect x="71" y="134" width="2" height="16" fill="#983030"/><rect x="62" y="134" width="2" height="16" fill="#ffaaaa"/><rect x="53" y="141" width="20" height="2" fill="#ffaaaa"/>
+      <!-- D10 Red(物干し竿) --><rect x="75" y="134" width="20" height="16" fill="#c84040"/><rect x="75" y="134" width="20" height="2" fill="#e86060"/><rect x="93" y="134" width="2" height="16" fill="#983030"/><rect x="84" y="134" width="2" height="16" fill="#ffaaaa"/><rect x="75" y="141" width="20" height="2" fill="#ffaaaa"/>
+      <!-- D11 Orange(鏡中) --><rect x="97" y="134" width="20" height="16" fill="#d08020"/><rect x="97" y="134" width="20" height="2" fill="#f0a030"/><rect x="115" y="134" width="2" height="16" fill="#a06010"/><rect x="106" y="134" width="2" height="16" fill="#ffe080"/><rect x="97" y="141" width="20" height="2" fill="#ffe080"/>
+      <!-- D12 Orange(コート) --><rect x="119" y="134" width="20" height="16" fill="#d08020"/><rect x="119" y="134" width="20" height="2" fill="#f0a030"/><rect x="137" y="134" width="2" height="16" fill="#a06010"/><rect x="128" y="134" width="2" height="16" fill="#ffe080"/><rect x="119" y="141" width="20" height="2" fill="#ffe080"/>
+      <!-- D13 Orange(ピカチュウシンセ) --><rect x="141" y="134" width="20" height="16" fill="#d08020"/><rect x="141" y="134" width="20" height="2" fill="#f0a030"/><rect x="159" y="134" width="2" height="16" fill="#a06010"/><rect x="150" y="134" width="2" height="16" fill="#ffe080"/><rect x="141" y="141" width="20" height="2" fill="#ffe080"/>
+      <!-- D14 Orange(第3の目シンセ) --><rect x="163" y="134" width="20" height="16" fill="#d08020"/><rect x="163" y="134" width="20" height="2" fill="#f0a030"/><rect x="181" y="134" width="2" height="16" fill="#a06010"/><rect x="172" y="134" width="2" height="16" fill="#ffe080"/><rect x="163" y="141" width="20" height="2" fill="#ffe080"/>
+      <!-- D15 Orange(ござ) --><rect x="185" y="134" width="20" height="16" fill="#d08020"/><rect x="185" y="134" width="20" height="2" fill="#f0a030"/><rect x="203" y="134" width="2" height="16" fill="#a06010"/><rect x="194" y="134" width="2" height="16" fill="#ffe080"/><rect x="185" y="141" width="20" height="2" fill="#ffe080"/>
+      <!-- D16 Orange(絵) --><rect x="207" y="134" width="20" height="16" fill="#d08020"/><rect x="207" y="134" width="20" height="2" fill="#f0a030"/><rect x="225" y="134" width="2" height="16" fill="#a06010"/><rect x="216" y="134" width="2" height="16" fill="#ffe080"/><rect x="207" y="141" width="20" height="2" fill="#ffe080"/>
+      <!-- D ROW3: 7 boxes -->
+      <!-- D17 Orange(照明赤) --><rect x="71" y="121" width="18" height="13" fill="#d08020"/><rect x="71" y="121" width="18" height="2" fill="#f0a030"/><rect x="87" y="121" width="2" height="13" fill="#a06010"/><rect x="79" y="121" width="2" height="13" fill="#ffe080"/><rect x="71" y="126" width="18" height="2" fill="#ffe080"/>
+      <!-- D18 Orange(本) --><rect x="91" y="121" width="18" height="13" fill="#d08020"/><rect x="91" y="121" width="18" height="2" fill="#f0a030"/><rect x="107" y="121" width="2" height="13" fill="#a06010"/><rect x="99" y="121" width="2" height="13" fill="#ffe080"/><rect x="91" y="126" width="18" height="2" fill="#ffe080"/>
+      <!-- D19 Gray(フライパン) --><rect x="111" y="121" width="18" height="13" fill="#7890a0"/><rect x="111" y="121" width="18" height="2" fill="#a0b8c8"/><rect x="127" y="121" width="2" height="13" fill="#506878"/><rect x="119" y="121" width="2" height="13" fill="#c8dce8"/><rect x="111" y="126" width="18" height="2" fill="#c8dce8"/>
+      <!-- D20 Gray(鍋) --><rect x="131" y="121" width="18" height="13" fill="#7890a0"/><rect x="131" y="121" width="18" height="2" fill="#a0b8c8"/><rect x="147" y="121" width="2" height="13" fill="#506878"/><rect x="139" y="121" width="2" height="13" fill="#c8dce8"/><rect x="131" y="126" width="18" height="2" fill="#c8dce8"/>
+      <!-- D21 Gray(鏡小) --><rect x="151" y="121" width="18" height="13" fill="#7890a0"/><rect x="151" y="121" width="18" height="2" fill="#a0b8c8"/><rect x="167" y="121" width="2" height="13" fill="#506878"/><rect x="159" y="121" width="2" height="13" fill="#c8dce8"/><rect x="151" y="126" width="18" height="2" fill="#c8dce8"/>
+      <!-- D22 Gray(ディフューザー×2) --><rect x="171" y="121" width="18" height="13" fill="#7890a0"/><rect x="171" y="121" width="18" height="2" fill="#a0b8c8"/><rect x="187" y="121" width="2" height="13" fill="#506878"/><rect x="179" y="121" width="2" height="13" fill="#c8dce8"/><rect x="171" y="126" width="18" height="2" fill="#c8dce8"/>
+      <!-- D23 Gray(水筒) --><rect x="191" y="121" width="18" height="13" fill="#7890a0"/><rect x="191" y="121" width="18" height="2" fill="#a0b8c8"/><rect x="207" y="121" width="2" height="13" fill="#506878"/><rect x="199" y="121" width="2" height="13" fill="#c8dce8"/><rect x="191" y="126" width="18" height="2" fill="#c8dce8"/>
+      <!-- D ROW4: 5 boxes -->
+      <!-- D24 Gray(金属板) --><rect x="96" y="110" width="16" height="11" fill="#7890a0"/><rect x="96" y="110" width="16" height="2" fill="#a0b8c8"/><rect x="110" y="110" width="2" height="11" fill="#506878"/><rect x="103" y="110" width="2" height="11" fill="#c8dce8"/><rect x="96" y="114" width="16" height="2" fill="#c8dce8"/>
+      <!-- D25 Gray(Wi-Fiルータ等) --><rect x="114" y="110" width="16" height="11" fill="#7890a0"/><rect x="114" y="110" width="16" height="2" fill="#a0b8c8"/><rect x="128" y="110" width="2" height="11" fill="#506878"/><rect x="121" y="110" width="2" height="11" fill="#c8dce8"/><rect x="114" y="114" width="16" height="2" fill="#c8dce8"/>
+      <!-- D26 Gray(食器) --><rect x="132" y="110" width="16" height="11" fill="#7890a0"/><rect x="132" y="110" width="16" height="2" fill="#a0b8c8"/><rect x="146" y="110" width="2" height="11" fill="#506878"/><rect x="139" y="110" width="2" height="11" fill="#c8dce8"/><rect x="132" y="114" width="16" height="2" fill="#c8dce8"/>
+      <!-- D27 Gray(カーテン青) --><rect x="150" y="110" width="16" height="11" fill="#7890a0"/><rect x="150" y="110" width="16" height="2" fill="#a0b8c8"/><rect x="164" y="110" width="2" height="11" fill="#506878"/><rect x="157" y="110" width="2" height="11" fill="#c8dce8"/><rect x="150" y="114" width="16" height="2" fill="#c8dce8"/>
+      <!-- D28 Gray(カーテン赤) --><rect x="168" y="110" width="16" height="11" fill="#7890a0"/><rect x="168" y="110" width="16" height="2" fill="#a0b8c8"/><rect x="182" y="110" width="2" height="11" fill="#506878"/><rect x="175" y="110" width="2" height="11" fill="#c8dce8"/><rect x="168" y="114" width="16" height="2" fill="#c8dce8"/>
+      <!-- D ROW5: 4 boxes -->
+      <!-- D29 Gray(クッション×2) --><rect x="109" y="101" width="14" height="9" fill="#7890a0"/><rect x="109" y="101" width="14" height="2" fill="#a0b8c8"/><rect x="121" y="101" width="2" height="9" fill="#506878"/><rect x="115" y="101" width="2" height="9" fill="#c8dce8"/><rect x="109" y="104" width="14" height="2" fill="#c8dce8"/>
+      <!-- D30 Gray(本立て) --><rect x="125" y="101" width="14" height="9" fill="#7890a0"/><rect x="125" y="101" width="14" height="2" fill="#a0b8c8"/><rect x="137" y="101" width="2" height="9" fill="#506878"/><rect x="131" y="101" width="2" height="9" fill="#c8dce8"/><rect x="125" y="104" width="14" height="2" fill="#c8dce8"/>
+      <!-- D31 Gray(洗濯ハンガー) --><rect x="141" y="101" width="14" height="9" fill="#7890a0"/><rect x="141" y="101" width="14" height="2" fill="#a0b8c8"/><rect x="153" y="101" width="2" height="9" fill="#506878"/><rect x="147" y="101" width="2" height="9" fill="#c8dce8"/><rect x="141" y="104" width="14" height="2" fill="#c8dce8"/>
+      <!-- D32 Gray(ドライヤー) --><rect x="157" y="101" width="14" height="9" fill="#7890a0"/><rect x="157" y="101" width="14" height="2" fill="#a0b8c8"/><rect x="169" y="101" width="2" height="9" fill="#506878"/><rect x="163" y="101" width="2" height="9" fill="#c8dce8"/><rect x="157" y="104" width="14" height="2" fill="#c8dce8"/>
       </g>
       <!-- == あと (right) == -->
-      <text x="440" y="56" font-size="11" text-anchor="middle" fill="#334" font-weight="bold" font-family="'Noto Sans JP',sans-serif">あと 29点</text>
-      <!-- B ROW1: 8 boxes (w=32 h=34 y=136) -->
-      <!-- B1 Purple(冷蔵庫) --><rect x="315" y="136" width="32" height="34" fill="#9966cc"/><rect x="315" y="136" width="32" height="2" fill="#bb88ee"/><rect x="345" y="136" width="2" height="34" fill="#7744aa"/><rect x="330" y="136" width="2" height="34" fill="#ddaaff"/><rect x="315" y="152" width="32" height="2" fill="#ddaaff"/>
-      <!-- B2 Red(棚大) --><rect x="349" y="136" width="32" height="34" fill="#c84040"/><rect x="349" y="136" width="32" height="2" fill="#e86060"/><rect x="379" y="136" width="2" height="34" fill="#983030"/><rect x="364" y="136" width="2" height="34" fill="#ffaaaa"/><rect x="349" y="152" width="32" height="2" fill="#ffaaaa"/>
-      <!-- B3 Orange(レコードラック) --><rect x="383" y="136" width="32" height="34" fill="#d08020"/><rect x="383" y="136" width="32" height="2" fill="#f0a030"/><rect x="413" y="136" width="2" height="34" fill="#a06010"/><rect x="398" y="136" width="2" height="34" fill="#ffe080"/><rect x="383" y="152" width="32" height="2" fill="#ffe080"/>
-      <!-- B4 Red(キッチン収納) --><rect x="417" y="136" width="32" height="34" fill="#c84040"/><rect x="417" y="136" width="32" height="2" fill="#e86060"/><rect x="447" y="136" width="2" height="34" fill="#983030"/><rect x="432" y="136" width="2" height="34" fill="#ffaaaa"/><rect x="417" y="152" width="32" height="2" fill="#ffaaaa"/>
-      <!-- B5 Purple(洗濯機) --><rect x="451" y="136" width="32" height="34" fill="#9966cc"/><rect x="451" y="136" width="32" height="2" fill="#bb88ee"/><rect x="481" y="136" width="2" height="34" fill="#7744aa"/><rect x="466" y="136" width="2" height="34" fill="#ddaaff"/><rect x="451" y="152" width="32" height="2" fill="#ddaaff"/>
-      <!-- B6 Red(配線収納) --><rect x="485" y="136" width="32" height="34" fill="#c84040"/><rect x="485" y="136" width="32" height="2" fill="#e86060"/><rect x="515" y="136" width="2" height="34" fill="#983030"/><rect x="500" y="136" width="2" height="34" fill="#ffaaaa"/><rect x="485" y="152" width="32" height="2" fill="#ffaaaa"/>
-      <!-- B7 Orange(電子レンジ) --><rect x="519" y="136" width="32" height="34" fill="#d08020"/><rect x="519" y="136" width="32" height="2" fill="#f0a030"/><rect x="549" y="136" width="2" height="34" fill="#a06010"/><rect x="534" y="136" width="2" height="34" fill="#ffe080"/><rect x="519" y="152" width="32" height="2" fill="#ffe080"/>
-      <!-- B8 Orange(ターンテーブル) --><rect x="553" y="136" width="32" height="34" fill="#d08020"/><rect x="553" y="136" width="32" height="2" fill="#f0a030"/><rect x="583" y="136" width="2" height="34" fill="#a06010"/><rect x="568" y="136" width="2" height="34" fill="#ffe080"/><rect x="553" y="152" width="32" height="2" fill="#ffe080"/>
-      <!-- B ROW2: 7 boxes (w=30 h=24 y=112) -->
-      <!-- B9 Orange(椅子赤) --><rect x="339" y="112" width="30" height="24" fill="#d08020"/><rect x="339" y="112" width="30" height="2" fill="#f0a030"/><rect x="367" y="112" width="2" height="24" fill="#a06010"/><rect x="353" y="112" width="2" height="24" fill="#ffe080"/><rect x="339" y="123" width="30" height="2" fill="#ffe080"/>
-      <!-- B10 Red(サイドT×2) --><rect x="371" y="112" width="30" height="24" fill="#c84040"/><rect x="371" y="112" width="30" height="2" fill="#e86060"/><rect x="399" y="112" width="2" height="24" fill="#983030"/><rect x="385" y="112" width="2" height="24" fill="#ffaaaa"/><rect x="371" y="123" width="30" height="2" fill="#ffaaaa"/>
-      <!-- B11 Orange(着物) --><rect x="403" y="112" width="30" height="24" fill="#d08020"/><rect x="403" y="112" width="30" height="2" fill="#f0a030"/><rect x="431" y="112" width="2" height="24" fill="#a06010"/><rect x="417" y="112" width="2" height="24" fill="#ffe080"/><rect x="403" y="123" width="30" height="2" fill="#ffe080"/>
-      <!-- B12 Orange(AKB) --><rect x="435" y="112" width="30" height="24" fill="#d08020"/><rect x="435" y="112" width="30" height="2" fill="#f0a030"/><rect x="463" y="112" width="2" height="24" fill="#a06010"/><rect x="449" y="112" width="2" height="24" fill="#ffe080"/><rect x="435" y="123" width="30" height="2" fill="#ffe080"/>
-      <!-- B13 Red(作品キャプション) --><rect x="467" y="112" width="30" height="24" fill="#c84040"/><rect x="467" y="112" width="30" height="2" fill="#e86060"/><rect x="495" y="112" width="2" height="24" fill="#983030"/><rect x="481" y="112" width="2" height="24" fill="#ffaaaa"/><rect x="467" y="123" width="30" height="2" fill="#ffaaaa"/>
-      <!-- B14 Orange(照明赤) --><rect x="499" y="112" width="30" height="24" fill="#d08020"/><rect x="499" y="112" width="30" height="2" fill="#f0a030"/><rect x="527" y="112" width="2" height="24" fill="#a06010"/><rect x="513" y="112" width="2" height="24" fill="#ffe080"/><rect x="499" y="123" width="30" height="2" fill="#ffe080"/>
-      <!-- B15 Orange(DJミキサー) --><rect x="531" y="112" width="30" height="24" fill="#d08020"/><rect x="531" y="112" width="30" height="2" fill="#f0a030"/><rect x="559" y="112" width="2" height="24" fill="#a06010"/><rect x="545" y="112" width="2" height="24" fill="#ffe080"/><rect x="531" y="123" width="30" height="2" fill="#ffe080"/>
-      <!-- B ROW3: 6 boxes (w=26 h=20 y=92) -->
-      <!-- B16 Orange(絵) --><rect x="367" y="92" width="26" height="20" fill="#d08020"/><rect x="367" y="92" width="26" height="2" fill="#f0a030"/><rect x="391" y="92" width="2" height="20" fill="#a06010"/><rect x="379" y="92" width="2" height="20" fill="#ffe080"/><rect x="367" y="101" width="26" height="2" fill="#ffe080"/>
-      <!-- B17 Orange(本) --><rect x="395" y="92" width="26" height="20" fill="#d08020"/><rect x="395" y="92" width="26" height="2" fill="#f0a030"/><rect x="419" y="92" width="2" height="20" fill="#a06010"/><rect x="407" y="92" width="2" height="20" fill="#ffe080"/><rect x="395" y="101" width="26" height="2" fill="#ffe080"/>
-      <!-- B18 Orange(腰ベルト) --><rect x="423" y="92" width="26" height="20" fill="#d08020"/><rect x="423" y="92" width="26" height="2" fill="#f0a030"/><rect x="447" y="92" width="2" height="20" fill="#a06010"/><rect x="435" y="92" width="2" height="20" fill="#ffe080"/><rect x="423" y="101" width="26" height="2" fill="#ffe080"/>
-      <!-- B19 Orange(ごさ) --><rect x="451" y="92" width="26" height="20" fill="#d08020"/><rect x="451" y="92" width="26" height="2" fill="#f0a030"/><rect x="475" y="92" width="2" height="20" fill="#a06010"/><rect x="463" y="92" width="2" height="20" fill="#ffe080"/><rect x="451" y="101" width="26" height="2" fill="#ffe080"/>
-      <!-- B20 Orange(マフラー) --><rect x="479" y="92" width="26" height="20" fill="#d08020"/><rect x="479" y="92" width="26" height="2" fill="#f0a030"/><rect x="503" y="92" width="2" height="20" fill="#a06010"/><rect x="491" y="92" width="2" height="20" fill="#ffe080"/><rect x="479" y="101" width="26" height="2" fill="#ffe080"/>
-      <!-- B21 Orange(ピカチュウシンセ) --><rect x="507" y="92" width="26" height="20" fill="#d08020"/><rect x="507" y="92" width="26" height="2" fill="#f0a030"/><rect x="531" y="92" width="2" height="20" fill="#a06010"/><rect x="519" y="92" width="2" height="20" fill="#ffe080"/><rect x="507" y="101" width="26" height="2" fill="#ffe080"/>
-      <!-- B ROW4: 5 boxes (w=22 h=16 y=76) -->
-      <!-- B22 Red(風呂イス) --><rect x="391" y="76" width="22" height="16" fill="#c84040"/><rect x="391" y="76" width="22" height="2" fill="#e86060"/><rect x="411" y="76" width="2" height="16" fill="#983030"/><rect x="401" y="76" width="2" height="16" fill="#ffaaaa"/><rect x="391" y="83" width="22" height="2" fill="#ffaaaa"/>
-      <!-- B23 Red(鏡中) --><rect x="415" y="76" width="22" height="16" fill="#c84040"/><rect x="415" y="76" width="22" height="2" fill="#e86060"/><rect x="435" y="76" width="2" height="16" fill="#983030"/><rect x="425" y="76" width="2" height="16" fill="#ffaaaa"/><rect x="415" y="83" width="22" height="2" fill="#ffaaaa"/>
-      <!-- B24 Orange(ぬい) --><rect x="439" y="76" width="22" height="16" fill="#d08020"/><rect x="439" y="76" width="22" height="2" fill="#f0a030"/><rect x="459" y="76" width="2" height="16" fill="#a06010"/><rect x="449" y="76" width="2" height="16" fill="#ffe080"/><rect x="439" y="83" width="22" height="2" fill="#ffe080"/>
-      <!-- B25 Orange(第3の目シンセ) --><rect x="463" y="76" width="22" height="16" fill="#d08020"/><rect x="463" y="76" width="22" height="2" fill="#f0a030"/><rect x="483" y="76" width="2" height="16" fill="#a06010"/><rect x="473" y="76" width="2" height="16" fill="#ffe080"/><rect x="463" y="83" width="22" height="2" fill="#ffe080"/>
-      <!-- B26 Orange(CD) --><rect x="487" y="76" width="22" height="16" fill="#d08020"/><rect x="487" y="76" width="22" height="2" fill="#f0a030"/><rect x="507" y="76" width="2" height="16" fill="#a06010"/><rect x="497" y="76" width="2" height="16" fill="#ffe080"/><rect x="487" y="83" width="22" height="2" fill="#ffe080"/>
-      <!-- B ROW5: 3 boxes (w=18 h=12 y=64) -->
-      <!-- B27 Gray(ギターフック) --><rect x="421" y="64" width="18" height="12" fill="#7890a0"/><rect x="421" y="64" width="18" height="2" fill="#a0b8c8"/><rect x="437" y="64" width="2" height="12" fill="#506878"/><rect x="429" y="64" width="2" height="12" fill="#c8dce8"/><rect x="421" y="69" width="18" height="2" fill="#c8dce8"/>
-      <!-- B28 Gray(本収納) --><rect x="441" y="64" width="18" height="12" fill="#7890a0"/><rect x="441" y="64" width="18" height="2" fill="#a0b8c8"/><rect x="457" y="64" width="2" height="12" fill="#506878"/><rect x="449" y="64" width="2" height="12" fill="#c8dce8"/><rect x="441" y="69" width="18" height="2" fill="#c8dce8"/>
-      <!-- B29 Gray(珪藻土マット) --><rect x="461" y="64" width="18" height="12" fill="#7890a0"/><rect x="461" y="64" width="18" height="2" fill="#a0b8c8"/><rect x="477" y="64" width="2" height="12" fill="#506878"/><rect x="469" y="64" width="2" height="12" fill="#c8dce8"/><rect x="461" y="69" width="18" height="2" fill="#c8dce8"/>
+      <text x="440" y="56" font-size="11" text-anchor="middle" fill="#334" font-weight="bold" font-family="'Noto Sans JP',sans-serif">あと 22点</text>
+      <!-- B ROW1: 7 boxes -->
+      <!-- B1 Purple(冷蔵庫) --><rect x="332" y="136" width="32" height="34" fill="#9966cc"/><rect x="332" y="136" width="32" height="2" fill="#bb88ee"/><rect x="362" y="136" width="2" height="34" fill="#7744aa"/><rect x="347" y="136" width="2" height="34" fill="#ddaaff"/><rect x="332" y="152" width="32" height="2" fill="#ddaaff"/>
+      <!-- B2 Red(棚大) --><rect x="366" y="136" width="32" height="34" fill="#c84040"/><rect x="366" y="136" width="32" height="2" fill="#e86060"/><rect x="396" y="136" width="2" height="34" fill="#983030"/><rect x="381" y="136" width="2" height="34" fill="#ffaaaa"/><rect x="366" y="152" width="32" height="2" fill="#ffaaaa"/>
+      <!-- B3 Orange(レコードラック) --><rect x="400" y="136" width="32" height="34" fill="#d08020"/><rect x="400" y="136" width="32" height="2" fill="#f0a030"/><rect x="430" y="136" width="2" height="34" fill="#a06010"/><rect x="415" y="136" width="2" height="34" fill="#ffe080"/><rect x="400" y="152" width="32" height="2" fill="#ffe080"/>
+      <!-- B4 Red(キッチン収納) --><rect x="434" y="136" width="32" height="34" fill="#c84040"/><rect x="434" y="136" width="32" height="2" fill="#e86060"/><rect x="464" y="136" width="2" height="34" fill="#983030"/><rect x="449" y="136" width="2" height="34" fill="#ffaaaa"/><rect x="434" y="152" width="32" height="2" fill="#ffaaaa"/>
+      <!-- B5 Purple(洗濯機) --><rect x="468" y="136" width="32" height="34" fill="#9966cc"/><rect x="468" y="136" width="32" height="2" fill="#bb88ee"/><rect x="498" y="136" width="2" height="34" fill="#7744aa"/><rect x="483" y="136" width="2" height="34" fill="#ddaaff"/><rect x="468" y="152" width="32" height="2" fill="#ddaaff"/>
+      <!-- B6 Red(配線収納) --><rect x="502" y="136" width="32" height="34" fill="#c84040"/><rect x="502" y="136" width="32" height="2" fill="#e86060"/><rect x="532" y="136" width="2" height="34" fill="#983030"/><rect x="517" y="136" width="2" height="34" fill="#ffaaaa"/><rect x="502" y="152" width="32" height="2" fill="#ffaaaa"/>
+      <!-- B7 Orange(電子レンジ) --><rect x="536" y="136" width="32" height="34" fill="#d08020"/><rect x="536" y="136" width="32" height="2" fill="#f0a030"/><rect x="566" y="136" width="2" height="34" fill="#a06010"/><rect x="551" y="136" width="2" height="34" fill="#ffe080"/><rect x="536" y="152" width="32" height="2" fill="#ffe080"/>
+      <!-- B ROW2: 6 boxes -->
+      <!-- B8 Orange(ターンテーブル) --><rect x="355" y="112" width="30" height="24" fill="#d08020"/><rect x="355" y="112" width="30" height="2" fill="#f0a030"/><rect x="383" y="112" width="2" height="24" fill="#a06010"/><rect x="369" y="112" width="2" height="24" fill="#ffe080"/><rect x="355" y="123" width="30" height="2" fill="#ffe080"/>
+      <!-- B9 Red(サイドT) --><rect x="387" y="112" width="30" height="24" fill="#c84040"/><rect x="387" y="112" width="30" height="2" fill="#e86060"/><rect x="415" y="112" width="2" height="24" fill="#983030"/><rect x="401" y="112" width="2" height="24" fill="#ffaaaa"/><rect x="387" y="123" width="30" height="2" fill="#ffaaaa"/>
+      <!-- B10 Orange(着物) --><rect x="419" y="112" width="30" height="24" fill="#d08020"/><rect x="419" y="112" width="30" height="2" fill="#f0a030"/><rect x="447" y="112" width="2" height="24" fill="#a06010"/><rect x="433" y="112" width="2" height="24" fill="#ffe080"/><rect x="419" y="123" width="30" height="2" fill="#ffe080"/>
+      <!-- B11 Orange(AKB) --><rect x="451" y="112" width="30" height="24" fill="#d08020"/><rect x="451" y="112" width="30" height="2" fill="#f0a030"/><rect x="479" y="112" width="2" height="24" fill="#a06010"/><rect x="465" y="112" width="2" height="24" fill="#ffe080"/><rect x="451" y="123" width="30" height="2" fill="#ffe080"/>
+      <!-- B12 Red(作品キャプション) --><rect x="483" y="112" width="30" height="24" fill="#c84040"/><rect x="483" y="112" width="30" height="2" fill="#e86060"/><rect x="511" y="112" width="2" height="24" fill="#983030"/><rect x="497" y="112" width="2" height="24" fill="#ffaaaa"/><rect x="483" y="123" width="30" height="2" fill="#ffaaaa"/>
+      <!-- B13 Orange(DJミキサー) --><rect x="515" y="112" width="30" height="24" fill="#d08020"/><rect x="515" y="112" width="30" height="2" fill="#f0a030"/><rect x="543" y="112" width="2" height="24" fill="#a06010"/><rect x="529" y="112" width="2" height="24" fill="#ffe080"/><rect x="515" y="123" width="30" height="2" fill="#ffe080"/>
+      <!-- B ROW3: 5 boxes -->
+      <!-- B14 Orange(椅子赤) --><rect x="381" y="92" width="26" height="20" fill="#d08020"/><rect x="381" y="92" width="26" height="2" fill="#f0a030"/><rect x="405" y="92" width="2" height="20" fill="#a06010"/><rect x="393" y="92" width="2" height="20" fill="#ffe080"/><rect x="381" y="101" width="26" height="2" fill="#ffe080"/>
+      <!-- B15 Orange(腰ベルト) --><rect x="409" y="92" width="26" height="20" fill="#d08020"/><rect x="409" y="92" width="26" height="2" fill="#f0a030"/><rect x="433" y="92" width="2" height="20" fill="#a06010"/><rect x="421" y="92" width="2" height="20" fill="#ffe080"/><rect x="409" y="101" width="26" height="2" fill="#ffe080"/>
+      <!-- B16 Orange(マフラー) --><rect x="437" y="92" width="26" height="20" fill="#d08020"/><rect x="437" y="92" width="26" height="2" fill="#f0a030"/><rect x="461" y="92" width="2" height="20" fill="#a06010"/><rect x="449" y="92" width="2" height="20" fill="#ffe080"/><rect x="437" y="101" width="26" height="2" fill="#ffe080"/>
+      <!-- B17 Orange(CD) --><rect x="465" y="92" width="26" height="20" fill="#d08020"/><rect x="465" y="92" width="26" height="2" fill="#f0a030"/><rect x="489" y="92" width="2" height="20" fill="#a06010"/><rect x="477" y="92" width="2" height="20" fill="#ffe080"/><rect x="465" y="101" width="26" height="2" fill="#ffe080"/>
+      <!-- B18 Orange(ぬい) --><rect x="493" y="92" width="26" height="20" fill="#d08020"/><rect x="493" y="92" width="26" height="2" fill="#f0a030"/><rect x="517" y="92" width="2" height="20" fill="#a06010"/><rect x="505" y="92" width="2" height="20" fill="#ffe080"/><rect x="493" y="101" width="26" height="2" fill="#ffe080"/>
+      <!-- B ROW4: 3 boxes -->
+      <!-- B19 Red(風呂イス) --><rect x="415" y="76" width="22" height="16" fill="#c84040"/><rect x="415" y="76" width="22" height="2" fill="#e86060"/><rect x="435" y="76" width="2" height="16" fill="#983030"/><rect x="425" y="76" width="2" height="16" fill="#ffaaaa"/><rect x="415" y="83" width="22" height="2" fill="#ffaaaa"/>
+      <!-- B20 Gray(ギターフック) --><rect x="439" y="76" width="22" height="16" fill="#7890a0"/><rect x="439" y="76" width="22" height="2" fill="#a0b8c8"/><rect x="459" y="76" width="2" height="16" fill="#506878"/><rect x="449" y="76" width="2" height="16" fill="#c8dce8"/><rect x="439" y="83" width="22" height="2" fill="#c8dce8"/>
+      <!-- B21 Gray(本収納) --><rect x="463" y="76" width="22" height="16" fill="#7890a0"/><rect x="463" y="76" width="22" height="2" fill="#a0b8c8"/><rect x="483" y="76" width="2" height="16" fill="#506878"/><rect x="473" y="76" width="2" height="16" fill="#c8dce8"/><rect x="463" y="83" width="22" height="2" fill="#c8dce8"/>
+      <!-- B ROW5: 1 boxes -->
+      <!-- B22 Gray(珪藻土マット) --><rect x="441" y="64" width="18" height="12" fill="#7890a0"/><rect x="441" y="64" width="18" height="2" fill="#a0b8c8"/><rect x="457" y="64" width="2" height="12" fill="#506878"/><rect x="449" y="64" width="2" height="12" fill="#c8dce8"/><rect x="441" y="69" width="18" height="2" fill="#c8dce8"/>
       <!-- LEGEND (右の山の内訳) -->
-      <rect x="16" y="183" width="8" height="8" fill="#c84040"/><text x="28" y="191" font-size="8" fill="#3a2c08" font-family="'Noto Sans JP',sans-serif">粗大ゴミ 7点</text>
+      <rect x="16" y="183" width="8" height="8" fill="#c84040"/><text x="28" y="191" font-size="8" fill="#3a2c08" font-family="'Noto Sans JP',sans-serif">粗大ゴミ 6点</text>
       <rect x="97" y="183" width="8" height="8" fill="#9966cc"/><text x="109" y="191" font-size="8" fill="#3a2c08" font-family="'Noto Sans JP',sans-serif">家電リサイクル 2点</text>
-      <rect x="203" y="183" width="8" height="8" fill="#d08020"/><text x="215" y="191" font-size="8" fill="#3a2c08" font-family="'Noto Sans JP',sans-serif">譲渡・売却 17点</text>
+      <rect x="203" y="183" width="8" height="8" fill="#d08020"/><text x="215" y="191" font-size="8" fill="#3a2c08" font-family="'Noto Sans JP',sans-serif">譲渡・売却 11点</text>
       <rect x="300" y="183" width="8" height="8" fill="#7890a0"/><text x="312" y="191" font-size="8" fill="#3a2c08" font-family="'Noto Sans JP',sans-serif">不燃・その他 3点</text>
     </svg>
     </div>
@@ -2509,16 +2514,15 @@ footer {
         <span class="item-chip" style="opacity:0.45;text-decoration:line-through;">椅子（黒）<span class="d-tag d-sodai">粗大ゴミ</span></span>
         <span class="item-chip" style="opacity:0.45;text-decoration:line-through;">棚（小）<span class="d-tag d-sodai">粗大ゴミ</span></span>
         <span class="item-chip">棚（大）<span class="d-tag d-sodai">粗大ゴミ</span></span>
-        <span class="item-chip">サイドテーブル × 2<span class="d-tag d-sodai">粗大ゴミ</span></span>
+        <span class="item-chip">サイドテーブル<span class="d-tag d-sodai">粗大ゴミ</span></span>
         <span class="item-chip" style="opacity:0.45;text-decoration:line-through;">スピーカー<span class="d-tag d-sodai">粗大ゴミ</span></span>
         <span class="item-chip" style="opacity:0.45;text-decoration:line-through;">給湯器<span class="d-tag d-sodai">粗大ゴミ</span></span>
         <span class="item-chip" style="opacity:0.45;text-decoration:line-through;">物干し竿<span class="d-tag d-sodai">粗大ゴミ</span></span>
         <span class="item-chip">作品キャプション<span class="d-tag d-sodai">粗大ゴミ</span></span>
-        <span class="item-chip">鏡（中）<span class="d-tag d-sodai">粗大ゴミ</span></span>
         <span class="item-chip">キッチン収納<span class="d-tag d-sodai">粗大ゴミ</span></span>
         <span class="item-chip">配線収納<span class="d-tag d-sodai">粗大ゴミ</span></span>
       </div>
-      <p class="disposal-note">✅ 9/18（金）収集完了 — 10点を共有玄関前に排出済み（本棚・網ラック・キャリー・洗濯かご・机（白）・椅子（黒）・棚（小）・スピーカー・給湯器・物干し竿）　支払：電子決済 7,300円<br>残り7点：風呂のイス / 棚（大） / サイドテーブル × 2 / 作品キャプション / 鏡（中） / キッチン収納 / 配線収納　→ 次回の収集で申請する</p>
+      <p class="disposal-note">✅ 9/18（金）収集完了 — 10点を共有玄関前に排出済み（本棚・網ラック・キャリー・洗濯かご・机（白）・椅子（黒）・棚（小）・スピーカー・給湯器・物干し竿）　支払：電子決済 7,300円<br>残り6点：風呂のイス / 棚（大） / サイドテーブル / 作品キャプション / キッチン収納 / 配線収納　→ 次回の収集で申請する</p>
     </div>
     <div class="place-group">
       <div class="place-label">家電リサイクル</div>
@@ -2572,19 +2576,20 @@ footer {
         <span class="item-chip">ぬいぐるみ<span class="d-tag d-bunbetsu">譲渡検討</span></span>
         <span class="item-chip">レコードラック<span class="d-tag d-bunbetsu">譲渡検討</span></span>
         <span class="item-chip">椅子（赤）<span class="d-tag d-bunbetsu">譲渡検討</span></span>
-        <span class="item-chip">照明（赤）<span class="d-tag d-bunbetsu">譲渡検討</span></span>
+        <span class="item-chip" style="opacity:0.45;text-decoration:line-through;">照明（赤）<span class="d-tag d-bunbetsu">9/20 NEWSで売却</span></span>
         <span class="item-chip" style="opacity:0.45;text-decoration:line-through;">コート<span class="d-tag d-bunbetsu">リュウノスケへ譲渡済み</span></span>
         <span class="item-chip">着物<span class="d-tag d-bunbetsu">譲渡検討</span></span>
         <span class="item-chip">AKBジャケット<span class="d-tag d-bunbetsu">譲渡検討</span></span>
-        <span class="item-chip">絵<span class="d-tag d-bunbetsu">譲渡検討</span></span>
-        <span class="item-chip">本<span class="d-tag d-bunbetsu">譲渡検討</span></span>
+        <span class="item-chip" style="opacity:0.45;text-decoration:line-through;">絵<span class="d-tag d-bunbetsu">9/20 NEWSで売却</span></span>
+        <span class="item-chip" style="opacity:0.45;text-decoration:line-through;">鏡（中）<span class="d-tag d-bunbetsu">9/20 NEWSで売却</span></span>
+        <span class="item-chip" style="opacity:0.45;text-decoration:line-through;">本<span class="d-tag d-bunbetsu">9/20 古本屋で売却</span></span>
         <span class="item-chip">腰を絞めるやつ<span class="d-tag d-bunbetsu">譲渡検討</span></span>
-        <span class="item-chip">ごさ<span class="d-tag d-bunbetsu">譲渡検討</span></span>
+        <span class="item-chip" style="opacity:0.45;text-decoration:line-through;">ござ<span class="d-tag d-bunbetsu">9/20 NEWSで売却</span></span>
         <span class="item-chip">マフラー<span class="d-tag d-bunbetsu">譲渡検討</span></span>
         <span class="item-chip">ターンテーブル<span class="d-tag d-bunbetsu">譲渡検討</span></span>
         <span class="item-chip">DJ Mixer<span class="d-tag d-bunbetsu">譲渡検討</span></span>
-        <span class="item-chip">ピカチュウシンセ<span class="d-tag d-bunbetsu">譲渡検討</span></span>
-        <span class="item-chip">第3の目シンセ<span class="d-tag d-bunbetsu">譲渡検討</span></span>
+        <span class="item-chip" style="opacity:0.45;text-decoration:line-through;">ピカチュウシンセ<span class="d-tag d-bunbetsu">9/19 ベーチャンへ譲渡</span></span>
+        <span class="item-chip" style="opacity:0.45;text-decoration:line-through;">第3の目シンセ<span class="d-tag d-bunbetsu">9/19 ベーチャンへ譲渡</span></span>
         <span class="item-chip">CD<span class="d-tag d-bunbetsu">譲渡検討</span></span>
       </div>
     </div>
@@ -2596,7 +2601,7 @@ footer {
     <div class="place-group">
       <div class="place-label">行き先未定</div>
       <div class="item-chips">
-        <span class="item-chip">布団のマット</span><span class="item-chip">シーツ</span><span class="item-chip">まくら × 2</span><span class="item-chip">筆記用具</span><span class="item-chip">照明器具</span><span class="item-chip">プランター（小）</span><span class="item-chip">ゴミ箱</span>      </div>
+        <span class="item-chip">照明器具</span>      </div>
     </div>
   </section>
 
