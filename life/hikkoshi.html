@@ -235,50 +235,33 @@ em { font-style: normal; font-weight: 500; color: var(--accent); }
 }
 
 /* Risk list */
-.risk-list { display: flex; flex-direction: column; gap: 12px; }
-.risk-item {
-  background: #fff8f6;
-  border: 1.5px solid #f0a090;
-  border-left: 4px solid var(--accent);
-  border-radius: 0 10px 10px 0;
-  padding: 12px 14px;
-}
-.risk-label {
-  font-family: 'Zen Maru Gothic', sans-serif;
-  font-size: 13px;
-  font-weight: 700;
-  margin-bottom: 5px;
-  color: #c03020;
+.risk-list {
+  list-style: none;
   display: flex;
-  align-items: flex-start;
-  gap: 5px;
+  flex-direction: column;
+  gap: 4px;
 }
-.risk-label::before {
+.risk-list li {
+  font-size: 12.5px;
+  line-height: 1.65;
+  padding: 6px 12px 6px 28px;
+  position: relative;
+  background: #fff8f6;
+  border-left: 3px solid var(--accent);
+  border-radius: 0 6px 6px 0;
+}
+.risk-list li::before {
   content: '⚠';
-  font-size: 12px;
-  margin-top: 1px;
-  flex-shrink: 0;
+  position: absolute;
+  left: 10px;
+  top: 6px;
+  font-size: 11px;
+  color: #c03020;
 }
-.risk-body {
-  font-size: 12.5px;
-  color: #5a3a30;
-  line-height: 1.75;
-  margin-bottom: 8px;
-}
-.risk-action {
-  font-size: 12.5px;
-  padding: 7px 11px;
-  background: var(--green-soft);
-  border: 1px solid var(--green);
-  border-radius: 6px;
-  line-height: 1.7;
-  color: var(--text);
-}
-.risk-action::before {
-  content: '→ 対策：';
-  font-weight: 500;
-  color: var(--green);
-  margin-right: 2px;
+.risk-list b {
+  color: #c03020;
+  font-weight: 700;
+  margin-right: 6px;
 }
 
 /* Blocker */
@@ -1029,35 +1012,19 @@ footer {
     </ul>
 
     <div class="sub-head">避けたいリスクと対策</div>
-    <div class="risk-list">
-      <div class="risk-item">
-        <div class="risk-label">収納・配置を一人が決めて、もう一人が使いにくくなる</div>
-        <div class="risk-body">服の収納を一人が整理すると「どこに何があるか分からない」状態に。整理した側が洗濯・片付けを一人でやり続けることになりがち。</div>
-        <div class="risk-action">共用スペースの収納・配置は必ず二人で決める。自分専用エリアと共用スペースを最初に分けておく。</div>
-      </div>
-      <div class="risk-item">
-        <div class="risk-label">急な支払いが「請求された」感になる</div>
-        <div class="risk-body">共用品を一人が立て替えて後から「払って」と言うと、受け取る側は突然請求された気持ちになる。金額が大きいほど関係がギクシャクする。</div>
-        <div class="risk-action">購入前に「これ二人のお金で買う？」の確認を習慣にする。何円以上は相談、という基準を決めておく。</div>
-      </div>
-      <div class="risk-item">
-        <div class="risk-label">家事の役割が暗黙のうちに固定される</div>
-        <div class="risk-body">最初の数週間で「なんとなく自分がやってる」が定着すると、それが「担当」になる。変えようとするとモメやすい。</div>
-        <div class="risk-action">固定割り当てより「気づいた方がやる」が揉めにくい。やってみて合わなければすぐ変える前提で仮決めする。</div>
-      </div>
-      <div class="risk-item">
-        <div class="risk-label">「使いにくい」を言い出しにくくなる</div>
-        <div class="risk-body">相手が整えてくれた収納・配置に「使いにくい」と言うのは心理的ハードルが高い。我慢が積み重なると関係に影響する。</div>
-        <div class="risk-action">最初から「変えたいと思ったら気軽に言おう」をルールにする。変更は失敗ではなく調整の一部という空気をつくる。</div>
-      </div>
-    </div>
+    <ul class="risk-list">
+      <li><b>収納を一人で決めない</b>共用スペースは二人で決める。専用と共用を最初に分ける。</li>
+      <li><b>立て替えを溜めない</b>買う前に「二人のお金で買う？」を確認。相談する金額の基準を決める。</li>
+      <li><b>家事を固定しない</b>「気づいた方がやる」で仮決め。合わなければすぐ変える。</li>
+      <li><b>我慢を溜めない</b>「使いにくい」は気軽に言う。変更は失敗ではなく調整。</li>
+    </ul>
   </section>
 
   <section class="section">
     <div class="section-title"><span class="icon icon-blue">⏰</span>時間のリソースと進め方</div>
 
     <div class="sub-head">二人で使える時間（9月）</div>
-    <div class="js-candidate-note">※ 取り消し線は済み。9/23 は終日で確定。9/22 は候補。</div>
+    <div class="js-candidate-note">※ 取り消し線は済み。9月に確保した二人の時間はすべて終了。</div>
     <div class="joint-schedule">
       <div class="js-item done">
         <div class="js-left">
@@ -1105,22 +1072,22 @@ footer {
           <div class="js-time-main" style="text-decoration:line-through;">9:00 〜 14:00</div>
         </div>
       </div>
-      <div class="js-item candidate">
+      <div class="js-item done">
         <div class="js-left">
           <div class="js-date">9/22<span class="js-day">火</span></div>
           <div class="js-badge">午前</div>
         </div>
         <div class="js-right">
-          <div class="js-time-main">9:00 〜 14:00</div>
+          <div class="js-time-main" style="text-decoration:line-through;">9:00 〜 14:00</div>
         </div>
       </div>
-      <div class="js-item js-big">
+      <div class="js-item done">
         <div class="js-left">
           <div class="js-date">9/23<span class="js-day">水</span></div>
           <div class="js-badge">終日</div>
         </div>
         <div class="js-right">
-          <div class="js-time-main">終日</div>
+          <div class="js-time-main" style="text-decoration:line-through;">終日</div>
         </div>
       </div>
     </div>
@@ -1244,14 +1211,14 @@ footer {
         <rect x="708" y="92" width="4" height="100" fill="#c8a070"/><!-- div 8 -->
 
         <!-- PROGRESS COLOR STRIPS at room top -->
-        <rect x="24" y="96" width="80" height="3" fill="#a8cc20"/><!-- 玄関 80% -->
+        <rect x="24" y="96" width="80" height="3" fill="#ccaa20"/><!-- 玄関 70% -->
         <rect x="108" y="96" width="92" height="3" fill="#40cc60"/><!-- リビング小 90% -->
         <rect x="204" y="96" width="90" height="3" fill="#a8cc20"/><!-- 風呂・トイレ 80% -->
         <rect x="298" y="96" width="88" height="3" fill="#ccaa20"/><!-- キッチン 70% -->
         <rect x="390" y="96" width="204" height="3" fill="#ccaa20"/><!-- リビング（大） 70% -->
         <rect x="598" y="96" width="50" height="3" fill="#40cc60"/><!-- クローゼット小 90% -->
         <rect x="652" y="96" width="56" height="3" fill="#ccaa20"/><!-- クローゼット大 70% -->
-        <rect x="712" y="96" width="80" height="3" fill="#cc7a20"/><!-- ベッド＋ベッド横収納 50% -->
+        <rect x="712" y="96" width="80" height="3" fill="#40cc60"/><!-- ベッド＋ベッド横収納 90% -->
 
         <!-- FLOOR LINE -->
         <rect x="24" y="188" width="768" height="6" fill="#d4b880"/>
@@ -1266,7 +1233,7 @@ footer {
 
         <!-- ===== K（玄関・水まわり） ===== -->
         <!-- ========================================================= -->
-        <!-- 玄関 80% (x=24-104, 幅80) -->
+        <!-- 玄関 70% (x=24-104, 幅80) -->
         <!-- ========================================================= -->
         <!-- 靴箱と靴 -->
         <rect x="26" y="126" width="22" height="62" fill="#9b6540"/>
@@ -1593,7 +1560,7 @@ footer {
         <rect x="667" y="158" width="2" height="30" fill="#b89030"/>
 
         <!-- ========================================================= -->
-        <!-- ベッド＋ベッド横収納 50% (x=712-792, 幅80) -->
+        <!-- ベッド＋ベッド横収納 90% (x=712-792, 幅80) -->
         <!-- ========================================================= -->
         <!-- ベッド（布団のマットを床に敷いている。フレームは無い） -->
         <rect x="714" y="170" width="54" height="18" fill="#f5efe2"/>
@@ -1652,6 +1619,12 @@ footer {
           <div class="subspot">趣味の小物</div>
           <span class="sub">ステッカー</span>
           <span class="sub">バッジ</span>
+          <div class="spot">棚（購入予定）</div>
+          <span>書類</span>
+          <span>工具</span>
+          <div class="spot">有孔ボード（設置予定）</div>
+          <span>リュックサック</span>
+          <span>外出用のバッグ</span>
           <div class="spot">一旦保管（置き場は未確定）</div>
           <span>プランター（小）</span>
           <div class="spot">アウトドア用品</div>
@@ -1661,19 +1634,21 @@ footer {
           <span>輪行グッズ</span>
           <span>傘</span>
         </div>
-        <div class="room-status"><div class="room-progress"><div class="room-progress-bar"><div class="room-progress-fill high" style="width:80%"></div></div><span class="room-progress-pct">80%</span></div></div>
-        <div class="room-note">充電ポートの棚を設置</div>
+        <div class="room-status"><div class="room-progress"><div class="room-progress-bar"><div class="room-progress-fill mid" style="width:70%"></div></div><span class="room-progress-pct">70%</span></div></div>
+        <div class="room-note">棚（充電ポート／書類・工具）と有孔ボードを設置</div>
       </div>
       <div class="room-item">
         <div class="room-name">リビング（小）</div>
         <div class="room-purpose"><span>けいすけの仕事スペース</span></div>
         <div class="room-items">
+          <span class="loose">空気清浄機</span>
           <div class="spot">デスク</div>
           <span>デスクトップ</span>
           <span>キーボード</span>
           <span>マウス</span>
-          <div class="spot">デスク下</div>
-          <span>空気清浄機</span>
+          <div class="spot">デスク下収納</div>
+          <span>金庫</span>
+          <span>カード類</span>
         </div>
         <div class="room-status"><div class="room-progress"><div class="room-progress-bar"><div class="room-progress-fill high" style="width:90%"></div></div><span class="room-progress-pct">90%</span></div></div>
         <div class="room-note"></div>
@@ -1749,17 +1724,15 @@ footer {
           <span class="sub">ゲーム機材</span>
           <div class="subspot">4段目</div>
           <span class="sub">手芸用品</span>
+          <span class="sub">ボードゲーム</span>
+          <span class="sub">筆記用具</span>
           <div class="subspot">5段目</div>
           <span class="sub">救急BOX</span>
           <span class="sub">ポケットティッシュ</span>
           <span class="sub">紐・輪ゴム・ピン</span>
           <div class="spot">本のゾーン</div>
           <span>雑誌・本</span>
-          <span>書類</span>
-          <span>金庫</span>
-          <span>カード類</span>
           <span>魔法の杖</span>
-          <span>筆記用具</span>
           <div class="spot">化粧品のゾーン</div>
           <span>化粧品</span>
           <span>鏡</span>
@@ -1806,7 +1779,7 @@ footer {
           <span>アイロン</span>
         </div>
         <div class="room-status"><div class="room-progress"><div class="room-progress-bar"><div class="room-progress-fill mid" style="width:70%"></div></div><span class="room-progress-pct">70%</span></div></div>
-        <div class="room-note">タンスの購入と収納 / 横収納スペースの棚の活用方法を決定</div>
+        <div class="room-note">タンスの購入と収納</div>
       </div>
       <div class="room-item">
         <div class="room-name">ベッド＋<br>ベッド横収納</div>
@@ -1818,7 +1791,7 @@ footer {
           <span>まくら × 2（来客用寝具）</span>
           <span>思い出品</span>
         </div>
-        <div class="room-status"><div class="room-progress"><div class="room-progress-bar"><div class="room-progress-fill mid" style="width:50%"></div></div><span class="room-progress-pct">50%</span></div></div>
+        <div class="room-status"><div class="room-progress"><div class="room-progress-bar"><div class="room-progress-fill high" style="width:90%"></div></div><span class="room-progress-pct">90%</span></div></div>
         <div class="room-note"></div>
       </div>
     </div>
@@ -2173,12 +2146,12 @@ footer {
         <rect x="110" y="27" width="80"  height="24" fill="#508848"/>
         <!-- Seg3: 9/7〜9/13 PAST done #5a9050 x=190 w=80 -->
         <rect x="190" y="27" width="80"  height="24" fill="#5a9050"/>
-        <!-- Seg4: 9/14〜9/20 NOW amber x=270 w=80 -->
-        <rect x="270" y="27" width="80"  height="24" fill="#e08030"/>
-        <!-- Seg4 top highlight -->
-        <rect x="270" y="27" width="80"  height="3"  fill="#f0a850"/>
-        <!-- Seg5: 9/21〜9/27 future green x=350 w=80 -->
-        <rect x="350" y="27" width="80"  height="24" fill="#a8c880"/>
+        <!-- Seg4: 9/14〜9/20 PAST done #649858 x=270 w=80 -->
+        <rect x="270" y="27" width="80"  height="24" fill="#649858"/>
+        <!-- Seg5: 9/21〜9/27 NOW amber x=350 w=80 -->
+        <rect x="350" y="27" width="80"  height="24" fill="#e08030"/>
+        <!-- Seg5 top highlight -->
+        <rect x="350" y="27" width="80"  height="3"  fill="#f0a850"/>
         <!-- Seg6: 9/28〜10/4 PARTY pink x=430 w=80 -->
         <rect x="430" y="27" width="80"  height="24" fill="#e04880"/>
         <!-- Seg6 confetti dots -->
@@ -2206,9 +2179,11 @@ footer {
         <rect x="588" y="27" width="2"   height="24" fill="#2a2a20"/>
 
         <!-- "NOW" text inside amber segment -->
-        <text x="310" y="43" text-anchor="middle" font-size="8" fill="#fff" font-weight="bold" font-family="sans-serif">NOW</text>
+        <text x="390" y="43" text-anchor="middle" font-size="8" fill="#fff" font-weight="bold" font-family="sans-serif">NOW</text>
 
-        <!-- ===== BIRD: なみちゃん at NOW start (x=270), feet at y=27 ===== -->
+        <!-- ===== BIRD + DOG: NOW週（9/21〜9/27）を歩いている。translate量で日付位置を調整する ===== -->
+        <g transform="translate(110,0)">
+        <!-- BIRD: なみちゃん、feet at y=27 -->
         <rect x="264" y="20" width="2"  height="7"  fill="#1a4488"/><!-- tail -->
         <rect x="266" y="20" width="12" height="7"  fill="#2266cc"/><!-- body -->
         <rect x="266" y="20" width="12" height="3"  fill="#55aaff"/><!-- wing -->
@@ -2243,6 +2218,7 @@ footer {
         <rect x="316" y="17" width="4"  height="3" fill="#f8d080"/>
         <!-- nose -->
         <rect x="318" y="15" width="2"  height="2" fill="#1a0c04"/>
+        </g>
 
         <!-- ===== LABEL AREA y=51..112 ===== -->
         <rect y="51" width="640" height="61" fill="#f0ede8"/>
@@ -2252,8 +2228,8 @@ footer {
         <text x="80"  y="63" text-anchor="middle" font-size="7" fill="#556" font-family="'Noto Sans JP',sans-serif">8/26</text>
         <text x="150" y="63" text-anchor="middle" font-size="7" fill="#556" font-family="'Noto Sans JP',sans-serif">8/31</text>
         <text x="230" y="63" text-anchor="middle" font-size="7" fill="#556" font-family="'Noto Sans JP',sans-serif">9/7</text>
-        <text x="310" y="63" text-anchor="middle" font-size="7" fill="#c05010" font-weight="bold" font-family="'Noto Sans JP',sans-serif">9/14</text>
-        <text x="390" y="63" text-anchor="middle" font-size="7" fill="#556" font-family="'Noto Sans JP',sans-serif">9/21</text>
+        <text x="310" y="63" text-anchor="middle" font-size="7" fill="#556" font-family="'Noto Sans JP',sans-serif">9/14</text>
+        <text x="390" y="63" text-anchor="middle" font-size="7" fill="#c05010" font-weight="bold" font-family="'Noto Sans JP',sans-serif">9/21</text>
         <text x="470" y="63" text-anchor="middle" font-size="7" fill="#883050" font-family="'Noto Sans JP',sans-serif">9/28</text>
         <text x="550" y="63" text-anchor="middle" font-size="7" fill="#556" font-family="'Noto Sans JP',sans-serif">10月〜</text>
 
@@ -2261,8 +2237,8 @@ footer {
         <text x="80"  y="78" text-anchor="middle" font-size="7" fill="#445" font-family="'Noto Sans JP',sans-serif">スペース確保</text>
         <text x="150" y="78" text-anchor="middle" font-size="7" fill="#445" font-family="'Noto Sans JP',sans-serif">入居完了</text>
         <text x="230" y="78" text-anchor="middle" font-size="7" fill="#445" font-family="'Noto Sans JP',sans-serif">搬入・粗大ゴミ</text>
-        <text x="310" y="78" text-anchor="middle" font-size="7" fill="#c05010" font-weight="bold" font-family="'Noto Sans JP',sans-serif">住所変更・収納</text>
-        <text x="390" y="78" text-anchor="middle" font-size="7" fill="#445" font-family="'Noto Sans JP',sans-serif">小物・家具</text>
+        <text x="310" y="78" text-anchor="middle" font-size="7" fill="#445" font-family="'Noto Sans JP',sans-serif">住所変更・収納</text>
+        <text x="390" y="78" text-anchor="middle" font-size="7" fill="#c05010" font-weight="bold" font-family="'Noto Sans JP',sans-serif">小物・家具</text>
         <text x="470" y="78" text-anchor="middle" font-size="7" fill="#883050" font-family="'Noto Sans JP',sans-serif">引越し打ち上げ🎉</text>
         <text x="550" y="78" text-anchor="middle" font-size="7" fill="#667" font-family="'Noto Sans JP',sans-serif">運用・調整</text>
 
@@ -2270,8 +2246,8 @@ footer {
         <text x="80"  y="92" text-anchor="middle" font-size="6" fill="#789" font-family="'Noto Sans JP',sans-serif">✓ 完了</text>
         <text x="150" y="92" text-anchor="middle" font-size="6" fill="#789" font-family="'Noto Sans JP',sans-serif">✓ 完了</text>
         <text x="230" y="92" text-anchor="middle" font-size="6" fill="#789" font-family="'Noto Sans JP',sans-serif">✓ 完了</text>
-        <text x="310" y="92" text-anchor="middle" font-size="6" fill="#c05010" font-family="'Noto Sans JP',sans-serif">★ 今週</text>
-        <text x="390" y="92" text-anchor="middle" font-size="6" fill="#789" font-family="'Noto Sans JP',sans-serif">9/26 旧居退去</text>
+        <text x="310" y="92" text-anchor="middle" font-size="6" fill="#789" font-family="'Noto Sans JP',sans-serif">✓ 完了</text>
+        <text x="390" y="92" text-anchor="middle" font-size="6" fill="#c05010" font-family="'Noto Sans JP',sans-serif">★ 9/26 退去・粗大ゴミ</text>
         <text x="470" y="92" text-anchor="middle" font-size="6" fill="#789" font-family="'Noto Sans JP',sans-serif">打ち上げ</text>
         <text x="550" y="92" text-anchor="middle" font-size="6" fill="#789" font-family="'Noto Sans JP',sans-serif">10月以降</text>
       </svg>
@@ -2330,9 +2306,9 @@ footer {
               <li class="log-done">9/18（金）✓　粗大ゴミ10点を排出・収集完了（7,300円）。処分リスト残り29点。</li>
               <li>今ある収納家具に収まるものはすべて収納した状態にする</li>
               <li class="log-done">✓　なみちゃんの旧居の退去・解約手続きを確認（電気・ガス・水道／火災保険は解約済み、退去・鍵返却は9/26で確定）</li>
-              <li class="log-done">9/19（金）✓　ピカチュウシンセ・第3の目シンセ・本とCDの一部をベーチャンへ譲渡</li>
-              <li class="log-done">9/20（土）✓　ござ・絵・照明（赤）・鏡（中）をNEWSで売却／本を古本屋で売却</li>
-              <li class="log-done">9/20（土）✓　友人来訪</li>
+              <li class="log-done">9/19（土）✓　ピカチュウシンセ・第3の目シンセ・本とCDの一部をベーチャンへ譲渡</li>
+              <li class="log-done">9/20（日）✓　ござ・絵・照明（赤）・鏡（中）をNEWSで売却／本を古本屋で売却</li>
+              <li class="log-done">9/20（日）✓　友人来訪</li>
             </ul>
           </div>
         </div>
@@ -2345,6 +2321,8 @@ footer {
             <div class="tl-head">今週 <span class="now-tag">NOW</span>　小物・収納家具の追加検討</div>
             <ul class="plain-list">
               <li class="log-done">9/21（月）✓　冷蔵庫の引き取り完了（家電リサイクル）</li>
+              <li><strong>9/26（土）　旧居の退去・鍵返却</strong></li>
+              <li><strong>9/26（土）　粗大ゴミ5点を排出</strong>（風呂のイス / 棚（大）/ サイドテーブル / キッチン収納 / 配線収納）</li>
               <li>必要に応じて収納家具を購入・設置する</li>
               <li>小物の収納・配置を整える</li>
               <li>お金まわりのルールを運用しながら確認する</li>
@@ -2387,7 +2365,7 @@ footer {
     <p style="font-size:0.85rem;color:var(--text-sub);margin-bottom:1.2rem;">新しく購入する家具・家電。</p>
     <div class="place-group">
       <div class="place-label">玄関</div>
-      <div class="item-chips"><span class="item-chip">充電ポートの棚</span></div>
+      <div class="item-chips"><span class="item-chip">充電ポートの棚</span><span class="item-chip">書類・工具の棚</span><span class="item-chip">有孔ボード</span></div>
     </div>
     <div class="place-group">
       <div class="place-label">風呂・トイレ</div>
@@ -2523,7 +2501,7 @@ footer {
         <span class="item-chip">配線収納<span class="d-tag d-sodai">粗大ゴミ</span></span>
         <span class="item-chip">照明器具<span class="d-tag d-sodai">粗大ゴミ</span></span>
       </div>
-      <p class="disposal-note">✅ 9/18（金）収集完了 — 10点を共有玄関前に排出済み（本棚・網ラック・キャリー・洗濯かご・机（白）・椅子（黒）・棚（小）・スピーカー・給湯器・物干し竿）　支払：電子決済 7,300円<br>残り7点：風呂のイス / 棚（大） / サイドテーブル / 作品キャプション / キッチン収納 / 配線収納 / 照明器具　→ 次回の収集で申請する</p>
+      <p class="disposal-note">✅ 9/18（金）収集完了 — 10点を共有玄関前に排出済み（本棚・網ラック・キャリー・洗濯かご・机（白）・椅子（黒）・棚（小）・スピーカー・給湯器・物干し竿）　支払：電子決済 7,300円<br>📅 9/26（土）排出予定 — 5点（風呂のイス / 棚（大） / サイドテーブル / キッチン収納 / 配線収納）<br>残り2点：作品キャプション / 照明器具　→ 次回の収集で申請する</p>
     </div>
     <div class="place-group">
       <div class="place-label">家電リサイクル</div>
