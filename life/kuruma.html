@@ -63,7 +63,14 @@ body {
 .finding b { color: var(--text); font-weight: 500; }
 
 /* ─── つまみ ─── */
-.knobs { display: grid; gap: 14px; margin-top: 26px; }
+.knobgroup { margin-top: 24px; }
+.knobgroup .gl { font-family: var(--round); font-weight: 700; font-size: 12px;
+                 letter-spacing: .14em; color: var(--dim); margin-bottom: 8px; }
+.hintline { font-size: 11px; color: var(--dim); margin-top: 7px; line-height: 1.6; }
+.derived { margin-top: 10px; font-size: 12.5px; color: var(--dim);
+           font-variant-numeric: tabular-nums; }
+.derived b { color: var(--text); font-weight: 500; }
+.knobs { display: grid; gap: 14px; }
 @media (min-width: 640px) { .knobs { grid-template-columns: 1fr 1fr; } }
 .knob { background: var(--surface-2); border: 1px solid var(--border); border-radius: 13px; padding: 14px 16px; }
 .knob label { display: block; font-size: 12px; color: var(--dim); margin-bottom: 7px; letter-spacing: .04em; }
@@ -141,21 +148,46 @@ footer a { color: var(--accent); text-decoration: none; }
     <p id="headlineSub">—</p>
   </div>
 
-  <div class="knobs">
-    <div class="knob">
-      <label for="park">駐車場（月額）</label>
-      <div class="row">
-        <input type="range" id="park" min="18000" max="45000" step="500" value="30000">
-        <span class="out num" id="parkOut">—</span>
+  <div class="knobgroup">
+    <div class="gl">車を持つ場合</div>
+    <div class="knobs">
+      <div class="knob">
+        <label for="park">駐車場（月額）</label>
+        <div class="row">
+          <input type="range" id="park" min="18000" max="45000" step="500" value="30000">
+          <span class="out num" id="parkOut">—</span>
+        </div>
+      </div>
+      <div class="knob">
+        <label for="km">年間の走行距離</label>
+        <div class="row">
+          <input type="range" id="km" min="1000" max="15000" step="500" value="3000">
+          <span class="out num" id="kmOut">—</span>
+        </div>
       </div>
     </div>
-    <div class="knob">
-      <label for="km">年間の走行距離</label>
-      <div class="row">
-        <input type="range" id="km" min="1000" max="15000" step="500" value="3000">
-        <span class="out num" id="kmOut">—</span>
+  </div>
+
+  <div class="knobgroup">
+    <div class="gl">持たない場合（カーシェア）</div>
+    <div class="knobs">
+      <div class="knob">
+        <label for="uses">月に何回つかうか</label>
+        <div class="row">
+          <input type="range" id="uses" min="0" max="16" step="1" value="4">
+          <span class="out num" id="usesOut">—</span>
+        </div>
+      </div>
+      <div class="knob">
+        <label for="price">1回あたりの金額</label>
+        <div class="row">
+          <input type="range" id="price" min="2000" max="12000" step="200" value="5000">
+          <span class="out num" id="priceOut">—</span>
+        </div>
+        <div class="hintline">3時間 ≒ 2,600円 ／ 6時間 ≒ 4,300円 ／ 12時間 ≒ 5,500円（＋6時間超は距離料金 16円/km）</div>
       </div>
     </div>
+    <div class="derived" id="shareDerived">—</div>
   </div>
 
   <div class="plans" id="plans"></div>
@@ -178,7 +210,7 @@ footer a { color: var(--accent); text-decoration: none; }
       <b>A もらう</b>　実燃費10km/L・車検は12年目/14年目/16年目の3回・2028年度から13年超の重課（自動車税50,000円・重量税45,600円）・12年落ちなので故障の備えを30万・タイヤは初年度に交換<br>
       <b>B 中古を買う</b>　5年落ち200万円・2.0Lクラス・実燃費12km/L・車検2年付きなので5年で2回<br>
       <b>C 軽を買う</b>　中古100万円・実燃費20km/L・軽自動車税10,800円・重量税も軽減<br>
-      <b>D 持たない</b>　1回6時間・60km・5,000円のカーシェア。月会費880円。駐車場は不要<br>
+      <b>D 持たない</b>　カーシェアの回数と単価はつまみで変えられます。既定は月4回（週1回）× 5,000円。月会費880円。駐車場は不要。<b>車を持たないと運転そのものが減る</b>ので、走行距離と同じにしなくて構いません<br>
       <b>入れていないもの</b>　高速代・駐車料金・洗車・任意保険の等級上昇による値下がり
     </div>
   </section>
@@ -201,7 +233,7 @@ footer a { color: var(--accent); text-decoration: none; }
 (function () {
   "use strict";
   var $ = function (id) { return document.getElementById(id); };
-  var FUEL = 175, SHARE_TRIP_KM = 60, SHARE_TRIP_YEN = 5000, SHARE_FEE = 880;
+  var FUEL = 175, SHARE_FEE = 880, SHARE_TRIP_KM = 60;
   var yen = function (n) { return "¥" + Math.round(n).toLocaleString("ja-JP"); };
   var man = function (n) { return (n / 10000).toFixed(0) + "万"; };
 
@@ -216,8 +248,7 @@ footer a { color: var(--accent); text-decoration: none; }
     { id: "C", nm: "軽を買う", sub: "中古100万円",
       car: 1000000, ins: 60000, tax: 10800 * 5, kmpl: 20, upkeep: 30000,
       shaken: 80000 * 2, tire: 50000, risk: 50000, misc: 0, park: true },
-    { id: "D", nm: "持たない", sub: "カーシェア（1回6時間・60km・5,000円）",
-      share: true, park: false }
+    { id: "D", nm: "持たない", sub: "", share: true, park: false }
   ];
 
   var LINES = [
@@ -230,13 +261,13 @@ footer a { color: var(--accent); text-decoration: none; }
     ["車検", function (p) { return p.shaken || 0; }],
     ["タイヤ", function (p) { return p.tire || 0; }],
     ["故障の備え", function (p) { return p.risk || 0; }],
-    ["カーシェア利用料", function (p, park, km) { return p.share ? km / SHARE_TRIP_KM * SHARE_TRIP_YEN * 5 : 0; }],
+    ["カーシェア利用料", function (p, park, km, uses, price) { return p.share ? uses * 12 * price * 5 : 0; }],
     ["会費・手続き", function (p) { return p.share ? SHARE_FEE * 60 : (p.misc || 0); }]
   ];
 
-  function totals(park, km) {
+  function totals(park, km, uses, price) {
     return PLANS.map(function (p) {
-      var parts = LINES.map(function (l) { return l[1](p, park, km); });
+      var parts = LINES.map(function (l) { return l[1](p, park, km, uses, price); });
       var sum = parts.reduce(function (a, b) { return a + b; }, 0);
       return { p: p, parts: parts, sum: sum };
     });
@@ -244,10 +275,23 @@ footer a { color: var(--accent); text-decoration: none; }
 
   function render() {
     var park = +$("park").value, km = +$("km").value;
+    var uses = +$("uses").value, price = +$("price").value;
     $("parkOut").textContent = yen(park);
     $("kmOut").textContent = km.toLocaleString("ja-JP") + " km";
+    $("usesOut").textContent = uses + " 回";
+    $("priceOut").textContent = yen(price);
 
-    var rows = totals(park, km);
+    // 回数と単価から、年いくら・何km相当になるかを出しておく。
+    // 「持たない」の数字が何を仮定したものか見えないと、比べようがない。
+    PLANS[3].sub = "月" + uses + "回 × " + yen(price);
+    var shareYear = uses * 12 * price;
+    $("shareDerived").innerHTML = uses === 0
+      ? "まったく使わない前提です。"
+      : "年 <b>" + uses * 12 + " 回</b>・<b>" + yen(shareYear) + "</b>。1回60kmとすると <b>年 " +
+        (uses * 12 * SHARE_TRIP_KM).toLocaleString("ja-JP") + " km</b> 相当で、" +
+        "車を持つ場合の " + km.toLocaleString("ja-JP") + "km と比べられます。";
+
+    var rows = totals(park, km, uses, price);
     var sorted = rows.slice().sort(function (a, b) { return a.sum - b.sum; });
     var cheapest = sorted[0];
     var get = rows[0], kei = rows[2];
@@ -321,7 +365,7 @@ footer a { color: var(--accent); text-decoration: none; }
     });
   }
 
-  ["park", "km"].forEach(function (id) {
+  ["park", "km", "uses", "price"].forEach(function (id) {
     $(id).addEventListener("input", render);
   });
   render();
