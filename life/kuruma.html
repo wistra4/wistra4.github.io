@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>車をもらうか</title>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:         #fffcf5;
+  --surface:    #ffffff;
+  --surface-2:  #fff8ee;
+  --border:     #edd8c0;
+  --text:       #2a2218;
+  --dim:        #9a8c7e;
+  --accent:     #2f7a58;
+  --accent-soft:#eaf6f0;
+  --warm:       #e8613e;
+  --warm-soft:  #fff0eb;
+  --yellow:     #b8860b;
+  --round:      'Zen Maru Gothic', 'Hiragino Maru Gothic ProN', sans-serif;
+}
+
+body {
+  background: var(--bg); color: var(--text);
+  font-family: 'Noto Sans JP', sans-serif; font-weight: 300;
+  line-height: 1.9; -webkit-font-smoothing: antialiased;
+}
+.num { font-variant-numeric: tabular-nums; }
+
+/* ─── hero ─── */
+.hero {
+  background: #17211c; color: #f2ede3; padding: 72px 20px 60px; text-align: center;
+  position: relative; overflow: hidden;
+}
+.hero::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, #4d6b5c, transparent);
+}
+.hero .eyebrow { font-size: 11px; letter-spacing: .32em; color: #8fae9c; margin-bottom: 14px; }
+.hero h1 { font-family: var(--round); font-weight: 700; font-size: 30px; line-height: 1.5;
+           letter-spacing: .02em; text-wrap: balance; }
+.hero p { margin-top: 14px; font-size: 14px; color: #b9c7bf; }
+
+.wrap { max-width: 820px; margin: 0 auto; padding-left: 20px; padding-right: 20px; }
+
+/* ─── 結論 ─── */
+.finding {
+  margin-top: -28px; position: relative; z-index: 2;
+  background: var(--surface); border: 1px solid var(--border); border-radius: 18px;
+  padding: 26px 26px 24px; box-shadow: 0 6px 22px rgba(80,60,30,.07);
+}
+.finding .tag {
+  display: inline-block; font-family: var(--round); font-weight: 700; font-size: 11px;
+  letter-spacing: .14em; color: var(--accent); background: var(--accent-soft);
+  border-radius: 99px; padding: 3px 12px; margin-bottom: 10px;
+}
+.finding h2 { font-family: var(--round); font-weight: 700; font-size: 20px; line-height: 1.6;
+              letter-spacing: .01em; text-wrap: balance; }
+.finding p { margin-top: 10px; font-size: 14px; color: var(--dim); }
+.finding b { color: var(--text); font-weight: 500; }
+
+/* ─── つまみ ─── */
+.knobs { display: grid; gap: 14px; margin-top: 26px; }
+@media (min-width: 640px) { .knobs { grid-template-columns: 1fr 1fr; } }
+.knob { background: var(--surface-2); border: 1px solid var(--border); border-radius: 13px; padding: 14px 16px; }
+.knob label { display: block; font-size: 12px; color: var(--dim); margin-bottom: 7px; letter-spacing: .04em; }
+.knob .row { display: flex; align-items: center; gap: 12px; }
+.knob input { flex: 1 1 auto; min-width: 0; accent-color: var(--accent); }
+.knob .out { font-family: var(--round); font-weight: 700; font-size: 17px;
+             min-width: 5.6em; text-align: right; font-variant-numeric: tabular-nums; }
+
+/* ─── 4案 ─── */
+.plans { display: grid; gap: 14px; margin-top: 16px; }
+@media (min-width: 700px) { .plans { grid-template-columns: repeat(2, 1fr); } }
+.plan {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 15px;
+  padding: 18px 20px 16px; display: flex; flex-direction: column; gap: 3px; position: relative;
+}
+.plan.best { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+.plan .rank {
+  position: absolute; top: 14px; right: 16px; font-family: var(--round); font-weight: 700;
+  font-size: 10.5px; letter-spacing: .1em; color: var(--dim);
+}
+.plan.best .rank { color: var(--accent); }
+.plan .nm { font-family: var(--round); font-weight: 700; font-size: 15.5px; }
+.plan .sub { font-size: 11.5px; color: var(--dim); line-height: 1.7; }
+.plan .tot { font-family: var(--round); font-weight: 700; font-size: 29px; margin-top: 8px;
+             font-variant-numeric: tabular-nums; letter-spacing: -.01em; }
+.plan .per { font-size: 12px; color: var(--dim); font-variant-numeric: tabular-nums; }
+.plan .gap { margin-top: 8px; font-size: 12px; font-variant-numeric: tabular-nums; }
+.plan .gap.up { color: var(--warm); }
+.plan .gap.eq { color: var(--accent); }
+
+/* ─── 内訳 ─── */
+section { margin-top: 44px; }
+h3 { font-family: var(--round); font-weight: 700; font-size: 18px; letter-spacing: .01em; }
+.lead { color: var(--dim); font-size: 13.5px; margin-top: 4px; }
+.tablewrap { overflow-x: auto; margin-top: 14px; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 520px; }
+th, td { border-bottom: 1px solid var(--border); padding: 9px 8px; text-align: right;
+         font-variant-numeric: tabular-nums; white-space: nowrap; }
+th:first-child, td:first-child { text-align: left; white-space: normal; }
+thead th { color: var(--dim); font-weight: 500; font-size: 11.5px; border-bottom: 1.5px solid var(--border); }
+tbody tr:last-child td { border-bottom: none; font-weight: 700; font-family: var(--round); padding-top: 12px; }
+td.zero { color: #cfc3b2; }
+
+.reads { display: grid; gap: 12px; margin-top: 16px; }
+.read { background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--accent);
+        border-radius: 11px; padding: 14px 17px; }
+.read h4 { font-family: var(--round); font-weight: 700; font-size: 14.5px; margin-bottom: 4px; }
+.read p { font-size: 13.5px; color: #5c5145; }
+.read.warm { border-left-color: var(--warm); }
+.read.yellow { border-left-color: var(--yellow); }
+
+.assume { background: var(--surface-2); border: 1px solid var(--border); border-radius: 13px;
+          padding: 16px 18px; margin-top: 16px; font-size: 12.5px; color: var(--dim); line-height: 1.95; }
+.assume b { color: var(--text); font-weight: 500; }
+
+footer { margin-top: 54px; padding: 26px 0 60px; border-top: 1px solid var(--border);
+         font-size: 12px; color: var(--dim); text-align: center; }
+footer a { color: var(--accent); text-decoration: none; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="eyebrow">A CAR, FOR FREE</div>
+  <h1>車をもらうか、買うか、持たないか</h1>
+  <p>2014年式 レガシィ アウトバック・走行63,000km・車検は今年<br>阿佐ヶ谷で5年持つとして、いくらかかるか</p>
+  <p style="margin-top:8px;font-size:12.5px;color:#8fae9c">週1回くらい乗る前提（年3,000km）で置いています</p>
+</div>
+
+<div class="wrap">
+
+  <div class="finding">
+    <span class="tag">わかったこと</span>
+    <h2 id="headline">—</h2>
+    <p id="headlineSub">—</p>
+  </div>
+
+  <div class="knobs">
+    <div class="knob">
+      <label for="park">駐車場（月額）</label>
+      <div class="row">
+        <input type="range" id="park" min="18000" max="45000" step="500" value="30000">
+        <span class="out num" id="parkOut">—</span>
+      </div>
+    </div>
+    <div class="knob">
+      <label for="km">年間の走行距離</label>
+      <div class="row">
+        <input type="range" id="km" min="1000" max="15000" step="500" value="3000">
+        <span class="out num" id="kmOut">—</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="plans" id="plans"></div>
+
+  <section>
+    <h3>5年ぶんの内訳</h3>
+    <p class="lead">駐車場はどの案にも同じだけ乗ります。持つか持たないかの差は、ほとんどここです。</p>
+    <div class="tablewrap"><table id="breakdown"></table></div>
+  </section>
+
+  <section>
+    <h3>読みどころ</h3>
+    <div class="reads" id="reads"></div>
+  </section>
+
+  <section>
+    <h3>置いている前提</h3>
+    <div class="assume">
+      <b>共通</b>　ガソリン175円/L・任意保険は6等級スタート（友人からの譲渡なので等級は引き継げません）・駐車場はどの案も同額<br>
+      <b>A もらう</b>　実燃費10km/L・車検は12年目/14年目/16年目の3回・2028年度から13年超の重課（自動車税50,000円・重量税45,600円）・12年落ちなので故障の備えを30万・タイヤは初年度に交換<br>
+      <b>B 中古を買う</b>　5年落ち200万円・2.0Lクラス・実燃費12km/L・車検2年付きなので5年で2回<br>
+      <b>C 軽を買う</b>　中古100万円・実燃費20km/L・軽自動車税10,800円・重量税も軽減<br>
+      <b>D 持たない</b>　1回6時間・60km・5,000円のカーシェア。月会費880円。駐車場は不要<br>
+      <b>入れていないもの</b>　高速代・駐車料金・洗車・任意保険の等級上昇による値下がり
+    </div>
+  </section>
+
+  <section>
+    <h3>金額の外にあること</h3>
+    <div class="assume">
+      <b>アウトバックは全高1,605mm。</b>機械式駐車場は高さ制限1,550mmが標準なので、大半に入りません。平置き限定になり、阿佐ヶ谷での候補が大きく減ります。軽なら選択肢は広がります。<br><br>
+      <b>レコードと機材を積むなら、アウトバックの積載は代えがたい。</b>カーシェアは予約と返却時間に縛られ、車種も選べません。深夜に機材を積んで帰る用途も同じです。この2つが月に何回あるかが、金額と並ぶもう一本の判断軸になります。<br><br>
+      <b>車両価格0円は効きます。</b>同じアウトバックを中古で買えば140〜160万。ただし12年落ちの維持費がそれを食っていくので、<b>「タダ」の価値は5年でだいたい130万ぶん</b>、と見ておくのが実際に近いです。
+    </div>
+  </section>
+
+  <footer>
+    <a href="../archive.html">← archive</a>
+  </footer>
+</div>
+
+<script>
+(function () {
+  "use strict";
+  var $ = function (id) { return document.getElementById(id); };
+  var FUEL = 175, SHARE_TRIP_KM = 60, SHARE_TRIP_YEN = 5000, SHARE_FEE = 880;
+  var yen = function (n) { return "¥" + Math.round(n).toLocaleString("ja-JP"); };
+  var man = function (n) { return (n / 10000).toFixed(0) + "万"; };
+
+  /* 5年ぶん。park は月額、km は年間走行距離。 */
+  var PLANS = [
+    { id: "A", nm: "もらう", sub: "2014 アウトバック・12年落ち・2.5L",
+      car: 0, ins: 80000, tax: 43500 * 2 + 50000 * 3, kmpl: 10, upkeep: 60000,
+      shaken: 150000 + 170000 + 170000, tire: 100000, risk: 300000, misc: 5000, park: true },
+    { id: "B", nm: "中古を買う", sub: "5年落ち・200万円・2.0Lクラス",
+      car: 2000000, ins: 80000, tax: 39500 * 5, kmpl: 12, upkeep: 40000,
+      shaken: 120000 * 2, tire: 80000, risk: 100000, misc: 0, park: true },
+    { id: "C", nm: "軽を買う", sub: "中古100万円",
+      car: 1000000, ins: 60000, tax: 10800 * 5, kmpl: 20, upkeep: 30000,
+      shaken: 80000 * 2, tire: 50000, risk: 50000, misc: 0, park: true },
+    { id: "D", nm: "持たない", sub: "カーシェア（1回6時間・60km・5,000円）",
+      share: true, park: false }
+  ];
+
+  var LINES = [
+    ["車両", function (p) { return p.car || 0; }],
+    ["駐車場", function (p, park) { return p.park ? park * 12 * 5 : 0; }],
+    ["任意保険", function (p) { return (p.ins || 0) * 5; }],
+    ["税金", function (p) { return p.tax || 0; }],
+    ["ガソリン", function (p, park, km) { return p.share ? 0 : km / p.kmpl * FUEL * 5; }],
+    ["消耗品・整備", function (p) { return (p.upkeep || 0) * 5; }],
+    ["車検", function (p) { return p.shaken || 0; }],
+    ["タイヤ", function (p) { return p.tire || 0; }],
+    ["故障の備え", function (p) { return p.risk || 0; }],
+    ["カーシェア利用料", function (p, park, km) { return p.share ? km / SHARE_TRIP_KM * SHARE_TRIP_YEN * 5 : 0; }],
+    ["会費・手続き", function (p) { return p.share ? SHARE_FEE * 60 : (p.misc || 0); }]
+  ];
+
+  function totals(park, km) {
+    return PLANS.map(function (p) {
+      var parts = LINES.map(function (l) { return l[1](p, park, km); });
+      var sum = parts.reduce(function (a, b) { return a + b; }, 0);
+      return { p: p, parts: parts, sum: sum };
+    });
+  }
+
+  function render() {
+    var park = +$("park").value, km = +$("km").value;
+    $("parkOut").textContent = yen(park);
+    $("kmOut").textContent = km.toLocaleString("ja-JP") + " km";
+
+    var rows = totals(park, km);
+    var sorted = rows.slice().sort(function (a, b) { return a.sum - b.sum; });
+    var cheapest = sorted[0];
+    var get = rows[0], kei = rows[2];
+
+    // 結論
+    var diff = get.sum - kei.sum;
+    var h = $("headline"), hs = $("headlineSub");
+    if (diff > 0) {
+      h.innerHTML = "タダでもらうより、<b style='color:var(--accent)'>軽を" + man(kei.p.car) +
+        "円で買うほうが " + man(diff) + "円 安い</b>。";
+      hs.innerHTML = "12年落ち2.5Lの維持費（税の重課・車検・燃費・故障の備え）が、軽の車両価格をほぼ食い切ります。" +
+        "もっとも安いのは <b>" + cheapest.p.nm + "</b> で、5年 " + man(cheapest.sum) + "円。";
+    } else {
+      h.innerHTML = "<b style='color:var(--accent)'>もらうのがいちばん安い</b>。軽を買うより " +
+        man(-diff) + "円 得になります。";
+      hs.innerHTML = "この条件では車両価格0円が効いています。もっとも安いのは <b>" +
+        cheapest.p.nm + "</b> で、5年 " + man(cheapest.sum) + "円。";
+    }
+
+    // カード
+    var box = $("plans"); box.innerHTML = "";
+    rows.forEach(function (r) {
+      var el = document.createElement("div");
+      el.className = "plan" + (r === cheapest ? " best" : "");
+      var rank = sorted.indexOf(r) + 1;
+      el.innerHTML =
+        '<div class="rank">' + (r === cheapest ? "いちばん安い" : rank + "番目") + "</div>" +
+        '<div class="nm">' + r.p.id + "　" + r.p.nm + "</div>" +
+        '<div class="sub">' + r.p.sub + "</div>" +
+        '<div class="tot">' + yen(r.sum) + "</div>" +
+        '<div class="per">5年ぶん　月あたり ' + yen(r.sum / 60) + "</div>" +
+        (r === cheapest ? "" :
+          '<div class="gap up">いちばん安い案より ' + yen(r.sum - cheapest.sum) + " 高い</div>");
+      box.appendChild(el);
+    });
+
+    // 内訳
+    var t = $("breakdown");
+    var head = "<thead><tr><th>5年ぶん</th>" + rows.map(function (r) {
+      return "<th>" + r.p.id + " " + r.p.nm + "</th>";
+    }).join("") + "</tr></thead>";
+    var body = LINES.map(function (l, i) {
+      if (rows.every(function (r) { return r.parts[i] === 0; })) return "";
+      return "<tr><td>" + l[0] + "</td>" + rows.map(function (r) {
+        var v = r.parts[i];
+        return '<td class="' + (v ? "" : "zero") + '">' + (v ? yen(v) : "—") + "</td>";
+      }).join("") + "</tr>";
+    }).join("");
+    body += "<tr><td>合計</td>" + rows.map(function (r) {
+      return "<td>" + yen(r.sum) + "</td>";
+    }).join("") + "</tr>";
+    t.innerHTML = head + "<tbody>" + body + "</tbody>";
+
+    // 読みどころ
+    var parkShare = Math.round(rows[0].parts[1] / rows[0].sum * 100);
+    var reads = [
+      ["warm", "駐車場が " + parkShare + "% を占める",
+       "どの案にも同じ額が乗ります。月 " + yen(park) + " を年5年で " + yen(park * 12 * 5) +
+       "。持つかどうかの差は、車の値段よりここで決まります。"],
+      ["", "「タダ」の価値は 5年で約 " + man(rows[1].sum - rows[0].sum) + "円",
+       "同じクラスを中古で買う案（B）との差です。車両価格そのものより小さくなるのは、12年落ちの維持費が重いからです。"],
+      ["yellow", "故障の備え30万を外すと " + man(rows[0].sum - 300000) + "円",
+       "Aの数字はCVTやオイル漏れを見越した積立を含んでいます。整備記録を見て状態が良ければ、ここは軽（C）とほぼ並びます。逆に一度壊れると一気に超えます。"]
+    ];
+    var rbox = $("reads"); rbox.innerHTML = "";
+    reads.forEach(function (r) {
+      var el = document.createElement("div");
+      el.className = "read " + r[0];
+      el.innerHTML = "<h4>" + r[1] + "</h4><p>" + r[2] + "</p>";
+      rbox.appendChild(el);
+    });
+  }
+
+  ["park", "km"].forEach(function (id) {
+    $(id).addEventListener("input", render);
+  });
+  render();
+})();
+</script>
+</body>
+</html>
