@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>電動キックボードの手続き</title>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:#fffcf5; --surface:#fff; --surface-2:#fff8ee; --border:#e3dcc9;
+  --text:#2a2218; --dim:#948b7c;
+  --navy:#2f5f9e; --navy-soft:#eef3fa;
+  --warn:#c0392b; --warn-soft:#fdeeec;
+  --ok:#2f7a58; --ok-soft:#eaf6f0;
+  --amber:#b07d16; --amber-soft:#fdf5e4;
+  --round:'Zen Maru Gothic','Hiragino Maru Gothic ProN',sans-serif;
+}
+body { background:var(--bg); color:var(--text); font-family:'Noto Sans JP',sans-serif;
+       font-weight:300; line-height:1.9; -webkit-font-smoothing:antialiased; }
+
+.hero { background:#16202e; color:#eef2f7; padding:68px 20px 56px; text-align:center; }
+.hero .eyebrow { font-size:11px; letter-spacing:.3em; color:#8ba3c0; margin-bottom:13px; }
+.hero h1 { font-family:var(--round); font-weight:700; font-size:28px; line-height:1.55; text-wrap:balance; }
+.hero p { margin-top:13px; font-size:13.5px; color:#a9bace; }
+
+.wrap { max-width:820px; margin:0 auto; padding-left:20px; padding-right:20px; }
+
+/* ─── 猶予終了の警告 ─── */
+.alert { margin-top:-24px; position:relative; z-index:2; background:var(--warn-soft);
+         border:1px solid #f0c5bf; border-left:4px solid var(--warn); border-radius:14px;
+         padding:18px 20px; box-shadow:0 6px 20px rgba(60,40,30,.06); }
+.alert h2 { font-family:var(--round); font-weight:700; font-size:16px; color:var(--warn); margin-bottom:5px; }
+.alert p { font-size:13.5px; color:#5c4a45; }
+
+section { margin-top:42px; }
+h3 { font-family:var(--round); font-weight:700; font-size:18px; }
+.lead { color:var(--dim); font-size:13.5px; margin-top:4px; }
+
+/* ─── 判定 ─── */
+.quiz { margin-top:16px; display:grid; gap:10px; }
+.q { background:var(--surface); border:1px solid var(--border); border-radius:13px; padding:15px 17px; }
+.q .t { font-size:14.5px; font-weight:400; line-height:1.75; }
+.q .n { font-family:var(--round); font-weight:700; font-size:11px; color:var(--dim);
+        letter-spacing:.1em; margin-bottom:3px; }
+.q .hint { font-size:11.5px; color:var(--dim); margin-top:5px; line-height:1.7; }
+.q .opts { display:flex; gap:7px; margin-top:11px; flex-wrap:wrap; }
+.q button { font:inherit; font-size:13.5px; font-family:var(--round); font-weight:500;
+            border:1px solid var(--border); background:var(--surface-2); color:var(--text);
+            border-radius:9px; padding:7px 16px; cursor:pointer; }
+.q button:hover { border-color:var(--dim); }
+.q button[aria-pressed="true"] { background:var(--navy); border-color:var(--navy); color:#fff; font-weight:700; }
+.q button.no[aria-pressed="true"] { background:var(--warn); border-color:var(--warn); }
+.q button.dk[aria-pressed="true"] { background:var(--amber); border-color:var(--amber); }
+
+/* ─── 判定結果 ─── */
+.result { margin-top:18px; border-radius:15px; padding:22px 24px; border:1px solid var(--border);
+          background:var(--surface); }
+.result.ok  { border-color:var(--ok);   background:var(--ok-soft); }
+.result.gen { border-color:var(--amber);background:var(--amber-soft); }
+.result.ng  { border-color:var(--warn); background:var(--warn-soft); }
+.result .lbl { font-family:var(--round); font-weight:700; font-size:11px; letter-spacing:.16em;
+               color:var(--dim); margin-bottom:6px; }
+.result h4 { font-family:var(--round); font-weight:700; font-size:21px; line-height:1.5;
+             margin-bottom:8px; text-wrap:balance; }
+.result p { font-size:13.5px; color:#5a5246; }
+.result b { font-weight:500; color:var(--text); }
+
+/* ─── やること ─── */
+ul.todo { list-style:none; display:grid; gap:10px; margin-top:16px; }
+ul.todo li { display:flex; gap:12px; align-items:flex-start; background:var(--surface);
+             border:1px solid var(--border); border-radius:12px; padding:13px 15px; }
+ul.todo input { width:19px; height:19px; margin-top:3px; accent-color:var(--navy); flex:none; }
+ul.todo .t { font-size:14px; font-weight:500; font-family:var(--round); }
+ul.todo .d { font-size:12.5px; color:var(--dim); line-height:1.75; margin-top:2px; }
+ul.todo li.done .t, ul.todo li.done .d { opacity:.42; text-decoration:line-through; }
+ul.todo .cost { font-family:var(--round); font-weight:700; font-size:12.5px; color:var(--navy);
+                white-space:nowrap; margin-left:auto; padding-left:10px; }
+
+table { width:100%; border-collapse:collapse; font-size:13px; margin-top:14px; }
+th,td { border-bottom:1px solid var(--border); padding:9px 8px; text-align:left; vertical-align:top; }
+th { color:var(--dim); font-weight:500; font-size:11.5px; width:11em; }
+td b { font-weight:500; }
+
+.box { background:var(--surface-2); border:1px solid var(--border); border-radius:13px;
+       padding:16px 18px; margin-top:14px; font-size:13px; color:#5a5246; line-height:1.95; }
+.box b { color:var(--text); font-weight:500; }
+.box.navy { background:var(--navy-soft); border-color:#cfdcec; }
+
+footer { margin-top:52px; padding:24px 0 58px; border-top:1px solid var(--border);
+         font-size:12px; color:var(--dim); text-align:center; line-height:2; }
+footer a { color:var(--navy); text-decoration:none; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="eyebrow">ELECTRIC KICKBOARD</div>
+  <h1>法改正の前に買った電動キックボード、<br>いま何をすればいいか</h1>
+  <p>2023年7月に区分が変わりました。買った時期によって、やることが根本から変わります。</p>
+</div>
+
+<div class="wrap">
+
+  <div class="alert">
+    <h2>猶予期間はもう終わっています</h2>
+    <p>施行日（2023年7月1日）より前に作られた機体は、<b>最高速度表示灯（緑のランプ）の取り付けが2024年12月23日まで猶予</b>されていました。その期限は過ぎています。いまは表示灯が無いと、ほかの条件を満たしていても「特定小型原動機付自転車」としては公道を走れません。</p>
+  </div>
+
+  <section>
+    <h3>まず、どの区分かを決める</h3>
+    <p class="lead">同じ「電動キックボード」でも、仕様によって免許が要るか要らないかが変わります。取扱説明書・カタログ・車体の型式認定番号標を手元に置いて答えてください。</p>
+    <div class="quiz" id="quiz"></div>
+    <div class="result" id="result">
+      <div class="lbl">判定</div>
+      <h4>5つすべてに答えてください</h4>
+      <p>ひとつでも「わからない」があると結論が出ません。メーカーのサイトか取扱説明書で確認できます。</p>
+    </div>
+  </section>
+
+  <section>
+    <h3>やること</h3>
+    <p class="lead" id="todoLead">判定が出ると、その区分に必要なものだけが並びます。</p>
+    <ul class="todo" id="todo"></ul>
+  </section>
+
+  <section>
+    <h3>区分でどう違うか</h3>
+    <table>
+      <thead><tr><th></th><th>特定小型原付</th><th>一般原付（原付一種）</th></tr></thead>
+      <tbody>
+        <tr><th>運転免許</th><td><b>不要</b>（16歳以上）</td><td><b>必要</b>（原付免許以上）</td></tr>
+        <tr><th>ヘルメット</th><td>努力義務</td><td><b>着用義務</b></td></tr>
+        <tr><th>最高速度</th><td>20km/h以下</td><td>30km/h以下</td></tr>
+        <tr><th>歩道</th><td>6km/hモード＋表示灯点滅なら一部可</td><td><b>走行不可</b></td></tr>
+        <tr><th>必要な装備</th><td>前照灯・尾灯・制動灯・警音器・反射器材・最高速度表示灯</td><td>上記＋<b>バックミラー・方向指示器・速度計</b></td></tr>
+        <tr><th>ナンバー</th><td colspan="2">どちらも必要（市区町村で交付）</td></tr>
+        <tr><th>自賠責保険</th><td colspan="2">どちらも加入義務</td></tr>
+        <tr><th>軽自動車税</th><td colspan="2">年2,000円</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h3>杉並区での手続き</h3>
+    <div class="box navy">
+      <b>特定小型原付は、区民事務所では受け付けていません。</b>区役所の課税課・税務管理係だけです（平日 8:30〜17:00）。一般原付なら区民事務所でも手続きできます。<br><br>
+      <b>持っていくもの</b><br>
+      ・軽自動車税申告（報告）書兼標識交付申請書（窓口にあります）<br>
+      ・本人確認書類（運転免許証・マイナンバーカードなど）<br>
+      ・販売証明書または譲渡証明書<br>
+      ・<b>特定小型であることを確認できる書類</b>（カタログ、性能と寸法が載った取扱説明書、型式認定番号標、性能等確認済シールのいずれか）<br><br>
+      最後のひとつが、法改正前に買った機体でいちばん引っかかるところです。手元に無ければ、メーカーに問い合わせて取り寄せてください。
+    </div>
+  </section>
+
+  <section>
+    <h3>走るときのルール</h3>
+    <div class="box">
+      <b>車道が原則。</b>道路の左側を通行します。自転車レーンも走れます。<br>
+      <b>歩道は原則だめ。</b>特定小型のうち、6km/hモードに切り替えて最高速度表示灯を点滅させているものだけ、「普通自転車等及び歩行者等専用」の標識がある歩道を走れます。<br>
+      <b>二人乗りは禁止。</b>荷物を載せる台があっても人は乗せられません。<br>
+      <b>飲酒運転は禁止。</b>自転車と同じく、酒気帯びで罰則があります。<br>
+      <b>16歳未満は運転できません。</b>特定小型でも免許不要というだけで、年齢の下限はあります。<br>
+      <b>信号・一時停止・右折方法</b>も車両として守ります。二段階右折の対象になる交差点があります。
+    </div>
+  </section>
+
+  <section>
+    <h3>保険をどうするか</h3>
+    <table>
+      <tbody>
+        <tr><th>自賠責保険</th><td><b>義務。</b>入っていないと公道を走れません。コンビニ、バイク販売店、保険代理店で加入できます。原付と同じ区分で、期間が長いほど1年あたりは安くなります</td></tr>
+        <tr><th>任意保険</th><td>義務ではありませんが、<b>人身事故を起こしたときに自賠責だけでは足りません</b>。自動車保険に入っているなら<b>ファミリーバイク特約</b>が安く付けられることがあります（車がないなら使えません）</td></tr>
+        <tr><th>個人賠償責任保険</th><td>火災保険やクレジットカードに付いていることがあります。<b>すでに入っていないか先に確認</b>してください。重複して払う必要はありません</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h3>いちばん確実な調べ方</h3>
+    <div class="box">
+      <b>メーカーに型番を伝えて、「特定小型原動機付自転車の基準に適合するか」を聞くのが早いです。</b>
+      法改正のあと、多くのメーカーが自社製品の適合可否と、該当する場合の手続き方法をサイトに載せています。
+      <b>ファームウェアの更新や保安部品のキットで適合させられる機種</b>もあるので、買い替えを考える前に一度問い合わせてみてください。<br><br>
+      適合させられない場合でも、<b>一般原付として登録すれば公道を走れることがあります</b>。その場合はバックミラー・方向指示器・速度計が必要になり、運転免許とヘルメットが要ります。
+    </div>
+  </section>
+
+  <footer>
+    このページは2026年10月時点で調べた内容です。最終的な判断は警察・市区町村の窓口・メーカーに確認してください。<br>
+    <a href="https://www.keishicho.metro.tokyo.lg.jp/kotsu/jikoboshi/electric_mobility/electric_kickboard.html">警視庁</a>
+    <a href="https://www.gov-online.go.jp/article/202306/entry-10296.html">政府広報オンライン</a>
+    <a href="https://www.city.suginami.tokyo.jp/s028/2088.html">杉並区</a><br><br>
+    <a href="../archive.html">← archive</a>
+  </footer>
+</div>
+
+<script>
+(function () {
+  "use strict";
+  var $ = function (id) { return document.getElementById(id); };
+
+  var QS = [
+    { id: "speed", t: "最高速度は 20km/h 以下ですか。走っている途中で上限を変えられない仕様ですか。",
+      hint: "25km/h や 30km/h が出る機体、スイッチで上限を切り替えられる機体は「いいえ」です。" },
+    { id: "power", t: "モーターの定格出力は 0.6kW（600W）以下ですか。",
+      hint: "本体のラベルか取扱説明書の仕様欄に書いてあります。" },
+    { id: "size",  t: "長さ 1.9m 以下・幅 0.6m 以下ですか。",
+      hint: "一般的なキックボードならまず収まります。" },
+    { id: "lamp",  t: "緑色の最高速度表示灯が付いていますか。",
+      hint: "法改正に合わせて追加された部品です。2023年7月より前の機体にはまず付いていません。" },
+    { id: "at",    t: "変速の操作がいらない（AT）ですか。",
+      hint: "クラッチやギアの操作が要らなければ「はい」です。" }
+  ];
+
+  var COMMON = [
+    { t: "ナンバー（標識）の交付を受ける", c: "無料",
+      d: "杉並区役所 課税課・税務管理係。特定小型は区民事務所では受け付けていません。販売証明書と、基準に適合することを示す書類が要ります。" },
+    { t: "自賠責保険に入る", c: "必須",
+      d: "入っていないと公道を走れません。コンビニやバイク販売店で加入できます。期間を長くするほど1年あたりは安くなります。" },
+    { t: "軽自動車税を払う", c: "年2,000円",
+      d: "ナンバーを取ると翌年度から課税されます。4月1日時点の所有者に課されます。" },
+    { t: "任意保険を確認する", c: "任意",
+      d: "火災保険やクレジットカードの個人賠償責任保険が使えることがあります。先に手元の契約を確認して、重複しないように。" }
+  ];
+
+  var BY_KIND = {
+    tokutei: [
+      { t: "最高速度表示灯を確認・取り付ける", c: "必須",
+        d: "猶予は2024年12月23日で終わりました。付いていなければ、メーカーに適合キットがあるか問い合わせてください。" },
+      { t: "ヘルメットを用意する", c: "努力義務",
+        d: "義務ではありませんが、頭部の損傷が致命傷になりやすい乗り物です。" }
+    ],
+    general: [
+      { t: "運転免許を確認する", c: "必須",
+        d: "原付免許以上が要ります。持っていなければ、この機体では公道を走れません。" },
+      { t: "ヘルメットを用意する", c: "義務",
+        d: "一般原付は着用義務です。努力義務ではありません。" },
+      { t: "バックミラー・方向指示器・速度計を付ける", c: "必須",
+        d: "一般原付の保安基準です。後付けできるか、メーカーか用品店に確認してください。" }
+    ],
+    unknown: [
+      { t: "メーカーに型番を伝えて適合可否を聞く", c: "まずこれ",
+        d: "「特定小型原動機付自転車の基準に適合しますか」と聞けば答えが出ます。適合させるキットやファームウェア更新がある機種もあります。" },
+      { t: "取扱説明書とカタログを探す", c: "",
+        d: "最高速度・定格出力・寸法が載っていれば、この判定を最後まで進められます。手続きのときにも要ります。" }
+    ]
+  };
+
+  var ans = {};
+
+  function verdict() {
+    var vals = QS.map(function (q) { return ans[q.id]; });
+    if (vals.some(function (v) { return v === undefined; })) return null;
+    if (vals.some(function (v) { return v === "dk"; })) return "unknown";
+    var core = ["speed", "power", "size", "at"].every(function (k) { return ans[k] === "yes"; });
+    if (!core) return "general";
+    return ans.lamp === "yes" ? "tokutei" : "lamp";
+  }
+
+  function renderResult() {
+    var v = verdict(), el = $("result"), lead = $("todoLead"), list = [];
+    el.className = "result";
+    if (v === null) {
+      el.innerHTML = '<div class="lbl">判定</div><h4>5つすべてに答えてください</h4>' +
+        "<p>ひとつでも空いていると結論が出ません。</p>";
+      lead.textContent = "判定が出ると、その区分に必要なものだけが並びます。";
+      renderTodo([]); return;
+    }
+    if (v === "tokutei") {
+      el.classList.add("ok");
+      el.innerHTML = '<div class="lbl">判定</div><h4>特定小型原動機付自転車</h4>' +
+        "<p><b>運転免許は要りません</b>（16歳以上）。ヘルメットは努力義務です。" +
+        "ナンバー・自賠責・軽自動車税は必要なので、まだなら手続きしてください。</p>";
+      list = BY_KIND.tokutei;
+      lead.textContent = "特定小型として走るために必要なものです。";
+    } else if (v === "lamp") {
+      el.classList.add("gen");
+      el.innerHTML = '<div class="lbl">判定</div><h4>あと一歩。最高速度表示灯が足りません</h4>' +
+        "<p>速度・出力・寸法・AT の条件は満たしています。<b>緑の最高速度表示灯だけが足りない</b>状態です。" +
+        "取り付けの猶予は2024年12月23日で終わっているので、<b>いまのままでは特定小型として走れません</b>。" +
+        "メーカーに適合キットがあるか問い合わせてください。</p>";
+      list = BY_KIND.tokutei;
+      lead.textContent = "表示灯が付けば特定小型になります。";
+    } else if (v === "general") {
+      el.classList.add("gen");
+      el.innerHTML = '<div class="lbl">判定</div><h4>一般原動機付自転車（原付一種）</h4>' +
+        "<p>特定小型の条件を満たしていないので、<b>原付と同じ扱い</b>になります。" +
+        "<b>運転免許とヘルメットが必要</b>で、バックミラー・方向指示器・速度計も要ります。" +
+        "歩道は走れません。保安部品が付けられない機体なら、公道では走れず私有地だけになります。</p>";
+      list = BY_KIND.general;
+      lead.textContent = "一般原付として公道を走るために必要なものです。";
+    } else {
+      el.classList.add("gen");
+      el.innerHTML = '<div class="lbl">判定</div><h4>仕様の確認が先です</h4>' +
+        "<p>「わからない」があるうちは区分が決まりません。<b>区分が決まらないと、免許が要るかどうかも決まりません。</b>" +
+        "メーカーに型番を伝えて聞くのがいちばん早いです。</p>";
+      list = BY_KIND.unknown;
+      lead.textContent = "まず仕様をはっきりさせます。";
+    }
+    renderTodo(list.concat(v === "unknown" ? [] : COMMON));
+  }
+
+  function renderTodo(items) {
+    var ul = $("todo"); ul.innerHTML = "";
+    items.forEach(function (it, i) {
+      var li = document.createElement("li");
+      var cb = document.createElement("input");
+      cb.type = "checkbox"; cb.id = "td" + i;
+      try { cb.checked = localStorage.getItem("kb-" + it.t) === "1"; } catch (_) {}
+      if (cb.checked) li.classList.add("done");
+      cb.addEventListener("change", function () {
+        li.classList.toggle("done", cb.checked);
+        try { localStorage.setItem("kb-" + it.t, cb.checked ? "1" : "0"); } catch (_) {}
+      });
+      var d = document.createElement("div");
+      var t = document.createElement("label"); t.className = "t"; t.htmlFor = cb.id; t.textContent = it.t;
+      var dd = document.createElement("div"); dd.className = "d"; dd.textContent = it.d;
+      d.appendChild(t); d.appendChild(dd);
+      li.appendChild(cb); li.appendChild(d);
+      if (it.c) { var c = document.createElement("div"); c.className = "cost"; c.textContent = it.c; li.appendChild(c); }
+      ul.appendChild(li);
+    });
+  }
+
+  var quiz = $("quiz");
+  QS.forEach(function (q, i) {
+    var el = document.createElement("div"); el.className = "q";
+    el.innerHTML = '<div class="n">Q' + (i + 1) + "</div>" +
+      '<div class="t">' + q.t + "</div>" +
+      '<div class="hint">' + q.hint + "</div>";
+    var opts = document.createElement("div"); opts.className = "opts";
+    [["はい", "yes", ""], ["いいえ", "no", "no"], ["わからない", "dk", "dk"]].forEach(function (o) {
+      var b = document.createElement("button");
+      b.type = "button"; b.className = o[2]; b.textContent = o[0];
+      b.setAttribute("aria-pressed", "false");
+      b.addEventListener("click", function () {
+        ans[q.id] = o[1];
+        Array.prototype.forEach.call(opts.children, function (x) { x.setAttribute("aria-pressed", "false"); });
+        b.setAttribute("aria-pressed", "true");
+        try { localStorage.setItem("kb-q-" + q.id, o[1]); } catch (_) {}
+        renderResult();
+      });
+      opts.appendChild(b);
+    });
+    el.appendChild(opts);
+    quiz.appendChild(el);
+    try {
+      var saved = localStorage.getItem("kb-q-" + q.id);
+      if (saved) {
+        ans[q.id] = saved;
+        var idx = ["yes", "no", "dk"].indexOf(saved);
+        if (idx >= 0) opts.children[idx].setAttribute("aria-pressed", "true");
+      }
+    } catch (_) {}
+  });
+
+  renderResult();
+})();
+</script>
+</body>
+</html>
