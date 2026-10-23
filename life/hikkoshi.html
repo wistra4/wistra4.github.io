@@ -1636,7 +1636,6 @@ footer {
           <span>音響系コード類</span>
           <span>カメラ</span>
           <span>三脚</span>
-          <span>サイドテーブル</span>
         </div>
         <div class="room-status"><div class="room-progress"><div class="room-progress-bar"><div class="room-progress-fill high" style="width:90%"></div></div><span class="room-progress-pct">90%</span></div></div>
         <div class="room-note"></div>
@@ -1728,7 +1727,7 @@ footer {
         <rect x="190" y="8" width="64" height="8" fill="#fff" opacity="0.8"/><rect x="186" y="4" width="72" height="12" fill="#fff" opacity="0.7"/>
         <rect x="450" y="12" width="52" height="7" fill="#fff" opacity="0.8"/><rect x="446" y="8" width="60" height="11" fill="#fff" opacity="0.7"/>
         <text x="16" y="16" font-size="10" fill="#334" font-weight="bold" font-family="'Noto Sans JP',sans-serif">なみちゃんの手続きマップ</text>
-        <text id="proc-counter" x="16" y="30" font-size="8" fill="#556" font-family="'Noto Sans JP',sans-serif">完了 13 / 17 件　→ 残り 4件</text>
+        <text id="proc-counter" x="16" y="30" font-size="8" fill="#556" font-family="'Noto Sans JP',sans-serif">完了 16 / 17 件　→ 残り 1件</text>
         <!-- ROAD -->
         <rect y="88" width="640" height="22" fill="#707468"/>
         <rect y="88" width="640" height="3" fill="#504840"/>
@@ -1880,7 +1879,7 @@ footer {
           <tr data-task="5">
             <td>運転免許証の住所変更</td>
             <td><span class="sb-na">—</span></td>
-            <td><span class="status-badge sb-todo">要対応</span><span class="sb-date"></span></td>
+            <td><span class="status-badge sb-done">✓ 完了</span></td>
           </tr>
           <tr data-task="6">
             <td>マイナンバーカードの住所変更</td>
@@ -1925,7 +1924,7 @@ footer {
           <tr data-task="14">
             <td>旧居の退去・鍵返却</td>
             <td><span class="sb-na">—</span></td>
-            <td><span class="status-badge sb-sched">📅 9/26</span></td>
+            <td><span class="status-badge sb-done">✓ 完了</span></td>
           </tr>
           <tr data-task="15">
             <td>旧居の合鍵をなみちゃんに返す</td>
@@ -2021,20 +2020,14 @@ footer {
         <rect x="190" y="27" width="80"  height="24" fill="#5a9050"/>
         <!-- Seg4: 9/14〜9/20 PAST done #649858 x=270 w=80 -->
         <rect x="270" y="27" width="80"  height="24" fill="#649858"/>
-        <!-- Seg5: 9/21〜9/27 NOW amber x=350 w=80 -->
-        <rect x="350" y="27" width="80"  height="24" fill="#e08030"/>
-        <!-- Seg5 top highlight -->
-        <rect x="350" y="27" width="80"  height="3"  fill="#f0a850"/>
-        <!-- Seg6: 9/28〜10/4 PARTY pink x=430 w=80 -->
-        <rect x="430" y="27" width="80"  height="24" fill="#e04880"/>
-        <!-- Seg6 confetti dots -->
-        <rect x="440" y="31" width="3" height="3" fill="#fff" opacity="0.6"/>
-        <rect x="452" y="35" width="2" height="2" fill="#fff0a0" opacity="0.8"/>
-        <rect x="466" y="30" width="2" height="3" fill="#fff" opacity="0.5"/>
-        <rect x="480" y="33" width="3" height="2" fill="#ffe080" opacity="0.7"/>
-        <rect x="494" y="29" width="2" height="2" fill="#fff" opacity="0.6"/>
-        <!-- Seg7: 10月〜 muted x=510 w=80 -->
-        <rect x="510" y="27" width="80"  height="24" fill="#9098b0"/>
+        <!-- Seg5: 9/21〜9/27 PAST done #6ea060 x=350 w=80 -->
+        <rect x="350" y="27" width="80"  height="24" fill="#6ea060"/>
+        <!-- Seg6: 9/28〜10/4 PAST done #78a868 x=430 w=80 -->
+        <rect x="430" y="27" width="80"  height="24" fill="#78a868"/>
+        <!-- Seg7: 10月〜 NOW amber x=510 w=80（打ち上げは家具が片づいてから） -->
+        <rect x="510" y="27" width="80"  height="24" fill="#e08030"/>
+        <!-- Seg7 top highlight -->
+        <rect x="510" y="27" width="80"  height="3"  fill="#f0a850"/>
 
         <!-- dividers between segments (semi-white 1px) -->
         <rect x="109"  y="27" width="1" height="24" fill="#ffffff" opacity="0.4"/>
@@ -2052,10 +2045,10 @@ footer {
         <rect x="588" y="27" width="2"   height="24" fill="#2a2a20"/>
 
         <!-- "NOW" text inside amber segment -->
-        <text x="390" y="43" text-anchor="middle" font-size="8" fill="#fff" font-weight="bold" font-family="sans-serif">NOW</text>
+        <text x="550" y="43" text-anchor="middle" font-size="8" fill="#fff" font-weight="bold" font-family="sans-serif">NOW</text>
 
-        <!-- ===== BIRD + DOG: NOW週（9/21〜9/27）を歩いている。translate量で日付位置を調整する ===== -->
-        <g transform="translate(110,0)">
+        <!-- ===== BIRD + DOG: NOW週（10月〜）を歩いている。translate量で日付位置を調整する ===== -->
+        <g transform="translate(270,0)">
         <!-- BIRD: なみちゃん、feet at y=27 -->
         <rect x="264" y="20" width="2"  height="7"  fill="#1a4488"/><!-- tail -->
         <rect x="266" y="20" width="12" height="7"  fill="#2266cc"/><!-- body -->
@@ -2102,27 +2095,27 @@ footer {
         <text x="150" y="63" text-anchor="middle" font-size="7" fill="#556" font-family="'Noto Sans JP',sans-serif">8/31</text>
         <text x="230" y="63" text-anchor="middle" font-size="7" fill="#556" font-family="'Noto Sans JP',sans-serif">9/7</text>
         <text x="310" y="63" text-anchor="middle" font-size="7" fill="#556" font-family="'Noto Sans JP',sans-serif">9/14</text>
-        <text x="390" y="63" text-anchor="middle" font-size="7" fill="#c05010" font-weight="bold" font-family="'Noto Sans JP',sans-serif">9/21</text>
-        <text x="470" y="63" text-anchor="middle" font-size="7" fill="#883050" font-family="'Noto Sans JP',sans-serif">9/28</text>
-        <text x="550" y="63" text-anchor="middle" font-size="7" fill="#556" font-family="'Noto Sans JP',sans-serif">10月〜</text>
+        <text x="390" y="63" text-anchor="middle" font-size="7" fill="#556" font-family="'Noto Sans JP',sans-serif">9/21</text>
+        <text x="470" y="63" text-anchor="middle" font-size="7" fill="#556" font-family="'Noto Sans JP',sans-serif">9/28</text>
+        <text x="550" y="63" text-anchor="middle" font-size="7" fill="#c05010" font-weight="bold" font-family="'Noto Sans JP',sans-serif">10月〜</text>
 
         <!-- event summary labels (y=78) -->
         <text x="80"  y="78" text-anchor="middle" font-size="7" fill="#445" font-family="'Noto Sans JP',sans-serif">スペース確保</text>
         <text x="150" y="78" text-anchor="middle" font-size="7" fill="#445" font-family="'Noto Sans JP',sans-serif">入居完了</text>
         <text x="230" y="78" text-anchor="middle" font-size="7" fill="#445" font-family="'Noto Sans JP',sans-serif">搬入・粗大ゴミ</text>
         <text x="310" y="78" text-anchor="middle" font-size="7" fill="#445" font-family="'Noto Sans JP',sans-serif">住所変更・収納</text>
-        <text x="390" y="78" text-anchor="middle" font-size="7" fill="#c05010" font-weight="bold" font-family="'Noto Sans JP',sans-serif">小物・家具</text>
-        <text x="470" y="78" text-anchor="middle" font-size="7" fill="#883050" font-family="'Noto Sans JP',sans-serif">引越し打ち上げ🎉</text>
-        <text x="550" y="78" text-anchor="middle" font-size="7" fill="#667" font-family="'Noto Sans JP',sans-serif">運用・調整</text>
+        <text x="390" y="78" text-anchor="middle" font-size="7" fill="#445" font-family="'Noto Sans JP',sans-serif">退去・家電</text>
+        <text x="470" y="78" text-anchor="middle" font-size="7" fill="#445" font-family="'Noto Sans JP',sans-serif">残りの処分</text>
+        <text x="550" y="78" text-anchor="middle" font-size="7" fill="#c05010" font-weight="bold" font-family="'Noto Sans JP',sans-serif">仕上げ・打ち上げ🎉</text>
 
         <!-- sub event notes (y=92) -->
         <text x="80"  y="92" text-anchor="middle" font-size="6" fill="#789" font-family="'Noto Sans JP',sans-serif">✓ 完了</text>
         <text x="150" y="92" text-anchor="middle" font-size="6" fill="#789" font-family="'Noto Sans JP',sans-serif">✓ 完了</text>
         <text x="230" y="92" text-anchor="middle" font-size="6" fill="#789" font-family="'Noto Sans JP',sans-serif">✓ 完了</text>
         <text x="310" y="92" text-anchor="middle" font-size="6" fill="#789" font-family="'Noto Sans JP',sans-serif">✓ 完了</text>
-        <text x="390" y="92" text-anchor="middle" font-size="6" fill="#c05010" font-family="'Noto Sans JP',sans-serif">★ 9/26 退去・粗大ゴミ</text>
-        <text x="470" y="92" text-anchor="middle" font-size="6" fill="#789" font-family="'Noto Sans JP',sans-serif">打ち上げ</text>
-        <text x="550" y="92" text-anchor="middle" font-size="6" fill="#789" font-family="'Noto Sans JP',sans-serif">10月以降</text>
+        <text x="390" y="92" text-anchor="middle" font-size="6" fill="#789" font-family="'Noto Sans JP',sans-serif">✓ 完了</text>
+        <text x="470" y="92" text-anchor="middle" font-size="6" fill="#789" font-family="'Noto Sans JP',sans-serif">✓ 完了</text>
+        <text x="550" y="92" text-anchor="middle" font-size="6" fill="#c05010" font-family="'Noto Sans JP',sans-serif">✓ 粗大ゴミ 完了</text>
       </svg>
     </div>
     <div class="timeline">
@@ -2187,8 +2180,8 @@ footer {
         </div>
       </div>
 
-      <div class="tl-item">
-        <div class="tl-left"><div class="tl-date">9/21<br>〜9/27</div></div>
+      <div class="tl-item past">
+        <div class="tl-left"><div class="tl-date past">9/21<br>〜9/27</div></div>
         <div class="tl-right">
           <div class="tl-content">
             <div class="tl-head">小物・収納家具の追加検討</div>
@@ -2200,23 +2193,22 @@ footer {
               <li><strong>鍵の返却</strong>　やり取りを続行中</li>
               <li>サイドテーブルは今回出せなかった → 次回の収集で申請する</li>
               <li class="log-done">9/26（土）✓　譲渡先が決定：電子レンジ → 凜 ／ ターンテーブル・DJ Mixer → 高円寺トワオン</li>
-              <li class="log-done">9/29（火）✓　ターンテーブル・DJ Mixer を高円寺トワオンへ譲渡</li>
               <li class="log-done">✓　調味料ラック・シンク下収納を購入</li>
             </ul>
           </div>
         </div>
       </div>
 
-      <div class="tl-item now">
-        <div class="tl-left"><div class="tl-date now">9/28<br>〜10/4</div></div>
+      <div class="tl-item past">
+        <div class="tl-left"><div class="tl-date past">9/28<br>〜10/4</div></div>
         <div class="tl-right">
           <div class="tl-content">
-            <div class="tl-head">今週 <span class="now-tag">NOW</span>　残りの処分と、暮らしのルール</div>
+            <div class="tl-head">残りの処分と、暮らしのルール</div>
             <ul class="plain-list">
               <li class="log-done">10/1（木）✓　粗大ゴミ3点を排出（ゴミ箱 / マンガボックス / 照明器具）</li>
               <li class="log-done">9/29（火）✓　ターンテーブル・DJ Mixer を高円寺トワオンへ譲渡</li>
-              <li>作品キャプション・珪藻土マットを不燃ゴミで出す（割る作業は済み）</li>
-              <li>鍵の返却を済ませる</li>
+              <li class="log-done">✓　作品キャプション・珪藻土マットを不燃ゴミで出した</li>
+              <li class="log-done">✓　旧居の鍵の返却 完了</li>
               <li>お金まわりのルールを確認する</li>
               <li>小物の収納・配置を整える</li>
             </ul>
@@ -2224,12 +2216,18 @@ footer {
         </div>
       </div>
 
-      <div class="tl-item yellow">
-        <div class="tl-left"><div class="tl-date future">10月〜</div></div>
+      <div class="tl-item now">
+        <div class="tl-left"><div class="tl-date now">10月〜</div></div>
         <div class="tl-right">
           <div class="tl-content">
-            <div class="tl-head">収納を仕上げて、引越し打ち上げ 🎉</div>
+            <div class="tl-head">いま <span class="now-tag">NOW</span>　収納を仕上げて、引越し打ち上げ 🎉</div>
             <ul class="plain-list">
+              <li class="log-done">✓　なみちゃんの運転免許証の住所変更 完了</li>
+              <li class="log-done">✓　本収納を不燃ゴミで出した</li>
+              <li class="log-done">✓　ギター用フックは捨てずに残すことにした（処分リストから外した）</li>
+              <li>なみちゃんのマイナンバーカードの住所変更</li>
+              <li class="log-done">10/13（火）✓　粗大ゴミを申請（10/23収集・サイドテーブル / 折りたたみ椅子 / 突っ張り棒・1,200円）</li>
+              <li class="log-done">10/23（金）✓　粗大ゴミ3点を排出（サイドテーブル / 折りたたみ椅子 / 突っ張り棒）。粗大ゴミはこれで全部終わり、処分リスト残り9点。</li>
               <li><strong>引越し打ち上げ</strong>　収納家具の設置が10月に続くので、片づいてから</li>
               <li>収納家具の購入・設置（玄関の棚・本棚の自作）</li>
               <li>住んでみて感じた使いにくさを二人でアップデートしていく</li>
@@ -2247,10 +2245,6 @@ footer {
     <div class="place-group">
       <div class="place-label">玄関</div>
       <div class="item-chips"><span class="item-chip">棚（充電ポート／書類・工具）</span><span class="item-chip">有孔ボード</span></div>
-      <p class="disposal-note">🛒 棚の候補 — <strong>JOURNAL STANDARD FURNITURE / BRITZ OPEN SHELF L</strong>（26,400円・税込）<br>
-      W36.2 × D35 × H89.4cm（収納内寸 33×33×33cm・タモ突板・組立て品）　<a href="https://flymee.jp/product/120641/" target="_blank" rel="noopener">FLYMEeの商品ページ</a>　納期5〜10日程度<br>
-      置き場所：玄関を入ってすぐ右手　／　使い方は4階層 — 天板の上＝充電スペース ／ 上のマス＝紙の書類・封筒 ／ 下のマス＝A4ファイル5〜6冊 ／ マスの下＝工具<br>
-      ⚠ 購入前に確認：①マスの下の高さは非公表（推定15〜17cm。工具箱が入るか要問い合わせ）②A4ファイルはパイプ式だと幅33cmに4〜5冊で埋まる ③奥行35cmが玄関の通路を狭めないか</p>
     </div>
     <div class="place-group">
       <div class="place-label">風呂・トイレ</div>
@@ -2259,30 +2253,11 @@ footer {
     <div class="place-group">
       <div class="place-label">キッチン</div>
       <div class="item-chips"><span class="item-chip" style="opacity:0.45;text-decoration:line-through;">調味料ラック<span class="d-tag d-bunbetsu">購入済み</span></span><span class="item-chip" style="opacity:0.45;text-decoration:line-through;">シンク下収納<span class="d-tag d-bunbetsu">購入済み</span></span></div>
-      
     </div>
     <div class="place-group">
       <div class="place-label">リビング（大）</div>
       <div class="item-chips"><span class="item-chip">料理家電の棚</span><span class="item-chip">本棚（自作）</span><span class="item-chip">化粧台</span></div>
-      <p class="disposal-note">🔨 本棚は自作する — <strong>W205 × D30 × H72cm（板厚2cm）</strong>　<strong>決定版の設計：<a href="本棚_設計.html" target="_blank" rel="noopener">本棚_設計.html</a></strong>（<a href="本棚_設計図.jpg" target="_blank" rel="noopener">元の手描き図</a>／<a href="本棚_検討.html" target="_blank" rel="noopener">検討の経緯</a>）<br>
-      左は33cm × 2段、右は19 / 19 / 26cmの3段。通し縦板は左から79の位置（左の領域 内寸77、右 内寸122）。<br>
-      <strong>仕切りは段ごとに16cmずつずらす（全10区画）</strong>。40cmの区画を全段に通し、その左右の幅が段ごとに入れ替わる。どの区間も65cm以下（たわみ初期0.34mm以下）。<br>
-      ・左上 32 ／ 左下 48 ／ 右上 95・137 ／ 右中 111・153 ／ 右下 127・169（左端からの距離）<br>
-      <strong>木取り（改訂・奥の支えは作らない）</strong><br>
-      ［横］205×30 … 2（天・底）　［縦］68×30 … 3（側板2・通し縦板1）<br>
-      ［棚板］122×30 … 2 ／ 77×30 … 1　［短い縦板］19×29.5 … 4 ／ 26×29.5 … 2 ／ 33×29.5 … 2<br>
-      ［背板］4mmシナベニヤ 205×72 … 1　　材料：2cm合板 4×8 … 1枚 ＋ 3×6 … 1枚、4mm合板 4×8 … 1枚<br>
-      <strong>仕上げ・組み方</strong>：木口テープ（幅24mm・前面のみ・<strong>約11.4m</strong>）／ダボ8mm×30mm・穴16mm・3本×12箇所＝36本（予備込み50本）＋木工用ボンド／背板はボンド＋細釘15cm間隔<br>
-      ⚠ 作る前に決める・確かめる：<br>
-      ① <strong>幅木は対応しない</strong>。窓の前に置くので窓枠のほうが前に出る＝どのみち壁から離れて立つ。<strong>切り欠きの加工が全部消えて、側板も背板もただの長方形になる</strong>（カットはすべて直線・ジグソー不要）<br>
-      ② <strong>背板は「箱を組む → 対角線2本を測って直角を出す → その場で張る」</strong>。奥の支えを省いたので、直角を保つ部材は背板だけ。ゆがんだまま張ると永久に残る<br>
-      ③ <strong>短い縦板8枚は接着しない</strong>（挟み込むだけで圧縮を伝える＝後から割り方を変えられる）。寸法は±1mm、奥行は29.5cm（背板に触れるが接着しない）<br>
-      ④ 接着は12箇所を<strong>2日に分ける</strong>。1日目に通し縦板＋棚板3枚、2日目に側板・天板・底板で囲う。ボンドの可使時間は10〜15分なので、必ず先にドライフィット<br>
-      ⑤ <strong>組むのは必ず置き場所で</strong>。本体約40kg、本を満載で約170kg。2階以上の木造なら壁際に置く<br>
-      ⑥ 合板は<strong>シナ</strong>、塗装は<strong>リボス クノス</strong>に決定。順番は<strong>木口テープ → 組み立て → 塗装</strong>（接着面にオイルが付くとボンドが効かない）。木口テープは<strong>シナの突板タイプ</strong>を選ぶ（樹脂・紙系はオイルが乗らず色が揃わない）。塗る面積は約7.6㎡<br>
-      ⑦ 床が平らなら底板は直置きでよい（荷重が205cmに分散する）。ガタが出たらアジャスターを6箇所以上<br>
-      ⑧ <strong>オイルが染みたウエスは必ず水に浸してから捨てる</strong>（酸化熱で自然発火する）<br>
-      ⑨ 右の領域（122）の割り方は<strong>4案を比較中・未決定</strong>。コンセントは確認済みで問題なし</p>
+      <p class="disposal-note">🔨 本棚は自作する — 設計は <a href="bookshelf.html">本棚 設計プラン</a></p>
     </div>
     <div class="place-group">
       <div class="place-label">クローゼット（大）</div>
@@ -2292,7 +2267,7 @@ footer {
 
   <section class="section">
     <div class="section-title"><span class="icon icon-orange">🙏</span>ありがとうさようならリスト</div>
-    <p style="font-size:0.85rem;color:var(--text-sub);margin-bottom:0.6rem;">処分予定のもの。処分方法ごとに整理。取り消し線は処分済み。<br>左の薄い山が処分済み（粗大ゴミ17・譲渡・売却10・家電リサイクル2・不燃8・可燃3・プラ2・小型家電1＝43点）、右の山が残り14点。「× 2」表記も1点として数えている。</p>
+    <p style="font-size:0.85rem;color:var(--text-sub);margin-bottom:0.6rem;">処分予定のもの。処分方法ごとに整理。取り消し線は処分済み。<br>左の薄い山が処分済み（粗大ゴミ20・譲渡・売却10・家電リサイクル2・不燃11・可燃3・プラ2・小型家電1＝49点）、右の山が残り9点。「× 2」表記も1点として数えている。</p>
     <!-- 残り総量 山積みドット絵 -->
     <div style="margin-bottom:1.2rem;border-radius:8px;overflow:hidden;border:1px solid var(--border)">
       <svg viewBox="0 0 640 200" width="100%" xmlns="http://www.w3.org/2000/svg" style="display:block;image-rendering:pixelated" shape-rendering="crispEdges">
@@ -2301,9 +2276,9 @@ footer {
       <rect x="252" y="14" width="56" height="7" fill="#fff" opacity="0.7"/><rect x="248" y="10" width="64" height="11" fill="#fff" opacity="0.6"/>
       <rect x="556" y="18" width="44" height="6" fill="#fff" opacity="0.7"/><rect x="552" y="14" width="52" height="10" fill="#fff" opacity="0.6"/>
       <!-- SUMMARY + PROGRESS BAR -->
-      <text x="16" y="20" font-size="11" fill="#334" font-weight="bold" font-family="'Noto Sans JP',sans-serif">全 57点 → 完了 43点（75%）</text>
+      <text x="16" y="20" font-size="11" fill="#334" font-weight="bold" font-family="'Noto Sans JP',sans-serif">全 58点 → 完了 49点（84%）</text>
       <rect x="16" y="28" width="184" height="9" fill="#fff" opacity="0.8"/>
-      <rect x="16" y="28" width="139" height="9" fill="#40cc60"/>
+      <rect x="16" y="28" width="155" height="9" fill="#40cc60"/>
       <rect x="16" y="28" width="184" height="9" fill="none" stroke="#88a" stroke-width="1"/>
       <!-- FLOOR -->
       <rect y="170" width="640" height="5" fill="#d4b880"/>
@@ -2312,9 +2287,16 @@ footer {
       <!-- ZONE DIVIDER -->
       <rect x="270" y="56" width="2" height="114" fill="#9ab" opacity="0.45"/>
       <!-- == さようなら済み (left, faded) == -->
-      <text x="140" y="93" font-size="10" text-anchor="middle" fill="#2a7a20" font-weight="bold" font-family="'Noto Sans JP',sans-serif">さようなら済み 43点 ✓</text>
+      <text x="140" y="86" font-size="10" text-anchor="middle" fill="#2a7a20" font-weight="bold" font-family="'Noto Sans JP',sans-serif">さようなら済み 49点 ✓</text>
       <g opacity="0.42">
-      <!-- D ROW1: 5 boxes -->
+      <!-- D ROW0: 4 boxes -->
+      <!-- D47 Red(サイドテーブル) --><rect x="109" y="92" width="14" height="9" fill="#c84040"/><rect x="109" y="92" width="14" height="2" fill="#e86060"/><rect x="121" y="92" width="2" height="9" fill="#983030"/><rect x="115" y="92" width="2" height="9" fill="#ffaaaa"/><rect x="109" y="96.5" width="14" height="2" fill="#ffaaaa"/>
+      <!-- D48 Red(折りたたみ椅子) --><rect x="125" y="92" width="14" height="9" fill="#c84040"/><rect x="125" y="92" width="14" height="2" fill="#e86060"/><rect x="137" y="92" width="2" height="9" fill="#983030"/><rect x="131" y="92" width="2" height="9" fill="#ffaaaa"/><rect x="125" y="96.5" width="14" height="2" fill="#ffaaaa"/>
+      <!-- D46 Gray(本収納) --><rect x="141" y="92" width="14" height="9" fill="#7890a0"/><rect x="141" y="92" width="14" height="2" fill="#a0b8c8"/><rect x="153" y="92" width="2" height="9" fill="#506878"/><rect x="147" y="92" width="2" height="9" fill="#c8dce8"/><rect x="141" y="96.5" width="14" height="2" fill="#c8dce8"/>
+      <!-- D49 Red(突っ張り棒) --><rect x="157" y="92" width="14" height="9" fill="#c84040"/><rect x="157" y="92" width="14" height="2" fill="#e86060"/><rect x="169" y="92" width="2" height="9" fill="#983030"/><rect x="163" y="92" width="2" height="9" fill="#ffaaaa"/><rect x="157" y="96.5" width="14" height="2" fill="#ffaaaa"/>
+      <!-- D ROW1: 7 boxes -->
+      <!-- D44 Gray(作品キャプション) --><rect x="85" y="101" width="14" height="9" fill="#7890a0"/><rect x="85" y="101" width="14" height="2" fill="#a0b8c8"/><rect x="97" y="101" width="2" height="9" fill="#506878"/><rect x="91" y="101" width="2" height="9" fill="#c8dce8"/><rect x="85" y="105.5" width="14" height="2" fill="#c8dce8"/>
+      <!-- D45 Gray(珪藻土マット) --><rect x="181" y="101" width="14" height="9" fill="#7890a0"/><rect x="181" y="101" width="14" height="2" fill="#a0b8c8"/><rect x="193" y="101" width="2" height="9" fill="#506878"/><rect x="187" y="101" width="2" height="9" fill="#c8dce8"/><rect x="181" y="105.5" width="14" height="2" fill="#c8dce8"/>
       <!-- D1 Gray(カーテン赤) --><rect x="101" y="101" width="14" height="9" fill="#7890a0"/><rect x="101" y="101" width="14" height="2" fill="#a0b8c8"/><rect x="113" y="101" width="2" height="9" fill="#506878"/><rect x="107" y="101" width="2" height="9" fill="#c8dce8"/><rect x="101" y="105.5" width="14" height="2" fill="#c8dce8"/>
       <!-- D2 Gray(クッション×2) --><rect x="117" y="101" width="14" height="9" fill="#7890a0"/><rect x="117" y="101" width="14" height="2" fill="#a0b8c8"/><rect x="129" y="101" width="2" height="9" fill="#506878"/><rect x="123" y="101" width="2" height="9" fill="#c8dce8"/><rect x="117" y="105.5" width="14" height="2" fill="#c8dce8"/>
       <!-- D3 Gray(本立て) --><rect x="133" y="101" width="14" height="9" fill="#7890a0"/><rect x="133" y="101" width="14" height="2" fill="#a0b8c8"/><rect x="145" y="101" width="2" height="9" fill="#506878"/><rect x="139" y="101" width="2" height="9" fill="#c8dce8"/><rect x="133" y="105.5" width="14" height="2" fill="#c8dce8"/>
@@ -2364,13 +2346,7 @@ footer {
       <!-- D43 Red(ゴミ箱) --><rect x="237" y="150" width="22" height="20" fill="#c84040"/><rect x="237" y="150" width="22" height="2" fill="#e86060"/><rect x="257" y="150" width="2" height="20" fill="#983030"/><rect x="247" y="150" width="2" height="20" fill="#ffaaaa"/><rect x="237" y="160" width="22" height="2" fill="#ffaaaa"/>
       </g>
       <!-- == あと (right) == -->
-      <text x="440" y="60" font-size="11" text-anchor="middle" fill="#334" font-weight="bold" font-family="'Noto Sans JP',sans-serif">あと 14点</text>
-      <!-- B ROW1: 1 boxes -->
-      <!-- B1 Gray(作品キャプション) --><rect x="441" y="64" width="18" height="12" fill="#7890a0"/><rect x="441" y="64" width="18" height="2" fill="#a0b8c8"/><rect x="457" y="64" width="2" height="12" fill="#506878"/><rect x="449" y="64" width="2" height="12" fill="#c8dce8"/><rect x="441" y="70" width="18" height="2" fill="#c8dce8"/>
-      <!-- B ROW2: 3 boxes -->
-      <!-- B2 Gray(ギターフック) --><rect x="415" y="76" width="22" height="16" fill="#7890a0"/><rect x="415" y="76" width="22" height="2" fill="#a0b8c8"/><rect x="435" y="76" width="2" height="16" fill="#506878"/><rect x="425" y="76" width="2" height="16" fill="#c8dce8"/><rect x="415" y="84" width="22" height="2" fill="#c8dce8"/>
-      <!-- B3 Gray(本収納) --><rect x="439" y="76" width="22" height="16" fill="#7890a0"/><rect x="439" y="76" width="22" height="2" fill="#a0b8c8"/><rect x="459" y="76" width="2" height="16" fill="#506878"/><rect x="449" y="76" width="2" height="16" fill="#c8dce8"/><rect x="439" y="84" width="22" height="2" fill="#c8dce8"/>
-      <!-- B4 Gray(珪藻土マット) --><rect x="463" y="76" width="22" height="16" fill="#7890a0"/><rect x="463" y="76" width="22" height="2" fill="#a0b8c8"/><rect x="483" y="76" width="2" height="16" fill="#506878"/><rect x="473" y="76" width="2" height="16" fill="#c8dce8"/><rect x="463" y="84" width="22" height="2" fill="#c8dce8"/>
+      <text x="440" y="60" font-size="11" text-anchor="middle" fill="#334" font-weight="bold" font-family="'Noto Sans JP',sans-serif">あと 9点</text>
       <!-- B ROW3: 1 boxes -->
       <!-- B5 Orange(ぬい) --><rect x="437" y="92" width="26" height="20" fill="#d08020"/><rect x="437" y="92" width="26" height="2" fill="#f0a030"/><rect x="461" y="92" width="2" height="20" fill="#a06010"/><rect x="449" y="92" width="2" height="20" fill="#ffd080"/><rect x="437" y="102" width="26" height="2" fill="#ffd080"/>
       <!-- B ROW4: 4 boxes -->
@@ -2378,17 +2354,13 @@ footer {
       <!-- B7 Orange(腰ベルト) --><rect x="419" y="112" width="30" height="24" fill="#d08020"/><rect x="419" y="112" width="30" height="2" fill="#f0a030"/><rect x="447" y="112" width="2" height="24" fill="#a06010"/><rect x="433" y="112" width="2" height="24" fill="#ffd080"/><rect x="419" y="124" width="30" height="2" fill="#ffd080"/>
       <!-- B8 Orange(マフラー) --><rect x="451" y="112" width="30" height="24" fill="#d08020"/><rect x="451" y="112" width="30" height="2" fill="#f0a030"/><rect x="479" y="112" width="2" height="24" fill="#a06010"/><rect x="465" y="112" width="2" height="24" fill="#ffd080"/><rect x="451" y="124" width="30" height="2" fill="#ffd080"/>
       <!-- B9 Orange(CD) --><rect x="483" y="112" width="30" height="24" fill="#d08020"/><rect x="483" y="112" width="30" height="2" fill="#f0a030"/><rect x="511" y="112" width="2" height="24" fill="#a06010"/><rect x="497" y="112" width="2" height="24" fill="#ffd080"/><rect x="483" y="124" width="30" height="2" fill="#ffd080"/>
-      <!-- B ROW5: 5 boxes -->
-      <!-- B10 Red(サイドT) --><rect x="366" y="136" width="32" height="34" fill="#c84040"/><rect x="366" y="136" width="32" height="2" fill="#e86060"/><rect x="396" y="136" width="2" height="34" fill="#983030"/><rect x="381" y="136" width="2" height="34" fill="#ffaaaa"/><rect x="366" y="153" width="32" height="2" fill="#ffaaaa"/>
-      <!-- B11 Orange(レコードラック) --><rect x="400" y="136" width="32" height="34" fill="#d08020"/><rect x="400" y="136" width="32" height="2" fill="#f0a030"/><rect x="430" y="136" width="2" height="34" fill="#a06010"/><rect x="415" y="136" width="2" height="34" fill="#ffd080"/><rect x="400" y="153" width="32" height="2" fill="#ffd080"/>
-      <!-- B12 Orange(電子レンジ) --><rect x="434" y="136" width="32" height="34" fill="#d08020"/><rect x="434" y="136" width="32" height="2" fill="#f0a030"/><rect x="464" y="136" width="2" height="34" fill="#a06010"/><rect x="449" y="136" width="2" height="34" fill="#ffd080"/><rect x="434" y="153" width="32" height="2" fill="#ffd080"/>
-      <!-- B13 Orange(着物) --><rect x="468" y="136" width="32" height="34" fill="#d08020"/><rect x="468" y="136" width="32" height="2" fill="#f0a030"/><rect x="498" y="136" width="2" height="34" fill="#a06010"/><rect x="483" y="136" width="2" height="34" fill="#ffd080"/><rect x="468" y="153" width="32" height="2" fill="#ffd080"/>
-      <!-- B14 Orange(AKB) --><rect x="502" y="136" width="32" height="34" fill="#d08020"/><rect x="502" y="136" width="32" height="2" fill="#f0a030"/><rect x="532" y="136" width="2" height="34" fill="#a06010"/><rect x="517" y="136" width="2" height="34" fill="#ffd080"/><rect x="502" y="153" width="32" height="2" fill="#ffd080"/>
+      <!-- B ROW5: 4 boxes -->
+      <!-- B11 Orange(レコードラック) --><rect x="383" y="136" width="32" height="34" fill="#d08020"/><rect x="383" y="136" width="32" height="2" fill="#f0a030"/><rect x="413" y="136" width="2" height="34" fill="#a06010"/><rect x="398" y="136" width="2" height="34" fill="#ffd080"/><rect x="383" y="153" width="32" height="2" fill="#ffd080"/>
+      <!-- B12 Orange(電子レンジ) --><rect x="417" y="136" width="32" height="34" fill="#d08020"/><rect x="417" y="136" width="32" height="2" fill="#f0a030"/><rect x="447" y="136" width="2" height="34" fill="#a06010"/><rect x="432" y="136" width="2" height="34" fill="#ffd080"/><rect x="417" y="153" width="32" height="2" fill="#ffd080"/>
+      <!-- B13 Orange(着物) --><rect x="451" y="136" width="32" height="34" fill="#d08020"/><rect x="451" y="136" width="32" height="2" fill="#f0a030"/><rect x="481" y="136" width="2" height="34" fill="#a06010"/><rect x="466" y="136" width="2" height="34" fill="#ffd080"/><rect x="451" y="153" width="32" height="2" fill="#ffd080"/>
+      <!-- B14 Orange(AKB) --><rect x="485" y="136" width="32" height="34" fill="#d08020"/><rect x="485" y="136" width="32" height="2" fill="#f0a030"/><rect x="515" y="136" width="2" height="34" fill="#a06010"/><rect x="500" y="136" width="2" height="34" fill="#ffd080"/><rect x="485" y="153" width="32" height="2" fill="#ffd080"/>
       <!-- LEGEND (右の山の内訳) -->
-      <rect x="16" y="183" width="8" height="8" fill="#c84040"/><text x="28" y="191" font-size="8" fill="#3a2c08" font-family="'Noto Sans JP',sans-serif">粗大ゴミ 1点</text>
-      
-      <rect x="97" y="183" width="8" height="8" fill="#d08020"/><text x="109" y="191" font-size="8" fill="#3a2c08" font-family="'Noto Sans JP',sans-serif">譲渡・売却 9点</text>
-      <rect x="194" y="183" width="8" height="8" fill="#7890a0"/><text x="206" y="191" font-size="8" fill="#3a2c08" font-family="'Noto Sans JP',sans-serif">不燃・その他 4点</text>
+      <rect x="16" y="183" width="8" height="8" fill="#d08020"/><text x="28" y="191" font-size="8" fill="#3a2c08" font-family="'Noto Sans JP',sans-serif">譲渡・売却 9点</text>
     </svg>
     </div>
     <div class="place-group">
@@ -2403,7 +2375,7 @@ footer {
         <span class="item-chip" style="opacity:0.45;text-decoration:line-through;">椅子（黒）<span class="d-tag d-sodai">粗大ゴミ</span></span>
         <span class="item-chip" style="opacity:0.45;text-decoration:line-through;">棚（小）<span class="d-tag d-sodai">粗大ゴミ</span></span>
         <span class="item-chip" style="opacity:0.45;text-decoration:line-through;">棚（大）<span class="d-tag d-sodai">9/25 排出</span></span>
-        <span class="item-chip">サイドテーブル<span class="d-tag d-sodai">粗大ゴミ</span></span>
+        <span class="item-chip" style="opacity:0.45;text-decoration:line-through;">サイドテーブル<span class="d-tag d-sodai">10/23 排出</span></span>
         <span class="item-chip" style="opacity:0.45;text-decoration:line-through;">スピーカー<span class="d-tag d-sodai">粗大ゴミ</span></span>
         <span class="item-chip" style="opacity:0.45;text-decoration:line-through;">給湯器<span class="d-tag d-sodai">粗大ゴミ</span></span>
         <span class="item-chip" style="opacity:0.45;text-decoration:line-through;">物干し竿<span class="d-tag d-sodai">粗大ゴミ</span></span>
@@ -2412,8 +2384,10 @@ footer {
         <span class="item-chip" style="opacity:0.45;text-decoration:line-through;">照明器具<span class="d-tag d-sodai">10/1 排出</span></span>
         <span class="item-chip" style="opacity:0.45;text-decoration:line-through;">ゴミ箱<span class="d-tag d-sodai">10/1 排出</span></span>
         <span class="item-chip" style="opacity:0.45;text-decoration:line-through;">マンガボックス<span class="d-tag d-sodai">10/1 排出</span></span>
+        <span class="item-chip" style="opacity:0.45;text-decoration:line-through;">折りたたみ椅子<span class="d-tag d-sodai">10/23 排出</span></span>
+        <span class="item-chip" style="opacity:0.45;text-decoration:line-through;">突っ張り棒<span class="d-tag d-sodai">10/23 排出</span></span>
       </div>
-      <p class="disposal-note">✅ 9/18（金）収集完了 — 10点を共有玄関前に排出済み（本棚・網ラック・キャリー・洗濯かご・机（白）・椅子（黒）・棚（小）・スピーカー・給湯器・物干し竿）　支払：電子決済 7,300円<br>✅ 9/25（金）排出完了 — 4点（風呂のイス / 棚（大） / キッチン収納 / 配線収納）<br>✅ 10/1（木）排出完了 — 3点（ゴミ箱 / マンガボックス / 照明器具）<br>残り1点：サイドテーブル　→ 次回の収集で申請する<br>※ 作品キャプションは割って不燃ゴミへ（粗大ゴミから外した）</p>
+      <p class="disposal-note">✅ 9/18（金）収集完了 — 10点を共有玄関前に排出済み（本棚・網ラック・キャリー・洗濯かご・机（白）・椅子（黒）・棚（小）・スピーカー・給湯器・物干し竿）　支払：電子決済 7,300円<br>✅ 9/25（金）排出完了 — 4点（風呂のイス / 棚（大） / キッチン収納 / 配線収納）<br>✅ 10/1（木）排出完了 — 3点（ゴミ箱 / マンガボックス / 照明器具）<br>✅ 10/23（金）排出完了 — 3点（サイドテーブル / 折りたたみ椅子 / 突っ張り棒）　1,200円<br>※ 作品キャプションは割って不燃ゴミへ（粗大ゴミから外した）→ 排出済み</p>
     </div>
     <div class="place-group">
       <div class="place-label">家電リサイクル</div>
@@ -2431,10 +2405,9 @@ footer {
         <span class="item-chip" style="opacity:0.45;text-decoration:line-through;">ディフューザー × 2<span class="d-tag d-fumen">不燃</span></span>
         <span class="item-chip" style="opacity:0.45;text-decoration:line-through;">水筒<span class="d-tag d-fumen">不燃</span></span>
         <span class="item-chip" style="opacity:0.45;text-decoration:line-through;">金属板<span class="d-tag d-fumen">不燃</span></span>
-        <span class="item-chip">ギター用フック<span class="d-tag d-fumen">不燃</span></span>
-        <span class="item-chip">本収納<span class="d-tag d-fumen">不燃</span></span>
-        <span class="item-chip">珪藻土マット<span class="d-tag d-fumen">割った・来週排出</span></span>
-        <span class="item-chip">作品キャプション<span class="d-tag d-fumen">割った・来週排出</span></span>
+        <span class="item-chip" style="opacity:0.45;text-decoration:line-through;">本収納<span class="d-tag d-fumen">不燃ゴミで排出済み</span></span>
+        <span class="item-chip" style="opacity:0.45;text-decoration:line-through;">珪藻土マット<span class="d-tag d-fumen">不燃ゴミで排出済み</span></span>
+        <span class="item-chip" style="opacity:0.45;text-decoration:line-through;">作品キャプション<span class="d-tag d-fumen">不燃ゴミで排出済み</span></span>
         <span class="item-chip" style="opacity:0.45;text-decoration:line-through;">Wi-Fiルータ等<span class="d-tag d-fumen">不燃</span></span>
         <span class="item-chip" style="opacity:0.45;text-decoration:line-through;">食器<span class="d-tag d-fumen">不燃</span></span>
       </div>
