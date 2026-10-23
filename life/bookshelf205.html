@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>本棚 製作図</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap">
+<style>
+/* Layout: one 1080px column in the wistra.live life-page style; drawings sit in full-width sheets that scroll sideways on phones */
+:root {
+  --bg: #fffcf5;
+  --surface: #ffffff;
+  --surface-2: #fff8ee;
+  --border: #edd8c0;
+  --text: #2a2218;
+  --dim: #85766a;
+  --accent: #e8613e;
+  --accent-soft: #fff0eb;
+  --wood: #e6cba1;
+  --wood-edge: #a57a4c;
+  --strip: #cfa671;
+  --wall: #f2ece2;
+  --ply: #f4e4c8;
+  --below: #f8efe1;
+  --line: #6a5641;
+  --dimln: #7f97b8;
+  --dimtx: #4c6584;
+  --hatch: #b08656;
+  --ok: #2b9469;
+  --ok-soft: #e7f5ee;
+  --warn: #c98612;
+  --warn-soft: #fdf4e2;
+  --ng: #c94c33;
+  --ng-soft: #fcebe6;
+  --font-display: 'Zen Maru Gothic', 'Hiragino Maru Gothic ProN', 'Noto Sans JP', sans-serif;
+  --font-body: 'Noto Sans JP', 'Hiragino Sans', 'Yu Gothic', 'Meiryo', sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #1f1b16; --surface: #28231c; --surface-2: #2e2820; --border: #4a3f33;
+    --text: #f0e8dc; --dim: #a99b8b; --accent: #f27c5a; --accent-soft: #3b241b;
+    --wood: #8f7049; --wood-edge: #d2aa79; --strip: #6f5537; --wall: #2c261f;
+    --ply: #4b3d2b; --below: #352c22; --line: #dccab0; --dimln: #6f8db3; --dimtx: #a6bddb;
+    --hatch: #d0a673; --ok: #55c99b; --ok-soft: #1d3a2e; --warn: #f0b54e; --warn-soft: #3a2f17;
+    --ng: #f1856a; --ng-soft: #40231c;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #1f1b16; --surface: #28231c; --surface-2: #2e2820; --border: #4a3f33;
+  --text: #f0e8dc; --dim: #a99b8b; --accent: #f27c5a; --accent-soft: #3b241b;
+  --wood: #8f7049; --wood-edge: #d2aa79; --strip: #6f5537; --wall: #2c261f;
+  --ply: #4b3d2b; --below: #352c22; --line: #dccab0; --dimln: #6f8db3; --dimtx: #a6bddb;
+  --hatch: #d0a673; --ok: #55c99b; --ok-soft: #1d3a2e; --warn: #f0b54e; --warn-soft: #3a2f17;
+  --ng: #f1856a; --ng-soft: #40231c;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.85;
+}
+.page { max-width: 1080px; margin: 0 auto; padding-inline: 20px; padding-block: 0 96px; }
+@media (max-width: 480px) { .page { padding-inline: 16px; } }
+
+/* header */
+.hero { padding-block: 44px 26px; border-bottom: 1px solid var(--border); }
+.eyebrow { margin: 0; font-size: .74rem; letter-spacing: .14em; color: var(--dim); }
+h1 {
+  font-family: var(--font-display); font-weight: 700; letter-spacing: .06em;
+  font-size: clamp(1.9rem, 4.4vw, 2.6rem); line-height: 1.3; margin: 6px 0 10px; text-wrap: balance;
+}
+.lead { margin: 0; max-width: 64ch; }
+.spec { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+.spec span {
+  background: var(--surface-2); border: 1px solid var(--border); border-radius: 999px;
+  padding: 2px 14px; font-size: .8rem; font-variant-numeric: tabular-nums;
+}
+.spec strong { color: var(--accent); font-weight: 500; }
+.back { display: inline-block; font-size: .8rem; color: var(--dim); text-decoration: none; margin-bottom: 14px; }
+.back:hover, .back:focus-visible { color: var(--accent); }
+.foot { margin-top: 28px; font-size: .8rem; }
+.toc { display: flex; flex-wrap: wrap; gap: 4px 16px; margin-top: 18px; font-size: .82rem; }
+.toc a { color: var(--dim); text-decoration: none; border-bottom: 1px dotted var(--border); }
+.toc a:hover, .toc a:focus-visible { color: var(--accent); border-color: var(--accent); }
+
+/* controls */
+.controls {
+  margin-top: 24px; padding: 18px 20px; background: var(--surface);
+  border: 1px solid var(--border); border-radius: 12px;
+  display: grid; gap: 14px;
+}
+.ctrl-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 14px 20px; }
+fieldset.seg { border: 0; margin: 0; padding: 0; min-width: 0; }
+fieldset.seg legend { font-size: .75rem; letter-spacing: .1em; color: var(--dim); padding: 0; margin-bottom: 6px; }
+.seg-row { position: relative; display: flex; background: var(--surface-2); border: 1px solid var(--border); border-radius: 10px; padding: 3px; gap: 3px; }
+.seg-row input { position: absolute; opacity: 0; pointer-events: none; }
+.seg-row label {
+  flex: 1 1 0; min-width: 0; text-align: center; cursor: pointer; border-radius: 8px;
+  padding: 6px 8px; font-size: .86rem; line-height: 1.35; color: var(--text);
+}
+.seg-row label small { display: block; font-size: .7rem; color: var(--dim); }
+.seg-row input:checked + label { background: var(--surface); box-shadow: 0 0 0 1.5px var(--accent) inset; color: var(--accent); font-weight: 500; }
+.seg-row input:focus-visible + label { outline: 2px solid var(--accent); outline-offset: 2px; }
+.presets { display: flex; flex-wrap: wrap; gap: 8px; }
+button {
+  font: inherit; font-size: .84rem; cursor: pointer; color: var(--text);
+  background: var(--surface-2); border: 1px solid var(--border); border-radius: 999px; padding: 5px 16px;
+}
+button:hover { border-color: var(--accent); color: var(--accent); }
+button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+button.primary { background: var(--accent); border-color: var(--accent); color: var(--surface); }
+button.primary:hover { color: var(--surface); filter: brightness(1.05); }
+.summary { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip {
+  font-size: .8rem; padding: 3px 12px; border-radius: 999px; background: var(--surface-2);
+  border: 1px solid var(--border); font-variant-numeric: tabular-nums;
+}
+.chip b { font-weight: 500; color: var(--accent); }
+.alert {
+  border: 1px solid var(--warn); background: var(--warn-soft); border-radius: 10px;
+  padding: 10px 14px; font-size: .86rem; display: flex; gap: 12px; align-items: center; flex-wrap: wrap;
+}
+.alert p { margin: 0; flex: 1 1 320px; min-width: 0; }
+
+/* sections */
+section.block { padding-block: 44px 4px; }
+h2 {
+  font-family: var(--font-display); font-weight: 700; font-size: 1.35rem; letter-spacing: .05em;
+  margin: 0 0 4px; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; text-wrap: balance;
+}
+h2 .cfg { font-family: var(--font-body); font-size: .72rem; font-weight: 400; letter-spacing: .04em; color: var(--dim); }
+.sub { color: var(--dim); font-size: .86rem; max-width: 72ch; margin: 0 0 16px; }
+h3 { font-family: var(--font-display); font-size: 1.05rem; letter-spacing: .04em; margin: 0; text-wrap: balance; }
+
+.sheet { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow-x: auto; }
+.sheet svg { display: block; width: 100%; height: auto; min-width: 760px; }
+.sheet.small svg { min-width: 520px; }
+svg text { font-family: var(--font-body); }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: .78rem; color: var(--dim); margin: 10px 2px 0; }
+.legend i { display: inline-block; width: 14px; height: 14px; border-radius: 3px; vertical-align: -2px; margin-right: 6px; border: 1px solid var(--wood-edge); }
+.two { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 18px; margin-top: 18px; align-items: start; }
+@media (max-width: 860px) { .two { grid-template-columns: minmax(0, 1fr); } }
+
+/* svg classes */
+.f-wood { fill: var(--wood); stroke: var(--wood-edge); stroke-width: 2; }
+.f-strip { fill: var(--strip); stroke: var(--wood-edge); stroke-width: 1.5; }
+.f-wall { fill: var(--wall); }
+.f-ply { fill: var(--ply); }
+.p-below { fill: var(--below); stroke: var(--wood-edge); stroke-width: 1.5; stroke-dasharray: 10 8; }
+.p-cut { fill: url(#hatch); stroke: var(--line); stroke-width: 2; }
+.s-beyond { fill: var(--wall); }
+.hatch-bg { fill: var(--wood); }
+.hatch-ln { stroke: var(--hatch); stroke-width: 2.4; }
+.waste-ln { stroke: var(--border); stroke-width: 3; }
+.dimln { stroke: var(--dimln); stroke-width: 1.6; fill: none; }
+.extln { stroke: var(--dimln); stroke-width: 1; fill: none; opacity: .75; }
+.guide { stroke: var(--line); stroke-width: 1.4; fill: none; stroke-dasharray: 10 8; opacity: .6; }
+.screw { stroke: var(--accent); stroke-width: 3; fill: none; stroke-dasharray: 9 6; }
+.dimtx { fill: var(--dimtx); font-size: 34px; font-variant-numeric: tabular-nums; paint-order: stroke; stroke: var(--surface); stroke-width: 9px; stroke-linejoin: round; }
+.dimtx.sm { font-size: 26px; stroke-width: 7px; }
+.cell { fill: var(--text); font-size: 29px; font-variant-numeric: tabular-nums; paint-order: stroke; stroke: var(--surface); stroke-width: 7px; stroke-linejoin: round; }
+.stripid { fill: var(--line); font-size: 23px; font-weight: 500; paint-order: stroke; stroke: var(--surface); stroke-width: 6px; stroke-linejoin: round; }
+.viewtitle { fill: var(--text); font-size: 36px; font-weight: 500; }
+.viewtitle.sm { font-size: 30px; }
+.balloon { cursor: pointer; }
+.balloon.hl circle { fill: var(--accent); }
+.balloon.hl text { fill: var(--surface); }
+.note-tx { fill: var(--dim); font-size: 27px; paint-order: stroke; stroke: var(--surface); stroke-width: 7px; stroke-linejoin: round; }
+.balloon circle { fill: var(--surface); stroke: var(--accent); stroke-width: 2.5; }
+.balloon text { fill: var(--accent); font-size: 26px; font-weight: 700; }
+.c-stock { fill: var(--surface-2); stroke: var(--wood-edge); stroke-width: 3; }
+.c-piece { fill: var(--wood); stroke: var(--wood-edge); stroke-width: 3; }
+.c-waste { fill: url(#waste); }
+.c-lab { fill: var(--line); font-size: 44px; font-weight: 500; font-variant-numeric: tabular-nums; }
+svg [data-id] { transition: fill .15s, stroke .15s; }
+svg [data-id].hl { fill: var(--accent-soft); stroke: var(--accent); stroke-width: 5; }
+@media (prefers-reduced-motion: reduce) { svg [data-id] { transition: none; } }
+
+/* tables */
+.tablewrap { overflow-x: auto; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; }
+table { width: 100%; border-collapse: collapse; font-size: .86rem; }
+th { text-align: left; font-weight: 500; font-size: .74rem; letter-spacing: .06em; color: var(--dim); padding: 10px 12px; border-bottom: 1px solid var(--border); background: var(--surface-2); white-space: nowrap; }
+td { padding: 9px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+tr:last-child td { border-bottom: 0; }
+td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
+td.qty { text-align: right; font-weight: 500; }
+td .where, td .muted { font-size: .76rem; color: var(--dim); }
+td.paper { font-size: .78rem; color: var(--dim); white-space: nowrap; }
+td.note { font-size: .78rem; color: var(--dim); min-width: 12em; }
+tbody tr[data-id] { cursor: default; }
+tbody tr[data-id]:hover, tbody tr[data-id]:focus-visible, tbody tr[data-id].hl { background: var(--accent-soft); outline: none; }
+.tag { display: inline-block; min-width: 2.2em; text-align: center; font-weight: 700; color: var(--accent); border: 1.5px solid var(--accent); border-radius: 999px; font-size: .76rem; padding: 0 6px; }
+tfoot td { font-weight: 500; background: var(--surface-2); }
+.fit td.mk { text-align: center; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.mk-ok { color: var(--ok); background: var(--ok-soft); }
+.mk-tight { color: var(--warn); background: var(--warn-soft); }
+.mk-ng { color: var(--ng); background: var(--ng-soft); }
+
+/* cut layout */
+.boards { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 420px), 1fr)); gap: 14px; }
+figure.board { margin: 0; padding: 12px 14px; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; min-width: 0; }
+figure.board figcaption { display: flex; flex-wrap: wrap; gap: 4px 10px; align-items: baseline; font-size: .84rem; margin-bottom: 8px; font-variant-numeric: tabular-nums; }
+figure.board figcaption span { color: var(--dim); font-size: .76rem; }
+figure.board svg { display: block; width: 100%; height: auto; }
+.cutlist { margin: 8px 0 0; font-size: .76rem; color: var(--dim); font-variant-numeric: tabular-nums; }
+.extra { margin-top: 14px; display: grid; gap: 10px; }
+.callout { background: var(--surface-2); border: 1px solid var(--border); border-radius: 10px; padding: 12px 16px; font-size: .86rem; }
+.callout.warn { border-color: var(--warn); background: var(--warn-soft); }
+.callout p { margin: 0; }
+.callout p + p { margin-top: 6px; }
+
+/* shopping */
+.shop { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 18px; align-items: start; }
+@media (max-width: 860px) { .shop { grid-template-columns: minmax(0, 1fr); } }
+.tools { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 14px 18px; }
+.tools h3 { font-size: .95rem; margin-bottom: 6px; }
+.tools ul { margin: 0; padding-left: 1.2em; font-size: .86rem; }
+.tools li + li { margin-top: 3px; }
+
+/* steps */
+ol.steps { list-style: none; counter-reset: st; margin: 0; padding: 0; display: grid; gap: 12px; }
+ol.steps li { counter-increment: st; position: relative; padding: 14px 18px 14px 64px; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; }
+ol.steps li::before {
+  content: counter(st); position: absolute; left: 18px; top: 14px; width: 32px; height: 32px; border-radius: 50%;
+  background: var(--accent-soft); color: var(--accent); font-family: var(--font-display); font-weight: 700;
+  display: grid; place-items: center; font-size: .95rem;
+}
+ol.steps h3 { font-size: 1rem; margin-bottom: 2px; }
+ol.steps p { margin: 0; font-size: .88rem; max-width: 76ch; }
+
+/* ideas */
+.ideas { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 14px; }
+.idea { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px 18px; display: grid; gap: 8px; align-content: start; min-width: 0; }
+.idea.on { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent) inset; }
+.idea-head { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.pill { font-size: .7rem; padding: 1px 10px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); letter-spacing: .06em; }
+.pill.info { background: var(--surface-2); color: var(--dim); border: 1px solid var(--border); }
+.idea dl { margin: 0; display: grid; gap: 2px; font-size: .86rem; }
+.idea dt { font-size: .72rem; letter-spacing: .1em; color: var(--dim); margin-top: 6px; }
+.idea dd { margin: 0; }
+.idea .apply { justify-self: start; margin-top: 6px; }
+
+/* misc lists */
+.plain { margin: 0; padding-left: 1.2em; font-size: .9rem; max-width: 78ch; }
+.plain li + li { margin-top: 6px; }
+.check { font-variant-numeric: tabular-nums; font-size: .86rem; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 12px 16px; margin-top: 12px; }
+.check p { margin: 0; }
+.check p + p { margin-top: 4px; }
+.check b { color: var(--ok); font-weight: 500; }
+
+/* title block (表題欄) */
+.titleblock {
+  margin-top: 56px; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  border: 1.5px solid var(--line); border-radius: 4px; background: var(--surface); font-size: .8rem;
+}
+.titleblock div { padding: 8px 12px; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); min-width: 0; }
+.titleblock span { display: block; font-size: .68rem; letter-spacing: .12em; color: var(--dim); }
+.titleblock strong { font-weight: 500; }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <pattern id="hatch" patternUnits="userSpaceOnUse" width="14" height="14" patternTransform="rotate(45)">
+      <rect width="14" height="14" class="hatch-bg"/>
+      <line x1="0" y1="0" x2="0" y2="14" class="hatch-ln"/>
+    </pattern>
+    <pattern id="waste" patternUnits="userSpaceOnUse" width="26" height="26" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="26" class="waste-ln"/>
+    </pattern>
+  </defs>
+</svg>
+
+<div class="page">
+
+<header class="hero">
+  <a class="back" href="../archive.html">← archive</a>
+  <p class="eyebrow">LIFE ／ 本棚を自作する</p>
+  <h1>本棚 製作図</h1>
+  <p class="lead">手書きのスケッチ（幅205・高さ72・奥行30cm）を、板を買って組み立てられる寸法に起こした図面です。寸法はすべてミリ（mm）。下の切り替えで、組み方と板の厚みを変えると、図面・部材表・木取りがすべて計算し直されます。</p>
+  <div class="spec" id="spec"></div>
+  <nav class="toc" aria-label="ページ内の目次">
+    <a href="#zumen">図面</a><a href="#buzai">部材表</a><a href="#kairyo">改良案</a><a href="#kidori">木取り図</a><a href="#kaimono">買うもの</a><a href="#tejun">組み立て手順</a><a href="#hayami">何が入るか</a><a href="#yomitori">スケッチの読み取り</a>
+  </nav>
+</header>
+
+<section class="controls" aria-label="作り方の切り替え">
+  <div class="ctrl-grid">
+    <fieldset class="seg">
+      <legend>組み方</legend>
+      <div class="seg-row">
+        <input type="radio" name="split" id="split-0" value="0"><label for="split-0">一体型<small>紙のまま</small></label>
+        <input type="radio" name="split" id="split-1" value="1"><label for="split-1">2つの箱に分ける<small>改良案</small></label>
+      </div>
+    </fieldset>
+    <fieldset class="seg">
+      <legend>背中</legend>
+      <div class="seg-row">
+        <input type="radio" name="panel" id="panel-0" value="0"><label for="panel-0">細い板を立てる<small>紙のまま</small></label>
+        <input type="radio" name="panel" id="panel-1" value="1"><label for="panel-1">ベニヤを1枚張る<small>改良案</small></label>
+      </div>
+    </fieldset>
+    <fieldset class="seg">
+      <legend>板の厚み</legend>
+      <div class="seg-row">
+        <input type="radio" name="thick" id="thick-18" value="18"><label for="thick-18">18mm<small>店に多い</small></label>
+        <input type="radio" name="thick" id="thick-20" value="20"><label for="thick-20">20mm<small>紙の数字どおり</small></label>
+      </div>
+    </fieldset>
+  </div>
+  <div class="presets">
+    <button type="button" id="preset-paper">紙のままに戻す</button>
+    <button type="button" id="preset-best" class="primary">おすすめの組み合わせにする</button>
+  </div>
+  <div class="summary" id="summary"></div>
+  <div class="alert" id="alert" hidden>
+    <p>一体型は天板・底板に<strong>長さ2050mmの板が2枚</strong>要ります。ホームセンターの定番（幅30cmの集成材）は長さ1820mmまでなので、材木店で取り寄せるか、2つの箱に分けてください。</p>
+    <button type="button" id="alert-split">2つの箱に分けて見る</button>
+  </div>
+</section>
+
+<section class="block" id="zumen">
+  <h2>図面 <span class="cfg" data-cfg></span></h2>
+  <p class="sub">上が正面図、下が床から150mmの高さで切って上から見た図です。区画の中の数字は内側の寸法（幅 × 高さ）。丸の記号は部材表と対応していて、表の行に触れると図の中で光ります。</p>
+  <div class="sheet" id="sheet-front"></div>
+  <div class="legend">
+    <span><i style="background:var(--wood)"></i>板（前から見える木口）</span>
+    <span id="lg-strip"><i style="background:var(--strip)"></i>細い背板（奥に立つ）</span>
+    <span id="lg-wall"><i style="background:var(--wall);border-color:var(--border)"></i>背中が開いている所（壁が見える）</span>
+    <span id="lg-ply"><i style="background:var(--ply)"></i>ベニヤの背板</span>
+    <span><i style="background:var(--wood);background-image:repeating-linear-gradient(45deg,var(--hatch) 0 2px,transparent 2px 6px)"></i>切った面（断面）</span>
+  </div>
+  <div class="two">
+    <div class="sheet small" id="sheet-side"></div>
+    <div>
+      <h3>位置の早見表</h3>
+      <p class="sub" style="margin-top:4px">印を付けるときに使う寸法です（mm）。</p>
+      <div class="tablewrap"><table><thead><tr><th>何を</th><th>どこから測る</th><th>寸法</th></tr></thead><tbody id="marks"></tbody></table></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="buzai">
+  <h2>部材表 <span class="cfg" data-cfg></span></h2>
+  <p class="sub">長さは木目の方向です。「紙の表記」はスケッチの部材表（cm）。板の厚みを20mm・一体型・細い板にすると、紙と同じ数字になります。</p>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>記号</th><th>部材</th><th>長さ × 幅 × 厚み</th><th style="text-align:right">数</th><th>紙の表記</th><th>メモ</th></tr></thead>
+      <tbody id="parts"></tbody>
+      <tfoot><tr><td colspan="3">合計</td><td class="num qty" id="parts-total"></td><td colspan="2" id="parts-weight" class="muted"></td></tr></tfoot>
+    </table>
+  </div>
+</section>
+
+<section class="block" id="kairyo">
+  <h2>改良案</h2>
+  <p class="sub">スケッチのままでも作れます。そのうえで、直した方がよいと考えた点です。上の2つは図面に反映して比べられます。</p>
+  <div class="ideas">
+    <article class="idea" id="idea-split">
+      <div class="idea-head"><h3>2つの箱に分ける</h3><span class="pill">おすすめ</span></div>
+      <dl>
+        <dt>困ること</dt>
+        <dd>天板・底板の2050mmの板は、ホームセンターの定番では買えません（幅30cmの集成材は長さ1820mmまで）。取り寄せても、2mを超える板や本体は車にも階段にも載せにくいです。</dd>
+        <dt>改良</dt>
+        <dd>幅800mmの箱と1250mmの箱を別々に作り、並べてビスでつなぎます。スケッチの「80」「125」の区切りそのままです。部材がすべて1820mmの板から取れ、重さも約<span data-k="wL"></span>kgと約<span data-k="wR"></span>kgに分かれるので、次の引越しでも運べます。</dd>
+        <dt>変わること</dt>
+        <dd>真ん中の縦板が2枚重ね（<span data-k="t2"></span>mm）になり、天板に継ぎ目が1本入ります。縦板が1枚増え、定番の板は2〜3枚増えますが、取り寄せの長い板2枚は要らなくなります。</dd>
+      </dl>
+      <button type="button" class="apply" data-act="split"></button>
+    </article>
+    <article class="idea" id="idea-panel">
+      <div class="idea-head"><h3>背中にベニヤを1枚張る</h3><span class="pill">おすすめ</span></div>
+      <dl>
+        <dt>困ること</dt>
+        <dd>細い背板は15枚あり、切る回数とビスが多くなります。高さ<span data-k="hRt"></span>mmの段の奥は狭く、ドライバーが入りにくいです。細い板だけでは、横から押されてひし形にゆがむ力を止める働きも弱めです。</dd>
+        <dt>改良</dt>
+        <dd>厚さ4mmのベニヤを背中全体にビス（釘）で留めます。ゆがみにずっと強くなり、細い板15枚と、その縦挽きやビス約80本が要らなくなります。本が奥に落ちることもありません。</dd>
+        <dt>変わること</dt>
+        <dd>背中が閉じます（壁際に置くなら見えません）。奥行が4mm増え、仕切りは奥行300mmになります。細い背板は他の部材の余りから取れているので、材料費はほぼ同じか、ベニヤ2枚ぶん少し上がります（ラワン合板なら差は小さくなります）。</dd>
+      </dl>
+      <button type="button" class="apply" data-act="panel"></button>
+    </article>
+    <article class="idea">
+      <div class="idea-head"><h3>区画の高さを、入れる本に合わせる</h3><span class="pill info">確認</span></div>
+      <dl>
+        <dt>困ること</dt>
+        <dd>高さ<span data-k="hRt"></span>mmの段に、よくある単行本（四六判 188mm）を入れると、すき間は<span data-k="gap46"></span>mmしかありません。高さ260mmの段に B5判（257mm）も、すき間<span data-k="gapB5"></span>mmです。</dd>
+        <dt>改良</dt>
+        <dd>持っている本でいちばん背の高いものを測り、右側3段の高さの配分を変えます（3段の合計は変わらないので、どこかを増やしたら別の段を減らします）。目安は「本の高さ＋15〜20mm」。下の早見表で確かめられます。</dd>
+      </dl>
+    </article>
+    <article class="idea">
+      <div class="idea-head"><h3>地震と床への対策</h3><span class="pill info">安全</span></div>
+      <dl>
+        <dt>困ること</dt>
+        <dd>高さ72cmの低い棚でも、棚板は合わせて5m以上あり、本が詰まると全体で100kg前後になります。揺れで前に滑ったり、本が飛び出したりします。</dd>
+        <dt>改良</dt>
+        <dd>底の四隅に耐震マット（ジェル）を貼ります。重い本は下の段へ。壁の下に巾木（床と壁の境の出っ張り）がある場合は、背中の上の方に巾木と同じ厚みの板を貼ると、棚がまっすぐ壁にもたれて安定します。</dd>
+      </dl>
+    </article>
+    <article class="idea">
+      <div class="idea-head"><h3>天板に重いものを置くなら</h3><span class="pill info">用途しだい</span></div>
+      <dl>
+        <dt>困ること</dt>
+        <dd>右上の区画には仕切りがないので、天板は右側で<span data-k="Rw"></span>mmのあいだ支えがありません。テレビやスピーカーなど重いものを置くと、年月がたつとたわむことがあります。</dd>
+        <dt>改良</dt>
+        <dd>右上の区画にも仕切りを1枚（高さ<span data-k="hRt2"></span>mm）足すか、天板だけ厚さ25mmの板にします。</dd>
+      </dl>
+    </article>
+    <article class="idea">
+      <div class="idea-head"><h3>仕切りを上下でそろえる</h3><span class="pill info">好みで</span></div>
+      <dl>
+        <dt>今の形</dt>
+        <dd>スケッチでは、右中段と右下段の仕切りが左右逆の位置（互い違い）です。見た目にリズムが出ます。上の段の重さは棚板の途中で受けますが、今の寸法なら問題のない範囲です。</dd>
+        <dt>もっと丈夫にするなら</dt>
+        <dd>右中段の仕切りGを、右下段の仕切りFの真上にそろえます。重さがまっすぐ床まで伝わります。</dd>
+      </dl>
+    </article>
+  </div>
+</section>
+
+<section class="block" id="kidori">
+  <h2>木取り図 <span class="cfg" data-cfg></span></h2>
+  <p class="sub">買う板から、どの部材をどう切り出すかの図です。切り代（のこぎりの刃の厚み）を1か所3mmで見ています。細く書いた段は、板を縦方向にも切る（縦挽き）部材です。</p>
+  <div class="boards" id="boards"></div>
+  <div class="extra" id="boards-extra"></div>
+</section>
+
+<section class="block" id="kaimono">
+  <h2>買うもの・道具 <span class="cfg" data-cfg></span></h2>
+  <p class="sub">金額は目安です。パイン集成材は通販の掲載価格（1820mmで1枚4,600〜4,700円前後）、ベニヤはシナ合板4mm（約2,800円、ラワンなら約1,300円）で計算しました。店で差があります。</p>
+  <div class="shop">
+    <div class="tablewrap"><table><thead><tr><th>もの</th><th>数</th><th style="text-align:right">目安</th></tr></thead><tbody id="shop"></tbody><tfoot><tr><td>板代の合計（目安）</td><td></td><td class="num" style="text-align:right" id="shop-total"></td></tr></tfoot></table></div>
+    <div class="tools">
+      <h3>道具</h3>
+      <ul>
+        <li>電動ドライバー（インパクトドライバーかドリルドライバー）</li>
+        <li>下穴用のドリル 直径3mm（皿取り錐があると、ビスの頭が沈んできれい）</li>
+        <li>メジャー、さしがね（直角の定規）、鉛筆、マスキングテープ</li>
+        <li>クランプ 2〜4本（板を押さえておく道具）</li>
+        <li>紙やすりと当て木（あれば電動サンダー）</li>
+        <li>濡れ布巾（はみ出たボンドを拭く）</li>
+        <li id="tool-2p">手伝ってくれる人（長い部材を組むとき）</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="tejun">
+  <h2>組み立て手順 <span class="cfg" data-cfg></span></h2>
+  <p class="sub">すべての接合部に木工用ボンドを薄く塗ってから、ビスで留めます。</p>
+  <ol class="steps" id="steps"></ol>
+</section>
+
+<section class="block" id="hayami">
+  <h2>何が入るか <span class="cfg" data-cfg></span></h2>
+  <p class="sub">区画の内側の高さと、よく入れるものの高さを比べた表です。数字はすき間（mm）。○は出し入れが楽、△は入るけれどきつめ、×は入りません。</p>
+  <div class="tablewrap"><table class="fit"><thead id="fit-head"></thead><tbody id="fit"></tbody></table></div>
+  <p class="sub" style="margin-top:10px" id="fit-depth"></p>
+</section>
+
+<section class="block" id="yomitori">
+  <h2>スケッチの読み取り</h2>
+  <p class="sub">紙の部材表をどう読んだかと、紙から変えたところです。読み違いがあれば教えてください。</p>
+  <ul class="plain" id="changes"></ul>
+  <div class="check">
+    <p>検算（紙の数字、cm）：横 2 + 77 + 2 + 122 + 2 = 205 <b>一致</b>／左の縦 2 + 33 + 2 + 33 + 2 = 72 <b>一致</b>／右の縦 2 + 19 + 2 + 19 + 2 + 26 + 2 = 72 <b>一致</b>／仕切りの奥行 28 + 背板 2 = 30 <b>一致</b></p>
+    <p>紙の「奥」の部材は、数がそれぞれ「区画の両端の数」と「仕切りの数」にぴったり合うので、各区画の奥に立てる細い背板（端＝区画の両端、中＝仕切りの後ろ）と読みました。</p>
+  </div>
+</section>
+
+<div class="titleblock" aria-label="表題欄">
+  <div><span>図名</span><strong>本棚 製作図</strong></div>
+  <div><span>外寸</span><strong>W2050 × H720 × D300</strong></div>
+  <div><span>単位</span><strong>mm</strong></div>
+  <div><span>尺度</span><strong>画面に合わせて伸縮</strong></div>
+  <div><span>原案</span><strong>手書きスケッチ</strong></div>
+  <div><span>作成</span><strong>2026-10-21</strong></div>
+</div>
+
+<p class="foot"><a class="back" href="../archive.html">← archive</a></p>
+
+</div>
+
+<script>
+(function () {
+  'use strict';
+  var W = 2050, H = 720, D = 300, KERF = 3, STOCK = 1820, HALF = 910, PLY = 4;
+  var PRICE = { b1820: 4700, b910: 2400, ply: 2800 };
+  var DENS = 4.5e-7; // kg/mm3（パイン集成材 約450kg/m3）
+  var state = { split: false, panel: false, t: 18 };
+
+  function $(s) { return document.querySelector(s); }
+  function $$(s) { return Array.prototype.slice.call(document.querySelectorAll(s)); }
+  function mm(n) { return String(Math.round(n * 10) / 10); }
+  function yen(n) { return '約' + n.toLocaleString('ja-JP') + '円'; }
+
+  try {
+    var saved = JSON.parse(localStorage.getItem('hondana205') || 'null');
+    if (saved && typeof saved === 'object') {
+      state.split = !!saved.split; state.panel = !!saved.panel; state.t = saved.t === 20 ? 20 : 18;
+    }
+  } catch (e) {}
+  function save() { try { localStorage.setItem('hondana205', JSON.stringify(state)); } catch (e) {} }
+
+  /* ---------- 形を計算する ---------- */
+  function build(st) {
+    var t = st.t, useStrips = !st.panel;
+    var pD = useStrips ? D - t : D;
+    var inner = H - 2 * t;
+    var hL = (inner - t) / 2;
+    var hRb = 260;
+    var hRt = (inner - 2 * t - hRb) / 2;
+    var verts, L0, L1, R0, R1;
+    if (st.split) {
+      verts = [[0, t], [800 - t, 800], [800, 800 + t], [W - t, W]];
+      L0 = t; L1 = 800 - t; R0 = 800 + t; R1 = W - t;
+    } else {
+      verts = [[0, t], [800 - t / 2, 800 + t / 2], [W - t, W]];
+      L0 = t; L1 = 800 - t / 2; R0 = 800 + t / 2; R1 = W - t;
+    }
+    var Lw = L1 - L0, Rw = R1 - R0;
+    var yC = t + hL, yD1 = t + hRb, yD2 = yD1 + t + hRt;
+
+    var boards = [];
+    verts.forEach(function (v) { boards.push({ id: 'B', x0: v[0], x1: v[1], y0: t, y1: H - t }); });
+    if (st.split) {
+      boards.push({ id: 'A1', x0: 0, x1: 800, y0: H - t, y1: H }, { id: 'A1', x0: 0, x1: 800, y0: 0, y1: t });
+      boards.push({ id: 'A2', x0: 800, x1: W, y0: H - t, y1: H }, { id: 'A2', x0: 800, x1: W, y0: 0, y1: t });
+    } else {
+      boards.push({ id: 'A', x0: 0, x1: W, y0: H - t, y1: H }, { id: 'A', x0: 0, x1: W, y0: 0, y1: t });
+    }
+    boards.push({ id: 'C', x0: L0, x1: L1, y0: yC, y1: yC + t });
+    boards.push({ id: 'D', x0: R0, x1: R1, y0: yD1, y1: yD1 + t });
+    boards.push({ id: 'D', x0: R0, x1: R1, y0: yD2, y1: yD2 + t });
+
+    var n = 300, m = 350, w = Rw - 2 * t - n - m;
+    var a = Math.floor((Lw - t) / 2), b = Lw - t - a;
+    var comps = [
+      { key: 'Lu', name: '左上', x0: L0, x1: L1, y0: yC + t, y1: H - t, big: true, subs: [Lw] },
+      { key: 'Ll', name: '左下', x0: L0, x1: L1, y0: t, y1: yC, big: true, subs: [a, b], pid: 'E' },
+      { key: 'Rt', name: '右上', x0: R0, x1: R1, y0: yD2 + t, y1: H - t, big: false, subs: [Rw] },
+      { key: 'Rm', name: '右中', x0: R0, x1: R1, y0: yD1 + t, y1: yD2, big: false, subs: [w, m, n], pid: 'G' },
+      { key: 'Rb', name: '右下', x0: R0, x1: R1, y0: t, y1: yD1, big: false, subs: [n, m, w], pid: 'F' }
+    ];
+    var parts = [], strips = [];
+    comps.forEach(function (c) {
+      c.h = c.y1 - c.y0; c.cells = []; c.parts = [];
+      var x = c.x0;
+      c.subs.forEach(function (sw, i) {
+        c.cells.push({ x0: x, x1: x + sw, w: sw });
+        x += sw;
+        if (i < c.subs.length - 1) {
+          var p = { id: c.pid, x0: x, x1: x + t, y0: c.y0, y1: c.y1, off: x - c.x0, comp: c.key };
+          c.parts.push(p); parts.push(p);
+          x += t;
+        }
+      });
+      if (useStrips) {
+        var eW = c.big ? 120 : 80, cW = c.big ? 160 : 100;
+        var ids = c.big ? ['S1', 'S2'] : (c.key === 'Rb' ? ['S3', 'S4'] : ['S5', 'S6']);
+        strips.push({ id: ids[1], x0: c.x0, x1: c.x0 + eW, y0: c.y0, y1: c.y1, comp: c.key, center: false });
+        strips.push({ id: ids[1], x0: c.x1 - eW, x1: c.x1, y0: c.y0, y1: c.y1, comp: c.key, center: false });
+        c.parts.forEach(function (p) {
+          var pc = (p.x0 + p.x1) / 2;
+          strips.push({ id: ids[0], x0: pc - cW / 2, x1: pc + cW / 2, y0: c.y0, y1: c.y1, comp: c.key, center: true });
+        });
+      }
+    });
+
+    var rows = [];
+    function R(id, name, where, L, Wd, T, qty, mat, paper, note) {
+      rows.push({ id: id, name: name, where: where, L: L, W: Wd, T: T, qty: qty, mat: mat, paper: paper, note: note || '' });
+    }
+    var rip = useStrips ? '幅300から' + pD + 'に縦挽き' : '';
+    if (st.split) {
+      R('A1', '天板・底板（左の箱）', 'いちばん上と下', 800, D, t, 2, 'board', '底天 205×30×2 ×2', '2050を800と1250に分けた');
+      R('A2', '天板・底板（右の箱）', 'いちばん上と下', 1250, D, t, 2, 'board', '〃', '');
+      R('B', '側板', '箱の左右（真ん中は2枚重ね）', H - 2 * t, D, t, 4, 'board', '縦 68×30×2 ×3', '真ん中が2枚になるので1枚増える');
+    } else {
+      R('A', '天板・底板', 'いちばん上と下', W, D, t, 2, 'long', '底天 205×30×2 ×2', '1820より長い。材木店などで手配');
+      R('B', '縦板', '左右の側板と真ん中', H - 2 * t, D, t, 3, 'board', '縦 68×30×2 ×3', '');
+    }
+    R('C', '棚板（左）', '左の中段', Lw, D, t, 1, 'board', '中 77×30×2 ×1', '');
+    R('D', '棚板（右）', '右の2段', Rw, D, t, 2, 'board', '中 122×30×2 ×2', '');
+    R('E', '仕切り', '左下', hL, pD, t, 1, 'board', '支え 33×28×2 ×1', rip);
+    R('F', '仕切り', '右下', hRb, pD, t, 2, 'board', '支え 26×28×2 ×2', rip);
+    R('G', '仕切り', '右中', hRt, pD, t, 2, 'board', '支え 19×28×2 ×2', rip);
+    if (useStrips) {
+      R('S1', '細い背板', '左下・仕切りEの後ろ', hL, 160, t, 1, 'board', '奥 大中 33×16×2 ×1', '');
+      R('S2', '細い背板', '左の2区画・両端', hL, 120, t, 4, 'board', '奥 大端 33×12×2 ×4', '');
+      R('S3', '細い背板', '右下・仕切りFの後ろ', hRb, 100, t, 2, 'board', '奥 小中 26×10×2 ×2', '');
+      R('S4', '細い背板', '右下・両端', hRb, 80, t, 2, 'board', '奥 小端 26×8×2 ×2', '');
+      R('S5', '細い背板', '右中・仕切りGの後ろ', hRt, 100, t, 2, 'board', '奥 小中 19×10×2 ×2', '');
+      R('S6', '細い背板', '右上と右中・両端', hRt, 80, t, 4, 'board', '奥 小端 19×8×2 ×4', '');
+    } else {
+      R('V1', '背板（ベニヤ）', st.split ? '左の箱の背中' : '背中の左側', 800, H, PLY, 1, 'ply', '—', '厚さ4mmの合板');
+      R('V2', '背板（ベニヤ）', st.split ? '右の箱の背中' : '背中の右側', 1250, H, PLY, 1, 'ply', '—', st.split ? '' : 'つなぎ目は真ん中の縦板の中心');
+    }
+
+    return {
+      st: st, t: t, pD: pD, hL: hL, hRb: hRb, hRt: hRt, Lw: Lw, Rw: Rw, L0: L0, L1: L1, R0: R0, R1: R1,
+      yC: yC, yD1: yD1, yD2: yD2, verts: verts, boards: boards, comps: comps, parts: parts, strips: strips,
+      rows: rows, n: n, m: m, w: w, a: a, b: b, useStrips: useStrips
+    };
+  }
+
+  /* ---------- 木取り（板への割り付け） ---------- */
+  function plan(M) {
+    var pieces = [], longs = [], plys = [], groups = {};
+    M.rows.forEach(function (r) {
+      for (var i = 0; i < r.qty; i++) {
+        if (r.mat === 'ply') plys.push(r);
+        else if (r.mat === 'long') longs.push(r);
+        else if (r.id.charAt(0) === 'S') { (groups[r.L] = groups[r.L] || []).push(r); }
+        else pieces.push({ len: r.L, rips: [{ id: r.id, w: r.W }] });
+      }
+    });
+    Object.keys(groups).forEach(function (h) {
+      var arr = groups[h].slice().sort(function (p, q) { return q.W - p.W; });
+      var secs = [];
+      arr.forEach(function (r) {
+        var s = null;
+        for (var i = 0; i < secs.length; i++) { if (secs[i].used + KERF + r.W <= D) { s = secs[i]; break; } }
+        if (!s) { s = { len: Number(h), rips: [], used: -KERF }; secs.push(s); }
+        s.rips.push({ id: r.id, w: r.W }); s.used += KERF + r.W;
+      });
+      secs.forEach(function (s) { pieces.push({ len: s.len, rips: s.rips }); });
+    });
+    pieces.sort(function (p, q) { return (q.len - p.len) || (q.rips[0].w - p.rips[0].w); });
+    var boards = [];
+    pieces.forEach(function (p) {
+      var bd = null;
+      for (var i = 0; i < boards.length; i++) { if (boards[i].used + p.len + KERF <= STOCK) { bd = boards[i]; break; } }
+      if (!bd) { bd = { len: STOCK, used: 0, pieces: [] }; boards.push(bd); }
+      bd.pieces.push(p); bd.used += p.len + KERF;
+    });
+    boards.forEach(function (b) { if (b.used <= HALF) b.len = HALF; });
+    boards.sort(function (p, q) { return q.len - p.len; });
+    return { boards: boards, longs: longs, plys: plys };
+  }
+
+  function weightOf(rows, filter) {
+    return rows.reduce(function (s, r) {
+      if (filter && !filter(r)) return s;
+      var dens = r.mat === 'ply' ? 5.5e-7 : DENS;
+      return s + r.L * r.W * r.T * r.qty * dens;
+    }, 0);
+  }
+  function boxWeights(st) {
+    var M2 = build({ split: true, panel: st.panel, t: st.t });
+    var left = { A1: 1, C: 1, E: 1, S1: 1, S2: 1, V1: 1 };
+    var wl = 0, wr = 0;
+    M2.rows.forEach(function (r) {
+      var kg = weightOf([r]);
+      if (r.id === 'B') { wl += kg / 2; wr += kg / 2; }
+      else if (left[r.id]) wl += kg; else wr += kg;
+    });
+    return [Math.round(wl), Math.round(wr)];
+  }
+
+  /* ---------- SVG の部品 ---------- */
+  function rect(x, y, w, h, cls, id) {
+    return '<rect x="' + x + '" y="' + y + '" width="' + w + '" height="' + h + '" class="' + cls + '"' + (id ? ' data-id="' + id + '"' : '') + '/>';
+  }
+  function text(x, y, s, cls, anchor, extra) {
+    return '<text x="' + x + '" y="' + y + '" class="' + cls + '" text-anchor="' + (anchor || 'middle') + '"' + (extra || '') + '>' + s + '</text>';
+  }
+  function line(x1, y1, x2, y2, cls) {
+    return '<line x1="' + x1 + '" y1="' + y1 + '" x2="' + x2 + '" y2="' + y2 + '" class="' + cls + '"/>';
+  }
+  function tick(x, y) { return line(x - 9, y + 9, x + 9, y - 9, 'dimln'); }
+  function balloon(x, y, id) {
+    return '<g class="balloon" data-for="' + id + '"><circle cx="' + x + '" cy="' + y + '" r="27"/>' + text(x, y + 9, id, '') + '</g>';
+  }
+  // 横方向の寸法列。xs は区切り位置（svg座標）、labels[i] は区間 i のラベル（空なら書かない）
+  function chainH(xs, y, labels, cls) {
+    var o = [line(xs[0], y, xs[xs.length - 1], y, 'dimln')];
+    xs.forEach(function (x) { o.push(tick(x, y)); });
+    labels.forEach(function (lb, i) { if (lb) o.push(text((xs[i] + xs[i + 1]) / 2, y - 12, lb, cls || 'dimtx')); });
+    return o.join('');
+  }
+  function chainV(ys, x, labels, side, cls) {
+    var o = [line(x, ys[0], x, ys[ys.length - 1], 'dimln')];
+    ys.forEach(function (y) { o.push(tick(x, y)); });
+    labels.forEach(function (lb, i) {
+      if (!lb) return;
+      var ym = (ys[i] + ys[i + 1]) / 2 + 11;
+      o.push(text(side === 'left' ? x - 16 : x + 16, ym, lb, cls || 'dimtx', side === 'left' ? 'end' : 'start'));
+    });
+    return o.join('');
+  }
+
+  /* ---------- 正面図＋平面断面 ---------- */
+  function drawFront(M) {
+    var t = M.t, st = M.st;
+    var ML = 330, MR = 300, MT = 300, GAP = 330, MB = 110, PB = st.panel ? PLY : 0;
+    var planTop = MT + H + GAP;
+    var VW = ML + W + MR, VH = planTop + D + PB + MB;
+    function X(x) { return ML + x; }
+    function Y(y) { return MT + H - y; }
+    function Z(z) { return planTop + (D - z); }
+    var o = [];
+
+    o.push(text(X(0), 62, '正面図', 'viewtitle', 'start'));
+    o.push(text(X(W), 62, st.split ? '左の箱 ＋ 右の箱' : '一体型', 'note-tx', 'end'));
+
+    // 区画の奥（壁 or ベニヤ）
+    M.comps.forEach(function (c) { o.push(rect(X(c.x0), Y(c.y1), c.x1 - c.x0, c.h, st.panel ? 'f-ply' : 'f-wall')); });
+    // 細い背板
+    M.strips.forEach(function (s) { o.push(rect(X(s.x0), Y(s.y1), s.x1 - s.x0, s.y1 - s.y0, 'f-strip', s.id)); });
+    // 仕切り・板
+    M.parts.forEach(function (p) { o.push(rect(X(p.x0), Y(p.y1), t, p.y1 - p.y0, 'f-wood', p.id)); });
+    M.boards.forEach(function (b) { o.push(rect(X(b.x0), Y(b.y1), b.x1 - b.x0, b.y1 - b.y0, 'f-wood', b.id)); });
+
+    // 区画の内寸
+    M.comps.forEach(function (c) {
+      c.cells.forEach(function (cell) {
+        o.push(text(X((cell.x0 + cell.x1) / 2), Y((c.y0 + c.y1) / 2) + 10, mm(cell.w) + ' × ' + mm(c.h), 'cell'));
+      });
+    });
+    // 細い背板の記号
+    M.strips.forEach(function (s) {
+      var wv = s.x1 - s.x0;
+      var cx = s.center ? s.x0 + (wv - t) / 4 : (s.x0 + s.x1) / 2;
+      o.push(text(X(cx), Y(s.y1) + 34, s.id, 'stripid'));
+    });
+
+    // 記号の丸
+    var bx = M.L0 + 220;
+    if (st.split) {
+      o.push(balloon(X(bx), Y(H - t / 2), 'A1'), balloon(X(bx), Y(t / 2), 'A1'));
+      o.push(balloon(X(M.R0 + 200), Y(H - t / 2), 'A2'), balloon(X(M.R0 + 200), Y(t / 2), 'A2'));
+      o.push(balloon(X(t / 2), Y(440), 'B'), balloon(X(800), Y(440), 'B'), balloon(X(W - t / 2), Y(440), 'B'));
+    } else {
+      o.push(balloon(X(bx), Y(H - t / 2), 'A'), balloon(X(bx), Y(t / 2), 'A'));
+      M.verts.forEach(function (v) { o.push(balloon(X((v[0] + v[1]) / 2), Y(440), 'B')); });
+    }
+    o.push(balloon(X(bx), Y(M.yC + t / 2), 'C'));
+    o.push(balloon(X(M.R0 + 200), Y(M.yD1 + t / 2), 'D'), balloon(X(M.R0 + 200), Y(M.yD2 + t / 2), 'D'));
+    M.parts.forEach(function (p) {
+      var c = M.comps.filter(function (k) { return k.key === p.comp; })[0];
+      o.push(balloon(X((p.x0 + p.x1) / 2), Y(c.y0 + c.h * 0.3), p.id));
+    });
+
+    // 寸法：上（全幅・箱の区切り）
+    o.push(line(X(0), Y(H) - 14, X(0), 106, 'extln'), line(X(W), Y(H) - 14, X(W), 106, 'extln'), line(X(800), Y(H) - 14, X(800), 196, 'extln'));
+    o.push(chainH([X(0), X(W)], 122, [String(W)]));
+    o.push(chainH([X(0), X(800), X(W)], 212, ['800', '1250']));
+    if (!st.split) o.push(text(X(800), 250, '（真ん中の縦板の中心まで）', 'note-tx'));
+
+    // 寸法：左（左側の高さ）と全高
+    var ysL = [0, t, M.yC, M.yC + t, H - t, H].map(Y);
+    ysL.forEach(function (y) { o.push(line(X(0) - 12, y, ML - 128, y, 'extln')); });
+    o.push(chainV(ysL, ML - 110, ['', mm(M.hL), '', mm(M.hL), ''], 'left'));
+    o.push(chainV([Y(0), Y(H)], ML - 250, [String(H)], 'left'));
+    // 寸法：右（右側の高さ）
+    var ysR = [0, t, M.yD1, M.yD1 + t, M.yD2, M.yD2 + t, H - t, H].map(Y);
+    ysR.forEach(function (y) { o.push(line(X(W) + 12, y, X(W) + 128, y, 'extln')); });
+    o.push(chainV(ysR, X(W) + 110, ['', mm(M.hRb), '', mm(M.hRt), '', mm(M.hRt), ''], 'right'));
+
+    // 寸法：下段の内寸（左下・右下）
+    var Ll = M.comps[1], Rb = M.comps[4];
+    var xs = [0], labels = [];
+    function push(x, lb) { xs.push(x); labels.push(lb); }
+    push(t, '');
+    Ll.cells.forEach(function (cell, i) { push(cell.x1, mm(cell.w)); if (i < Ll.parts.length) push(Ll.parts[i].x1, ''); });
+    if (st.split) { push(800, ''); push(M.R0, ''); } else { push(M.R0, ''); }
+    Rb.cells.forEach(function (cell, i) { push(cell.x1, mm(cell.w)); if (i < Rb.parts.length) push(Rb.parts[i].x1, ''); });
+    push(W, '');
+    var yb = Y(0) + 96;
+    xs.forEach(function (x) { o.push(line(X(x), Y(0) + 14, X(x), yb + 16, 'extln')); });
+    o.push(chainH(xs.map(X), yb, labels));
+    o.push(text(ML - 22, yb + 10, '下段の内寸', 'note-tx', 'end'));
+
+    // 平面断面
+    o.push(text(X(0), planTop - 76, '上から見た断面（床から150mmで切った図）', 'viewtitle', 'start'));
+    o.push(rect(X(0), Z(D), W, D, 'p-below'));
+    if (st.panel) o.push(rect(X(0), Z(D) - PLY, 800, PLY, 'p-cut', 'V1'), rect(X(800), Z(D) - PLY, W - 800, PLY, 'p-cut', 'V2'));
+    M.verts.forEach(function (v) { o.push(rect(X(v[0]), Z(D), v[1] - v[0], D, 'p-cut', 'B')); });
+    [Ll, Rb].forEach(function (c) {
+      c.parts.forEach(function (p) {
+        o.push(rect(X(p.x0), Z(M.pD), t, M.pD, 'p-cut', p.id));
+        o.push(text(X(p.x1) + 12, Z(M.pD / 2) + 10, p.id, 'stripid', 'start'));
+      });
+    });
+    M.strips.forEach(function (s) {
+      if (s.comp !== 'Ll' && s.comp !== 'Rb') return;
+      o.push(rect(X(s.x0), Z(D), s.x1 - s.x0, t, 'p-cut', s.id));
+      var wv = s.x1 - s.x0;
+      var cx = s.center ? s.x0 + (wv - t) / 4 : (s.x0 + s.x1) / 2;
+      o.push(text(X(cx), Z(D - t) + 30, s.id, 'stripid'));
+    });
+    o.push(text(ML - 22, Z(D) + 26, st.panel ? '奥（ベニヤ）' : '奥（壁側）', 'note-tx', 'end'));
+    o.push(text(ML - 22, Z(0) - 6, '前', 'note-tx', 'end'));
+    var wide = Rb.cells[Rb.cells.length - 1];
+    o.push(text(X((wide.x0 + wide.x1) / 2), Z(D / 2) + 10, '底板の上面が見えている', 'note-tx'));
+    var ysP = [Z(D) - PB, Z(D), Z(0)];
+    o.push(line(X(W) + 12, Z(0), X(W) + 128, Z(0), 'extln'), line(X(W) + 12, Z(D) - PB, X(W) + 128, Z(D) - PB, 'extln'));
+    o.push(chainV(st.panel ? ysP : [Z(D), Z(0)], X(W) + 110, st.panel ? ['4', String(D)] : [String(D)], 'right'));
+
+    return '<svg viewBox="0 0 ' + VW + ' ' + VH + '" role="img" aria-label="本棚の正面図と平面断面図">' + o.join('') + '</svg>';
+  }
+
+  /* ---------- 側面断面と取り合い詳細 ---------- */
+  function drawSide(M) {
+    var t = M.t, st = M.st, PB = st.panel ? PLY : 0;
+    var ML = 150, MT = 150;
+    var VW = 1480, VH = MT + H + 180;
+    function X(z) { return ML + z; }
+    function Y(y) { return MT + H - y; }
+    var o = [];
+    var F1 = M.parts.filter(function (p) { return p.comp === 'Rb'; })[0];
+    o.push(text(ML - 120, 58, 'A-A 断面', 'viewtitle', 'start'));
+    o.push(text(ML - 120, 100, '右下の仕切りFの位置で切って、横から見た図', 'note-tx', 'start'));
+
+    o.push(rect(X(0), Y(H - t), D, H - 2 * t, 's-beyond'));
+    [[0, t, 'A'], [M.yD1, M.yD1 + t, 'D'], [M.yD2, M.yD2 + t, 'D'], [H - t, H, 'A']].forEach(function (b) {
+      o.push(rect(X(0), Y(b[1]), D, t, 'p-cut', st.split ? (b[2] === 'A' ? 'A2' : b[2]) : b[2]));
+    });
+    o.push(rect(X(0), Y(M.yD1), M.pD, M.hRb, 'p-cut', 'F'));
+    if (M.useStrips) o.push(rect(X(D - t), Y(M.yD1), t, M.hRb, 'p-cut', 'S3'));
+    if (st.panel) o.push(rect(X(D), Y(H), PLY, H, 'p-cut', 'V2'));
+    o.push(text(X(M.pD / 2), Y(M.yD1 / 2) + 10, 'F', 'stripid'));
+    if (M.useStrips) o.push(text(X(D - t) - 8, Y(M.yD1) + 34, 'S3', 'stripid', 'end'));
+    o.push(text(X(D / 2), Y((M.yD1 + t + M.yD2) / 2) + 10, '（何もない段）', 'note-tx'));
+    o.push(text(X(0), Y(0) + 44, '前', 'note-tx', 'middle'));
+    o.push(text(X(D + PB), Y(0) + 44, '壁', 'note-tx', 'middle'));
+    // 奥行の寸法
+    var zs = M.useStrips ? [0, M.pD, D] : (st.panel ? [0, D, D + PLY] : [0, D]);
+    var lbs = M.useStrips ? [mm(M.pD), ''] : (st.panel ? [String(D), ''] : [String(D)]);
+    zs.forEach(function (z) { o.push(line(X(z), Y(0) + 54, X(z), Y(0) + 110, 'extln')); });
+    o.push(chainH(zs.map(X), Y(0) + 96, lbs));
+    o.push(text(X(D + PB) + 14, Y(0) + 106, M.useStrips ? '+' + t : (st.panel ? '+4' : ''), 'dimtx sm', 'start'));
+    // 高さの寸法
+    var ys = [0, t, M.yD1, M.yD1 + t, M.yD2, M.yD2 + t, H - t, H].map(Y);
+    ys.forEach(function (y) { o.push(line(X(D + PB) + 12, y, X(D + PB) + 98, y, 'extln')); });
+    o.push(chainV(ys, X(D + PB) + 80, ['', mm(M.hRb), '', mm(M.hRt), '', mm(M.hRt), ''], 'right'));
+
+    // 取り合い詳細（2倍）
+    var k = 2, ox = 720;
+    function dX(v) { return ox + v * k; }
+    if (M.useStrips) {
+      var oy = 240;
+      o.push(text(ox, 150, '詳細1　仕切りの後ろ（上から見た図・2倍）', 'viewtitle sm', 'start'));
+      o.push(line(dX(-20), oy - 14, dX(170), oy - 14, 'guide'));
+      o.push(text(dX(170) + 12, oy - 6, '壁', 'note-tx', 'start'));
+      o.push(rect(dX(0), oy, 100 * k, t * k, 'p-cut', 'S3'));
+      o.push(rect(dX(50 - t / 2), oy + t * k, t * k, 120 * k, 'p-cut', 'F'));
+      o.push('<path d="M' + dX(50 - t / 2 - 8) + ' ' + (oy + t * k + 120 * k) + ' l12 -10 l12 20 l12 -20 l12 20 l' + (t * k - 36) + ' -10" class="guide"/>');
+      o.push(line(dX(50), oy - 40, dX(50), oy + t * k + 70, 'screw'));
+      o.push(text(dX(50) + 16, oy - 58, '裏からビス（上下2本）', 'note-tx', 'start'));
+      o.push(text(dX(108), oy + 30, '細い背板 S1・S3・S5', 'note-tx', 'start'));
+      o.push(text(dX(108), oy + 64, '（幅100、左だけ160）', 'note-tx', 'start'));
+      o.push(text(dX(50 + t / 2) + 14, oy + t * k + 150, '仕切り E・F・G', 'note-tx', 'start'));
+      o.push(text(dX(50 + t / 2) + 14, oy + t * k + 184, '奥行 ' + mm(M.pD), 'note-tx', 'start'));
+
+      var oy2 = 690;
+      o.push(text(ox, 600, '詳細2　区画の両端（上から見た図・2倍）', 'viewtitle sm', 'start'));
+      o.push(line(dX(-20), oy2 - 14, dX(170), oy2 - 14, 'guide'));
+      o.push(rect(dX(0), oy2, t * k, 130 * k, 'p-cut', 'B'));
+      o.push('<path d="M' + (dX(0) - 8) + ' ' + (oy2 + 130 * k) + ' l12 -10 l12 20 l12 -20 l' + (t * k - 16) + ' 10" class="guide"/>');
+      o.push(rect(dX(t), oy2, 80 * k, t * k, 'p-cut', 'S4'));
+      o.push(line(dX(0) - 50, oy2 + t * k / 2, dX(t) + 70, oy2 + t * k / 2, 'screw'));
+      o.push(text(dX(t + 80) + 14, oy2 + 30, '細い背板 S2・S4・S6', 'note-tx', 'start'));
+      o.push(text(dX(t + 80) + 14, oy2 + 64, '（幅80、左の区画は120）', 'note-tx', 'start'));
+      o.push(text(dX(t) + 14, oy2 + 150, '側板・縦板 B', 'note-tx', 'start'));
+      o.push(text(dX(t) + 14, oy2 + 184, '外側の板には外からまっすぐビス', 'note-tx', 'start'));
+      o.push(text(dX(t) + 14, oy2 + 218, '中の棚板・縦板には裏から斜めに', 'note-tx', 'start'));
+    } else {
+      var oy3 = 330;
+      o.push(text(ox, 150, '詳細　ベニヤの留め方（横から見た図・2倍）', 'viewtitle sm', 'start'));
+      o.push(rect(dX(20), oy3, 150 * k, t * k, 'p-cut', 'D'));
+      o.push('<path d="M' + (dX(20) + 8) + ' ' + (oy3 - 8) + ' l-10 12 l20 12 l-20 12 l' + 10 + ' ' + (t * k - 28) + '" class="guide"/>');
+      o.push(rect(dX(170), oy3 - 120, PLY * k, 120 * 2 + t * k, 'p-cut', 'V2'));
+      o.push(line(dX(170) + PLY * k + 40, oy3 + t * k / 2, dX(170) - 70, oy3 + t * k / 2, 'screw'));
+      o.push(text(dX(170) + PLY * k + 18, oy3 - 130, 'ベニヤ 4mm', 'note-tx', 'start'));
+      o.push(text(dX(170) + PLY * k + 46, oy3 + t * k / 2 + 10, 'ビス 3.3×16', 'note-tx', 'start'));
+      o.push(text(dX(20), oy3 + t * k + 50, '棚板・仕切り・縦板の後ろの面に', 'note-tx', 'start'));
+      o.push(text(dX(20), oy3 + t * k + 86, '150mmおきに留める', 'note-tx', 'start'));
+      if (!st.split) {
+        var oy4 = 690;
+        o.push(text(ox, 600, '詳細　2枚のつなぎ目（上から見た図・2倍）', 'viewtitle sm', 'start'));
+        o.push(rect(dX(80), oy4 + PLY * k, t * k, 110 * k, 'p-cut', 'B'));
+        o.push(rect(dX(-10), oy4, 90 * k + t * k / 2, PLY * k, 'p-cut', 'V1'));
+        o.push(rect(dX(80) + t * k / 2, oy4, 90 * k + t * k / 2, PLY * k, 'p-cut', 'V2'));
+        o.push(text(dX(80) + t * k / 2, oy4 - 18, 'つなぎ目は縦板の中心', 'note-tx'));
+        o.push(text(dX(80) + t * k + 14, oy4 + 120, '真ん中の縦板 B', 'note-tx', 'start'));
+      }
+    }
+    return '<svg viewBox="0 0 ' + VW + ' ' + VH + '" role="img" aria-label="側面断面と取り合いの詳細図">' + o.join('') + '</svg>';
+  }
+
+  /* ---------- 木取りの描画 ---------- */
+  function fits(label, w, h) { return label.length * 44 * 0.6 + 20 <= w && 52 <= h; }
+  function boardSvg(b) {
+    var o = [rect(0, 0, b.len, D, 'c-stock')];
+    var x = 0;
+    b.pieces.forEach(function (p) {
+      var y = 0;
+      p.rips.forEach(function (r, j) {
+        o.push(rect(x, y, p.len, r.w, 'c-piece', r.id));
+        var full = r.w < D ? r.id + ' ' + p.len + '×' + r.w : r.id + ' ' + p.len;
+        var lab = fits(full, p.len, r.w) ? full : (fits(r.id, p.len, r.w) ? r.id : '');
+        if (lab) o.push(text(x + p.len / 2, y + r.w / 2 + 15, lab, 'c-lab'));
+        y += r.w;
+        if (j < p.rips.length - 1) y += KERF;
+      });
+      if (D - y > 1) o.push(rect(x, y, p.len, D - y, 'c-waste'));
+      x += p.len + KERF;
+    });
+    if (b.len - x > 1) o.push(rect(x, 0, b.len - x, D, 'c-waste'));
+    return '<svg viewBox="0 0 ' + STOCK + ' ' + D + '" role="img" aria-label="板の割り付け">' + o.join('') + '</svg>';
+  }
+  function plySvg(r) {
+    var o = [rect(0, 0, 1820, 910, 'c-stock'), rect(0, 0, r.L, r.W, 'c-piece', r.id),
+      text(r.L / 2, r.W / 2 + 15, r.id + ' ' + r.L + '×' + r.W, 'c-lab'), rect(r.L + KERF, 0, 1820 - r.L - KERF, 910, 'c-waste'),
+      rect(0, r.W + KERF, r.L, 910 - r.W - KERF, 'c-waste')];
+    return '<svg viewBox="0 0 1820 910" role="img" aria-label="ベニヤの割り付け">' + o.join('') + '</svg>';
+  }
+
+  /* ---------- 表とテキスト ---------- */
+  function cfgLabel(st) {
+    return (st.split ? '2つの箱' : '一体型') + '・' + (st.panel ? 'ベニヤの背中' : '細い背板') + '・板厚' + st.t + 'mm';
+  }
+
+  function renderParts(M) {
+    $('#parts').innerHTML = M.rows.map(function (r) {
+      return '<tr data-id="' + r.id + '" tabindex="0"><td><span class="tag">' + r.id + '</span></td>' +
+        '<td>' + r.name + '<div class="where">' + r.where + '</div></td>' +
+        '<td class="num">' + mm(r.L) + ' × ' + mm(r.W) + ' × ' + r.T + '</td>' +
+        '<td class="num qty">' + r.qty + '</td><td class="paper">' + r.paper + '</td><td class="note">' + r.note + '</td></tr>';
+    }).join('');
+    var total = M.rows.reduce(function (s, r) { return s + r.qty; }, 0);
+    $('#parts-total').textContent = total + '点';
+    var kg = weightOf(M.rows);
+    $('#parts-weight').textContent = '重さ 約' + Math.round(kg) + 'kg（パイン材で計算）';
+  }
+
+  function renderMarks(M) {
+    var st = M.st, t = M.t, rows = [];
+    function row(a, b, c) { rows.push('<tr><td>' + a + '</td><td class="muted">' + b + '</td><td class="num">' + c + '</td></tr>'); }
+    if (st.split) {
+      row('縦板 B の位置', '左の箱：天板・底板の左端から', '0 ／ ' + (800 - t));
+      row('縦板 B の位置', '右の箱：天板・底板の左端から', '0 ／ ' + (1250 - t));
+    } else {
+      row('縦板 B の位置（左の面）', '天板・底板の左端から', '0 ／ ' + mm(800 - t / 2) + ' ／ ' + (W - t));
+    }
+    row('棚板 C の下面', st.split ? '左の箱の側板2枚の下端から' : '左の縦板と真ん中の縦板（左の面）の下端から', mm(M.hL));
+    row('棚板 D の下面', st.split ? '右の箱の側板2枚の下端から' : '真ん中の縦板（右の面）と右の縦板の下端から', mm(M.hRb) + ' ／ ' + mm(M.hRb + t + M.hRt));
+    var Ll = M.comps[1], Rm = M.comps[3], Rb = M.comps[4];
+    row('仕切り E の左の面', '左下の区画の左の内側から', Ll.parts.map(function (p) { return mm(p.off); }).join(' ／ '));
+    row('仕切り F の左の面', '右下の区画の左の内側から', Rb.parts.map(function (p) { return mm(p.off); }).join(' ／ '));
+    row('仕切り G の左の面', '右中の区画の左の内側から', Rm.parts.map(function (p) { return mm(p.off); }).join(' ／ '));
+    if (M.useStrips) row('仕切りの奥行', '前の面をそろえる', mm(M.pD) + '（後ろに背板 ' + t + '）');
+    $('#marks').innerHTML = rows.join('');
+  }
+
+  function renderCut(M, P) {
+    var t = M.t;
+    $('#boards').innerHTML = P.boards.map(function (b, i) {
+      var list = b.pieces.map(function (p) {
+        return p.rips.map(function (r) { return r.w < D ? r.id + ' ' + p.len + '×' + r.w : r.id + ' ' + p.len; }).join('・');
+      }).join(' ／ ');
+      var rest = Math.max(0, Math.round(b.len - b.used));
+      return '<figure class="board"><figcaption><b>板 ' + (i + 1) + '</b> ' + t + '×300×' + b.len + '<span>残り 約' + rest + 'mm</span></figcaption>' +
+        boardSvg(b) + '<p class="cutlist">' + list + '</p></figure>';
+    }).join('');
+    var ex = [];
+    if (P.longs.length) {
+      ex.push('<div class="callout warn"><p><strong>長い板 ' + t + '×300×2050 を ' + P.longs.length + '枚（部材 A）</strong></p>' +
+        '<p>ホームセンターの定番より長いので、材木店で「長さ2100mm以上・幅300mm・厚み' + t + 'mmの集成材」を取り寄せて2050mmに切ってもらいます。大型店の 1×12材（厚19×幅286mm、長さ2438mm）を使う手もありますが、奥行が286mmになり、反りやすい材です。</p></div>');
+    }
+    if (P.plys.length) {
+      ex.push('<div class="boards">' + P.plys.map(function (r, i) {
+        return '<figure class="board"><figcaption><b>ベニヤ ' + (i + 1) + '</b> 4×910×1820<span>' + r.where + '</span></figcaption>' + plySvg(r) + '</figure>';
+      }).join('') + '</div>');
+    }
+    if (M.useStrips) {
+      ex.push('<div class="callout"><p>仕切り（E・F・G）は幅300mmから' + M.pD + 'mmに、細い背板（S）は幅300mmの板を長さで切ってから、80〜160mmの幅に縦挽きします。縦挽きを受けない店もあるので、頼む前に確認してください。</p></div>');
+    }
+    $('#boards-extra').innerHTML = ex.join('');
+  }
+
+  function screwCount(M) {
+    var n = M.verts.length * 6 + 3 * 6 + M.parts.length * 6 + M.strips.length * 5;
+    return Math.ceil(n * 1.1 / 10) * 10;
+  }
+
+  function renderShop(M, P) {
+    var n1820 = P.boards.filter(function (b) { return b.len === STOCK; }).length;
+    var n910 = P.boards.filter(function (b) { return b.len === HALF; }).length;
+    var rows = [], sum = 0;
+    function row(a, b, c) { rows.push('<tr><td>' + a + '</td><td class="num">' + b + '</td><td class="num" style="text-align:right">' + (c || '') + '</td></tr>'); }
+    sum += n1820 * PRICE.b1820;
+    row('パイン集成材 ' + M.t + '×300×1820', n1820 + '枚', yen(n1820 * PRICE.b1820));
+    if (n910) { sum += n910 * PRICE.b910; row('パイン集成材 ' + M.t + '×300×910', n910 + '枚', yen(n910 * PRICE.b910)); }
+    if (P.longs.length) row('長い板 ' + M.t + '×300×2050以上', P.longs.length + '枚', '要見積もり');
+    if (P.plys.length) { sum += P.plys.length * PRICE.ply; row('シナ合板 4×910×1820（背板）', P.plys.length + '枚', yen(P.plys.length * PRICE.ply)); }
+    var sc = screwCount(M);
+    row('スリムビス 3.3×45mm（細いビス）', '約' + sc + '本', '');
+    if (M.st.panel) row('ビス 3.3×16mm（ベニヤ用）', '約' + (M.st.split ? 90 : 80) + '本', '');
+    if (M.st.split) row('ビス 3.3×30mm（箱をつなぐ）', '6本', '');
+    row('木工用ボンド（速乾）', '1本', '');
+    row('紙やすり #120・#240', '各5枚ほど', '');
+    row('耐震マット（またはフェルト）', '4〜6枚', '');
+    row('仕上げ用オイル（好みで）', '1缶', '');
+    $('#shop').innerHTML = rows.join('');
+    $('#shop-total').textContent = yen(sum) + (P.longs.length ? ' ＋ 長い板' : '');
+    $('#tool-2p').textContent = M.st.split ? '手伝ってくれる人（箱をつなぐときにあると楽）' : '手伝ってくれる人（2mを超える本体を起こすときは必須）';
+    return { n1820: n1820, n910: n910, sum: sum };
+  }
+
+  function renderSteps(M) {
+    var st = M.st, t = M.t, S = [];
+    S.push(['板を買って、切ってもらう', '部材表と木取り図を見せて、ホームセンターでカットを頼みます。' +
+      (M.useStrips ? '仕切りは幅300mmを' + M.pD + 'mmに、細い背板は80〜160mmの幅に、縦方向にも切ります（縦挽き）。縦挽きを受けない店もあるので、先に確認してください。' : '仕切りも幅300mmのまま使えるので、長さを切るだけで済みます。') +
+      (st.split ? '' : '天板・底板（A、長さ2050mm）は定番より長いので、材木店などで別に手配します。')]);
+    S.push(['部材に記号を書く', 'マスキングテープに A・B・C… と書き、見えない面（裏や底）に貼ります。「前」「上」の向きも書いておくと、組むときに迷いません。']);
+    S.push(['やすりをかける', '#120 → #240 の順に、木目に沿ってかけます。角は軽く丸めます。組んだあとでは手が届かない面が多いので、ここで済ませます。']);
+    S.push(['位置の印を付ける', '「位置の早見表」の寸法で、縦板には棚板の下面の線を、棚板と底板には仕切りの線を鉛筆で引きます。ビスは1か所に3本（前から50mm・真ん中・後ろから50mm）。']);
+    S.push(['下穴をあける', 'ビスを打つ側の板に、直径3mmの下穴をあけます。板の端から15mm以上離します。パイン材は割れやすいので、下穴は省かないでください。']);
+    S.push(['中の棚ユニットを先に作る', '右：棚板 D の1枚の上面に仕切り G を2枚、下面に仕切り F を2枚付けます（どちらも D の面からビス）。G の上にもう1枚の D をのせ、上からビス。左：棚板 C の下面に仕切り E を付けます。箱にしてからでは高さ' + mm(M.hRt) + 'mmの段にドライバーが入らないので、先に組みます。さしがねで直角を確かめながら。' +
+      (M.useStrips ? '仕切りの後ろに付く細い背板（S1・S3・S5）もこのとき一緒に付けると楽です（棚板の面からビス、背板の裏から仕切りへビス）。' : '')]);
+    S.push([st.split ? '箱を2つ組む' : '外枠を組む', '床に毛布を敷き、背中を下にして寝かせて組みます。底板と縦板 B をL字に合わせて底板の外からビス → 棚ユニットを上から落とし込み、縦板の外からビス' +
+      (st.split ? '' : '（真ん中の縦板は、反対側の区画から横向きに打つ）') + ' → 仕切りの下端を底板の外からビス → 天板をのせてビス。対角線の長さが同じなら直角です。' +
+      (st.split ? '左の箱（幅800）と右の箱（幅1250）を、同じ順番で別々に組みます。' : '長さが2mを超えるので、2人で作業します。')]);
+    if (M.useStrips) {
+      S.push(['両端の細い背板を付ける', 'うつ伏せ（前を下）にして、両端用の細い背板（S2・S4・S6）にボンドを塗り、奥にはめます。天板・底板・側板に接する所は外からまっすぐビス。中の棚板や縦板には、背板の裏から斜めにビスを打ちます。斜め打ちが難しければ、裏側に小さな平金具で留めても大丈夫です（壁側なので見えません）。細い背板がきつければ、少し削って合わせます。']);
+    } else {
+      S.push(['背板（ベニヤ）を張る', 'うつ伏せにして、対角線を測って直角を合わせてから、ベニヤをのせます。棚板・仕切りの位置に鉛筆で線を引き、まわりと線の上を150mmおきに 3.3×16mm のビス（または小釘）で留めます。' +
+        (st.split ? 'それぞれの箱に1枚ずつ張ります。' : '2枚のつなぎ目は、真ん中の縦板の中心にそろえます。')]);
+    }
+    if (st.split) S.push(['2つの箱をつなぐ', '起こして並べ、前の面と天板の高さをそろえてクランプで固定します。左の箱の内側から右の箱へ、3.3×30mm のビスを6本（上・中・下 × 前・後ろ）。外せば、次の引越しでまた2つに分けられます。']);
+    S.push(['仕上げ', '起こしてガタつきを確かめます。はみ出たボンドは固まる前に濡れ布巾で拭き取ります（ボンドの上にはオイルがのりません）。オイルを塗って乾かし、底の四隅に耐震マットかフェルトを貼ります。']);
+    $('#steps').innerHTML = S.map(function (s) { return '<li><h3>' + s[0] + '</h3><p>' + s[1] + '</p></li>'; }).join('');
+  }
+
+  var ITEMS = [['CD（ケース）', 125], ['文庫本', 148], ['新書・コミック', 182], ['単行本（四六判）', 188],
+    ['A5判', 210], ['B5判（雑誌・ノート）', 257], ['A4判（雑誌）', 297]];
+  function renderFit(M) {
+    var cols = [['左の2段', M.hL], ['右下', M.hRb], ['右上・右中', M.hRt]];
+    $('#fit-head').innerHTML = '<tr><th>入れるもの（高さ）</th>' + cols.map(function (c) { return '<th style="text-align:center">' + c[0] + '<br>' + mm(c[1]) + '</th>'; }).join('') + '</tr>';
+    $('#fit').innerHTML = ITEMS.map(function (it) {
+      return '<tr><td>' + it[0] + ' <span class="muted">' + it[1] + '</span></td>' + cols.map(function (c) {
+        var g = Math.round((c[1] - it[1]) * 10) / 10;
+        var cls = g >= 15 ? 'mk-ok' : (g > 0 ? 'mk-tight' : 'mk-ng');
+        var mk = g >= 15 ? '○' : (g > 0 ? '△' : '×');
+        return '<td class="mk ' + cls + '">' + mk + ' ' + (g > 0 ? '+' : '') + g + '</td>';
+      }).join('') + '</tr>';
+    }).join('');
+    $('#fit-depth').textContent = '奥行は' + D + 'mm' + (M.useStrips ? '（細い背板がある両端は' + M.pD + 'mm）' : '') + 'です。A4判の本（幅210mm）でも奥まで入ります。';
+  }
+
+  function renderChanges(M) {
+    var t = M.t, L = [];
+    if (t === 20) L.push('板の厚みは紙と同じ20mmで計算しています。外寸も内寸も紙の数字どおりです。');
+    else L.push('板の厚み：紙は2cmですが、店に多いのは18mmなので18mmで計算しました。外寸（2050×720×300）は紙のまま守り、板が薄くなった分は内側に回しています（左の段 330→' + mm(M.hL) + '、右の上2段 190→' + mm(M.hRt) + '、左右の内幅 770→' + mm(M.st.split ? M.Lw : 800 - 1.5 * t) + '・1220→' + mm(M.st.split ? M.Rw : 1250 - 1.5 * t) + '）。');
+    L.push('仕切りの位置は紙に寸法がないので、スケッチの比率から決めました。右下は左から 300・350・残り（' + mm(M.w) + '）、右中はその左右逆（鏡写し）。左下は真ん中です。');
+    L.push('右上と左上の区画は、スケッチどおり仕切りなしの1区画にしています。');
+    L.push('「奥」の欄の読みにくい文字（大中・大端・小中・小端）は、数から「中＝仕切りの後ろ」「端＝区画の両端」と読みました。いちばん上の「33×16×2」の行は数に書き直しがあって読みにくいのですが、左下の仕切りが1枚なので1枚と読みました。');
+    L.push('ビスの位置・組む順番・縦挽きの指定は、紙にはないので書き足しました。');
+    $('#changes').innerHTML = L.map(function (s) { return '<li>' + s + '</li>'; }).join('');
+  }
+
+  function renderSummary(M, P, shop) {
+    var chips = [];
+    var total = M.rows.reduce(function (s, r) { return s + r.qty; }, 0);
+    chips.push('部材 <b>' + total + '</b>点');
+    chips.push('1820mmの板 <b>' + shop.n1820 + '</b>枚' + (shop.n910 ? ' ＋ 910mm <b>' + shop.n910 + '</b>枚' : ''));
+    if (P.longs.length) chips.push('2050mmの長い板 <b>' + P.longs.length + '</b>枚');
+    if (P.plys.length) chips.push('ベニヤ <b>' + P.plys.length + '</b>枚');
+    chips.push('板代の目安 <b>' + yen(shop.sum) + '</b>' + (P.longs.length ? '＋長い板' : ''));
+    if (M.st.split) { var bw = boxWeights(M.st); chips.push('重さ 約<b>' + bw[0] + '</b>kg ＋ <b>' + bw[1] + '</b>kg'); }
+    else chips.push('重さ 約<b>' + Math.round(weightOf(M.rows)) + '</b>kg');
+    $('#summary').innerHTML = chips.map(function (c) { return '<span class="chip">' + c + '</span>'; }).join('');
+    $('#alert').hidden = M.st.split;
+    $('#spec').innerHTML = '<span>幅 <strong>2050</strong></span><span>高さ <strong>720</strong></span><span>奥行 <strong>' + (M.st.panel ? '300＋4' : '300') + '</strong></span><span>板厚 <strong>' + M.t + '</strong></span><span>' + (M.st.split ? '<strong>800＋1250</strong> の2つの箱' : '<strong>一体型</strong>') + '</span>';
+  }
+
+  function renderIdeas(M) {
+    var bw = boxWeights(M.st);
+    var k = { wL: bw[0], wR: bw[1], t2: 2 * M.t, hRt: mm(M.hRt), hRt2: mm(M.hRt), Rw: mm(M.Rw),
+      gap46: mm(M.hRt - 188), gapB5: mm(M.hRb - 257) };
+    $$('[data-k]').forEach(function (el) { el.textContent = k[el.getAttribute('data-k')]; });
+    $$('.apply').forEach(function (bt) {
+      var on = !!state[bt.getAttribute('data-act')];
+      bt.textContent = on ? '反映中（元に戻す）' : '図に反映する';
+      bt.closest('.idea').classList.toggle('on', on);
+    });
+  }
+
+  function syncControls() {
+    $('#split-' + (state.split ? 1 : 0)).checked = true;
+    $('#panel-' + (state.panel ? 1 : 0)).checked = true;
+    $('#thick-' + state.t).checked = true;
+    $('#lg-strip').hidden = state.panel;
+    $('#lg-wall').hidden = state.panel;
+    $('#lg-ply').hidden = !state.panel;
+  }
+
+  function update() {
+    var M = build(state), P = plan(M);
+    syncControls();
+    $('#sheet-front').innerHTML = drawFront(M);
+    $('#sheet-side').innerHTML = drawSide(M);
+    renderParts(M);
+    renderMarks(M);
+    renderCut(M, P);
+    var shop = renderShop(M, P);
+    renderSteps(M);
+    renderFit(M);
+    renderChanges(M);
+    renderSummary(M, P, shop);
+    renderIdeas(M);
+    $$('[data-cfg]').forEach(function (el) { el.textContent = cfgLabel(state); });
+    save();
+  }
+
+  /* ---------- 操作 ---------- */
+  function set(k, v) { state[k] = v; update(); }
+  $$('input[name="split"]').forEach(function (el) { el.addEventListener('change', function () { set('split', el.value === '1'); }); });
+  $$('input[name="panel"]').forEach(function (el) { el.addEventListener('change', function () { set('panel', el.value === '1'); }); });
+  $$('input[name="thick"]').forEach(function (el) { el.addEventListener('change', function () { set('t', Number(el.value)); }); });
+  $('#preset-paper').addEventListener('click', function () { state.split = false; state.panel = false; state.t = 18; update(); });
+  $('#preset-best').addEventListener('click', function () { state.split = true; state.panel = true; state.t = 18; update(); });
+  $('#alert-split').addEventListener('click', function () { set('split', true); });
+  $$('.apply').forEach(function (bt) {
+    bt.addEventListener('click', function () {
+      var k = bt.getAttribute('data-act');
+      set(k, !state[k]);
+      document.getElementById('zumen').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  // 部材表の行 ⇄ 図の中の部材
+  function highlight(id) {
+    $$('svg [data-id].hl, svg .balloon.hl, tbody tr.hl').forEach(function (el) { el.classList.remove('hl'); });
+    if (!id) return;
+    $$('svg [data-id="' + id + '"], svg .balloon[data-for="' + id + '"], tbody tr[data-id="' + id + '"]').forEach(function (el) { el.classList.add('hl'); });
+  }
+  document.addEventListener('mouseover', function (e) {
+    var tr = e.target.closest && e.target.closest('tbody tr[data-id]');
+    if (tr) highlight(tr.getAttribute('data-id'));
+  });
+  document.addEventListener('mouseout', function (e) {
+    var tr = e.target.closest && e.target.closest('tbody tr[data-id]');
+    if (tr && !tr.contains(e.relatedTarget)) highlight(null);
+  });
+  document.addEventListener('focusin', function (e) {
+    var tr = e.target.closest && e.target.closest('tbody tr[data-id]');
+    highlight(tr ? tr.getAttribute('data-id') : null);
+  });
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest && e.target.closest('svg [data-id], svg .balloon');
+    if (!el) {
+      if (!(e.target.closest && e.target.closest('tbody tr[data-id]'))) highlight(null);
+      return;
+    }
+    var id = el.getAttribute('data-id') || el.getAttribute('data-for');
+    highlight(id);
+  });
+
+  update();
+})();
+</script>
+</body>
+</html>
